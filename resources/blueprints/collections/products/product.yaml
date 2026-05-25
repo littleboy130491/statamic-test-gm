@@ -1,0 +1,87 @@
+title: Product
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: Hero
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              display: Title
+              localizable: true
+          -
+            handle: hero_image
+            field:
+              type: assets
+              display: Hero Image
+              container: assets
+              max_files: 1
+              localizable: true
+          -
+            handle: description
+            field:
+              type: textarea
+              display: Description
+              localizable: true
+              instructions: Introductory paragraph shown below the title.
+          -
+            handle: cta_label
+            field:
+              type: text
+              display: CTA Label
+              default: Kontak Kami
+              localizable: true
+          -
+            handle: cta_link
+            field:
+              type: link
+              display: CTA Link
+              localizable: true
+  specifications:
+    display: Specifications
+    sections:
+      -
+        fields:
+          -
+            handle: specifications
+            field:
+              type: grid
+              display: Specifications
+              mode: stacked
+              add_row: Add Specification
+              fields:
+                -
+                  handle: label
+                  field:
+                    type: text
+                    display: Label
+                    validate: required
+                    width: 50
+                -
+                  handle: value
+                  field:
+                    type: text
+                    display: Value
+                    validate: required
+                    width: 50
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: sku
+            field:
+              type: text
+              display: SKU
+              localizable: true

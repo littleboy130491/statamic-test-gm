@@ -1,0 +1,4 @@
+title: Industries
+route: '/industries/{slug}'
+blueprints:
+  - industry

@@ -1,0 +1,4 @@
+title: Product Categories
+route: '/product-categories/{slug}'
+blueprints:
+  - product_category

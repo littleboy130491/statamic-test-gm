@@ -2,12 +2,14 @@
 title: Home
 id: home
 template: home
-blueprint: pages
+blueprint: page
 ---
 ## Welcome to your brand new Statamic site!
 
 Not sure what to do next? Here are a few ideas, but feel free to explore in your own way, in your own time.
 
+- [View the blog](/blog) — WordPress-style posts with categories.
+- [Browse products](/products) — catalog with product categories and industries.
 - [Jump into the Control Panel](/cp) and edit this page or begin setting up your own collections and blueprints.
 - [Head to the docs](https://statamic.dev) and learn how Statamic works.
 - [Watch some Statamic videos](https://youtube.com/statamic) on YouTube.

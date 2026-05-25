@@ -1,0 +1,11 @@
+title: Products
+blueprints:
+  - product
+route: '/products/{slug}'
+sort_by: title
+sort_dir: asc
+template: products/show
+taxonomies:
+  - product_categories
+  - industries
+revisions: false

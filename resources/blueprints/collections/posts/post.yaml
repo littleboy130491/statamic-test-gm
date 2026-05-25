@@ -1,0 +1,62 @@
+title: Post
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              display: Title
+              localizable: true
+          -
+            handle: excerpt
+            field:
+              type: textarea
+              display: Excerpt
+              localizable: true
+          -
+            handle: content
+            field:
+              type: markdown
+              display: Content
+              localizable: true
+          -
+            handle: featured_image
+            field:
+              type: assets
+              display: Featured Image
+              container: assets
+              max_files: 1
+              localizable: true
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: date
+            field:
+              type: date
+              required: true
+              default: now
+              display: Publish Date
+              time_enabled: true
+              localizable: true
+          -
+            handle: author
+            field:
+              type: users
+              display: Author
+              default: current
+              max_items: 1
+              localizable: true

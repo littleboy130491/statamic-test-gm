@@ -1,0 +1,13 @@
+title: Posts
+date: true
+blueprints:
+  - post
+date_behavior:
+  past: public
+  future: private
+route: '/blog/{year}/{month}/{day}/{slug}'
+sort_dir: desc
+template: posts/show
+taxonomies:
+  - categories
+revisions: false
