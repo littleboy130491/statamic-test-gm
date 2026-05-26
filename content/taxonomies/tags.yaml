@@ -1,0 +1,4 @@
+title: Tags
+route: '/tags/{slug}'
+blueprints:
+  - tag

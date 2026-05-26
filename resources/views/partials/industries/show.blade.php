@@ -4,9 +4,23 @@
 
 <div class="mx-auto w-full max-w-3xl px-4 py-8">
     <header class="mb-8">
+        @if ($page->featured_image)
+            <div class="mb-6 overflow-hidden rounded-xl">
+                @foreach ($page->featured_image as $image)
+                    <img
+                        src="{{ $image->url }}"
+                        alt="{{ $page->title }}"
+                        class="aspect-[21/9] w-full object-cover"
+                    >
+                @endforeach
+            </div>
+        @endif
+
         <h1 class="text-3xl font-bold text-zinc-900 dark:text-zinc-100">{{ $page->title }}</h1>
         @if ($page->content)
-            <p class="mt-2 text-zinc-600 dark:text-zinc-400">{{ $page->content }}</p>
+            <div class="prose prose-zinc dark:prose-invert mt-4 max-w-none">
+                {!! $page->content !!}
+            </div>
         @endif
     </header>
 
@@ -20,7 +34,7 @@
                     <p class="mt-1 text-xs text-zinc-500">SKU: {{ $entry->sku }}</p>
                 @endif
                 @if ($entry->description)
-                    <p class="mt-3 text-zinc-600 dark:text-zinc-400">{{ $entry->description }}</p>
+                    <p class="mt-3 text-zinc-600 dark:text-zinc-400">{{ Str::limit(strip_tags($entry->description), 250) }}</p>
                 @endif
             </article>
         @endforeach

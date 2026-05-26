@@ -1,0 +1,4 @@
+title: Dealer Categories
+route: '/dealer-categories/{slug}'
+blueprints:
+  - dealer_category

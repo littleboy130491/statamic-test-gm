@@ -1,0 +1,15 @@
+title: Careers
+blueprints:
+  - career
+route: '/careers/{slug}'
+sort_by: title
+sort_dir: asc
+template: careers/show
+taxonomies:
+  - tags
+  - locations
+revisions: false
+inject:
+  seo:
+    title: '@seo:title'
+    description: '@seo:description'

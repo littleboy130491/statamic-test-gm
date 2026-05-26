@@ -14,20 +14,27 @@ tabs:
               display: Title
               localizable: true
           -
-            handle: hero_image
+            handle: featured_image
             field:
               type: assets
-              display: Hero Image
+              display: Featured Image
               container: assets
               max_files: 1
               localizable: true
           -
             handle: description
             field:
-              type: textarea
+              type: bard
               display: Description
               localizable: true
-              instructions: Introductory paragraph shown below the title.
+              instructions: Introductory copy shown below the title.
+              buttons:
+                - bold
+                - italic
+                - anchor
+                - unorderedlist
+                - orderedlist
+                - removeformat
           -
             handle: cta_label
             field:
@@ -41,6 +48,32 @@ tabs:
               type: link
               display: CTA Link
               localizable: true
+      -
+        display: Catalogue
+        fields:
+          -
+            handle: catalogue_link
+            field:
+              type: group
+              display: Catalogue Link
+              localizable: true
+              fields:
+                -
+                  handle: label
+                  field:
+                    type: text
+                    display: Label
+                -
+                  handle: url
+                  field:
+                    type: link
+                    display: URL
+                -
+                  handle: displayed
+                  field:
+                    type: toggle
+                    display: Displayed
+                    default: false
   specifications:
     display: Specifications
     sections:
@@ -85,3 +118,4 @@ tabs:
               type: text
               display: SKU
               localizable: true
+              validate: 'new \Statamic\Rules\UniqueEntryValue({collection}, {id}, {site})'

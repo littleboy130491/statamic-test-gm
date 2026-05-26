@@ -1,0 +1,95 @@
+title: Career
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: Job
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              display: Title
+              localizable: true
+          -
+            handle: description
+            field:
+              type: bard
+              display: Description
+              localizable: true
+              buttons:
+                - bold
+                - italic
+                - anchor
+                - unorderedlist
+                - orderedlist
+                - removeformat
+          -
+            handle: qualifications
+            field:
+              type: bard
+              display: Qualifications
+              localizable: true
+              buttons:
+                - bold
+                - italic
+                - anchor
+                - unorderedlist
+                - orderedlist
+                - removeformat
+          -
+            handle: jobdesc
+            field:
+              type: bard
+              display: Job Description
+              localizable: true
+              buttons:
+                - bold
+                - italic
+                - anchor
+                - unorderedlist
+                - orderedlist
+                - removeformat
+          -
+            handle: employment_status
+            field:
+              type: select
+              display: Employment Status
+              localizable: true
+              options:
+                full_time: Full Time
+                part_time: Part Time
+                contract: Contract
+                internship: Internship
+                temporary: Temporary
+              placeholder: Select employment type
+          -
+            handle: apply_email
+            field:
+              type: text
+              display: Apply Email
+              localizable: true
+              input_type: email
+              validate: nullable|email
+          -
+            handle: apply_link
+            field:
+              type: text
+              display: Apply Link
+              localizable: true
+              input_type: url
+              validate: nullable|url
+              instructions: Optional application URL only.
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'

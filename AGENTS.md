@@ -79,9 +79,10 @@ When adding collections/taxonomies, configure SEO Pro section defaults to map:
 | Section | Suggested sources |
 |---------|-------------------|
 | `posts` | title, excerpt/summary, content, featured_image |
-| `products` | title, description, hero_image |
+| `products` | title, description, featured_image |
+| `dealers` | title, address |
 | `pages` | title, content |
-| `categories`, `product_categories`, `industries` | title, content (description) |
+| `categories`, `product_categories`, `industries` | title, content (description), featured_image |
 
 Docs: [SEO Pro documentation](https://github.com/statamic/seo-pro/blob/7.x/DOCUMENTATION.md).
 
@@ -94,6 +95,7 @@ Docs: [SEO Pro documentation](https://github.com/statamic/seo-pro/blob/7.x/DOCUM
 | `pages` | `{parent_uri}/{slug}` | — | Structured tree; root `home` |
 | `posts` | `/blog/{year}/{month}/{day}/{slug}` | `categories` | Dated blog |
 | `products` | `/products/{slug}` | `product_categories`, `industries` | Catalog |
+| `dealers` | `/dealers/{slug}` | `dealer_categories` | Dealer locator |
 
 Blueprints: `resources/blueprints/collections/{collection}/{blueprint}.yaml` (e.g. `products/product.yaml`). Taxonomies: `resources/blueprints/taxonomies/{taxonomy}/{term}.yaml`.
 
@@ -104,6 +106,7 @@ Blueprints: `resources/blueprints/collections/{collection}/{blueprint}.yaml` (e.
 | `categories` | `/categories/{slug}` | Post categories; optional `parent` |
 | `product_categories` | `/product-categories/{slug}` | Product categories; optional `parent` |
 | `industries` | `/industries/{slug}` | Flat industry tags |
+| `dealer_categories` | `/dealer-categories/{slug}` | Dealer types |
 
 Terms: `content/taxonomies/{handle}/{slug}.yaml`. Blueprints: `resources/blueprints/taxonomies/{handle}.yaml`.
 

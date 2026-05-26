@@ -10,3 +10,7 @@ preferences:
       view: list
     pages:
       view: list
+    dealers:
+      view: list
+    careers:
+      view: list

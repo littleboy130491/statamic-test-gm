@@ -1,0 +1,4 @@
+title: Locations
+route: '/locations/{slug}'
+blueprints:
+  - location

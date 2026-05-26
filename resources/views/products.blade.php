@@ -66,7 +66,7 @@
                         @endif
                     </p>
                     @if ($product->description)
-                        <p class="mt-3 text-zinc-600 dark:text-zinc-400">{{ $product->description }}</p>
+                        <p class="mt-3 text-zinc-600 dark:text-zinc-400">{{ Str::limit(strip_tags($product->description), 250) }}</p>
                     @endif
                     <a href="{{ $product->url }}" class="mt-3 inline-block text-sm text-indigo-700 hover:underline dark:text-indigo-400">View product</a>
                 </article>

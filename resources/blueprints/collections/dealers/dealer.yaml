@@ -1,0 +1,133 @@
+title: Dealer
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: Dealer
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              display: Dealer Name
+              localizable: true
+      -
+        display: Location
+        fields:
+          -
+            handle: address
+            field:
+              type: textarea
+              display: Address
+              localizable: true
+          -
+            handle: city
+            field:
+              type: text
+              display: City
+              localizable: true
+              width: 33
+          -
+            handle: region
+            field:
+              type: text
+              display: Region
+              localizable: true
+              width: 33
+          -
+            handle: country
+            field:
+              type: text
+              display: Country
+              default: Indonesia
+              localizable: true
+              width: 33
+      -
+        display: Contact
+        fields:
+          -
+            handle: phone_number
+            field:
+              type: text
+              display: Phone Number
+              localizable: true
+              input_type: tel
+          -
+            handle: whatsapp_number
+            field:
+              type: text
+              display: WhatsApp Number
+              localizable: true
+              input_type: tel
+              instructions: 'Include country code, e.g. 6281234567890.'
+          -
+            handle: whatsapp_link
+            field:
+              type: text
+              display: WhatsApp Link
+              localizable: true
+              input_type: url
+              validate: nullable|url
+              instructions: 'Optional URL only. Overrides the default wa.me link generated from the WhatsApp number.'
+          -
+            handle: google_maps_url
+            field:
+              type: text
+              display: Google Maps URL
+              localizable: true
+              input_type: url
+              validate: nullable|url
+              instructions: 'URL only. Link to open this dealer in Google Maps.'
+          -
+            handle: location
+            field:
+              type: group
+              display: Map Coordinates
+              localizable: true
+              instructions: 'Used for Leaflet map pins. Populate manually or via Google Geocoding API from the address.'
+              fields:
+                -
+                  handle: latitude
+                  field:
+                    type: float
+                    display: Latitude
+                    width: 50
+                -
+                  handle: longitude
+                  field:
+                    type: float
+                    display: Longitude
+                    width: 50
+                -
+                  handle: google_place_id
+                  field:
+                    type: text
+                    display: Google Place ID
+                    instructions: 'Optional. Useful for geocoding lookups and place details.'
+                -
+                  handle: map_zoom
+                  field:
+                    type: integer
+                    display: Map Zoom
+                    default: 14
+                    instructions: 'Default zoom level when this dealer is focused on the map.'
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: is_active
+            field:
+              type: toggle
+              display: Active
+              default: true
+              instructions: 'Inactive dealers are hidden from the dealer locator map and listing.'

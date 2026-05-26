@@ -10,6 +10,7 @@ Not sure what to do next? Here are a few ideas, but feel free to explore in your
 
 - [View the blog](/blog) — WordPress-style posts with categories.
 - [Browse products](/products) — catalog with product categories and industries.
+- [Find a dealer](/dealers) — dealer locator with map and contact details.
 - [Jump into the Control Panel](/cp) and edit this page or begin setting up your own collections and blueprints.
 - [Head to the docs](https://statamic.dev) and learn how Statamic works.
 - [Watch some Statamic videos](https://youtube.com/statamic) on YouTube.

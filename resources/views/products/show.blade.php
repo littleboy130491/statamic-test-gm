@@ -3,9 +3,9 @@
 @section('content')
     <article class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:py-16">
         <header class="text-center">
-            @if ($page->hero_image)
+            @if ($page->featured_image)
                 <div class="mb-10 flex justify-center">
-                    @foreach ($page->hero_image as $image)
+                    @foreach ($page->featured_image as $image)
                         <img
                             src="{{ $image->url }}"
                             alt="{{ $page->title }}"
@@ -28,9 +28,9 @@
             </h1>
 
             @if ($page->description)
-                <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-600">
-                    {{ $page->description }}
-                </p>
+                <div class="prose prose-zinc mx-auto mt-6 max-w-2xl text-base leading-relaxed">
+                    {!! $page->description !!}
+                </div>
             @endif
 
             @if ($page->cta_link)
@@ -40,6 +40,19 @@
                         class="inline-block rounded-full bg-emerald-500 px-8 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-emerald-600"
                     >
                         {{ $page->cta_label ?: 'Kontak Kami' }}
+                    </a>
+                </div>
+            @endif
+
+            @if ($page->catalogue_link?->displayed && $page->catalogue_link?->url)
+                <div class="mt-4">
+                    <a
+                        href="{{ $page->catalogue_link->url }}"
+                        class="inline-block text-sm font-semibold text-emerald-600 transition hover:text-emerald-700 hover:underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        {{ $page->catalogue_link->label ?: 'View catalogue' }}
                     </a>
                 </div>
             @endif

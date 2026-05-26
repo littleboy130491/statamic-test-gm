@@ -5,3 +5,7 @@ tree:
     entry: blog
   -
     entry: products
+  -
+    entry: dealers
+  -
+    entry: careers

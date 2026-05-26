@@ -1,0 +1,10 @@
+title: Dealers
+blueprints:
+  - dealer
+route: '/dealers/{slug}'
+sort_by: title
+sort_dir: asc
+template: dealers/show
+taxonomies:
+  - dealer_categories
+revisions: false

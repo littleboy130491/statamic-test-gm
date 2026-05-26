@@ -20,7 +20,7 @@
                     <p class="mt-1 text-xs text-zinc-500">SKU: {{ $entry->sku }}</p>
                 @endif
                 @if ($entry->description)
-                    <p class="mt-3 text-zinc-600 dark:text-zinc-400">{{ $entry->description }}</p>
+                    <p class="mt-3 text-zinc-600 dark:text-zinc-400">{{ Str::limit(strip_tags($entry->description), 250) }}</p>
                 @endif
             </article>
         @endforeach
