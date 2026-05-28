@@ -6,11 +6,11 @@
     @if ($block->image && ! $block->background_image)
         <div class="mb-8 flex {{ ($block->alignment ?? 'center') === 'center' ? 'justify-center' : '' }}">
             @foreach ($block->image as $image)
-                <img
-                    src="{{ $image->url }}"
-                    alt="{{ $block->headline }}"
+                <x-asset-figure
+                    :asset="$image"
+                    :alt="$block->headline"
                     class="max-h-64 w-auto rounded-xl object-contain"
-                >
+                />
             @endforeach
         </div>
     @endif

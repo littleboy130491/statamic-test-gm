@@ -31,11 +31,11 @@
                     <a href="{{ $product->url }}" class="group min-w-[200px] shrink-0 text-center">
                         @if ($product->featured_image)
                             @foreach ($product->featured_image as $image)
-                                <img
-                                    src="{{ $image->url }}"
-                                    alt="{{ $product->title }}"
+                                <x-asset-figure
+                                    :asset="$image"
+                                    :alt="$product->title"
                                     class="mx-auto h-32 w-auto object-contain transition group-hover:scale-105"
-                                >
+                                />
                             @endforeach
                         @endif
                         <p class="mt-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">{{ $product->title }}</p>

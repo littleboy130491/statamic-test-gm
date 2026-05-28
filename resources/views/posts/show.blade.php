@@ -22,11 +22,11 @@
         @if ($page->gallery)
             <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
                 @foreach ($page->gallery as $image)
-                    <img
-                        src="{{ $image->url }}"
-                        alt="{{ $image->alt ?? $page->title }}"
+                    <x-asset-figure
+                        :asset="$image"
+                        :alt="$page->title"
                         class="aspect-square w-full rounded-lg object-cover"
-                    >
+                    />
                 @endforeach
             </div>
         @endif

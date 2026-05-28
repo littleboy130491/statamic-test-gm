@@ -40,7 +40,11 @@
                         @if ($row->image)
                             <div class="{{ $imageFirst ? 'lg:order-2' : 'lg:order-1' }}">
                                 @foreach ($row->image as $image)
-                                    <img src="{{ $image->url }}" alt="{{ $row->title }}" class="w-full rounded-xl object-cover">
+                                    <x-asset-figure
+                                        :asset="$image"
+                                        :alt="$row->title"
+                                        class="w-full rounded-xl object-cover"
+                                    />
                                 @endforeach
                             </div>
                         @endif

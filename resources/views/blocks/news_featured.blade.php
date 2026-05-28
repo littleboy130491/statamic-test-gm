@@ -36,7 +36,11 @@
                 <a href="{{ $featured->url }}" class="group overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
                     @if ($featured->featured_image ?? null)
                         @foreach ($featured->featured_image as $image)
-                            <img src="{{ $image->url }}" alt="{{ $featured->title }}" class="aspect-video w-full object-cover transition group-hover:scale-[1.02]">
+                            <x-asset-figure
+                                :asset="$image"
+                                :alt="$featured->title"
+                                class="aspect-video w-full object-cover transition group-hover:scale-[1.02]"
+                            />
                         @endforeach
                     @endif
                     <div class="p-6">
@@ -53,7 +57,11 @@
                         <a href="{{ $entry->url }}" class="flex gap-4 rounded-lg border border-zinc-200 p-3 transition hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900">
                             @if ($entry->featured_image ?? null)
                                 @foreach ($entry->featured_image as $image)
-                                    <img src="{{ $image->url }}" alt="" class="size-20 shrink-0 rounded-lg object-cover">
+                                    <x-asset-figure
+                                        :asset="$image"
+                                        :alt="$entry->title"
+                                        class="size-20 shrink-0 rounded-lg object-cover"
+                                    />
                                 @endforeach
                             @endif
                             <div class="min-w-0">

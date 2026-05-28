@@ -2,7 +2,11 @@
     <a href="{{ $entry->url }}" class="block">
         @if ($entry->featured_image ?? null)
             @foreach ($entry->featured_image as $image)
-                <img src="{{ $image->url }}" alt="{{ $entry->title }}" class="aspect-video w-full object-cover">
+                <x-asset-figure
+                    :asset="$image"
+                    :alt="$entry->title"
+                    class="aspect-video w-full object-cover"
+                />
             @endforeach
         @endif
         <div class="p-5">

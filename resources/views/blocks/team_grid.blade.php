@@ -22,7 +22,12 @@
                     <figure class="text-center">
                         @if ($member->image)
                             @foreach ($member->image as $image)
-                                <img src="{{ $image->url }}" alt="{{ $member->name }}" class="mx-auto aspect-[3/4] w-full max-w-xs rounded-xl object-cover">
+                                <x-asset-figure
+                                    :asset="$image"
+                                    :alt="$member->name"
+                                    :figure="false"
+                                    class="mx-auto aspect-[3/4] w-full max-w-xs rounded-xl object-cover"
+                                />
                             @endforeach
                         @endif
                         @if ($member->name)

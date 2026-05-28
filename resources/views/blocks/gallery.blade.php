@@ -26,11 +26,10 @@
         @if ($block->images)
             <div class="grid gap-4 {{ $gridClass }}">
                 @foreach ($block->images as $image)
-                    <img
-                        src="{{ $image->url }}"
-                        alt="{{ $image->alt ?? $image->title ?? '' }}"
+                    <x-asset-figure
+                        :asset="$image"
                         class="aspect-square w-full rounded-xl object-cover shadow-sm"
-                    >
+                    />
                 @endforeach
             </div>
         @endif

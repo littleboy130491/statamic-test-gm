@@ -14,11 +14,11 @@
             @if ($page->featured_image)
                 <div class="mb-10 mt-6 flex justify-center">
                     @foreach ($page->featured_image as $image)
-                        <img
-                            src="{{ $image->url }}"
-                            alt="{{ $page->title }}"
+                        <x-asset-figure
+                            :asset="$image"
+                            :alt="$page->title"
                             class="max-h-80 w-auto object-contain"
-                        >
+                        />
                     @endforeach
                 </div>
             @endif

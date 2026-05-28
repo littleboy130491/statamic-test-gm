@@ -25,7 +25,11 @@
                     <article class="flex flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
                         @if ($card->image)
                             @foreach ($card->image as $image)
-                                <img src="{{ $image->url }}" alt="{{ $card->title }}" class="aspect-video w-full object-cover">
+                                <x-asset-figure
+                                    :asset="$image"
+                                    :alt="$card->title"
+                                    class="aspect-video w-full object-cover"
+                                />
                             @endforeach
                         @endif
                         <div class="flex flex-1 flex-col p-6">

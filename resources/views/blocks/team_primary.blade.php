@@ -14,7 +14,11 @@
         @if ($block->image)
             <div>
                 @foreach ($block->image as $image)
-                    <img src="{{ $image->url }}" alt="{{ $block->name }}" class="w-full rounded-xl object-cover">
+                    <x-asset-figure
+                        :asset="$image"
+                        :alt="$block->name"
+                        class="w-full rounded-xl object-cover"
+                    />
                 @endforeach
             </div>
         @endif

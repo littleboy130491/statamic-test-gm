@@ -3,6 +3,12 @@ fields:
   -
     handle: alt
     field:
-      display: 'Alt Text'
+      display: Alt text
       type: text
-      instructions: 'Description of the image'
+      instructions: Short description for accessibility and SEO. Required for meaningful images.
+  -
+    handle: caption
+    field:
+      display: Caption
+      type: text
+      instructions: Optional visible caption shown below the image when templates use figure/figcaption.
