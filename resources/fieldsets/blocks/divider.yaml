@@ -1,0 +1,12 @@
+title: Divider
+fields:
+  -
+    handle: style
+    field:
+      type: select
+      display: Style
+      default: line
+      options:
+        line: Line
+        dots: Dotted
+        space: Space only

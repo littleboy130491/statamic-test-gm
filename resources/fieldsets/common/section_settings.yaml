@@ -1,0 +1,18 @@
+title: Section settings
+fields:
+  -
+    handle: anchor
+    field:
+      type: text
+      display: Anchor ID
+      instructions: Optional HTML id for in-page links (lowercase, no spaces).
+  -
+    handle: background
+    field:
+      type: select
+      display: Background
+      default: default
+      options:
+        default: Default
+        muted: Muted
+        dark: Dark

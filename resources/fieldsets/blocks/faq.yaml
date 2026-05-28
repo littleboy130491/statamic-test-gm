@@ -1,0 +1,35 @@
+title: FAQ
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+  -
+    handle: items
+    field:
+      type: grid
+      display: Questions
+      mode: stacked
+      add_row: Add question
+      validate: required
+      fields:
+        -
+          handle: question
+          field:
+            type: text
+            display: Question
+            validate: required
+        -
+          handle: answer
+          field:
+            type: bard
+            display: Answer
+            validate: required
+            buttons:
+              - bold
+              - italic
+              - anchor
+              - unorderedlist
+              - orderedlist
+              - removeformat

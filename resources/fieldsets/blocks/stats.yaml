@@ -1,0 +1,29 @@
+title: Stats
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+  -
+    handle: items
+    field:
+      type: grid
+      display: Statistics
+      mode: stacked
+      add_row: Add stat
+      validate: required
+      fields:
+        -
+          handle: value
+          field:
+            type: text
+            display: Value
+            validate: required
+            instructions: e.g. 99%, 10k+, 24/7
+        -
+          handle: label
+          field:
+            type: text
+            display: Label
+            validate: required

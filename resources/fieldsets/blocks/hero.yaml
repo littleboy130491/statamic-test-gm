@@ -1,0 +1,44 @@
+title: Hero
+fields:
+  -
+    handle: headline
+    field:
+      type: text
+      display: Headline
+      validate: required
+  -
+    handle: subheadline
+    field:
+      type: text
+      display: Subheadline
+  -
+    handle: text
+    field:
+      type: textarea
+      display: Supporting text
+  -
+    handle: image
+    field:
+      type: assets
+      display: Image
+      container: assets
+      max_files: 1
+  -
+    handle: alignment
+    field:
+      type: select
+      display: Alignment
+      default: center
+      options:
+        left: Left
+        center: Center
+  -
+    handle: buttons
+    field:
+      type: grid
+      display: Buttons
+      mode: stacked
+      add_row: Add button
+      fields:
+        -
+          import: common.button

@@ -1,0 +1,32 @@
+title: Call to action
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+      validate: required
+  -
+    handle: text
+    field:
+      type: textarea
+      display: Text
+  -
+    handle: buttons
+    field:
+      type: grid
+      display: Buttons
+      mode: stacked
+      add_row: Add button
+      fields:
+        -
+          import: common.button
+  -
+    handle: style
+    field:
+      type: select
+      display: Style
+      default: banner
+      options:
+        banner: Banner
+        inline: Inline

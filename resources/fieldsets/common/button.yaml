@@ -1,0 +1,24 @@
+title: Button
+fields:
+  -
+    handle: label
+    field:
+      type: text
+      display: Label
+      validate: required
+  -
+    handle: link
+    field:
+      type: link
+      display: Link
+      validate: required
+  -
+    handle: style
+    field:
+      type: select
+      display: Style
+      default: primary
+      options:
+        primary: Primary
+        secondary: Secondary
+        outline: Outline

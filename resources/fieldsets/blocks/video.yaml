@@ -1,0 +1,19 @@
+title: Video
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+  -
+    handle: video_url
+    field:
+      type: text
+      display: Video URL
+      validate: required
+      instructions: YouTube or Vimeo embed URL.
+  -
+    handle: caption
+    field:
+      type: text
+      display: Caption

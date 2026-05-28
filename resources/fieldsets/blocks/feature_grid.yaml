@@ -1,0 +1,54 @@
+title: Feature grid
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+  -
+    handle: subheading
+    field:
+      type: textarea
+      display: Subheading
+  -
+    handle: columns
+    field:
+      type: select
+      display: Columns
+      default: '3'
+      options:
+        '2': '2 columns'
+        '3': '3 columns'
+        '4': '4 columns'
+  -
+    handle: features
+    field:
+      type: grid
+      display: Features
+      mode: stacked
+      add_row: Add feature
+      validate: required
+      fields:
+        -
+          handle: icon
+          field:
+            type: assets
+            display: Icon / image
+            container: assets
+            max_files: 1
+        -
+          handle: title
+          field:
+            type: text
+            display: Title
+            validate: required
+        -
+          handle: text
+          field:
+            type: textarea
+            display: Description
+        -
+          handle: link
+          field:
+            type: link
+            display: Link

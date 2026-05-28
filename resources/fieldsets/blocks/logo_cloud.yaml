@@ -1,0 +1,14 @@
+title: Logo cloud
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+  -
+    handle: logos
+    field:
+      type: assets
+      display: Logos
+      container: assets
+      validate: required

@@ -1,0 +1,45 @@
+title: Image & text
+fields:
+  -
+    handle: image
+    field:
+      type: assets
+      display: Image
+      container: assets
+      max_files: 1
+      validate: required
+  -
+    handle: image_position
+    field:
+      type: select
+      display: Image position
+      default: left
+      options:
+        left: Left
+        right: Right
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+  -
+    handle: text
+    field:
+      type: bard
+      display: Text
+      container: assets
+      buttons:
+        - bold
+        - italic
+        - anchor
+        - unorderedlist
+        - orderedlist
+        - removeformat
+  -
+    handle: button
+    field:
+      type: group
+      display: Button
+      fields:
+        -
+          import: common.button

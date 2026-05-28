@@ -1,0 +1,30 @@
+title: Rich text
+fields:
+  -
+    handle: content
+    field:
+      type: bard
+      display: Content
+      validate: required
+      container: assets
+      buttons:
+        - h2
+        - h3
+        - bold
+        - italic
+        - anchor
+        - unorderedlist
+        - orderedlist
+        - removeformat
+        - quote
+  -
+    handle: width
+    field:
+      type: select
+      display: Content width
+      default: default
+      options:
+        narrow: Narrow
+        default: Default
+        wide: Wide
+        full: Full width

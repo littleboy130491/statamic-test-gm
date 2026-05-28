@@ -12,11 +12,142 @@ tabs:
               required: true
               display: Title
               localizable: true
+      -
+        display: Page builder
+        instructions: Add, reorder, and edit page sections. Each section is a block with its own fields.
+        fields:
+          -
+            handle: sections
+            field:
+              type: replicator
+              display: Sections
+              collapse: true
+              localizable: true
+              sets:
+                hero:
+                  display: Hero
+                  instructions: Large headline area with optional image and buttons.
+                  fields:
+                    -
+                      import: blocks.hero
+                    -
+                      import: common.section_settings
+                rich_text:
+                  display: Rich text
+                  instructions: Formatted text content.
+                  fields:
+                    -
+                      import: blocks.rich_text
+                    -
+                      import: common.section_settings
+                image_text:
+                  display: Image & text
+                  instructions: Side-by-side image and copy.
+                  fields:
+                    -
+                      import: blocks.image_text
+                    -
+                      import: common.section_settings
+                feature_grid:
+                  display: Feature grid
+                  instructions: Grid of features with icons.
+                  fields:
+                    -
+                      import: blocks.feature_grid
+                    -
+                      import: common.section_settings
+                cta:
+                  display: Call to action
+                  instructions: Prominent CTA banner or inline block.
+                  fields:
+                    -
+                      import: blocks.cta
+                    -
+                      import: common.section_settings
+                spacer:
+                  display: Spacer
+                  instructions: Vertical spacing between sections.
+                  fields:
+                    -
+                      import: blocks.spacer
+                    -
+                      import: common.section_settings
+                divider:
+                  display: Divider
+                  instructions: Horizontal rule or spacing.
+                  fields:
+                    -
+                      import: blocks.divider
+                    -
+                      import: common.section_settings
+                logo_cloud:
+                  display: Logo cloud
+                  instructions: Row of partner or client logos.
+                  fields:
+                    -
+                      import: blocks.logo_cloud
+                    -
+                      import: common.section_settings
+                testimonials:
+                  display: Testimonials
+                  instructions: Customer quotes.
+                  fields:
+                    -
+                      import: blocks.testimonials
+                    -
+                      import: common.section_settings
+                faq:
+                  display: FAQ
+                  instructions: Frequently asked questions.
+                  fields:
+                    -
+                      import: blocks.faq
+                    -
+                      import: common.section_settings
+                stats:
+                  display: Stats
+                  instructions: Key numbers or metrics.
+                  fields:
+                    -
+                      import: blocks.stats
+                    -
+                      import: common.section_settings
+                video:
+                  display: Video
+                  instructions: Embedded video with optional heading.
+                  fields:
+                    -
+                      import: blocks.video
+                    -
+                      import: common.section_settings
+                gallery:
+                  display: Gallery
+                  instructions: Image gallery grid.
+                  fields:
+                    -
+                      import: blocks.gallery
+                    -
+                      import: common.section_settings
+      -
+        display: Legacy content
+        instructions: Optional markdown fallback when no sections are added. Prefer Page builder sections for new pages.
+        fields:
           -
             handle: content
             field:
               type: markdown
-              display: Content
+              display: Content (legacy)
+              localizable: true
+  seo:
+    display: SEO
+    sections:
+      -
+        fields:
+          -
+            handle: seo
+            field:
+              type: seo_pro
+              display: SEO
               localizable: true
   sidebar:
     display: Sidebar

@@ -1,0 +1,13 @@
+title: Spacer
+fields:
+  -
+    handle: size
+    field:
+      type: select
+      display: Size
+      default: medium
+      options:
+        small: Small
+        medium: Medium
+        large: Large
+        xlarge: Extra large

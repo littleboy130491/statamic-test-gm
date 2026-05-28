@@ -1,0 +1,40 @@
+title: Testimonials
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+  -
+    handle: items
+    field:
+      type: grid
+      display: Testimonials
+      mode: stacked
+      add_row: Add testimonial
+      validate: required
+      fields:
+        -
+          handle: quote
+          field:
+            type: textarea
+            display: Quote
+            validate: required
+        -
+          handle: author
+          field:
+            type: text
+            display: Author
+            validate: required
+        -
+          handle: role
+          field:
+            type: text
+            display: Role / company
+        -
+          handle: image
+          field:
+            type: assets
+            display: Photo
+            container: assets
+            max_files: 1
