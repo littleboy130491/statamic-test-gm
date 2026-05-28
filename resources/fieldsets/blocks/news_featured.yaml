@@ -1,0 +1,34 @@
+title: News featured
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+      validate: required
+  -
+    handle: text
+    field:
+      type: textarea
+      display: Description
+  -
+    handle: button
+    field:
+      type: group
+      display: Section button
+      fields:
+        -
+          import: common.button
+  -
+    handle: featured_entry
+    field:
+      type: entries
+      display: Featured entry
+      max_items: 1
+      validate: required
+  -
+    handle: entries
+    field:
+      type: entries
+      display: Side entries
+      instructions: Shown in the list beside the featured entry.

@@ -1,0 +1,14 @@
+title: Social platform
+fields:
+  -
+    handle: url
+    field:
+      type: link
+      display: URL
+  -
+    handle: image
+    field:
+      type: assets
+      display: Icon / logo
+      container: assets
+      max_files: 1

@@ -1,0 +1,48 @@
+title: Alternating rows
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Section heading
+  -
+    handle: intro
+    field:
+      type: textarea
+      display: Intro text
+  -
+    handle: rows
+    field:
+      type: grid
+      display: Rows
+      mode: stacked
+      add_row: Add row
+      validate: required
+      fields:
+        -
+          handle: icon
+          field:
+            type: assets
+            display: Icon
+            container: assets
+            max_files: 1
+        -
+          handle: title
+          field:
+            type: text
+            display: Title
+            validate: required
+        -
+          handle: text
+          field:
+            type: textarea
+            display: Description
+            validate: required
+        -
+          handle: image
+          field:
+            type: assets
+            display: Image
+            container: assets
+            max_files: 1
+            validate: required

@@ -1,0 +1,19 @@
+title: Social link
+fields:
+  -
+    handle: platform
+    field:
+      type: select
+      display: Platform
+      options:
+        instagram: Instagram
+        facebook: Facebook
+        linkedin: LinkedIn
+        youtube: YouTube
+        whatsapp: WhatsApp
+  -
+    handle: url
+    field:
+      type: link
+      display: URL
+      validate: required

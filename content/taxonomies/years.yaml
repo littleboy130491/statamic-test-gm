@@ -1,0 +1,4 @@
+title: Years
+route: '/years/{slug}'
+blueprints:
+  - year

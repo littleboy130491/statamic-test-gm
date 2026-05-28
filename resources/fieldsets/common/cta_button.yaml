@@ -1,0 +1,12 @@
+title: CTA button
+fields:
+  -
+    handle: label
+    field:
+      type: text
+      display: Label
+  -
+    handle: link
+    field:
+      type: link
+      display: Link

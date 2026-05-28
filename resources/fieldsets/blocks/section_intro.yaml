@@ -1,0 +1,13 @@
+title: Section intro
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+      validate: required
+  -
+    handle: text
+    field:
+      type: textarea
+      display: Text

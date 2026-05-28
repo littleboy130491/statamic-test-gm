@@ -1,0 +1,27 @@
+title: Entries highlight
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+      validate: required
+  -
+    handle: text
+    field:
+      type: textarea
+      display: Description
+  -
+    handle: entries
+    field:
+      type: entries
+      display: Entries
+      validate: required
+  -
+    handle: button
+    field:
+      type: group
+      display: Section button
+      fields:
+        -
+          import: common.button

@@ -1,0 +1,33 @@
+title: Team profile (primary)
+fields:
+  -
+    handle: image
+    field:
+      type: assets
+      display: Photo
+      container: assets
+      max_files: 1
+      validate: required
+  -
+    handle: name
+    field:
+      type: text
+      display: Name
+      validate: required
+  -
+    handle: role
+    field:
+      type: text
+      display: Role / title
+      validate: required
+  -
+    handle: bio
+    field:
+      type: bard
+      display: Biography
+      buttons:
+        - bold
+        - italic
+        - unorderedlist
+        - orderedlist
+        - removeformat

@@ -42,6 +42,14 @@ tabs:
               container: assets
               max_files: 1
               localizable: true
+          -
+            handle: categories
+            field:
+              type: terms
+              taxonomies:
+                - categories
+              display: Categories
+              localizable: true
   sidebar:
     display: Sidebar
     sections:

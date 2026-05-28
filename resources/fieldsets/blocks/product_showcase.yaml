@@ -1,0 +1,24 @@
+title: Product showcase
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+      validate: required
+  -
+    handle: button
+    field:
+      type: group
+      display: Section button
+      fields:
+        -
+          import: common.button
+  -
+    handle: products
+    field:
+      type: entries
+      display: Products
+      collections:
+        - products
+      validate: required

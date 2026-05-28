@@ -17,12 +17,21 @@ fields:
       type: textarea
       display: Supporting text
   -
+    handle: background_image
+    field:
+      type: assets
+      display: Background image
+      container: assets
+      max_files: 1
+      instructions: Full-width hero background (e.g. truck photo).
+  -
     handle: image
     field:
       type: assets
-      display: Image
+      display: Foreground image
       container: assets
       max_files: 1
+      instructions: Optional image shown below or beside copy (not the background).
   -
     handle: alignment
     field:

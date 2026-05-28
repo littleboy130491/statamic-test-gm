@@ -1,0 +1,36 @@
+title: Team grid
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+  -
+    handle: members
+    field:
+      type: grid
+      display: Team members
+      mode: stacked
+      add_row: Add member
+      validate: required
+      fields:
+        -
+          handle: image
+          field:
+            type: assets
+            display: Photo
+            container: assets
+            max_files: 1
+            validate: required
+        -
+          handle: name
+          field:
+            type: text
+            display: Name
+            validate: required
+        -
+          handle: role
+          field:
+            type: text
+            display: Role / title
+            validate: required

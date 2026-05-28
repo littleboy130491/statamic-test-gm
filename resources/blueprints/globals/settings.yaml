@@ -1,0 +1,109 @@
+title: Settings
+tabs:
+  branding:
+    display: Branding
+    sections:
+      -
+        fields:
+          -
+            handle: site_title
+            field:
+              type: text
+              display: Site title
+              localizable: true
+          -
+            handle: site_logo
+            field:
+              type: assets
+              display: Site logo
+              container: assets
+              max_files: 1
+              localizable: true
+  social:
+    display: Social media
+    sections:
+      -
+        fields:
+          -
+            handle: social_media
+            field:
+              type: group
+              display: Social media
+              localizable: true
+              fields:
+                -
+                  handle: instagram
+                  field:
+                    type: group
+                    display: Instagram
+                    fields:
+                      -
+                        import: common.social_platform
+                -
+                  handle: facebook
+                  field:
+                    type: group
+                    display: Facebook
+                    fields:
+                      -
+                        import: common.social_platform
+                -
+                  handle: linkedin
+                  field:
+                    type: group
+                    display: LinkedIn
+                    fields:
+                      -
+                        import: common.social_platform
+  contact:
+    display: Contact
+    sections:
+      -
+        fields:
+          -
+            handle: phone_numbers
+            field:
+              type: replicator
+              display: Phone numbers
+              localizable: true
+              collapse: true
+              sets:
+                phone:
+                  display: Phone number
+                  fields:
+                    -
+                      import: common.contact_phone
+          -
+            handle: emails
+            field:
+              type: replicator
+              display: Emails
+              localizable: true
+              collapse: true
+              sets:
+                email:
+                  display: Email
+                  fields:
+                    -
+                      import: common.contact_email
+          -
+            handle: call_center
+            field:
+              type: text
+              display: Call center
+              localizable: true
+              instructions: Primary call & WhatsApp center number or label.
+          -
+            handle: address
+            field:
+              type: textarea
+              display: Address
+              localizable: true
+          -
+            handle: google_map_link
+            field:
+              type: text
+              display: Google Maps link
+              input_type: url
+              localizable: true
+              validate: nullable|url

@@ -1,0 +1,15 @@
+title: Achievements
+blueprints:
+  - achievement
+route: '/achievements/{slug}'
+sort_by: title
+sort_dir: desc
+template: achievements/show
+taxonomies:
+  - years
+revisions: false
+inject:
+  seo:
+    title: '@seo:title'
+    description: '@seo:description'
+    image: '@seo:featured_image'

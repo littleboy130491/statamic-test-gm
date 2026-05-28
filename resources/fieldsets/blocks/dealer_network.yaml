@@ -1,0 +1,59 @@
+title: Dealer network
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+      validate: required
+  -
+    handle: stats
+    field:
+      type: grid
+      display: Network statistics
+      mode: stacked
+      add_row: Add statistic
+      fields:
+        -
+          handle: value
+          field:
+            type: text
+            display: Value
+            validate: required
+        -
+          handle: label
+          field:
+            type: text
+            display: Label
+            validate: required
+  -
+    handle: tab_branches_label
+    field:
+      type: text
+      display: Branches tab label
+      default: 'Cabang & Dealer'
+  -
+    handle: tab_service_label
+    field:
+      type: text
+      display: Service tab label
+      default: 'Service Center'
+  -
+    handle: tab_parts_label
+    field:
+      type: text
+      display: Parts tab label
+      default: 'Part Shop'
+  -
+    handle: dealers
+    field:
+      type: entries
+      display: Dealers / locations
+      collections:
+        - dealers
+  -
+    handle: map_embed_url
+    field:
+      type: text
+      display: Map embed URL
+      instructions: Optional Google Maps embed URL. Map UI layout is handled in the Blade template.

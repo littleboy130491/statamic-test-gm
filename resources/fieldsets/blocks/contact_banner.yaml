@@ -1,0 +1,70 @@
+title: Contact banner
+fields:
+  -
+    handle: background_image
+    field:
+      type: assets
+      display: Background image
+      container: assets
+      max_files: 1
+  -
+    handle: side_image
+    field:
+      type: assets
+      display: Side image
+      container: assets
+      max_files: 1
+      instructions: e.g. truck cutout on the left.
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+      validate: required
+  -
+    handle: text
+    field:
+      type: textarea
+      display: Text
+  -
+    handle: contact_label
+    field:
+      type: text
+      display: Contact label
+      default: 'Call & WA Center'
+  -
+    handle: phone
+    field:
+      type: text
+      display: Phone number
+  -
+    handle: whatsapp_link
+    field:
+      type: link
+      display: WhatsApp link
+  -
+    handle: button
+    field:
+      type: group
+      display: Button
+      fields:
+        -
+          import: common.button
+  -
+    handle: social_links
+    field:
+      type: grid
+      display: Social links
+      mode: stacked
+      add_row: Add link
+      fields:
+        -
+          import: common.social_link
+  -
+    handle: visual_image
+    field:
+      type: assets
+      display: Product / app visual
+      container: assets
+      max_files: 1
+      instructions: Optional phones/laptop mockup (e.g. GM Teletech monitoring section).

@@ -1,0 +1,14 @@
+title: Contact phone
+fields:
+  -
+    handle: label
+    field:
+      type: text
+      display: Label
+      instructions: Optional label, e.g. Sales or Support.
+  -
+    handle: number
+    field:
+      type: text
+      display: Phone number
+      validate: required
