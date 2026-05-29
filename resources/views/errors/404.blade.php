@@ -1,5 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
+<x-layouts.app>
     <p>404 Page not found.</p>
-@endsection
+</x-layouts.app>

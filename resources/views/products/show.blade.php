@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-layouts.app>
     <article class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:py-16">
         <header class="text-center">
             @if ($page->featured_image)
@@ -79,4 +77,4 @@
             <a href="/products" class="text-sm text-emerald-600 hover:underline">&larr; Back to products</a>
         </p>
     </article>
-@endsection
+</x-layouts.app>

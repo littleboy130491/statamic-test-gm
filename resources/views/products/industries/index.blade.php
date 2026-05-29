@@ -1,5 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
+<x-layouts.app>
     @include('partials.industries.index')
-@endsection
+</x-layouts.app>

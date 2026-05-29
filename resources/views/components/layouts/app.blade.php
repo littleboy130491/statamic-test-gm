@@ -8,6 +8,6 @@
         @vite(['resources/css/site.css', 'resources/js/site.js'])
     </head>
     <body class="bg-white font-sans leading-normal text-zinc-800 antialiased">
-        @yield('content')
+        {{ $slot }}
     </body>
 </html>

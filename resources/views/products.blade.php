@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-layouts.app>
     @php
         $productsData = Statamic::tag('collection:products')->sort('title:asc')->paginate(12)->as('products')->fetch();
     @endphp
@@ -75,4 +73,4 @@
             @include('partials.pagination', ['paginate' => $productsData['paginate'] ?? null])
         </section>
     </div>
-@endsection
+</x-layouts.app>

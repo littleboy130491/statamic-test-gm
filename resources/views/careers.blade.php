@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-layouts.app>
     @php
         $careers = Statamic::tag('collection:careers')
             ->sort('title:asc')
@@ -97,4 +95,4 @@
             @endforelse
         </section>
     </div>
-@endsection
+</x-layouts.app>

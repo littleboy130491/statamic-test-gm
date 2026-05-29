@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-layouts.app>
     @php
         $dealers = Statamic::tag('collection:dealers')
             ->where('is_active', true)
@@ -89,4 +87,4 @@
             @endforelse
         </section>
     </div>
-@endsection
+</x-layouts.app>

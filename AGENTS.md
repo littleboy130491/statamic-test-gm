@@ -29,7 +29,7 @@ Flat-file content lives under `content/`. Blueprints under `resources/blueprints
 - Globals: `$settings`, etc. (one variable per global set handle).
 - Escaping: Blade `{{ }}` escapes; use `{!! !!}` for trusted HTML (entry content, SEO output where appropriate).
 - Collection/taxonomy listings: prefer `<s:collection:handle>` tags, `Statamic::tag()`, or `@tags` — see [Blade docs](https://statamic.dev/blade).
-- Layouts: Blade templates **ignore** the Antlers layout cascade; use `@extends('layouts.app')` / `@section` / `@yield` (or Blade components).
+- Layouts: Blade templates **ignore** the Antlers layout cascade. Use layout components: `<x-layouts.app>` for Statamic collection pages (SEO Pro, `site.css`); `<x-layouts.main>` with header/footer for branded static pages.
 
 ### Tailwind CSS
 

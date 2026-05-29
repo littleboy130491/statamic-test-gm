@@ -1,5 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
+<x-layouts.app>
     @include('partials.product_categories.show')
-@endsection
+</x-layouts.app>

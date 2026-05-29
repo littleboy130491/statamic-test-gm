@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-layouts.app>
     @php
         $postsData = Statamic::tag('collection:posts')->sort('date:desc')->paginate(10)->as('posts')->fetch();
     @endphp
@@ -55,4 +53,4 @@
             ])
         </section>
     </div>
-@endsection
+</x-layouts.app>

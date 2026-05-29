@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-layouts.app>
     @php
         $employmentLabels = [
             'full_time' => 'Full Time',
@@ -98,4 +96,4 @@
             <a href="/careers" class="text-sm text-emerald-600 hover:underline">&larr; Back to careers</a>
         </p>
     </article>
-@endsection
+</x-layouts.app>

@@ -1,10 +1,19 @@
 title: Dealers
-blueprints:
-  - dealer
-route: '/dealers/{slug}'
-sort_by: title
-sort_dir: asc
+icon: collections
 template: dealers/show
+layout: layout
+mount: dealers
 taxonomies:
   - dealer_categories
 revisions: false
+route: '/dealers/{slug}'
+sort_by: title
+sort_dir: asc
+date_behavior:
+  past: null
+  future: null
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true
