@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System</title>
+  <link rel="stylesheet" href="app.css">
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .design-section {
+      padding-block: var(--space-8);
+      border-bottom: 1px solid var(--color-muted);
+    }
+    .token-swatch {
+      padding: var(--space-4);
+      border-radius: var(--radius-button);
+      min-width: 120px;
+      height: 80px;
+    }
+    .token-swatch--bg { background: var(--color-bg); border: 1px solid var(--color-muted); }
+    .token-swatch--text { background: var(--color-text); color: var(--color-bg); }
+    .token-swatch--primary { background: var(--color-primary); color: var(--color-bg); }
+    .token-swatch--secondary { background: var(--color-secondary); color: var(--color-bg); }
+    .token-swatch--muted { background: var(--color-muted); color: var(--color-bg); }
+    .token-swatch--focus { background: var(--color-focus); color: var(--color-bg); }
+    .space-bar {
+      height: var(--space-3);
+      background: var(--color-primary);
+      border-radius: var(--radius-button);
+    }
+    .space-bar--1 { width: var(--space-1); }
+    .space-bar--2 { width: var(--space-2); }
+    .space-bar--3 { width: var(--space-3); }
+    .space-bar--4 { width: var(--space-4); }
+    .space-bar--5 { width: var(--space-5); }
+    .space-bar--6 { width: var(--space-6); }
+    .space-bar--7 { width: var(--space-7); }
+    .space-bar--8 { width: var(--space-8); }
+    .shadow-box {
+      padding: var(--space-4);
+      background: var(--color-bg);
+      border-radius: var(--radius-button);
+      border: 1px solid var(--color-muted);
+    }
+    code {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      background: var(--color-muted);
+      color: var(--color-bg);
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+    }
+    .demo-box {
+      border: 2px dashed var(--color-muted);
+    }
+    .demo-item {
+      border: 1px solid var(--color-muted);
+    }
+    .scroll-to-top {
+      position: fixed;
+      bottom: var(--space-6);
+      right: var(--space-6);
+      width: 3rem;
+      height: 3rem;
+      background: var(--color-primary);
+      color: var(--color-bg);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .scroll-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    .scroll-to-top:hover {
+      background: var(--color-secondary);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <p class="eyebrow">Design System</p>
+      <h1>Token-Driven Styling</h1>
+      <p class="subheading">Complete overview of all design tokens, components, and utilities.</p>
+      <nav class="cluster" style="margin-block-start: var(--space-4);">
+        <a href="#typography">Typography</a>
+        <a href="#color">Color</a>
+        <a href="#layout">Layout</a>
+        <a href="#tables">Tables</a>
+        <a href="#how-to-use">How to Use</a>
+        <a href="prose.html">Prose</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Typography -->
+    <section id="typography" class="design-section">
+      <div class="container">
+        <div class="flow">
+          <p class="eyebrow">Typography</p>
+          <h2>Type Scale</h2>
+           <p class="subheading">Typography for the design system.</p>
+        </div>
+
+        <div class="stack" style="margin-block-start: var(--space-6);">
+          <h1>Heading One</h1>
+          <h2>Heading Two</h2>
+          <h3>Heading Three</h3>
+          <h4>Heading Four</h4>
+          <h5>Heading Five</h5>
+          <h6>Heading Six</h6>
+          <p>This is the default paragraph style with comfortable reading measure.</p>
+          <p class="subheading">This is a subheading utility style for support text.</p>
+          <p class="eyebrow">This is an eyebrow utility style.</p>
+          <p><span class="badge">Badge</span></p>
+          <a href="#">Default link style</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Colors -->
+    <section id="color" class="design-section">
+      <div class="container">
+        <div class="flow">
+          <p class="eyebrow">Color</p>
+          <h2>Color Tokens</h2>
+          <p class="subheading">Core color palette for the design system.</p>
+        </div>
+
+        <div class="cluster" style="margin-block-start: var(--space-6);">
+          <div style="text-align: center;">
+            <div class="token-swatch token-swatch--bg"></div>
+            <p class="eyebrow">--color-bg</p>
+          </div>
+          <div style="text-align: center;">
+            <div class="token-swatch" style="background: var(--color-surface); border: 1px solid var(--color-border);"></div>
+            <p class="eyebrow">--color-surface</p>
+          </div>
+          <div style="text-align: center;">
+            <div class="token-swatch token-swatch--primary"></div>
+            <p class="eyebrow">--color-primary</p>
+          </div>
+          <div style="text-align: center;">
+            <div class="token-swatch" style="background: var(--color-accent); color: var(--color-bg);"></div>
+            <p class="eyebrow">--color-accent</p>
+          </div>
+          <div style="text-align: center;">
+            <div class="token-swatch token-swatch--secondary"></div>
+            <p class="eyebrow">--color-secondary</p>
+          </div>
+          <div style="text-align: center;">
+            <div class="token-swatch token-swatch--text"></div>
+            <p class="eyebrow">--color-heading</p>
+          </div>
+          <div style="text-align: center;">
+            <div class="token-swatch token-swatch--text"></div>
+            <p class="eyebrow">--color-text</p>
+          </div>
+          <div style="text-align: center;">
+            <div class="token-swatch token-swatch--muted"></div>
+            <p class="eyebrow">--color-muted</p>
+          </div>
+          <div style="text-align: center;">
+            <div class="token-swatch" style="background: var(--color-border);"></div>
+            <p class="eyebrow">--color-border</p>
+          </div>
+          <div style="text-align: center;">
+            <div class="token-swatch" style="background: var(--color-link); color: var(--color-bg);"></div>
+            <p class="eyebrow">--color-link</p>
+          </div>
+          <div style="text-align: center;">
+            <div class="token-swatch" style="background: var(--color-focus); color: var(--color-bg);"></div>
+            <p class="eyebrow">--color-focus</p>
+          </div>
+        </div>
+
+        <div class="flow" style="margin-block-start: var(--space-8);">
+          <p class="eyebrow">Button Colors</p>
+          <p class="subheading">Primary and secondary button color combinations.</p>
+        </div>
+
+        <div class="cluster" style="margin-block-start: var(--space-6);">
+          <a href="#" class="button button--primary">Primary Button</a>
+          <a href="#" class="button button--secondary">Secondary Button</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Layout Utilities -->
+    <section id="layout" class="design-section">
+      <div class="container">
+        <div class="flow">
+          <p class="eyebrow">Layout</p>
+          <h2>Layout Utilities</h2>
+          <p class="subheading">Container, flow, stack, cluster, and grid utilities.</p>
+        </div>
+
+        <div class="flow" style="margin-block-start: var(--space-6);">
+          <p class="eyebrow">Container</p>
+          <p class="subheading">Centers content with max-width constraint.</p>
+          <div class="demo-box">
+            <p>This content is inside a .container</p>
+          </div>
+        </div>
+
+        <div class="flow" style="margin-block-start: var(--space-8);">
+          <p class="eyebrow">Flow</p>
+          <p class="subheading">Vertical spacing between siblings with smart context-aware spacing.</p>
+          <div class="flow demo-box">
+            <p class="eyebrow">Eyebrow</p>
+            <h3>Heading</h3>
+            <p>Paragraph with automatic spacing.</p>
+            <button class="button">Button</button>
+          </div>
+        </div>
+
+        <div class="flow" style="margin-block-start: var(--space-8);">
+          <p class="eyebrow">Flow - Image & Icon</p>
+          <p class="subheading">Automatic spacing between images/icons and paragraphs.</p>
+          <div class="flow demo-box">
+            <div style="width: 100%; max-width: 400px; height: 200px; background: var(--color-primary); display: flex; align-items: center; justify-content: center; color: var(--color-text-button-primary);">
+              <span>Image placeholder</span>
+            </div>
+            <p>Paragraph after image with automatic spacing.</p>
+            <div class="icon" style="display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-2); background: var(--color-muted); color: var(--color-bg-button-primary);">
+              <span style="font-size: 1.5rem;">★</span>
+              <span>Icon element</span>
+            </div>
+            <p>Paragraph after icon with automatic spacing.</p>
+          </div>
+        </div>
+
+        <div class="flow" style="margin-block-start: var(--space-8);">
+          <p class="eyebrow">Stack</p>
+          <p class="subheading">Vertical rhythm with consistent gap.</p>
+          <div class="stack demo-box">
+            <p>Item 1</p>
+            <p>Item 2</p>
+            <p>Item 3</p>
+          </div>
+        </div>
+
+        <div class="flow" style="margin-block-start: var(--space-8);">
+          <p class="eyebrow">Cluster</p>
+          <p class="subheading">Horizontal grouping that wraps on overflow.</p>
+          <div class="cluster demo-box">
+            <button class="button">Button 1</button>
+            <button class="button">Button 2</button>
+            <span class="badge">Badge</span>
+            <span class="badge">Badge</span>
+          </div>
+        </div>
+
+        <div class="flow" style="margin-block-start: var(--space-8);">
+          <p class="eyebrow">Grid</p>
+          <p class="subheading">CSS Grid layout with column modifiers.</p>
+          <div class="stack" style="margin-block-start: var(--space-4);">
+            <div>
+              <p class="subheading">Grid 2 columns</p>
+              <div class="grid grid--2 demo-box">
+                <div class="demo-item">Item 1</div>
+                <div class="demo-item">Item 2</div>
+              </div>
+            </div>
+            <div>
+              <p class="subheading">Grid 3 columns</p>
+              <div class="grid grid--3 demo-box">
+                <div class="demo-item">Item 1</div>
+                <div class="demo-item">Item 2</div>
+                <div class="demo-item">Item 3</div>
+              </div>
+            </div>
+            <div>
+              <p class="subheading">Grid auto-fit (responsive)</p>
+              <div class="grid grid--auto demo-box">
+                <div class="demo-item">Item 1</div>
+                <div class="demo-item">Item 2</div>
+                <div class="demo-item">Item 3</div>
+                <div class="demo-item">Item 4</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flow" style="margin-block-start: var(--space-8);">
+          <p class="eyebrow">Alignment - Text</p>
+          <p class="subheading">Text alignment utilities.</p>
+          <div class="stack demo-box">
+            <p class="text-left">Left aligned text</p>
+            <p class="text-center">Center aligned text</p>
+            <p class="text-right">Right aligned text</p>
+          </div>
+        </div>
+
+        <div class="flow" style="margin-block-start: var(--space-8);">
+          <p class="eyebrow">Alignment - Flexbox</p>
+          <p class="subheading">Flexbox alignment utilities for cross-axis and main-axis.</p>
+          <div class="stack" style="margin-block-start: var(--space-4);">
+            <div>
+              <p class="subheading">Align items (cross-axis)</p>
+              <div class="stack" style="gap: var(--space-2);">
+                <div class="demo-box align-center" style="display: flex; height: 60px;">
+                  <span class="badge">align-center</span>
+                </div>
+                <div class="demo-box align-start" style="display: flex; height: 60px;">
+                  <span class="badge">align-start</span>
+                </div>
+                <div class="demo-box align-end" style="display: flex; height: 60px;">
+                  <span class="badge">align-end</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="subheading">Justify content (main-axis)</p>
+              <div class="stack" style="gap: var(--space-2);">
+                <div class="demo-box justify-center" style="display: flex; height: 60px;">
+                  <span class="badge">justify-center</span>
+                </div>
+                <div class="demo-box justify-between" style="display: flex; height: 60px;">
+                  <span class="badge">Left</span>
+                  <span class="badge">Right</span>
+                </div>
+                <div class="demo-box justify-around" style="display: flex; height: 60px;">
+                  <span class="badge">Item 1</span>
+                  <span class="badge">Item 2</span>
+                  <span class="badge">Item 3</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flow" style="margin-block-start: var(--space-8);">
+          <p class="eyebrow">Alignment - Margin Auto</p>
+          <p class="subheading">Margin auto utilities for centering.</p>
+          <div class="stack demo-box" style="gap: var(--space-2);">
+            <div class="mx-auto demo-item" style="width: fit-content;">
+              <span class="badge">mx-auto</span>
+            </div>
+            <div class="my-auto demo-item" style="height: 60px; display: flex;">
+              <span class="badge">my-auto</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+       <!-- Tables -->
+    <section id="tables" class="design-section">
+      <div class="container">
+        <div class="flow">
+          <p class="eyebrow">Tables</p>
+          <h2>Data Tables</h2>
+          <p class="subheading">Styled table components for displaying tabular data.</p>
+        </div>
+
+        <div style="margin-block-start: var(--space-6);">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Last Active</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Jane Doe</td>
+                <td>Designer</td>
+                <td>Active</td>
+                <td>2 hours ago</td>
+              </tr>
+              <tr>
+                <td>John Smith</td>
+                <td>Developer</td>
+                <td>Active</td>
+                <td>5 minutes ago</td>
+              </tr>
+              <tr>
+                <td>Sarah Johnson</td>
+                <td>Manager</td>
+                <td>Inactive</td>
+                <td>3 days ago</td>
+              </tr>
+              <tr>
+                <td>Mike Brown</td>
+                <td>Developer</td>
+                <td>Active</td>
+                <td>1 hour ago</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shadows -->
+    <section class="design-section">
+      <div class="container">
+        <div class="flow">
+          <p class="eyebrow">Effects</p>
+          <h2>Shadows</h2>
+          <p class="subheading">Shadow tokens for depth and elevation.</p>
+        </div>
+
+        <div class="cluster" style="margin-block-start: var(--space-6);">
+          <div class="shadow-box" style="box-shadow: var(--shadow-subtle);">
+            <p class="eyebrow">--shadow-subtle</p>
+            <p>Subtle elevation</p>
+          </div>
+          <div class="shadow-box" style="box-shadow: var(--shadow-card);">
+            <p class="eyebrow">--shadow-card</p>
+            <p>Card elevation</p>
+          </div>
+          <div class="shadow-box" style="box-shadow: var(--shadow-lifted);">
+            <p class="eyebrow">--shadow-lifted</p>
+            <p>Lifted elevation</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Usage -->
+    <section id="how-to-use" class="design-section">
+      <div class="container">
+        <div class="flow">
+
+  <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">↑</button>
+
+  <script>
+    const scrollButton = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollButton.classList.add('visible');
+      } else {
+        scrollButton.classList.remove('visible');
+      }
+    });
+
+    scrollButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+          <p class="eyebrow">Usage</p>
+          <h2>How to Use</h2>
+          <p class="subheading">Quick guide to customizing the design system.</p>
+        </div>
+
+        <div class="flow" style="margin-block-start: var(--space-6);">
+          <h3>1. Modify <code>settings.css</code></h3>
+          <p>Change color tokens, typography mappings, and spacing values to match your project's design language.</p>
+          
+          <h3>2. Extend with <code>project.css</code></h3>
+          <p>Add project-specific classes, component variants, and custom styles.</p>
+          
+          <h3>3. Use Utility Classes</h3>
+          <p>Apply <code>.container</code>, <code>.flow</code>, <code>.stack</code>, <code>.cluster</code>, and <code>.grid</code> for consistent layouts.</p>
+          
+          <h3>4. Reference Tokens</h3>
+          <p>Use CSS custom properties like <code>var(--space-4)</code> and <code>var(--color-primary)</code> in your custom styles.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Design System Reference • Token-Driven Styling</p>
+    </div>
+  </footer>
+</body>
+</html>

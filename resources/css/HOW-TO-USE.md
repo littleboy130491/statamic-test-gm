@@ -1,0 +1,5 @@
+- create new project folder inside projects
+- copy all css from styles directory, create new styles directory inside project folder
+- html should import css from projects/{project-name}/styles/system.css
+- only change settings.css and project.css inside projects/{project-name}/styles directory
+- give section id for each section
