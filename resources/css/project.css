@@ -259,3 +259,11 @@ footer.grey-footer {
    color: var(--color-text) !important;
    text-decoration: underline;
 }
+
+
+
+
+/* Background Footer */
+.bg-footer {
+   filter: grayscale(100%);
+}

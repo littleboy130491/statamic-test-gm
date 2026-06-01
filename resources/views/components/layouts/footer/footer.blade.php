@@ -1,11 +1,11 @@
 @php
     $company_name = 'PT Gaya Makmur Mobil';
-    $footer_title = 'Langkah Pertama untuk Operasional yang Lebih Efisien';
+    $footer_title = 'Your Trusted Business Partner';
     $footer_desc =
         'Tim konsultan kami siap mendengarkan kebutuhan Anda dan memberikan rekomendasi solusi yang paling sesuai.';
     $footer_button = ['btnText' => 'Konsultasi Sekarang', 'btnLink' => '/kontak'];
     $footer_background = asset('/assets/footer-background.jpg');
-    $image_footer = asset('/assets/footer-image.png');
+    $image_footer = asset('/assets/footer-image-2.png');
     $socials = [
         [
             'name' => 'Instagram',
@@ -22,28 +22,28 @@
 @endphp
 
 <footer id="footer">
-    <div class="relative overflow-hidden rounded-t-3xl lg:rounded-t-[60px] bg-(--color-primary)">
+    <div class="relative overflow-hidden rounded-t-3xl lg:rounded-t-[60px] bg-[#53B853]">
 
         {{-- Background Footer --}}
         <div id="footer-background" class="overlay-footer">
             <img src="{{ $footer_background }}" alt="Footer Background"
-                class="w-full h-195 md:h-120 lg:h-140 object-cover mix-blend-multiply pointer-events-none">
+                class="bg-footer w-full h-195 md:h-110 lg:h-190 object-cover mix-blend-multiply pointer-events-none">
         </div>
 
         {{-- Content Footer --}}
-        <div id="content-footer" class="absolute inset-0 z-10 mt-4 lg:mt-15">
+        <div id="content-footer" class="absolute inset-0 z-10 mt-4 md:mt-15 lg:mt-15">
             <div class="container flex flex-col gap-8 justify-center md:flex-row lg:flex-row">
 
-                <div class="flex flex-col-reverse md:flex-row lg:flex-row gap-6">
+                <div class="flex flex-col-reverse md:flex-row lg:flex-row gap-20 md:gap-2">
                     {{-- Image Footer --}}
-                    <div id="image-footer" class="flex items-end">
+                    <div id="image-footer" class="flex items-end md:w-[70%] lg:w-[60%]">
                         <img src="{{ $image_footer }}" alt="Footer Background" class="block w-full">
                     </div>
 
                     {{-- CTA Footer --}}
-                    <div id="cta-footer" class="flex flex-col justify-between mt-10 lg:-ml-20">
+                    <div id="cta-footer" class="flex flex-col justify-between lg:justify-center lg:w-[50%]">
                         <div class="flow">
-                            <h2 class="text-white lg:w-160">{{ $footer_title }}</h2>
+                            <h2 class="text-white lg:w-110">{{ $footer_title }}</h2>
                             <p class="text-white lg:w-120">{{ $footer_desc }}</p>
 
                             {{-- Media Sosial --}}
@@ -74,19 +74,14 @@
                                 </a>
                             </div>
                         </div>
-
-                        {{-- Copyrigth Footer Desktop --}}
-                        <div id="copyrigth-footer" class="hidden my-6 md:mt-20 md:block lg:block">
-                            <p class="text-white">© {{ date('Y') }} {{ $company_name }}</p>
-                        </div>
                     </div>
-                </div>
-
-                {{-- Copyrigth Footer Mobile --}}
-                <div id="copyrigth-footer" class="-mt-4 md:hidden lg:hidden">
-                    <p class="text-white text-center">© {{ date('Y') }} {{ $company_name }}</p>
                 </div>
             </div>
         </div>
+    </div>
+
+    {{-- Copyrigth Footer --}}
+    <div id="copyrigth-footer" class="-mt-12 md:-mt-14 relative z-10">
+        <p class="text-white text-center">© {{ date('Y') }} {{ $company_name }}</p>
     </div>
 </footer>
