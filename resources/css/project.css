@@ -278,3 +278,26 @@ footer.grey-footer {
     z-index: 2;
     background: radial-gradient(50% 50% at 50% 50%, rgba(245, 245, 245, 0.80) 0%, rgba(205, 205, 205, 0.80) 100%);
 }
+
+
+
+/* Glass Effect - TENTANG KAMI */
+.glass {
+   background: rgba(255, 255, 255, 0.64);
+   backdrop-filter: blur(20px);
+}
+
+
+
+/* Background Overlay Visi Misi - TENTANG KAMI */
+.overlay-visimisi {
+  position: relative;
+}
+
+.overlay-visimisi::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(107.43% 86.97% at 80.91% 13.03%, #F5F5F5 48.98%, rgba(245, 245, 245, 0.00) 81.58%), linear-gradient(180deg, #F5F5F5 0%, rgba(245, 245, 245, 0.00) 66.81%);
+}
