@@ -299,5 +299,14 @@ footer.grey-footer {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: radial-gradient(107.43% 86.97% at 80.91% 13.03%, #F5F5F5 48.98%, rgba(245, 245, 245, 0.00) 81.58%), linear-gradient(180deg, #F5F5F5 0%, rgba(245, 245, 245, 0.00) 66.81%);
+  background: radial-gradient(107.43% 86.97% at 80.91% 13.03%, #F5F5F5 41.4%, rgba(245, 245, 245, 0.00) 81.58%), linear-gradient(180deg, #F5F5F5 0%, rgba(245, 245, 245, 0.00) 30%);
+}
+
+
+
+/* Misson Number - TENTANG KAMI */
+.mission-list {
+   font-family: var(--font-body) !important;
+   font-weight: 500;
+   
 }

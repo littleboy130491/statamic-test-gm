@@ -42,24 +42,38 @@
             <div class="container">
                 <div id="background-visi-misi" class="overlay-visimisi relative my-18 md:my-18 lg:my-30 rounded-3xl">
                     <img src="{{ $visimisiBackground }}" alt="Visi Misi Background"
-                        class="rounded-xl md:rounded-xl lg:rounded-3xl w-full lg:h-185 object-cover">
+                        class="rounded-xl md:rounded-xl lg:rounded-3xl w-full h-245 md:h-260 lg:h-205 object-cover pointer-events-none">
+
                     <div id="visi-misi-content"
-                        class="absolute bottom-0 inset-0 z-2 flex flex-col md:flex-row lg:flex-row lg:pr-10 lg:py-10">
+                        class="absolute bottom-0 inset-0 z-2 flex flex-col-reverse gap-10 md:gap-10 px-4 md:px-6 md:flex-col-reverse lg:flex-row lg:pr-16 lg:py-10">
 
                         {{-- Image truk --}}
-                        <div class="w-[60%] -ml-20 -mr-30">
+                        <div class="w-full -mb-10 lg:mb-10 lg:w-[64%] lg:-ml-25 lg:-mr-45">
                             <img src="{{ $visimisiPhoto }}" alt="Visi Misi">
                         </div>
 
                         {{-- Teks visi misi --}}
-                        <div class="flex inset-0 flex-col gap-8 w-[70%] -ml-20">
-                            <div id="vision" class="glass rounded-2xl p-8 flex flex-col gap-6">
+                        <div
+                            class="flex flex-col md:flex-row inset-0 lg:flex-col gap-4 md:gap-4 lg:gap-8 md:w-full lg:w-[60%] lg:-ml-20">
+                            <div id="vision"
+                                class="glass rounded-2xl p-5 w-full md:w-[40%] lg:w-full md:p-5 lg:p-8 flex flex-col gap-6">
                                 <h3>{{ $visionContent['title'] }}</h3>
                                 <p>{{ $visionContent['desc'] }}</p>
                             </div>
-                            <div id="mission" class="glass rounded-2xl p-8 flex flex-col gap-6">
+
+                            <div id="mission"
+                                class="glass rounded-2xl p-5 w-full md:w-[60%] lg:w-full md:p-5 lg:p-8 flex flex-col md:gap-0 lg:gap-6">
                                 <h3>{{ $missionContent['title'] }}</h3>
-                                <p>tes</p>
+                                <ol class="flex flex-col">
+                                    @foreach ($missionContent['desc'] as $index => $item)
+                                        <li
+                                            class="flex gap-4 md:gap-4 lg:gap-20 py-4 md:py-5 lg:py-8 {{ $index < count($missionContent['desc']) - 1 ? 'border-b border-white' : '' }}">
+                                            <span
+                                                class="mission-list md:text-xl lg:text-2xl text-black shrink-0">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}.</span>
+                                            <p>{{ $item }}</p>
+                                        </li>
+                                    @endforeach
+                                </ol>
                             </div>
                         </div>
                     </div>
