@@ -27,7 +27,7 @@
         {{-- Background Footer --}}
         <div id="footer-background" class="overlay-footer">
             <img src="{{ $footer_background }}" alt="Footer Background"
-                class="bg-footer w-full h-195 md:h-110 lg:h-190 object-cover mix-blend-multiply pointer-events-none">
+                class="image-grayscale w-full h-195 md:h-110 lg:h-190 object-cover mix-blend-multiply pointer-events-none">
         </div>
 
         {{-- Content Footer --}}

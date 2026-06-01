@@ -6,31 +6,58 @@
     $direkturUtama = [
         'name' => 'Frankie Makaminang',
         'position' => 'Direktur Utama',
-        'photo' => 'images/manajemen/frankie-makaminang.png',
+        'photo' => asset('/assets/frankie-makaminang.png'),
         'message' => [
             'Salam sejahtera bagi kita semua,',
             'Saya bersama segenap direksi dan seluruh tim Gaya Makmur Mobil akan terus berusaha meningkatkan pelayanan kami demi mendukung semua produk FAW Trucks yang sudah dan akan kami distribusikan di seluruh wilayah Indonesia, yang sudah mencapai ribuan unit sejak diluncurkan di Indonesia pada tahun 2009.',
             'Kami harapkan FAW Trucks akan terus menjadi pemimpin market truk Cina di Indonesia, seperti negeri asalnya RRC dan menjadi solusi alat transportasi dengan biaya investasi & operasi yang rendah.',
-            'Best Regards,
-Frankie Makaminang',
+            'Best Regards',
+            'Frankie Makaminang',
         ],
     ];
 
     $direksi = [
         [
-            'name' => 'Surijani',
-            'position' => 'Direktur Marketing',
-            'photo' => 'images/manajemen/surijani.png',
+            'category' => 'Board Of Directors',
+            'members' => [
+                [
+                    'name' => 'Surijani',
+                    'position' => 'Direktur Marketing',
+                    'photo' => 'Assets/manajemen/surijani.png',
+                ],
+                [
+                    'name' => 'Inawati',
+                    'position' => 'Direktur Keuangan',
+                    'photo' => 'Assets/manajemen/inawati.png',
+                ],
+            ],
         ],
         [
-            'name' => 'Inawati',
-            'position' => 'Direktur Keuangan',
-            'photo' => 'images/manajemen/inawati.png',
+            'category' => 'Board Of Commissioners',
+            'members' => [
+                [
+                    'name' => 'Lie Fen Sin',
+                    'position' => 'Komisaris Utama',
+                    'photo' => '',
+                ],
+                [
+                    'name' => 'Cahyadi Lie',
+                    'position' => 'Komisaris',
+                    'photo' => '',
+                ],
+                [
+                    'name' => 'Hendry',
+                    'position' => 'Komisaris',
+                    'photo' => '',
+                ],
+            ],
         ],
     ];
+
+    $bgDireksi = asset('assets/manajemen-back.jpg');
 @endphp
 
-<x-layouts.main>
+<x-layouts.main bodyClass="background-grey">
     <x-layouts.header.header />
 
     {{-- Manajemen halaman --}}
@@ -52,21 +79,35 @@ Frankie Makaminang',
         {{-- Section sambutan --}}
         <section id="manajemen-content">
             <div class="container">
-                <div class="flex flex-col gap-20">
 
-                    {{-- Kata sambuatan --}}
-                    <div id="highligh-management" class="flex flex-col md:flex-row lg:flex-row">
-                        <div>
+                {{-- Kata sambuatan --}}
+                <div id="highlight-management"
+                    class="flex flex-col gap-6 bg-white rounded-3xl p-10 md:flex-row lg:flex-row my-18 md:my-18 lg:my-30">
+                    <div class="flex flex-col justify-between w-full md:w-[60%] lg:w-[60%]">
+                        <div class="flex flex-col gap-6">
                             @foreach ($direkturUtama['message'] as $paragraph)
                                 <p>{{ $paragraph }}</p>
                             @endforeach
                         </div>
-                        <div></div>
+                        <div class="flex flex-col gap-1">
+                            <p class="title-display text-2xl">{{ $direkturUtama['name'] }}</p>
+                            <p class="uppercase text-(--color-primary)">{{ $direkturUtama['position'] }}</p>
+                        </div>
                     </div>
-
-                    {{-- Card manajemen --}}
-                    <div id="card-manajemen"></div>
+                    <div class="w-full md:w-[40%] lg:w-[40%] relative">
+                        <img src="{{ $bgDireksi }}" alt="{{ $direkturUtama['name'] }}"
+                            class="image-grayscale pointer-events-none rounded-xl w-full h-120 object-cover">
+                        <div class="overlay-bg-management"></div>
+                        <div class="flex justify-center">
+                            <img src="{{ $direkturUtama['photo'] }}" alt="{{ $direkturUtama['name'] }}"
+                                class="w-[52%] absolute -top-9.5 z-3">
+                        </div>
+                    </div>
                 </div>
+
+                {{-- Card manajemen --}}
+                <div id="card-manajemen"></div>
+            </div>
             </div>
         </section>
 

@@ -264,6 +264,17 @@ footer.grey-footer {
 
 
 /* Background Footer */
-.bg-footer {
+.image-grayscale {
    filter: grayscale(100%);
+}
+
+
+
+/* Overlay Background Direksi - MANAGEMENT */
+.overlay-bg-management {
+    position: absolute;
+    inset: 0;
+    border-radius: 0.75rem;
+    z-index: 2;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(245, 245, 245, 0.80) 0%, rgba(205, 205, 205, 0.80) 100%);
 }
