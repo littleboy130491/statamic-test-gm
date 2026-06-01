@@ -18,39 +18,34 @@
 
     $direksi = [
         [
+            'name' => 'Surijani',
+            'position' => 'Direktur Marketing',
+            'photo' => asset('/assets/surijani.png'),
             'category' => 'Board Of Directors',
-            'members' => [
-                [
-                    'name' => 'Surijani',
-                    'position' => 'Direktur Marketing',
-                    'photo' => 'Assets/manajemen/surijani.png',
-                ],
-                [
-                    'name' => 'Inawati',
-                    'position' => 'Direktur Keuangan',
-                    'photo' => 'Assets/manajemen/inawati.png',
-                ],
-            ],
         ],
         [
+            'name' => 'Inawati',
+            'position' => 'Direktur Keuangan',
+            'photo' => asset('/assets/inawati.png'),
+            'category' => 'Board Of Directors',
+        ],
+        [
+            'name' => 'Lie Fen Sin',
+            'position' => 'Komisaris Utama',
+            'photo' => asset('/assets/surijani.png'),
             'category' => 'Board Of Commissioners',
-            'members' => [
-                [
-                    'name' => 'Lie Fen Sin',
-                    'position' => 'Komisaris Utama',
-                    'photo' => '',
-                ],
-                [
-                    'name' => 'Cahyadi Lie',
-                    'position' => 'Komisaris',
-                    'photo' => '',
-                ],
-                [
-                    'name' => 'Hendry',
-                    'position' => 'Komisaris',
-                    'photo' => '',
-                ],
-            ],
+        ],
+        [
+            'name' => 'Cahyadi Lie',
+            'position' => 'Komisaris',
+            'photo' => asset('/assets/surijani.png'),
+            'category' => 'Board Of Commissioners',
+        ],
+        [
+            'name' => 'Hendry',
+            'position' => 'Komisaris',
+            'photo' => asset('/assets/surijani.png'),
+            'category' => 'Board Of Commissioners',
         ],
     ];
 
@@ -101,13 +96,48 @@
                         <div class="overlay-bg-management"></div>
                         <div class="flex justify-center">
                             <img src="{{ $direkturUtama['photo'] }}" alt="{{ $direkturUtama['name'] }}"
-                                class="w-[48%] md:w-[90%] lg:w-[50%] absolute bottom-0 z-3">
+                                class="w-[48%] md:w-[90%] lg:w-[52%] absolute bottom-0 z-3">
                         </div>
                     </div>
                 </div>
 
                 {{-- Card manajemen --}}
-                <div id="card-manajemen"></div>
+                <div id="card-manajemen" class="flex flex-col gap-18 md:gap-18 lg:gap-30 my-18 md:my-18 lg:my-30">
+                    @php
+                        $direksiByCategory = collect($direksi)->groupBy('category');
+                    @endphp
+
+                    @foreach ($direksiByCategory as $category => $members)
+                        <div class="flex flex-col gap-6 md:gap-6 lg:gap-10">
+                            <h2>{{ $category }}</h2>
+                            <div
+                                class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-8 gap-x-4 md:gap-y-10 md:gap-x-6 lg:gap-y-14 lg:gap-x-6">
+                                @foreach ($members as $member)
+                                    <div class="flex flex-col gap-4 md:gap-4 lg:gap-6 w-full">
+                                        <div class="relative w-full overflow-hidden rounded-xl">
+                                            <img src="{{ $bgDireksi }}" alt=""
+                                                class="image-grayscale pointer-events-none w-full h-60 md:h-70 lg:h-140 object-cover">
+                                            <div class="overlay-bg-management"></div>
+                                            @if ($member['photo'])
+                                                <img src="{{ $member['photo'] }}" alt="{{ $member['name'] }}"
+                                                    class="absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-[70%] md:w-[64%] lg:w-[50%] object-contain object-bottom z-3">
+                                            @else
+                                                <div class="absolute inset-0 flex items-end justify-center z-3">
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <div class="flex flex-col gap-1">
+                                            <p class="title-display text-xl md:text-xl lg:text-2xl">
+                                                {{ $member['name'] }}</p>
+                                            <p class="text-(--color-primary) uppercase">
+                                                {{ $member['position'] }}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
             </div>
         </section>
