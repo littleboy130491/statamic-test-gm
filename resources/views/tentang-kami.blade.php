@@ -33,6 +33,44 @@
             'photo' => asset('/assets/cer-2.jpg'),
         ],
     ];
+
+    $fawTitleValue = 'Kenapa memilih FAW Trucks';
+    $fawItems = [
+        [
+            'icon' => null,
+            'title' => 'Kabin Nyaman dan Fungsional',
+            'desc' => 'Sistem A/C Air Conditioner dengan kontrol Thermostat dan Sun Visor + Port USB',
+        ],
+        [
+            'icon' => null,
+            'title' => 'Kendali Berkendara Lebih Optimal',
+            'desc' => 'Kabin yang luas dan Sistem Kemudi dengan Roda Kemudi (PS) dan Tilt Steering.',
+        ],
+        [
+            'icon' => null,
+            'title' => 'Identifikasi Masalah dengan Cepat',
+            'desc' =>
+                'Kluster instrumen dengan MID Memudahkan pengecekan, mempertahankan dan mengidentifikasi awal masalah pada kendaraan.',
+        ],
+        [
+            'icon' => null,
+            'title' => 'Sistem Keamanan Maksimal',
+            'desc' => 'Sistem pengereman Full Air Brake (ABS) dan terdapat Auto Slack Adjuster',
+        ],
+        [
+            'icon' => null,
+            'title' => 'Monitoring Kendaraan Real-Time',
+            'desc' =>
+                'Sistem GM Telematics yang dapat mengetahui monitor lokasi, kondisi kendaraan, perilaku berkendara secara realtime melalui perangkat yang terpasang dalam komputer',
+        ],
+        [
+            'icon' => null,
+            'title' => 'Struktur Kabin Berstandar Internasional',
+            'desc' =>
+                'Kekuatan kabin dan keamanan kabin yang dibangun dengan spesifikasi ECE R29 dengan kabin terpasang penuh empat titik, seluruh kabin dapat bergeser ke belakang sejauh hingga 200',
+        ],
+    ];
+    $fiturBenefit_iconplaceholder = asset('assets/icon-placeholder.svg');
 @endphp
 
 <x-layouts.main bodyClass="background-grey">
@@ -118,6 +156,30 @@
                     <div id="faw-content" class="w-full md:w-full lg:w-[70%] flex flex-col gap-5">
                         <h3>{{ $fawTitle }}</h3>
                         <p class="w-full lg:w-170">{{ $fawDesc }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {{-- Keunggulan Faw Trucks --}}
+        <section id="faw-value">
+            <div class="container">
+                <div class="flex flex-col gap-8 md:gap-8 lg:gap-10 my-18 md:my-18 lg:my-30">
+                    <h2 class="text-left md:text-left lg:text-center">{{ $fawTitleValue }}</h2>
+
+                    {{-- Grid keunggulan --}}
+                    <div data-equal-height class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                        @foreach ($fawItems as $items)
+                            <div
+                                class="flex flex-col gap-14 p-6 bg-white rounded-3xl md:p-6 md:gap-14 lg:p-6 lg:gap-20">
+                                <img src="{{ !empty($items['icon']) ? $items['icon'] : $fiturBenefit_iconplaceholder }}"
+                                    alt="Icon" class="w-10 h-10">
+                                <div class="flow">
+                                    <h4 class="text-black w-full lg:w-70">{{ $items['title'] }}</h4>
+                                    <p>{{ $items['desc'] }}</p>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
