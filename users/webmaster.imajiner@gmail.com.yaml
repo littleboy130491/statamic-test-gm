@@ -10,7 +10,13 @@ preferences:
       view: list
     pages:
       view: list
+      per_page: 100
     dealers:
       view: list
     careers:
       view: list
+  color_mode: light
+  assets:
+    assets:
+      mode: grid
+      per_page: 500

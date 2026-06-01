@@ -2,7 +2,7 @@
     $certificate_title = 'Komitmen yang Teruji dan Diakui';
     $certificate_desc =
         'Berbagai penghargaan dan sertifikasi menjadi bukti komitmen GM Mobil dalam menjaga kualitas layanan, produk, dan kepuasan pelanggan di seluruh Indonesia';
-    $placeholder = asset('images/placeholder.jpg');
+    $placeholder = asset('assets/placeholder.jpg');
     $certificates = [
         [
             'image' => null,
@@ -15,52 +15,52 @@
             'years' => '2025',
         ],
         [
-            'image' => asset('images/placeholder.jpg'),
+            'image' => asset('assets/placeholder.jpg'),
             'name' => 'ISO XXXX:2015',
             'years' => '2025',
         ],
         [
-            'image' => asset('images/placeholder.jpg'),
+            'image' => asset('assets/placeholder.jpg'),
             'name' => 'ISO XXXX:2015',
             'years' => '2025',
         ],
         [
-            'image' => asset('images/placeholder.jpg'),
+            'image' => asset('assets/placeholder.jpg'),
             'name' => 'ISO XXXX:2015',
             'years' => '2025',
         ],
         [
-            'image' => asset('images/placeholder.jpg'),
+            'image' => asset('assets/placeholder.jpg'),
             'name' => 'ISO XXXX:2015',
             'years' => '2025',
         ],
         [
-            'image' => asset('images/placeholder.jpg'),
+            'image' => asset('assets/placeholder.jpg'),
             'name' => 'ISO XXXX:2015',
             'years' => '2025',
         ],
         [
-            'image' => asset('images/placeholder.jpg'),
+            'image' => asset('assets/placeholder.jpg'),
             'name' => 'ISO XXXX:2015',
             'years' => '2025',
         ],
         [
-            'image' => asset('images/placeholder.jpg'),
+            'image' => asset('assets/placeholder.jpg'),
             'name' => 'ISO XXXX:2015',
             'years' => '2025',
         ],
         [
-            'image' => asset('images/placeholder.jpg'),
+            'image' => asset('assets/placeholder.jpg'),
             'name' => 'ISO XXXX:2015',
             'years' => '2025',
         ],
         [
-            'image' => asset('images/placeholder.jpg'),
+            'image' => asset('assets/placeholder.jpg'),
             'name' => 'ISO XXXX:2015',
             'years' => '2025',
         ],
         [
-            'image' => asset('images/placeholder.jpg'),
+            'image' => asset('assets/placeholder.jpg'),
             'name' => 'ISO XXXX:2015',
             'years' => '2025',
         ],
@@ -71,7 +71,7 @@
     <x-layouts.header.header />
 
     <main>
-        <x-layouts.hero.heropage title="Sertifikat & Penghargaan" :image="asset('images/hero-sertifikat.jpg')" />
+        <x-layouts.hero.heropage title="Sertifikat & Penghargaan" :image="asset('assets/hero-sertifikat.jpg')" />
 
         {{-- Halaman sertifikat --}}
         <section id="sertification">
@@ -92,7 +92,8 @@
                         @foreach ($certificates as $index => $certificate)
                             <div class="certificate-item">
                                 <a data-fslightbox="certificates" href="{{ $certificate['image'] ?: $placeholder }}">
-                                    <img src="{{ $certificate['image'] ?: $placeholder }}" alt="{{ $certificate['name'] }}"
+                                    <img src="{{ $certificate['image'] ?: $placeholder }}"
+                                        alt="{{ $certificate['name'] }}"
                                         class="w-full h-auto object-cover rounded-md mb-4">
                                 </a>
                                 <span

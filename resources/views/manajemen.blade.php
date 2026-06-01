@@ -35,7 +35,7 @@ Frankie Makaminang',
 
     {{-- Manajemen halaman --}}
     <main>
-        <x-layouts.hero.heropage title="Manajemen" :image="asset('images/hero-manajemen.jpg')" />
+        <x-layouts.hero.heropage title="Manajemen" :image="asset('assets/hero-manajemen.jpg')" />
 
         {{-- Judul halaman --}}
         <section id="manajemen">
@@ -57,7 +57,7 @@ Frankie Makaminang',
                     {{-- Kata sambuatan --}}
                     <div id="highligh-management" class="flex flex-col md:flex-row lg:flex-row">
                         <div>
-                            @foreach($direkturUtama['message'] as $paragraph)
+                            @foreach ($direkturUtama['message'] as $paragraph)
                                 <p>{{ $paragraph }}</p>
                             @endforeach
                         </div>

@@ -26,13 +26,13 @@
         [
             'name' => 'Instagram',
             'link' => 'https://instagram.com/gayamakmurmobil',
-            'icon' => asset('images/instagram.svg'),
+            'icon' => asset('assets/instagram.svg'),
         ],
-        ['name' => 'Facebook', 'link' => 'https://facebook.com/fawindonesia/', 'icon' => asset('images/facebook.svg')],
+        ['name' => 'Facebook', 'link' => 'https://facebook.com/fawindonesia/', 'icon' => asset('assets/facebook.svg')],
         [
             'name' => 'LinkedIn',
             'link' => 'https://linkedin.com/company/fawindonesia',
-            'icon' => asset('images/linkedin.svg'),
+            'icon' => asset('assets/linkedin.svg'),
         ],
     ];
 
@@ -44,7 +44,7 @@
     <x-layouts.header.header />
 
     <main>
-        <x-layouts.hero.heropage title="kontak" :image="asset('images/hero-kontak.jpg')" />
+        <x-layouts.hero.heropage title="kontak" :image="asset('assets/hero-kontak.jpg')" />
 
         {{-- Halaman kontak --}}
         <section id="kontak">

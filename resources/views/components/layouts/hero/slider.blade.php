@@ -1,7 +1,7 @@
 @php
     $slides = [
         [
-            'background' => asset('images/hero-slide1.jpg'),
+            'background' => asset('/assets/hero-slide1.jpg'),
             'backgroundVideo' => '',
             'title' => 'Kepastian Operasional untuk Bisnis Anda',
             'desc' => 'Investasi aman dengan jaminan layanan purna jual yang andal.',
@@ -9,7 +9,7 @@
             'btnLink' => '/kontak',
         ],
         [
-            'background' => asset('images/hero-slide2.jpg'),
+            'background' => asset('/assets/hero-slide1.jpg'),
             'backgroundVideo' => '',
             'title' => 'Kepastian Operasional untuk Bisnis Anda',
             'desc' => 'Investasi aman dengan jaminan layanan purna jual yang andal.',
@@ -17,7 +17,7 @@
             'btnLink' => '/kontak',
         ],
         [
-            'background' => asset('images/hero-slide1.jpg'),
+            'background' => asset('/assets/hero-slide1.jpg'),
             'backgroundVideo' => '',
             'title' => 'Kepastian Operasional untuk Bisnis Anda',
             'desc' => 'Investasi aman dengan jaminan layanan purna jual yang andal.',

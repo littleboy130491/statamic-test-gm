@@ -3,53 +3,53 @@
         'Selain penjualan unit, GMM juga menyediakan pelayanan purna jual, penjualan suku cadang dan pelatihan teknik & mengemudi melalui jaringan di berbagai Kota Besar di seluruh Indonesia. GMM akan selalu menggerakkan sektor industri Indonesia dengan memberikan pelayanan serta produk yang terbaik dan berkualitas bagi pelanggan setia GMM.';
     $purnaJual_items = [
         [
-            'icon' => asset('images/icon-purnajual-1.svg'),
+            'icon' => asset('assets/icon-purnajual-1.svg'),
             'title' => 'Pelatihan Pengemudi & Teknik',
             'desc' =>
                 'Pusat pelatihan GMM di dirikan dan dipersiapkan sebagai kebutuhan untuk menciptakan sumber daya manusia yang berkualitas dan profesional dengan meningkatkan kemampuan teknis dan skill yang diberikan oleh para pelatih yang sangat berpengalaman dibidangnya. Dan GMM juga memberikan kesempatan kepada pelanggan setia GMM yang memiliki mekanik dan pengemudi untuk GMM berikan pelatihan teknis & keahlian/skill agar dapat memahami dan mengerti tentang produk GMM.',
-            'image' => asset('images/purnajual-1.jpg'),
+            'image' => asset('assets/purnajual-1.jpg'),
         ],
         [
-            'icon' => asset('images/icon-purnajual-2.svg'),
+            'icon' => asset('assets/icon-purnajual-2.svg'),
             'title' => 'Kontrak Layanan Pemeliharaan',
             'desc' =>
                 'Program layanan dari GMM yang berupa pelayanan servis berkala dan penggantian spare part unit milik pelanggan dilaksanakan sesuai dengan jadwal servis dalam jangka waktu tertentu seperti yang tercantum dalam kontrak yang disetujui oleh kedua belah pihak. Layanan ini berupa jasa mekanik di lokasi untuk perawatan & perbaikan serta penggantian parts. GMM juga menyediakan kontrak layanan pemeliharaan lengkap “Full Maintenance Contract” yang sangat menguntungkan untuk pelanggan setia GMM.',
-            'image' => asset('images/purnajual-2.jpg'),
+            'image' => asset('assets/purnajual-2.jpg'),
         ],
         [
-            'icon' => asset('images/icon-purnajual-3.svg'),
+            'icon' => asset('assets/icon-purnajual-3.svg'),
             'title' => 'Garansi',
             'desc' =>
                 'Semua penjualan unit dari GMM akan mendapatkan garansi servis dan suku cadang dengan syarat dan ketentuan yang berlaku. GMM akan memastikan bahwa unit dari GMM akan dapat beroperasi sesuai dengan kebutuhan pelanggan GMM.',
-            'image' => asset('images/purnajual-3.jpg'),
+            'image' => asset('assets/purnajual-3.jpg'),
         ],
         [
-            'icon' => asset('images/icon-purnajual-4.svg'),
+            'icon' => asset('assets/icon-purnajual-4.svg'),
             'title' => 'Layanan 24/7',
             'desc' =>
                 'Bentuk dukungan terhadap customer berupa informasi, bimbingan teknis, perbaikan sederhana and troubleshooting melalui layanan telepon / WhatsApp.',
-            'image' => asset('images/purnajual-4.jpg'),
+            'image' => asset('assets/purnajual-4.jpg'),
         ],
         [
-            'icon' => asset('images/icon-purnajual-5.svg'),
+            'icon' => asset('assets/icon-purnajual-5.svg'),
             'title' => 'Ketersediaan Suku Cadang',
             'desc' =>
                 'Sebagai Agen Pemegang Merek Tunggal, GMM menyediakan layanan distribusi Suku Cadang ke cabang-cabang, dealer-dealer dan Part Shop GMM di seluruh Indonesia.',
-            'image' => asset('images/purnajual-5.jpg'),
+            'image' => asset('assets/purnajual-5.jpg'),
         ],
         [
-            'icon' => asset('images/icon-purnajual-6.svg'),
+            'icon' => asset('assets/icon-purnajual-6.svg'),
             'title' => 'Konsinyasi Suku Cadang',
             'desc' =>
                 'Suatu program yang menempatan suku cadang di dalam area pelanggan setia kami sesuai dengan perjanjian yang disetujui kedua belah pihak. Program ini dapat membantu pelanggan untuk mengurangi biaya inventaris suku cadang dan ketersediaan suku cadang yang lebih terjamin.',
-            'image' => asset('images/purnajual-6.jpg'),
+            'image' => asset('assets/purnajual-6.jpg'),
         ],
         [
-            'icon' => asset('images/icon-purnajual-7.svg'),
+            'icon' => asset('assets/icon-purnajual-7.svg'),
             'title' => 'Program Pertukaran Komponen',
             'desc' =>
                 'Untuk membantu memaksimalkan investasi pelanggan setia GMM, kami menyediakan program tukar tambah komponen yang mengalami kendala dengan komponen siap pakai milik GMM. Program ini akan membantu pelanggan setia kami mengurangi waktu kerusakan unit akibat kendala pada komponen.',
-            'image' => asset('images/purnajual-7.jpg'),
+            'image' => asset('assets/purnajual-7.jpg'),
         ],
     ];
 @endphp
@@ -58,7 +58,7 @@
     <x-layouts.header.header />
 
     <main>
-        <x-layouts.hero.heropage title="Layanan Purna Jual" :image="asset('images/hero-purna-jual.jpg')" />
+        <x-layouts.hero.heropage title="Layanan Purna Jual" :image="asset('assets/hero-purna-jual.jpg')" />
 
         {{-- Halaman Purna Jual --}}
         <section id="purna-jual">

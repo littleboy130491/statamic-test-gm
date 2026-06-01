@@ -1,5 +1,5 @@
 @php
-    $logo_url = asset('images/gm-logo.png');
+    $logo_url = asset('/assets/gm-logo.png');
     $langs = ['ID', 'EN'];
     $activeLang = request('lang', 'id');
     $menus = [
@@ -62,7 +62,7 @@
 
                             @if (!empty($menu['children']))
                                 <ul
-                                    class="invisible absolute left-1/2 z-30 mt-8 min-w-56 -translate-x-1/2 rounded-2xl bg-white/50 backdrop-blur p-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                                    class="invisible absolute left-1/2 z-30 mt-8 min-w-56 -translate-x-1/2 rounded-2xl bg-black/50 backdrop-blur p-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
                                     @foreach ($menu['children'] as $child)
                                         <li>
                                             <a href="{{ $child['menu_link'] }}"

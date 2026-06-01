@@ -1,52 +1,52 @@
 @php
     $teletech_desc =
         'GMM Teletech merupakan sistem manajemen untuk kendaraan yang dibangun dan dikembangkan oleh PT Gaya Makmur Mobil. Dengan GMM Teletech #SobatGaya dapat selalu mengetahui mengenai lokasi, kondisi kendaraan, perilaku berkendara secara realtime melalui perangkat smartphone ataupun computer yang terhubung dengan internet, bahkan saat kehilangan koneksi internet pun data akan tetap disimpan dan dikirim saat terkoneksi kembali. Dengan informasi-informasi tersebut #SobatGaya bisa melakukan banyak hal seperti perencanaan dan pengaturan kerja yang lebih baik, memaksimalkan operasional kendaraan, meminimalkan resiko downtime kendaraan yang akan berujung pada efisiensi bisnis dan keuntungan yang lebih besar.';
-    $teletech_image = asset('images/img-gm-teletech.jpg');
+    $teletech_image = asset('assets/img-gm-teletech.jpg');
     $fiturBenefit_title = 'Fitur & Benefit';
-    $fiturBenefit_iconplaceholder = asset('images/icon-placeholder,svg');
+    $fiturBenefit_iconplaceholder = asset('assets/icon-placeholder,svg');
     $fiturBenefit_items = [
         [
-            'icon' => asset('images/fitur-benefit-1.svg'),
+            'icon' => asset('assets/fitur-benefit-1.svg'),
             'title' => 'Pemantauan Bahan Bakar',
             'desc' =>
                 'Pemberitahuan instan mengenai efisiensi penggunaan BBM, pemakaian BBM yang tidak normal, indikasi penyimpangan BBM.',
         ],
         [
-            'icon' => asset('images/fitur-benefit-2.svg'),
+            'icon' => asset('assets/fitur-benefit-2.svg'),
             'title' => 'Utility Armada',
             'desc' =>
                 'Data mengenai penggunaan kendaraan, kendaraan mana yang produktif dan kendaraan yang dia (idle), perbandingan antara kendaraan yang berhenti dan kendaraan yang beroperasi.',
         ],
         [
-            'icon' => asset('images/fitur-benefit-3.svg'),
+            'icon' => asset('assets/fitur-benefit-3.svg'),
             'title' => 'Data Real Time & Riwayat Perjalanan Kendaraan',
             'desc' =>
                 'Terintegrasi dengan google maps sehingga secara otomatis sistem akan terus mengupdate posisi & lokasi kendaraan. Membandingkan perencanaan perjalanan dengan riwayat perjalanan aktual untuk rencana kerja yang lebih baik.',
         ],
         [
-            'icon' => asset('images/fitur-benefit-4.svg'),
+            'icon' => asset('assets/fitur-benefit-4.svg'),
             'title' => 'Perilaku Pengemudi',
             'desc' =>
                 'Menganalisa perilaku pengemudi untuk keamanan, ketetapan dan efisiensi yang lebih baik. Data perilaku pengemudi seperti cara pengereman akselarasi, batas kecepatan, serta lama mesin idle.',
         ],
         [
-            'icon' => asset('images/fitur-benefit-5.svg'),
+            'icon' => asset('assets/fitur-benefit-5.svg'),
             'title' => 'Perawatan Kendaraan',
             'desc' =>
                 'Secara otomatis akan mendapatkan notifikasi untuk perawatan kendaraan berdasarkan odometer dan jam operasional kendaraan.',
         ],
         [
-            'icon' => asset('images/fitur-benefit-6.svg'),
+            'icon' => asset('assets/fitur-benefit-6.svg'),
             'title' => 'Laporan & Evaluasi',
             'desc' =>
                 'Laporan dan Evaluasi terkait dengan pengoperasian kendaraan untuk mengukur dan meningkatkan efisiensi dari operasional perusahaan.',
         ],
     ];
-    $imageCTA_fiturBenefit = asset('images/cta-gmteletch.jpg');
+    $imageCTA_fiturBenefit = asset('assets/cta-gmteletch.jpg');
     $titleCTA_fiturBenefit = 'Pantau Kapan pun & Dimana pun FAW Trucks Kalian Berada!';
     $contactCTA_fiturBenefit = [
         [
-            'icon' => asset('images/whatsapp-white.svg'),
+            'icon' => asset('assets/whatsapp-white.svg'),
             'title' => 'Call & WA Center',
             'name' => '62 000 0000 0000',
             'phoneNumber' => '+62 000 0000 0000',
@@ -59,7 +59,7 @@
     <x-layouts.header.header />
 
     <main>
-        <x-layouts.hero.heropage title="GM Teletech" :image="asset('images/hero-gm-teletech.jpg')" />
+        <x-layouts.hero.heropage title="GM Teletech" :image="asset('assets/hero-gm-teletech.jpg')" />
 
         {{-- Image Map --}}
         <section id="gm-teletech-map">

@@ -10,7 +10,7 @@
     <x-layouts.header.header />
 
     <main>
-        <x-layouts.hero.heropage title="Dealer" :image="asset('images/hero-dealer.jpg')" />
+        <x-layouts.hero.heropage title="Dealer" :image="asset('assets/hero-dealer.jpg')" />
 
         {{-- Halaman dealer --}}
         <section id="dealer-page">

@@ -1,5 +1,5 @@
 @php
-    $logo_url = asset('images/gm-logo.png');
+    $logo_url = asset('/assets/gm-logo.png');
     $langs = ['ID', 'EN'];
     $activeLang = request('lang', 'id');
     $contact = [

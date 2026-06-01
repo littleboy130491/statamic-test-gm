@@ -4,5 +4,6 @@ blueprint: page
 title: 'Reman Center'
 template: reman-center
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780040445
+updated_at: 1780129331
+parent: home
 ---

@@ -4,19 +4,19 @@
     $footer_desc =
         'Tim konsultan kami siap mendengarkan kebutuhan Anda dan memberikan rekomendasi solusi yang paling sesuai.';
     $footer_button = ['btnText' => 'Konsultasi Sekarang', 'btnLink' => '/kontak'];
-    $footer_background = asset('images/footer-background.jpg');
-    $image_footer = asset('images/footer-image.png');
+    $footer_background = asset('/assets/footer-background.jpg');
+    $image_footer = asset('/assets/footer-image.png');
     $socials = [
         [
             'name' => 'Instagram',
             'link' => 'https://instagram.com/gayamakmurmobil',
-            'icon' => asset('images/instagram.svg'),
+            'icon' => asset('assets/instagram.svg'),
         ],
-        ['name' => 'Facebook', 'link' => 'https://facebook.com/fawindonesia/', 'icon' => asset('images/facebook.svg')],
+        ['name' => 'Facebook', 'link' => 'https://facebook.com/fawindonesia/', 'icon' => asset('assets/facebook.svg')],
         [
             'name' => 'LinkedIn',
             'link' => 'https://linkedin.com/company/fawindonesia',
-            'icon' => asset('images/linkedin.svg'),
+            'icon' => asset('assets/linkedin.svg'),
         ],
     ];
 @endphp
