@@ -27,21 +27,22 @@
         {{-- Background Footer --}}
         <div id="footer-background" class="overlay-footer">
             <img src="{{ $footer_background }}" alt="Footer Background"
-                class="image-grayscale w-full h-195 md:h-110 lg:h-190 object-cover mix-blend-multiply pointer-events-none">
+                class="image-grayscale w-full h-200 md:h-110 lg:h-150 object-cover mix-blend-multiply pointer-events-none">
         </div>
 
         {{-- Content Footer --}}
-        <div id="content-footer" class="absolute inset-0 z-10 mt-4 md:mt-15 lg:mt-15">
+        <div id="content-footer" class="absolute inset-0 z-10 mt-18 md:mt-15 lg:mt-15">
             <div class="container flex flex-col gap-8 justify-center md:flex-row lg:flex-row">
 
-                <div class="flex flex-col-reverse md:flex-row lg:flex-row gap-20 md:gap-2">
+                <div class="flex flex-col-reverse justify-center md:flex-row lg:flex-row gap-8 md:gap-2 lg:gap-10">
+
                     {{-- Image Footer --}}
-                    <div id="image-footer" class="flex items-end md:w-[70%] lg:w-[60%]">
-                        <img src="{{ $image_footer }}" alt="Footer Background" class="block w-full">
+                    <div id="image-footer" class="flex mb-0 md:-mb-40 md:w-[70%] lg:w-[40%]">
+                        <img src="{{ $image_footer }}" alt="Footer Background" class="w-ful object-contain">
                     </div>
 
                     {{-- CTA Footer --}}
-                    <div id="cta-footer" class="flex flex-col justify-between lg:justify-center lg:w-[50%]">
+                    <div id="cta-footer" class="flex flex-col justify-between lg:justify-center lg:w-[30%]">
                         <div class="flow">
                             <h2 class="text-white lg:w-110">{{ $footer_title }}</h2>
                             <p class="text-white lg:w-120">{{ $footer_desc }}</p>
