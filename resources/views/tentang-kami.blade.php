@@ -5,7 +5,6 @@
 
     $visimisiPhoto = asset('/assets/truk-vm.png');
     $visimisiBackground = asset('/assets/visi-misi-bg.jpg');
-
     $visionContent = [
         'title' => 'Visi',
         'desc' =>
@@ -19,6 +18,21 @@
             'Mengembangkan pengalaman dan kompetensi kerja untuk menghadapi persaingan industri global secara berkelanjutan.',
         ],
     ];
+
+    $fawTitle =
+        'FAW sendiri merupakan pabrikan otomotif pertama dan terbesar di Tiongkok, dengan produksi lebih dari 3,5 juta unit per tahun dan pangsa pasar truk medium–heavy di atas 20%, menjadikannya pemimpin pasar nomor satu di Tiongkok hingga hari ini.';
+    $fawDesc =
+        'Lebih dari sekadar penjualan unit, GM Mobil menghadirkan layanan purna jual, suku cadang, serta pelatihan teknik dan mengemudi melalui jaringan yang tersebar di berbagai kota besar di seluruh Indonesia. Bersama pelanggan, GM Mobil terus berkomitmen menggerakkan industri Indonesia dengan produk berkualitas dan pelayanan terbaik.';
+    $fawCertificate = [
+        [
+            'title' => null,
+            'photo' => asset('/assets/cer-1.jpg'),
+        ],
+        [
+            'title' => 'Sole Distributor of',
+            'photo' => asset('/assets/cer-2.jpg'),
+        ],
+    ];
 @endphp
 
 <x-layouts.main bodyClass="background-grey">
@@ -27,7 +41,7 @@
     <main>
         <x-layouts.hero.heropage title="Tentang Kami" :image="asset('assets/hero-tentang.jpg')" />
 
-        {{-- Halaman tentang perusahaan --}}
+        {{-- Tentang perusahaan --}}
         <section id="tentang-kami">
             <div class="container">
                 <div class="flow flex flex-col items-center my-18 md:my18 lg:mt-30 lg:mb-8">
@@ -76,6 +90,34 @@
                                 </ol>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {{-- Setifikasi --}}
+        <section id="faw-trucks">
+            <div class="container">
+                <div
+                    class="flex flex-col-reverse md:flex-col-reverse lg:flex-row gap-8 md:gap-10 lg:gap-30 my-18 md:my-18 lg:my-30">
+
+                    {{-- Faw image --}}
+                    <div id="certificate"
+                        class="w-full md:w-[60%] lg:w-[23%] flex flex-row md:flex-row lg:flex-col gap-4">
+                        @foreach ($fawCertificate as $cert)
+                            <div class="bg-white rounded-2xl p-4 md:p-4 lg:p-6 flex flex-col gap-2">
+                                @if (!empty($cert['title']))
+                                    <p>{{ $cert['title'] }}</p>
+                                @endif
+                                <img src="{{ $cert['photo'] }}" alt="{{ $cert['title'] ?? '' }}">
+                            </div>
+                        @endforeach
+                    </div>
+
+                    {{-- Faw konten --}}
+                    <div id="faw-content" class="w-full md:w-full lg:w-[70%] flex flex-col gap-5">
+                        <h3>{{ $fawTitle }}</h3>
+                        <p class="w-full lg:w-170">{{ $fawDesc }}</p>
                     </div>
                 </div>
             </div>
