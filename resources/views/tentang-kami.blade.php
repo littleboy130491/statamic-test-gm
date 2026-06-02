@@ -37,34 +37,34 @@
     $fawTitleValue = 'Kenapa memilih FAW Trucks';
     $fawItems = [
         [
-            'icon' => null,
+            'icon' => asset('/assets/value-icon-1.svg'),
             'title' => 'Kabin Nyaman dan Fungsional',
             'desc' => 'Sistem A/C Air Conditioner dengan kontrol Thermostat dan Sun Visor + Port USB',
         ],
         [
-            'icon' => null,
+            'icon' => asset('/assets/value-icon-2.svg'),
             'title' => 'Kendali Berkendara Lebih Optimal',
             'desc' => 'Kabin yang luas dan Sistem Kemudi dengan Roda Kemudi (PS) dan Tilt Steering.',
         ],
         [
-            'icon' => null,
+            'icon' => asset('/assets/value-icon-3.svg'),
             'title' => 'Identifikasi Masalah dengan Cepat',
             'desc' =>
                 'Kluster instrumen dengan MID Memudahkan pengecekan, mempertahankan dan mengidentifikasi awal masalah pada kendaraan.',
         ],
         [
-            'icon' => null,
+            'icon' => asset('/assets/value-icon-4.svg'),
             'title' => 'Sistem Keamanan Maksimal',
             'desc' => 'Sistem pengereman Full Air Brake (ABS) dan terdapat Auto Slack Adjuster',
         ],
         [
-            'icon' => null,
+            'icon' => asset('/assets/value-icon-5.svg'),
             'title' => 'Monitoring Kendaraan Real-Time',
             'desc' =>
                 'Sistem GM Telematics yang dapat mengetahui monitor lokasi, kondisi kendaraan, perilaku berkendara secara realtime melalui perangkat yang terpasang dalam komputer',
         ],
         [
-            'icon' => null,
+            'icon' => asset('/assets/value-icon-6.svg'),
             'title' => 'Struktur Kabin Berstandar Internasional',
             'desc' =>
                 'Kekuatan kabin dan keamanan kabin yang dibangun dengan spesifikasi ECE R29 dengan kabin terpasang penuh empat titik, seluruh kabin dapat bergeser ke belakang sejauh hingga 200',
