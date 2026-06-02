@@ -1,1 +1,28 @@
-{}
+social_media:
+  instagram:
+    url: 'https://instagram.com/gayamakmurmobil/'
+    image: instagram.svg
+  facebook:
+    url: 'https://facebook.com/fawindonesia/'
+    image: facebook.svg
+  linkedin:
+    url: 'https://linkedin.com/company/fawindonesia/'
+    image: linkedin.svg
+phone_numbers:
+  -
+    id: G53FNiaTI3Ir420dCazJR
+    number: '+ 62 000 0000 0000'
+    type: phone
+    enabled: true
+  -
+    id: XcPlkSV3l0uI2Nd7gXdts
+    number: '+ 62 000 0000 0000'
+    type: phone
+    enabled: true
+emails:
+  -
+    id: Jb3i9YhefDg5_pQomVBmv
+    email: gmmcare@gmmobil.com
+    type: email
+    enabled: true
+address: 'Jl. Lkr. Luar Barat No.9, RT.14/RW.3, Rw. Buaya, Kecamatan Cengkareng, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11740'

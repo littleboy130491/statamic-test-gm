@@ -20,3 +20,7 @@ preferences:
     assets:
       mode: grid
       per_page: 500
+  forms:
+    contact:
+      columns:
+        - datestamp

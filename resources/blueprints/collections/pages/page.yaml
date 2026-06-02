@@ -244,6 +244,11 @@ tabs:
               type: bard
               display: Content
               localizable: true
+      -
+        display: Photo
+        fields:
+          -
+            import: blocks.photo
   seo:
     display: SEO
     sections:
