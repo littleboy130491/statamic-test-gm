@@ -32,7 +32,7 @@
     --tracking-h1: var(--tracking-tightest);
     --transform-h1: none;
     --color-h1: var(--color-heading);
-    --measure-h3: none;
+    --measure-h1: none;
 
     /*h2*/
     --font-h2: var(--font-display);
@@ -44,7 +44,7 @@
     --tracking-h2: var(--tracking-tight);
     --transform-h2: none;
     --color-h2: var(--color-heading);
-    --measure-h3: none;
+    --measure-h2: none;
 
     /*h3*/
     --font-h3: var(--font-display);
@@ -104,6 +104,7 @@
     --tracking-p: var(--tracking-normal);
     --transform-p: none;
     --color-p: var(--color-text);
+    --measure-p: none;
 
     /*a*/
     --font-a: inherit;

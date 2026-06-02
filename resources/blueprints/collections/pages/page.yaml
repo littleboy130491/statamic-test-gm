@@ -3,178 +3,243 @@ tabs:
   main:
     display: Main
     sections:
-      - fields:
-          - handle: title
+      -
+        fields:
+          -
+            handle: title
             field:
               type: text
               required: true
               display: Title
               localizable: true
-          - handle: featured_image
+              validate:
+                - required
+          -
+            handle: featured_image
             field:
               type: assets
-              display: Featured Image
+              display: 'Featured Image'
               container: assets
               max_files: 1
               localizable: true
-      - display: Content blocks
-        instructions: Add, reorder, and edit page sections. Each section is a block with its own fields.
+      -
+        display: 'Content blocks'
+        instructions: 'Add, reorder, and edit page sections. Each section is a block with its own fields.'
         fields:
-          - handle: sections
+          -
+            handle: sections
             field:
               type: replicator
               display: Sections
               collapse: true
               localizable: true
               sets:
-                hero:
-                  display: Hero
-                  instructions: Large headline area with optional image and buttons.
-                  fields:
-                    - import: blocks.hero
-                    - import: common.section_settings
-                rich_text:
-                  display: Rich text
-                  instructions: Formatted text content.
-                  fields:
-                    - import: blocks.rich_text
-                    - import: common.section_settings
-                image_text:
-                  display: Image & text
-                  instructions: Side-by-side image and copy.
-                  fields:
-                    - import: blocks.image_text
-                    - import: common.section_settings
-                feature_grid:
-                  display: Feature grid
-                  instructions: Grid of features with icons.
-                  fields:
-                    - import: blocks.feature_grid
-                    - import: common.section_settings
-                cta:
-                  display: Call to action
-                  instructions: Prominent CTA banner or inline block.
-                  fields:
-                    - import: blocks.cta
-                    - import: common.section_settings
-                spacer:
-                  display: Spacer
-                  instructions: Vertical spacing between sections.
-                  fields:
-                    - import: blocks.spacer
-                    - import: common.section_settings
-                divider:
-                  display: Divider
-                  instructions: Horizontal rule or spacing.
-                  fields:
-                    - import: blocks.divider
-                    - import: common.section_settings
-                logo_cloud:
-                  display: Logo cloud
-                  instructions: Row of partner or client logos.
-                  fields:
-                    - import: blocks.logo_cloud
-                    - import: common.section_settings
-                testimonials:
-                  display: Testimonials
-                  instructions: Customer quotes.
-                  fields:
-                    - import: blocks.testimonials
-                    - import: common.section_settings
-                faq:
-                  display: FAQ
-                  instructions: Frequently asked questions.
-                  fields:
-                    - import: blocks.faq
-                    - import: common.section_settings
-                stats:
-                  display: Stats
-                  instructions: Key numbers or metrics.
-                  fields:
-                    - import: blocks.stats
-                    - import: common.section_settings
-                video:
-                  display: Video
-                  instructions: Embedded video with optional heading.
-                  fields:
-                    - import: blocks.video
-                    - import: common.section_settings
-                gallery:
-                  display: Gallery
-                  instructions: Image gallery grid.
-                  fields:
-                    - import: blocks.gallery
-                    - import: common.section_settings
-                section_intro:
-                  display: Section intro
-                  instructions: Centered heading and intro copy (Management intro, service intro, etc.).
-                  fields:
-                    - import: blocks.section_intro
-                    - import: common.section_settings
-                intro_about:
-                  display: Intro / about
-                  instructions: Homepage-style about block with logos, stats, image, and CTA.
-                  fields:
-                    - import: blocks.intro_about
-                    - import: common.section_settings
-                product_showcase:
-                  display: Product showcase
-                  instructions: Product range carousel/grid — picks from Products collection.
-                  fields:
-                    - import: blocks.product_showcase
-                    - import: common.section_settings
-                service_cards:
-                  display: Service cards
-                  instructions: Layanan Kami-style cards with image, title, and link.
-                  fields:
-                    - import: blocks.service_cards
-                    - import: common.section_settings
-                entries_highlight:
-                  display: Entries highlight
-                  instructions: Blog/community cards — pick entries from any collection.
-                  fields:
-                    - import: blocks.entries_highlight
-                    - import: common.section_settings
-                news_featured:
-                  display: News featured
-                  instructions: Berita Terbaru — one featured entry plus a side list.
-                  fields:
-                    - import: blocks.news_featured
-                    - import: common.section_settings
-                dealer_network:
-                  display: Dealer network
-                  instructions: Map and dealer list with network statistics.
-                  fields:
-                    - import: blocks.dealer_network
-                    - import: common.section_settings
-                alternating_rows:
-                  display: Alternating rows
-                  instructions: Icon + text + image rows (Layanan Purna Jual-style).
-                  fields:
-                    - import: blocks.alternating_rows
-                    - import: common.section_settings
-                team_primary:
-                  display: Team profile (primary)
-                  instructions: Large management profile with biography.
-                  fields:
-                    - import: blocks.team_primary
-                    - import: common.section_settings
-                team_grid:
-                  display: Team grid
-                  instructions: Grid of team member photos, names, and roles.
-                  fields:
-                    - import: blocks.team_grid
-                    - import: common.section_settings
-                contact_banner:
-                  display: Contact banner
-                  instructions: Pre-footer CTA with phone, social links, and optional product visual.
-                  fields:
-                    - import: blocks.contact_banner
-                    - import: common.section_settings
-      - display: Simple content
-        instructions: Optional content.
+                main:
+                  display: Main
+                  sets:
+                    hero:
+                      display: Hero
+                      instructions: 'Large headline area with optional image and buttons.'
+                      fields:
+                        -
+                          import: blocks.hero
+                        -
+                          import: common.section_settings
+                    rich_text:
+                      display: 'Rich text'
+                      instructions: 'Formatted text content.'
+                      fields:
+                        -
+                          import: blocks.rich_text
+                        -
+                          import: common.section_settings
+                    image_text:
+                      display: 'Image & text'
+                      instructions: 'Side-by-side image and copy.'
+                      fields:
+                        -
+                          import: blocks.image_text
+                        -
+                          import: common.section_settings
+                    feature_grid:
+                      display: 'Feature grid'
+                      instructions: 'Grid of features with icons.'
+                      fields:
+                        -
+                          import: blocks.feature_grid
+                        -
+                          import: common.section_settings
+                    cta:
+                      display: 'Call to action'
+                      instructions: 'Prominent CTA banner or inline block.'
+                      fields:
+                        -
+                          import: blocks.cta
+                        -
+                          import: common.section_settings
+                    spacer:
+                      display: Spacer
+                      instructions: 'Vertical spacing between sections.'
+                      fields:
+                        -
+                          import: blocks.spacer
+                        -
+                          import: common.section_settings
+                    divider:
+                      display: Divider
+                      instructions: 'Horizontal rule or spacing.'
+                      fields:
+                        -
+                          import: blocks.divider
+                        -
+                          import: common.section_settings
+                    logo_cloud:
+                      display: 'Logo cloud'
+                      instructions: 'Row of partner or client logos.'
+                      fields:
+                        -
+                          import: blocks.logo_cloud
+                        -
+                          import: common.section_settings
+                    testimonials:
+                      display: Testimonials
+                      instructions: 'Customer quotes.'
+                      fields:
+                        -
+                          import: blocks.testimonials
+                        -
+                          import: common.section_settings
+                    faq:
+                      display: FAQ
+                      instructions: 'Frequently asked questions.'
+                      fields:
+                        -
+                          import: blocks.faq
+                        -
+                          import: common.section_settings
+                    stats:
+                      display: Stats
+                      instructions: 'Key numbers or metrics.'
+                      fields:
+                        -
+                          import: blocks.stats
+                        -
+                          import: common.section_settings
+                    video:
+                      display: Video
+                      instructions: 'Embedded video with optional heading.'
+                      fields:
+                        -
+                          import: blocks.video
+                        -
+                          import: common.section_settings
+                    gallery:
+                      display: Gallery
+                      instructions: 'Image gallery grid.'
+                      fields:
+                        -
+                          import: blocks.gallery
+                        -
+                          import: common.section_settings
+                    section_intro:
+                      display: 'Section intro'
+                      instructions: 'Centered heading and intro copy (Management intro, service intro, etc.).'
+                      fields:
+                        -
+                          import: blocks.section_intro
+                        -
+                          import: common.section_settings
+                    intro_about:
+                      display: 'Intro / about'
+                      instructions: 'Homepage-style about block with logos, stats, image, and CTA.'
+                      fields:
+                        -
+                          import: blocks.intro_about
+                        -
+                          import: common.section_settings
+                    product_showcase:
+                      display: 'Product showcase'
+                      instructions: 'Product range carousel/grid — picks from Products collection.'
+                      fields:
+                        -
+                          import: blocks.product_showcase
+                        -
+                          import: common.section_settings
+                    service_cards:
+                      display: 'Service cards'
+                      instructions: 'Layanan Kami-style cards with image, title, and link.'
+                      fields:
+                        -
+                          import: blocks.service_cards
+                        -
+                          import: common.section_settings
+                    entries_highlight:
+                      display: 'Entries highlight'
+                      instructions: 'Blog/community cards — pick entries from any collection.'
+                      fields:
+                        -
+                          import: blocks.entries_highlight
+                        -
+                          import: common.section_settings
+                    news_featured:
+                      display: 'News featured'
+                      instructions: 'Berita Terbaru — one featured entry plus a side list.'
+                      fields:
+                        -
+                          import: blocks.news_featured
+                        -
+                          import: common.section_settings
+                    dealer_network:
+                      display: 'Dealer network'
+                      instructions: 'Map and dealer list with network statistics.'
+                      fields:
+                        -
+                          import: blocks.dealer_network
+                        -
+                          import: common.section_settings
+                    alternating_rows:
+                      display: 'Alternating rows'
+                      instructions: 'Icon + text + image rows (Layanan Purna Jual-style).'
+                      fields:
+                        -
+                          import: blocks.alternating_rows
+                        -
+                          import: common.section_settings
+                    team_primary:
+                      display: 'Team profile (primary)'
+                      instructions: 'Large management profile with biography.'
+                      fields:
+                        -
+                          import: blocks.team_primary
+                        -
+                          import: common.section_settings
+                    team_grid:
+                      display: 'Team grid'
+                      instructions: 'Grid of team member photos, names, and roles.'
+                      fields:
+                        -
+                          import: blocks.team_grid
+                        -
+                          import: common.section_settings
+                    contact_banner:
+                      display: 'Contact banner'
+                      instructions: 'Pre-footer CTA with phone, social links, and optional product visual.'
+                      fields:
+                        -
+                          import: blocks.contact_banner
+                        -
+                          import: common.section_settings
+                    heading_description:
+                      display: 'Heading & Description'
+                      fields:
+                        -
+                          import: blocks.heading_description
+      -
+        display: 'Simple content'
+        instructions: 'Optional content.'
         fields:
-          - handle: content
+          -
+            handle: content
             field:
               type: bard
               display: Content
@@ -182,31 +247,53 @@ tabs:
   seo:
     display: SEO
     sections:
-      - fields:
-          - handle: seo
+      -
+        fields:
+          -
+            handle: seo
             field:
               type: seo_pro
+              listable: false
               display: SEO
               localizable: true
   sidebar:
     display: Sidebar
     sections:
-      - fields:
-          - handle: slug
+      -
+        fields:
+          -
+            handle: slug
             field:
               type: slug
               localizable: true
-              validate: "max:200"
-          - handle: parent
+              validate: 'max:200'
+          -
+            handle: parent
             field:
               type: entries
               collections:
                 - pages
               max_items: 1
-              display: Parent Page
+              display: 'Parent Page'
               localizable: true
-          - handle: template
+          -
+            handle: template
             field:
               type: template
               display: Template
               localizable: true
+  'SEO Previews':
+    display: 'SEO Previews'
+    sections:
+      -
+        fields:
+          -
+            handle: seo_previews
+            field:
+              type: seo_pro_previews
+              listable: false
+              display: 'SEO Previews'
+              localizable: false
+              hide_display: true
+              unless:
+                seo.enabled: 'equals false'

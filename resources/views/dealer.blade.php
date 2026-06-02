@@ -1,26 +1,26 @@
 @php
-    $dealerTitle = 'Jaringan Dealer di Seluruh Indonesia';
-    $dealerDesc =
-        'Didukung jaringan dealer, workshop, dan layanan purna jual yang tersebar di berbagai untuk memastikan armada Anda tetap produktif dan bekerja optimal.';
-
+    $dealerSection = collect($page->sections)->first(fn($section) => (string) $section['identifier'] === 'dealer');
 @endphp
-
 
 <x-layouts.main>
     <x-layouts.header.header />
 
     <main>
-        <x-layouts.hero.heropage title="Dealer" :image="asset('assets/hero-dealer.jpg')" />
+        <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
 
         {{-- Halaman dealer --}}
-        <section id="dealer-page">
-            <div class="container">
-                <div class="my-18 md:my-18 lg:my-30 flow flex flex-col items-center">
-                    <h2 class="text-left md:text-center lg:text-center">{{ $dealerTitle }}</h2>
-                    <p class="w-full lg:w-160 text-left md:text-center lg:text-center">{{ $dealerDesc }}</p>
+        @if ($dealerSection && $dealerSection['show'])
+            <section id="dealer-page">
+                <div class="container">
+                    <div class="my-18 md:my-18 lg:my-30 flow flex flex-col items-center">
+                        <h2 class="text-left md:text-center lg:text-center">{{ $dealerSection['heading'] }}</h2>
+                        <p class="w-full lg:w-160 text-left md:text-center lg:text-center">
+                            {!! $dealerSection['description'] !!}
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
 
         {{-- Maps dealer --}}
         <x-layouts.dealer-map />

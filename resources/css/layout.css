@@ -132,23 +132,6 @@ section, .section {
   max-width: var(--width-default);
 }
 
-/* Text alignment */
-.text-left {
-  text-align: left;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.text-justify {
-  text-align: justify;
-}
-
 /* Flexbox alignment - cross axis */
 .align-center {
   align-items: center;

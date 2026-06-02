@@ -1,0 +1,25 @@
+title: 'Heading & Description'
+fields:
+  -
+    handle: identifier
+    field:
+      type: text
+      display: Identifier
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+  -
+    handle: description
+    field:
+      container: assets
+      remove_empty_nodes: false
+      type: bard
+      display: Description
+  -
+    handle: show
+    field:
+      default: true
+      type: toggle
+      display: Show
