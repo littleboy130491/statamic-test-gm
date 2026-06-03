@@ -4,7 +4,7 @@ blueprint: page
 title: Manajemen
 template: manajemen
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780480038
+updated_at: 1780480333
 featured_image: hero-manajemen.jpg
 parent: home
 sections:
@@ -52,9 +52,8 @@ sections:
           -
             type: text
             text: 'Best Regards'
-      -
-        type: paragraph
-        content:
+          -
+            type: hardBreak
           -
             type: text
             text: 'Frankie Makaminang'

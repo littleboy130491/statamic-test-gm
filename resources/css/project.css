@@ -312,3 +312,12 @@ footer.grey-footer {
    font-weight: 500;
    
 }
+
+
+
+/* Text Paragraf */
+.text-par {
+   display: flex;
+   flex-direction: column;
+   gap: 1.2rem;
+}

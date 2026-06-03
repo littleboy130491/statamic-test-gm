@@ -43,7 +43,7 @@
                     <div id="highlight-management"
                         class="flex flex-col-reverse gap-6 bg-white rounded-3xl p-5 md:p-6 lg:p-10 md:flex-row lg:flex-row my-18 md:my-18 lg:my-30">
                         <div class="flex flex-col justify-between gap-8 md:gap-2 lg:gap-2 w-full md:w-[60%] lg:w-[60%]">
-                            <div class="flow flex flex-col">
+                            <div class="text-par">
                                 {!! $direkturUtama['bio'] !!}
                             </div>
                             <div class="flex flex-col gap-2">
