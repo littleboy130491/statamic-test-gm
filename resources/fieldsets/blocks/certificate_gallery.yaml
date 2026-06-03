@@ -1,0 +1,35 @@
+title: 'Certificate Gallery'
+fields:
+  -
+    handle: identifier
+    field:
+      type: text
+      display: Identifier
+  -
+    handle: grid_field
+    field:
+      type: grid
+      display: 'Grid Field'
+      fields:
+        -
+          handle: certificate_image
+          field:
+            container: assets
+            max_files: 1
+            type: assets
+            display: 'Certificate Image'
+        -
+          handle: certificate_name
+          field:
+            type: text
+            display: 'Certificate Name'
+        -
+          handle: certificate_year
+          field:
+            type: text
+            display: 'Certificate Year'
+  -
+    handle: show
+    field:
+      type: toggle
+      display: Show

@@ -239,6 +239,11 @@ tabs:
                       fields:
                         -
                           import: blocks.section_images
+                    certificate_gallery:
+                      display: 'Certificate Gallery'
+                      fields:
+                        -
+                          import: blocks.certificate_gallery
       -
         display: 'Simple content'
         instructions: 'Optional content.'
