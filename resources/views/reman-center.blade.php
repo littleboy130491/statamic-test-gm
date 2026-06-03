@@ -1,5 +1,8 @@
 @php
     $remanSection = collect($page->sections)->first(fn($section) => (string) $section['identifier'] === 'reman');
+    $imgRemanSection = collect($page->sections)->first(
+        fn($section) => (string) $section['identifier'] === 'imgsection',
+    );
 @endphp
 
 <x-layouts.main>
@@ -12,10 +15,15 @@
         <section id="reman-center">
             <div class="container">
                 <div class="flex flex-col items-center my-18 gap-18 lg:my-30 lg:gap-30">
+
                     @if ($remanSection && $remanSection['show'])
-                        <p class="text-left md:text-center lg:text-center lg:w-240">{!! $remanSection['description'] !!}</p>
+                        <div class="text-left md:text-center lg:text-center lg:w-240">{!! $remanSection['description'] !!}</div>
                     @endif
-                    <img src="" alt="" class="rounded-2xl w-full lg:h-150 object-cover">
+
+                    @if ($imgRemanSection && $imgRemanSection['show'])
+                        <img src="{{ $imgRemanSection['section_images'] }}" alt=""
+                            class="rounded-2xl w-full lg:h-150 object-cover">
+                    @endif
                 </div>
             </div>
         </section>

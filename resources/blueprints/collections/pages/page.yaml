@@ -234,6 +234,11 @@ tabs:
                       fields:
                         -
                           import: blocks.heading_description
+                    section_images:
+                      display: 'Section Images'
+                      fields:
+                        -
+                          import: blocks.section_images
       -
         display: 'Simple content'
         instructions: 'Optional content.'
@@ -244,11 +249,6 @@ tabs:
               type: bard
               display: Content
               localizable: true
-      -
-        display: Photo
-        fields:
-          -
-            import: blocks.photo
   seo:
     display: SEO
     sections:

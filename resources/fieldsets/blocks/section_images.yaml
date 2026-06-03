@@ -1,0 +1,20 @@
+title: 'Section Images'
+fields:
+  -
+    handle: identifier
+    field:
+      type: text
+      display: Identifier
+  -
+    handle: section_images
+    field:
+      container: assets
+      type: assets
+      display: 'Section Images'
+      max_files: 1
+  -
+    handle: show
+    field:
+      default: true
+      type: toggle
+      display: Show

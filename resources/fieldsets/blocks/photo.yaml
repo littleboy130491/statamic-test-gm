@@ -1,8 +1,0 @@
-title: Photo
-fields:
-  -
-    handle: photo
-    field:
-      container: assets
-      type: assets
-      display: Photo
