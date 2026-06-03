@@ -1,0 +1,35 @@
+title: 'Image, Text & Icon'
+fields:
+  -
+    handle: image_text_icon
+    field:
+      mode: stacked
+      type: grid
+      display: 'Image, Text & Icon'
+      fields:
+        -
+          handle: images
+          field:
+            container: assets
+            type: assets
+            display: Images
+            max_files: 1
+        -
+          handle: icon
+          field:
+            container: assets
+            type: assets
+            display: Icon
+            max_files: 1
+        -
+          handle: heading
+          field:
+            type: text
+            display: Heading
+        -
+          handle: text
+          field:
+            container: assets
+            remove_empty_nodes: false
+            type: bard
+            display: Text

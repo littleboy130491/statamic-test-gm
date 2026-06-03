@@ -244,6 +244,21 @@ tabs:
                       fields:
                         -
                           import: blocks.certificate_gallery
+                    image_text_icon:
+                      display: 'Image, Text & Icon'
+                      fields:
+                        -
+                          handle: identifier
+                          field:
+                            type: text
+                            display: Identifier
+                        -
+                          import: blocks.image_text_icon
+                        -
+                          handle: show
+                          field:
+                            type: toggle
+                            display: Show
       -
         display: 'Simple content'
         instructions: 'Optional content.'
