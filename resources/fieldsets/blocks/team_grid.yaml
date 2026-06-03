@@ -1,4 +1,4 @@
-title: Team grid
+title: 'Team grid'
 fields:
   -
     handle: heading
@@ -9,9 +9,9 @@ fields:
     handle: members
     field:
       type: grid
-      display: Team members
+      display: 'Team members'
       mode: stacked
-      add_row: Add member
+      add_row: 'Add member'
       validate: required
       fields:
         -
@@ -32,5 +32,5 @@ fields:
           handle: role
           field:
             type: text
-            display: Role / title
+            display: 'Role / title'
             validate: required
