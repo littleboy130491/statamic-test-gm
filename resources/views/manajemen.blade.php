@@ -57,7 +57,7 @@
 
     {{-- Manajemen halaman --}}
     <main>
-        <x-layouts.hero.heropage title="Manajemen" :image="asset('assets/hero-manajemen.jpg')" />
+        <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
 
         {{-- Judul halaman --}}
         <section id="manajemen">
