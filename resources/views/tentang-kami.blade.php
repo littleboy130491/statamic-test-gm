@@ -1,191 +1,161 @@
 @php
-    $titleAbout = 'Lebih dari Dua Dekade Menjadi Mitra Truk Terpercaya Indonesia';
-    $descAbout =
-        'PT Gaya Makmur Mobil (GM Mobil) adalah Agen Pemegang Merek resmi FAW Truck di Indonesia sejak 2005. Selama 21 tahun, GM Mobil menjadi satu-satunya distributor truk China yang paling lama beroperasi di Indonesia tanpa pernah berganti merek, melayani sektor logistik, konstruksi, pertambangan, kehutanan, hingga perkebunan.';
+    $opening = collect($page->sections)->first(
+        fn($section) => (string) ($section['identifier'] ?? '') === 'opening-teletech',
+    );
 
-    $visimisiPhoto = asset('/assets/truk-vm.png');
-    $visimisiBackground = asset('/assets/visi-misi-bg.jpg');
-    $visionContent = [
-        'title' => 'Visi',
-        'desc' =>
-            'Menjadi salah satu pemain kunci dalam industri otomotif, khususnya truk menengah hingga berat di Indonesia, dengan menghadirkan produk berkualitas dan layanan terpercaya bagi pelanggan.',
-    ];
-    $missionContent = [
-        'title' => 'Misi',
-        'desc' => [
-            'Terus meningkatkan pengetahuan dan kapabilitas dalam teknologi serta produk masa depan guna memberikan layanan purna jual yang optimal.',
-            'Menjaga komitmen terhadap kualitas dan kepuasan pelanggan sesuai standar internasional.',
-            'Mengembangkan pengalaman dan kompetensi kerja untuk menghadapi persaingan industri global secara berkelanjutan.',
-        ],
-    ];
+    $teletechImage = collect($page->sections)->first(
+        fn($section) => (string) ($section['identifier'] ?? '') === 'section-image-teletech',
+    );
 
-    $fawTitle =
-        'FAW sendiri merupakan pabrikan otomotif pertama dan terbesar di Tiongkok, dengan produksi lebih dari 3,5 juta unit per tahun dan pangsa pasar truk medium–heavy di atas 20%, menjadikannya pemimpin pasar nomor satu di Tiongkok hingga hari ini.';
-    $fawDesc =
-        'Lebih dari sekadar penjualan unit, GM Mobil menghadirkan layanan purna jual, suku cadang, serta pelatihan teknik dan mengemudi melalui jaringan yang tersebar di berbagai kota besar di seluruh Indonesia. Bersama pelanggan, GM Mobil terus berkomitmen menggerakkan industri Indonesia dengan produk berkualitas dan pelayanan terbaik.';
-    $fawCertificate = [
-        [
-            'title' => null,
-            'photo' => asset('/assets/cer-1.jpg'),
-        ],
-        [
-            'title' => 'Sole Distributor of',
-            'photo' => asset('/assets/cer-2.jpg'),
-        ],
-    ];
+    $fiturBenefit = collect($page->sections)->first(
+        fn($section) => (string) ($section['identifier'] ?? '') === 'section-fitur-benefit',
+    );
 
-    $fawTitleValue = 'Kenapa memilih FAW Trucks';
-    $fawItems = [
-        [
-            'icon' => asset('/assets/value-icon-1.svg'),
-            'title' => 'Kabin Nyaman dan Fungsional',
-            'desc' => 'Sistem A/C Air Conditioner dengan kontrol Thermostat dan Sun Visor + Port USB',
-        ],
-        [
-            'icon' => asset('/assets/value-icon-2.svg'),
-            'title' => 'Kendali Berkendara Lebih Optimal',
-            'desc' => 'Kabin yang luas dan Sistem Kemudi dengan Roda Kemudi (PS) dan Tilt Steering.',
-        ],
-        [
-            'icon' => asset('/assets/value-icon-3.svg'),
-            'title' => 'Identifikasi Masalah dengan Cepat',
-            'desc' =>
-                'Kluster instrumen dengan MID Memudahkan pengecekan, mempertahankan dan mengidentifikasi awal masalah pada kendaraan.',
-        ],
-        [
-            'icon' => asset('/assets/value-icon-4.svg'),
-            'title' => 'Sistem Keamanan Maksimal',
-            'desc' => 'Sistem pengereman Full Air Brake (ABS) dan terdapat Auto Slack Adjuster',
-        ],
-        [
-            'icon' => asset('/assets/value-icon-5.svg'),
-            'title' => 'Monitoring Kendaraan Real-Time',
-            'desc' =>
-                'Sistem GM Telematics yang dapat mengetahui monitor lokasi, kondisi kendaraan, perilaku berkendara secara realtime melalui perangkat yang terpasang dalam komputer',
-        ],
-        [
-            'icon' => asset('/assets/value-icon-6.svg'),
-            'title' => 'Struktur Kabin Berstandar Internasional',
-            'desc' =>
-                'Kekuatan kabin dan keamanan kabin yang dibangun dengan spesifikasi ECE R29 dengan kabin terpasang penuh empat titik, seluruh kabin dapat bergeser ke belakang sejauh hingga 200',
-        ],
+    $ctaGrid = collect($page->sections)->first(
+        fn($section) => (string) ($section['type'] ?? '') === 'call_to_action_grid',
+    );
+
+    $iconPlaceholderBenefit = collect($page->sections)->first(
+        fn($section) => (string) ($section['identifier'] ?? '') === 'icon-placeholder-benefit',
+    );
+
+    $iconPlaceholderCta = collect($page->sections)->first(
+        fn($section) => (string) ($section['identifier'] ?? '') === 'icon-placeholder-cta-grid',
+    );
+
+    $iconBenefitPlaceholder = $iconPlaceholderBenefit['section_images'] ?? null;
+    $iconCtaDefault = $iconPlaceholderCta['section_images'] ?? null;
+
+    // Jumlah kolom feature grid
+    $columnClassMap = [
+        '1' => 'lg:grid-cols-1',
+        '2' => 'md:grid-cols-2 lg:grid-cols-2',
+        '3' => 'md:grid-cols-2 lg:grid-cols-3',
+        '4' => 'md:grid-cols-2 lg:grid-cols-4',
     ];
-    $fiturBenefit_iconplaceholder = asset('assets/icon-placeholder.svg');
+    $featureColumns = $columnClassMap[(string) ($fiturBenefit['columns'] ?? '3')] ?? 'md:grid-cols-2 lg:grid-cols-3';
+
+    // URL kontak (WhatsApp & Email)
+    $buildContactUrl = function ($kontak) {
+        $kontak = trim((string) $kontak);
+
+        // Email
+        if (str_contains($kontak, '@')) {
+            return 'mailto:' . $kontak;
+        }
+
+        // WhatsApp
+        $number = preg_replace('/[^0-9]/', '', $kontak);
+        return 'https://wa.me/' . $number;
+    };
 @endphp
 
-<x-layouts.main bodyClass="background-grey">
+<x-layouts.main>
     <x-layouts.header.header />
 
     <main>
-        <x-layouts.hero.heropage title="Tentang Kami" :image="asset('assets/hero-tentang.jpg')" />
+        <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
 
-        {{-- Tentang perusahaan --}}
-        <section id="tentang-kami">
-            <div class="container">
-                <div class="flow flex flex-col items-center my-18 md:my18 lg:mt-30 lg:mb-8">
-                    <h2 class="text-left md:text-center lg:text-center w-full md:w-150 lg:w-180">{{ $titleAbout }}</h2>
-                    <p class="text-left md:text-center lg:text-center w-full md:w-full lg:w-250">{{ $descAbout }}</p>
-                </div>
-            </div>
-        </section>
-
-        {{-- Visi dan misi --}}
-        <section id="visi-misi">
-            <div class="container">
-                <div id="background-visi-misi" class="overlay-visimisi relative my-18 md:my-18 lg:my-30 rounded-3xl">
-                    <img src="{{ $visimisiBackground }}" alt="Visi Misi Background"
-                        class="rounded-xl md:rounded-xl lg:rounded-3xl w-full h-245 md:h-260 lg:h-205 object-cover pointer-events-none">
-
-                    <div id="visi-misi-content"
-                        class="absolute bottom-0 inset-0 z-2 flex flex-col-reverse gap-10 md:gap-10 px-4 md:px-6 md:flex-col-reverse lg:flex-row lg:pr-16 lg:py-10">
-
-                        {{-- Image truk --}}
-                        <div class="w-full -mb-10 lg:mb-10 lg:w-[64%] lg:-ml-25 lg:-mr-45">
-                            <img src="{{ $visimisiPhoto }}" alt="Visi Misi">
-                        </div>
-
-                        {{-- Teks visi misi --}}
-                        <div
-                            class="flex flex-col md:flex-row inset-0 lg:flex-col gap-4 md:gap-4 lg:gap-8 md:w-full lg:w-[60%] lg:-ml-20">
-                            <div id="vision"
-                                class="glass rounded-2xl p-5 w-full md:w-[40%] lg:w-full md:p-5 lg:p-8 flex flex-col gap-6">
-                                <h3>{{ $visionContent['title'] }}</h3>
-                                <p>{{ $visionContent['desc'] }}</p>
-                            </div>
-
-                            <div id="mission"
-                                class="glass rounded-2xl p-5 w-full md:w-[60%] lg:w-full md:p-5 lg:p-8 flex flex-col md:gap-0 lg:gap-6">
-                                <h3>{{ $missionContent['title'] }}</h3>
-                                <ol class="flex flex-col">
-                                    @foreach ($missionContent['desc'] as $index => $item)
-                                        <li
-                                            class="flex gap-4 md:gap-4 lg:gap-20 py-4 md:py-5 lg:py-8 {{ $index < count($missionContent['desc']) - 1 ? 'border-b border-white' : '' }}">
-                                            <span
-                                                class="mission-list md:text-xl lg:text-2xl text-black shrink-0">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}.</span>
-                                            <p>{{ $item }}</p>
-                                        </li>
-                                    @endforeach
-                                </ol>
-                            </div>
-                        </div>
+        {{-- Deskripsi teletech --}}
+        @if ($opening && $opening['show'])
+            <section id="gm-teletech-desc">
+                <div class="container">
+                    <div class="flex flex-col items-center my-18 lg:my-30">
+                        <div class="text-left md:text-center lg:text-center lg:w-285">{!! $opening['description'] !!}</div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
 
-        {{-- Setifikasi --}}
-        <section id="faw-trucks">
-            <div class="container">
-                <div
-                    class="flex flex-col-reverse md:flex-col-reverse lg:flex-row gap-8 md:gap-10 lg:gap-30 my-18 md:my-18 lg:my-30">
-
-                    {{-- Faw image --}}
-                    <div id="certificate"
-                        class="w-full md:w-[60%] lg:w-[23%] flex flex-row md:flex-row lg:flex-col gap-4">
-                        @foreach ($fawCertificate as $cert)
-                            <div class="bg-white rounded-2xl p-4 md:p-4 lg:p-6 flex flex-col gap-2">
-                                @if (!empty($cert['title']))
-                                    <p>{{ $cert['title'] }}</p>
-                                @endif
-                                <img src="{{ $cert['photo'] }}" alt="{{ $cert['title'] ?? '' }}">
-                            </div>
-                        @endforeach
-                    </div>
-
-                    {{-- Faw konten --}}
-                    <div id="faw-content" class="w-full md:w-full lg:w-[70%] flex flex-col gap-5">
-                        <h3>{{ $fawTitle }}</h3>
-                        <p class="w-full lg:w-170">{{ $fawDesc }}</p>
+        {{-- Image teletech --}}
+        @if ($teletechImage && $teletechImage['show'])
+            <section id="gm-teletech-map">
+                <div class="container">
+                    <div class="flex flex-col items-center my-18 lg:my-30">
+                        <img src="{{ $teletechImage['section_images'] }}" alt="{{ $page->title }}"
+                            class="rounded-2xl w-full lg:h-150 object-cover">
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
 
-        {{-- Keunggulan Faw Trucks --}}
-        <section id="faw-value">
-            <div class="container">
-                <div class="flex flex-col gap-8 md:gap-8 lg:gap-10 my-18 md:my-18 lg:my-30">
-                    <h2 class="text-left md:text-left lg:text-center">{{ $fawTitleValue }}</h2>
+        {{-- Fitur & Benefit --}}
+        @if ($fiturBenefit && $fiturBenefit['show'] && !empty($fiturBenefit['features']))
+            <section id="fitur-benefit">
+                <div class="container">
+                    <div class="flex flex-col gap-6 my-18 md:gap-10 md:my-18 lg:gap-10 lg:my-30">
 
-                    {{-- Grid keunggulan --}}
-                    <div data-equal-height class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-                        @foreach ($fawItems as $items)
-                            <div
-                                class="flex flex-col gap-14 p-6 bg-white rounded-3xl md:p-6 md:gap-14 lg:p-6 lg:gap-20">
-                                <img src="{{ !empty($items['icon']) ? $items['icon'] : $fiturBenefit_iconplaceholder }}"
-                                    alt="Icon" class="w-10 h-10">
-                                <div class="flow">
-                                    <h4 class="text-black w-full lg:w-70">{{ $items['title'] }}</h4>
-                                    <p>{{ $items['desc'] }}</p>
+                        <h2 id="title-fitur-benefit">{{ $fiturBenefit['heading'] }}</h2>
+
+                        {{-- Grid Fitur & Benefit --}}
+                        <div id="fitur-benefit-content" data-equal-height class="grid gap-5 {{ $featureColumns }}">
+                            @foreach ($fiturBenefit['features'] as $item)
+                                <div
+                                    class="flex flex-col gap-14 p-6 bg-(--color-surface) rounded-3xl md:p-6 md:gap-14 lg:p-6 lg:gap-20">
+                                    <img src="{{ $item['icon'] ?: $iconBenefitPlaceholder }}" alt="Icon"
+                                        class="w-10 h-10">
+                                    <div class="flow">
+                                        <h4 class="text-black">{{ $item['title'] }}</h4>
+                                        <p>{{ $item['text'] }}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
+
+        {{-- Pemantauan trucks --}}
+        @if ($ctaGrid)
+            <section id="cta-gm-teletech">
+                <div class="container">
+                    <div class="flex flex-col items-center gap-6 my-18 md:flex-row md:my-18 lg:flex-row lg:my-30">
+                        <img src="{{ $ctaGrid['image_call_to_action'] }}" alt="{{ $ctaGrid['heading'] }}"
+                            class="md:w-[40%] lg:w-[40%]">
+
+                        {{-- Konten CTA --}}
+                        <div class="flex flex-col gap-4">
+                            <h2 class="lg:w-180">{{ $ctaGrid['heading'] }}</h2>
+
+                            @if (!empty($ctaGrid['description']))
+                                <div class="flow">{!! $ctaGrid['description'] !!}</div>
+                            @endif
+
+                            @foreach ($ctaGrid['call_to_action'] as $contact)
+                                @php
+                                    $contactUrl = $buildContactUrl($contact['kontak'] ?? '');
+                                    $isWhatsapp = str_starts_with($contactUrl, 'https://wa.me');
+                                    $contactIcon = $contact['icon'] ?? null ?: $iconCtaDefault;
+                                @endphp
+                                <a href="{{ $contactUrl }}"
+                                    @if ($isWhatsapp) target="_blank" rel="noopener" @endif
+                                    class="group bg-(--color-surface) hover:bg-(--color-secondary) flex justify-between items-center rounded-full p-3 pl-6 md:p-3 md:pl-6 lg:p-3 lg:pl-8 transition-colors">
+
+                                    {{-- Kontak --}}
+                                    <div class="lg:flex lg:w-[90%] lg:items-center lg:justify-between">
+                                        <p class="font-medium group-hover:text-black transition-colors">
+                                            {{ $contact['label'] }}
+                                        </p>
+                                        <span
+                                            class="title-display group-hover:text-black -mb-1 transition-colors">{{ $contact['kontak'] }}</span>
+                                    </div>
+
+                                    {{-- Icon kontak --}}
+                                    <div
+                                        class="bg-(--color-primary) group-hover:bg-black flex items-center justify-center rounded-full transition-colors w-12 h-12 md:w-12 md:h-12 lg:w-12 lg:h-12">
+                                        <img src="{{ $contactIcon }}" alt="{{ $contact['label'] }}" class="w-5 h-5">
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </section>
+        @endif
 
     </main>
 
     <x-layouts.footer.footer />
+
 </x-layouts.main>

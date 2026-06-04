@@ -249,6 +249,11 @@ tabs:
                       fields:
                         -
                           import: blocks.cta_grid
+                    section_vision_mission:
+                      display: 'Section Vision Mission'
+                      fields:
+                        -
+                          import: blocks.vission_mission
       -
         display: 'Simple content'
         instructions: 'Optional content.'

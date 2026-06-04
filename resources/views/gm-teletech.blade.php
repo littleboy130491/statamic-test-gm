@@ -26,7 +26,7 @@
     $iconBenefitPlaceholder = $iconPlaceholderBenefit['section_images'] ?? null;
     $iconCtaDefault = $iconPlaceholderCta['section_images'] ?? null;
 
-    // Mapping jumlah kolom feature grid (string class biar gak ke-purge Tailwind)
+    // Jumlah kolom feature grid
     $columnClassMap = [
         '1' => 'lg:grid-cols-1',
         '2' => 'md:grid-cols-2 lg:grid-cols-2',
@@ -35,7 +35,7 @@
     ];
     $featureColumns = $columnClassMap[(string) ($fiturBenefit['columns'] ?? '3')] ?? 'md:grid-cols-2 lg:grid-cols-3';
 
-    // Bikin URL dari label + kontak
+    // URL kontak
     $buildContactUrl = function ($label, $kontak) {
         $label = strtolower((string) $label);
         $kontak = trim((string) $kontak);
@@ -45,13 +45,13 @@
             return 'mailto:' . $kontak;
         }
 
-        // WhatsApp: kalau label mengandung "wa" atau "whatsapp"
+        // WhatsApp
         if (str_contains($label, 'whatsapp') || preg_match('/\bwa\b/', $label)) {
             $number = preg_replace('/[^0-9]/', '', $kontak);
             return 'https://wa.me/' . $number;
         }
 
-        // Telepon: buang spasi tapi pertahankan +
+        // Nomor Telepon
         $number = preg_replace('/[^0-9+]/', '', $kontak);
         return 'tel:' . $number;
     };

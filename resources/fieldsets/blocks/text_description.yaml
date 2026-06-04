@@ -1,0 +1,7 @@
+title: 'Text & Description'
+fields:
+  -
+    handle: identifier
+    field:
+      type: text
+      display: Identifier
