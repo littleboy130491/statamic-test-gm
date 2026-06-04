@@ -1,0 +1,31 @@
+title: 'Text & Gallery'
+fields:
+  -
+    handle: identifier
+    field:
+      type: text
+      display: Identifier
+  -
+    handle: gallery
+    field:
+      container: assets
+      type: assets
+      display: Gallery
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+  -
+    handle: description
+    field:
+      container: assets
+      remove_empty_nodes: false
+      type: bard
+      display: Description
+  -
+    handle: show
+    field:
+      default: true
+      type: toggle
+      display: Show

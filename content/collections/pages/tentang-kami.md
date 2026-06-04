@@ -4,7 +4,7 @@ blueprint: page
 title: 'Tentang Kami'
 template: tentang-kami
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780568922
+updated_at: 1780569833
 featured_image: hero-tentang.jpg
 sections:
   -
@@ -75,14 +75,30 @@ sections:
     photo_background: visi-misi-bg.jpg
     type: section_vision_mission
     enabled: true
-    show: false
+    show: true
     identifier: section-vision-mission
+  -
+    id: sg1fsmUFAhTfem4yyicQ0
+    identifier: section-faw-trucks
+    gallery:
+      - cer-1.jpg
+      - cer-2.jpg
+    heading: 'FAW sendiri merupakan pabrikan otomotif pertama dan terbesar di Tiongkok, dengan produksi lebih dari 3,5 juta unit per tahun dan pangsa pasar truk medium–heavy di atas 20%, menjadikannya pemimpin pasar nomor satu di Tiongkok hingga hari ini.'
+    description:
+      -
+        type: paragraph
+        content:
+          -
+            type: text
+            text: 'Lebih dari sekadar penjualan unit, GM Mobil menghadirkan layanan purna jual, suku cadang, serta pelatihan teknik dan mengemudi melalui jaringan yang tersebar di berbagai kota besar di seluruh Indonesia. Bersama pelanggan, GM Mobil terus berkomitmen menggerakkan industri Indonesia dengan produk berkualitas dan pelayanan terbaik.'
+    show: true
+    type: text_gallery
+    enabled: true
   -
     id: pvbUw-o3wVmq_tAzb0kwY
     identifier: section-faw-trucks
     heading: 'Kenapa memilih FAW Trucks'
-    subheading: Desc
-    columns: '3'
+    columns: 3
     features:
       -
         id: hcY2Li2xf_0zgt1Pf-idF

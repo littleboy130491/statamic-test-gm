@@ -1,101 +1,148 @@
 @php
     $opening = collect($page->sections)->first(
-        fn($section) => (string) ($section['identifier'] ?? '') === 'opening-teletech',
+        fn($section) => (string) ($section['identifier'] ?? '') === 'opening-about',
     );
 
-    $teletechImage = collect($page->sections)->first(
-        fn($section) => (string) ($section['identifier'] ?? '') === 'section-image-teletech',
+    $visionMission = collect($page->sections)->first(
+        fn($section) => (string) ($section['type'] ?? '') === 'section_vision_mission',
     );
 
-    $fiturBenefit = collect($page->sections)->first(
-        fn($section) => (string) ($section['identifier'] ?? '') === 'section-fitur-benefit',
+    $fawText = collect($page->sections)->first(fn($section) => (string) ($section['type'] ?? '') === 'text_gallery');
+
+    $fawValue = collect($page->sections)->first(fn($section) => (string) ($section['type'] ?? '') === 'feature_grid');
+
+    $iconPlaceholderSection = collect($page->sections)->first(
+        fn($section) => (string) ($section['identifier'] ?? '') === 'placeholdericon-faw-trucks',
     );
 
-    $ctaGrid = collect($page->sections)->first(
-        fn($section) => (string) ($section['type'] ?? '') === 'call_to_action_grid',
-    );
+    $iconPlaceholder = $iconPlaceholderSection['section_images'] ?? null;
 
-    $iconPlaceholderBenefit = collect($page->sections)->first(
-        fn($section) => (string) ($section['identifier'] ?? '') === 'icon-placeholder-benefit',
-    );
+    // Visi & Misi diambil dari repeater "content"
+    $vision = $visionMission['content'][0] ?? null;
+    $mission = $visionMission['content'][1] ?? null;
 
-    $iconPlaceholderCta = collect($page->sections)->first(
-        fn($section) => (string) ($section['identifier'] ?? '') === 'icon-placeholder-cta-grid',
-    );
-
-    $iconBenefitPlaceholder = $iconPlaceholderBenefit['section_images'] ?? null;
-    $iconCtaDefault = $iconPlaceholderCta['section_images'] ?? null;
-
-    // Jumlah kolom feature grid
+    // Mapping jumlah kolom feature grid (string penuh biar gak ke-purge Tailwind)
     $columnClassMap = [
         '1' => 'lg:grid-cols-1',
         '2' => 'md:grid-cols-2 lg:grid-cols-2',
         '3' => 'md:grid-cols-2 lg:grid-cols-3',
         '4' => 'md:grid-cols-2 lg:grid-cols-4',
     ];
-    $featureColumns = $columnClassMap[(string) ($fiturBenefit['columns'] ?? '3')] ?? 'md:grid-cols-2 lg:grid-cols-3';
-
-    // URL kontak (WhatsApp & Email)
-    $buildContactUrl = function ($kontak) {
-        $kontak = trim((string) $kontak);
-
-        // Email
-        if (str_contains($kontak, '@')) {
-            return 'mailto:' . $kontak;
-        }
-
-        // WhatsApp
-        $number = preg_replace('/[^0-9]/', '', $kontak);
-        return 'https://wa.me/' . $number;
-    };
+    $fawColumns = $columnClassMap[(string) ($fawValue['columns'] ?? '3')] ?? 'md:grid-cols-2 lg:grid-cols-3';
 @endphp
 
-<x-layouts.main>
+<x-layouts.main bodyClass="background-grey">
     <x-layouts.header.header />
 
     <main>
         <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
 
-        {{-- Deskripsi teletech --}}
+        {{-- Tentang perusahaan --}}
         @if ($opening && $opening['show'])
-            <section id="gm-teletech-desc">
+            <section id="tentang-kami">
                 <div class="container">
-                    <div class="flex flex-col items-center my-18 lg:my-30">
-                        <div class="text-left md:text-center lg:text-center lg:w-285">{!! $opening['description'] !!}</div>
+                    <div class="flow flex flex-col items-center gap-4 my-18 md:my18 lg:mt-30 lg:mb-8">
+                        <h2 class="text-left md:text-center lg:text-center w-full md:w-150 lg:w-180">
+                            {{ $opening['heading'] }}
+                        </h2>
+                        <div class="text-left md:text-center lg:text-center w-full md:w-full lg:w-250">
+                            {!! $opening['description'] !!}</div>
                     </div>
                 </div>
             </section>
         @endif
 
-        {{-- Image teletech --}}
-        @if ($teletechImage && $teletechImage['show'])
-            <section id="gm-teletech-map">
+        {{-- Visi dan misi --}}
+        @if ($visionMission && $visionMission['show'])
+            <section id="visi-misi">
                 <div class="container">
-                    <div class="flex flex-col items-center my-18 lg:my-30">
-                        <img src="{{ $teletechImage['section_images'] }}" alt="{{ $page->title }}"
-                            class="rounded-2xl w-full lg:h-150 object-cover">
+                    <div id="background-visi-misi" class="overlay-visimisi relative my-18 md:my-18 lg:my-30 rounded-3xl">
+                        <img src="{{ $visionMission['photo_background'] }}" alt="Visi Misi Background"
+                            class="rounded-xl md:rounded-xl lg:rounded-3xl w-full h-245 md:h-260 lg:h-205 object-cover pointer-events-none">
+
+                        <div id="visi-misi-content"
+                            class="absolute bottom-0 inset-0 z-2 flex flex-col-reverse gap-10 md:gap-10 px-4 md:px-6 md:flex-col-reverse lg:flex-row lg:pr-16 lg:py-10">
+
+                            {{-- Image truk --}}
+                            <div class="w-full -mb-10 lg:mb-10 lg:w-[64%] lg:-ml-25 lg:-mr-45">
+                                <img src="{{ $visionMission['photo'] }}" alt="Visi Misi">
+                            </div>
+
+                            {{-- Teks visi misi --}}
+                            <div
+                                class="flex flex-col md:flex-row inset-0 lg:flex-col gap-4 md:gap-4 lg:gap-8 md:w-full lg:w-[60%] lg:-ml-20">
+                                @if ($vision)
+                                    <div id="vision"
+                                        class="glass rounded-2xl p-5 w-full md:w-[40%] lg:w-full md:p-5 lg:p-8 flex flex-col gap-6">
+                                        <h3>{{ $vision['title'] }}</h3>
+                                        <div>{!! $vision['description'] !!}</div>
+                                    </div>
+                                @endif
+
+                                @if ($mission)
+                                    <div id="mission"
+                                        class="glass rounded-2xl p-5 w-full md:w-[60%] lg:w-full md:p-5 lg:p-8 flex flex-col md:gap-0 lg:gap-6">
+                                        <h3>{{ $mission['title'] }}</h3>
+                                        <div class="mission-list-content">{!! $mission['description'] !!}</div>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
         @endif
 
-        {{-- Fitur & Benefit --}}
-        @if ($fiturBenefit && $fiturBenefit['show'] && !empty($fiturBenefit['features']))
-            <section id="fitur-benefit">
+        {{-- Sertifikasi --}}
+        @if ($fawText && $fawText['show'])
+            <section id="faw-trucks">
                 <div class="container">
-                    <div class="flex flex-col gap-6 my-18 md:gap-10 md:my-18 lg:gap-10 lg:my-30">
+                    <div
+                        class="flex flex-col-reverse md:flex-col-reverse lg:flex-row gap-8 md:gap-10 lg:gap-30 my-18 md:my-18 lg:my-30">
 
-                        <h2 id="title-fitur-benefit">{{ $fiturBenefit['heading'] }}</h2>
+                        {{-- Faw image --}}
+                        @if (!empty($fawText['gallery']))
+                            <div id="certificate"
+                                class="w-full md:w-[60%] lg:w-[23%] flex flex-row md:flex-row lg:flex-col gap-4">
+                                @foreach ($fawText['gallery'] as $cert)
+                                    <div class="bg-white rounded-2xl p-4 md:p-4 lg:p-6 flex flex-col gap-2">
+                                        <img src="{{ $cert }}" alt="{{ $fawText['heading'] ?? '' }}">
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
 
-                        {{-- Grid Fitur & Benefit --}}
-                        <div id="fitur-benefit-content" data-equal-height class="grid gap-5 {{ $featureColumns }}">
-                            @foreach ($fiturBenefit['features'] as $item)
+                        {{-- Faw konten --}}
+                        <div id="faw-content" class="w-full md:w-full lg:w-[70%] flex flex-col gap-5">
+                            <h3>{{ $fawText['heading'] }}</h3>
+                            <div class="w-full lg:w-170">{!! $fawText['description'] !!}</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        @endif
+
+        {{-- Keunggulan Faw Trucks --}}
+        @if ($fawValue && $fawValue['show'] && !empty($fawValue['features']))
+            <section id="faw-value">
+                <div class="container">
+                    <div class="flex flex-col gap-8 md:gap-8 lg:gap-10 my-18 md:my-18 lg:my-30">
+                        <div class="flow text-left md:text-left lg:text-center">
+                            <h2>{{ $fawValue['heading'] }}</h2>
+                            @if (!empty($fawValue['subheading']))
+                                <p>{{ $fawValue['subheading'] }}</p>
+                            @endif
+                        </div>
+
+                        {{-- Grid keunggulan --}}
+                        <div data-equal-height class="grid gap-5 {{ $fawColumns }}">
+                            @foreach ($fawValue['features'] as $item)
                                 <div
-                                    class="flex flex-col gap-14 p-6 bg-(--color-surface) rounded-3xl md:p-6 md:gap-14 lg:p-6 lg:gap-20">
-                                    <img src="{{ $item['icon'] ?: $iconBenefitPlaceholder }}" alt="Icon"
+                                    class="flex flex-col gap-14 p-6 bg-white rounded-3xl md:p-6 md:gap-14 lg:p-6 lg:gap-10">
+                                    <img src="{{ $item['icon'] ?: $iconPlaceholder }}" alt="Icon"
                                         class="w-10 h-10">
                                     <div class="flow">
-                                        <h4 class="text-black">{{ $item['title'] }}</h4>
+                                        <h4 class="text-black w-full lg:w-70">{{ $item['title'] }}</h4>
                                         <p>{{ $item['text'] }}</p>
                                     </div>
                                 </div>
@@ -106,56 +153,7 @@
             </section>
         @endif
 
-        {{-- Pemantauan trucks --}}
-        @if ($ctaGrid)
-            <section id="cta-gm-teletech">
-                <div class="container">
-                    <div class="flex flex-col items-center gap-6 my-18 md:flex-row md:my-18 lg:flex-row lg:my-30">
-                        <img src="{{ $ctaGrid['image_call_to_action'] }}" alt="{{ $ctaGrid['heading'] }}"
-                            class="md:w-[40%] lg:w-[40%]">
-
-                        {{-- Konten CTA --}}
-                        <div class="flex flex-col gap-4">
-                            <h2 class="lg:w-180">{{ $ctaGrid['heading'] }}</h2>
-
-                            @if (!empty($ctaGrid['description']))
-                                <div class="flow">{!! $ctaGrid['description'] !!}</div>
-                            @endif
-
-                            @foreach ($ctaGrid['call_to_action'] as $contact)
-                                @php
-                                    $contactUrl = $buildContactUrl($contact['kontak'] ?? '');
-                                    $isWhatsapp = str_starts_with($contactUrl, 'https://wa.me');
-                                    $contactIcon = $contact['icon'] ?? null ?: $iconCtaDefault;
-                                @endphp
-                                <a href="{{ $contactUrl }}"
-                                    @if ($isWhatsapp) target="_blank" rel="noopener" @endif
-                                    class="group bg-(--color-surface) hover:bg-(--color-secondary) flex justify-between items-center rounded-full p-3 pl-6 md:p-3 md:pl-6 lg:p-3 lg:pl-8 transition-colors">
-
-                                    {{-- Kontak --}}
-                                    <div class="lg:flex lg:w-[90%] lg:items-center lg:justify-between">
-                                        <p class="font-medium group-hover:text-black transition-colors">
-                                            {{ $contact['label'] }}
-                                        </p>
-                                        <span
-                                            class="title-display group-hover:text-black -mb-1 transition-colors">{{ $contact['kontak'] }}</span>
-                                    </div>
-
-                                    {{-- Icon kontak --}}
-                                    <div
-                                        class="bg-(--color-primary) group-hover:bg-black flex items-center justify-center rounded-full transition-colors w-12 h-12 md:w-12 md:h-12 lg:w-12 lg:h-12">
-                                        <img src="{{ $contactIcon }}" alt="{{ $contact['label'] }}" class="w-5 h-5">
-                                    </div>
-                                </a>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </section>
-        @endif
-
     </main>
 
     <x-layouts.footer.footer />
-
 </x-layouts.main>

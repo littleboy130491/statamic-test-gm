@@ -254,6 +254,11 @@ tabs:
                       fields:
                         -
                           import: blocks.vission_mission
+                    text_gallery:
+                      display: 'Text & Gallery'
+                      fields:
+                        -
+                          import: blocks.text_gallery
       -
         display: 'Simple content'
         instructions: 'Optional content.'
