@@ -1,135 +1,165 @@
 @php
-    $teletech_desc =
-        'GMM Teletech merupakan sistem manajemen untuk kendaraan yang dibangun dan dikembangkan oleh PT Gaya Makmur Mobil. Dengan GMM Teletech #SobatGaya dapat selalu mengetahui mengenai lokasi, kondisi kendaraan, perilaku berkendara secara realtime melalui perangkat smartphone ataupun computer yang terhubung dengan internet, bahkan saat kehilangan koneksi internet pun data akan tetap disimpan dan dikirim saat terkoneksi kembali. Dengan informasi-informasi tersebut #SobatGaya bisa melakukan banyak hal seperti perencanaan dan pengaturan kerja yang lebih baik, memaksimalkan operasional kendaraan, meminimalkan resiko downtime kendaraan yang akan berujung pada efisiensi bisnis dan keuntungan yang lebih besar.';
-    $teletech_image = asset('assets/img-gm-teletech.jpg');
-    $fiturBenefit_title = 'Fitur & Benefit';
-    $fiturBenefit_iconplaceholder = asset('assets/icon-placeholder,svg');
-    $fiturBenefit_items = [
-        [
-            'icon' => asset('assets/fitur-benefit-1.svg'),
-            'title' => 'Pemantauan Bahan Bakar',
-            'desc' =>
-                'Pemberitahuan instan mengenai efisiensi penggunaan BBM, pemakaian BBM yang tidak normal, indikasi penyimpangan BBM.',
-        ],
-        [
-            'icon' => asset('assets/fitur-benefit-2.svg'),
-            'title' => 'Utility Armada',
-            'desc' =>
-                'Data mengenai penggunaan kendaraan, kendaraan mana yang produktif dan kendaraan yang dia (idle), perbandingan antara kendaraan yang berhenti dan kendaraan yang beroperasi.',
-        ],
-        [
-            'icon' => asset('assets/fitur-benefit-3.svg'),
-            'title' => 'Data Real Time & Riwayat Perjalanan Kendaraan',
-            'desc' =>
-                'Terintegrasi dengan google maps sehingga secara otomatis sistem akan terus mengupdate posisi & lokasi kendaraan. Membandingkan perencanaan perjalanan dengan riwayat perjalanan aktual untuk rencana kerja yang lebih baik.',
-        ],
-        [
-            'icon' => asset('assets/fitur-benefit-4.svg'),
-            'title' => 'Perilaku Pengemudi',
-            'desc' =>
-                'Menganalisa perilaku pengemudi untuk keamanan, ketetapan dan efisiensi yang lebih baik. Data perilaku pengemudi seperti cara pengereman akselarasi, batas kecepatan, serta lama mesin idle.',
-        ],
-        [
-            'icon' => asset('assets/fitur-benefit-5.svg'),
-            'title' => 'Perawatan Kendaraan',
-            'desc' =>
-                'Secara otomatis akan mendapatkan notifikasi untuk perawatan kendaraan berdasarkan odometer dan jam operasional kendaraan.',
-        ],
-        [
-            'icon' => asset('assets/fitur-benefit-6.svg'),
-            'title' => 'Laporan & Evaluasi',
-            'desc' =>
-                'Laporan dan Evaluasi terkait dengan pengoperasian kendaraan untuk mengukur dan meningkatkan efisiensi dari operasional perusahaan.',
-        ],
+    $opening = collect($page->sections)->first(
+        fn($section) => (string) ($section['identifier'] ?? '') === 'opening-teletech',
+    );
+
+    $teletechImage = collect($page->sections)->first(
+        fn($section) => (string) ($section['identifier'] ?? '') === 'section-image-teletech',
+    );
+
+    $fiturBenefit = collect($page->sections)->first(
+        fn($section) => (string) ($section['identifier'] ?? '') === 'section-fitur-benefit',
+    );
+
+    $ctaGrid = collect($page->sections)->first(
+        fn($section) => (string) ($section['type'] ?? '') === 'call_to_action_grid',
+    );
+
+    $iconPlaceholderBenefit = collect($page->sections)->first(
+        fn($section) => (string) ($section['identifier'] ?? '') === 'icon-placeholder-benefit',
+    );
+
+    $iconPlaceholderCta = collect($page->sections)->first(
+        fn($section) => (string) ($section['identifier'] ?? '') === 'icon-placeholder-cta-grid',
+    );
+
+    $iconBenefitPlaceholder = $iconPlaceholderBenefit['section_images'] ?? null;
+    $iconCtaDefault = $iconPlaceholderCta['section_images'] ?? null;
+
+    // Mapping jumlah kolom feature grid (string class biar gak ke-purge Tailwind)
+    $columnClassMap = [
+        '1' => 'lg:grid-cols-1',
+        '2' => 'md:grid-cols-2 lg:grid-cols-2',
+        '3' => 'md:grid-cols-2 lg:grid-cols-3',
+        '4' => 'md:grid-cols-2 lg:grid-cols-4',
     ];
-    $imageCTA_fiturBenefit = asset('assets/cta-gmteletch.jpg');
-    $titleCTA_fiturBenefit = 'Pantau Kapan pun & Dimana pun FAW Trucks Kalian Berada!';
-    $contactCTA_fiturBenefit = [
-        [
-            'icon' => asset('assets/whatsapp-white.svg'),
-            'title' => 'Call & WA Center',
-            'name' => '62 000 0000 0000',
-            'phoneNumber' => '+62 000 0000 0000',
-            'whatsappURL' => '/kontak',
-        ],
-    ];
+    $featureColumns = $columnClassMap[(string) ($fiturBenefit['columns'] ?? '3')] ?? 'md:grid-cols-2 lg:grid-cols-3';
+
+    // Bikin URL dari label + kontak
+    $buildContactUrl = function ($label, $kontak) {
+        $label = strtolower((string) $label);
+        $kontak = trim((string) $kontak);
+
+        // Email
+        if (str_contains($kontak, '@')) {
+            return 'mailto:' . $kontak;
+        }
+
+        // WhatsApp: kalau label mengandung "wa" atau "whatsapp"
+        if (str_contains($label, 'whatsapp') || preg_match('/\bwa\b/', $label)) {
+            $number = preg_replace('/[^0-9]/', '', $kontak);
+            return 'https://wa.me/' . $number;
+        }
+
+        // Telepon: buang spasi tapi pertahankan +
+        $number = preg_replace('/[^0-9+]/', '', $kontak);
+        return 'tel:' . $number;
+    };
 @endphp
 
 <x-layouts.main>
     <x-layouts.header.header />
 
     <main>
-        <x-layouts.hero.heropage title="GM Teletech" :image="asset('assets/hero-gm-teletech.jpg')" />
+        <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
 
-        {{-- Image Map --}}
-        <section id="gm-teletech-map">
-            <div class="container">
-                <div class="flex flex-col items-center my-18 gap-18 lg:my-30 lg:gap-30">
-                    <p class="text-left md:text-center lg:text-center lg:w-285">{{ $teletech_desc }}</p>
-                    <img src="{{ $teletech_image }}" alt="REMAN Center" class="rounded-2xl w-full lg:h-150 object-cover">
+        {{-- Deskripsi teletech --}}
+        @if ($opening && $opening['show'])
+            <section id="gm-teletech-desc">
+                <div class="container">
+                    <div class="flex flex-col items-center my-18 lg:my-30">
+                        <div class="text-left md:text-center lg:text-center lg:w-285">{!! $opening['description'] !!}</div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
+
+        {{-- Image teletech --}}
+        @if ($teletechImage && $teletechImage['show'])
+            <section id="gm-teletech-map">
+                <div class="container">
+                    <div class="flex flex-col items-center my-18 lg:my-30">
+                        <img src="{{ $teletechImage['section_images'] }}" alt="{{ $page->title }}"
+                            class="rounded-2xl w-full lg:h-150 object-cover">
+                    </div>
+                </div>
+            </section>
+        @endif
 
         {{-- Fitur & Benefit --}}
-        <section id="fitur-benefit">
-            <div class="container">
-                <div class="flex flex-col gap-6 my-18 md:gap-10 md:my-18 lg:gap-10 lg:my-30">
+        @if ($fiturBenefit && $fiturBenefit['show'] && !empty($fiturBenefit['features']))
+            <section id="fitur-benefit">
+                <div class="container">
+                    <div class="flex flex-col gap-6 my-18 md:gap-10 md:my-18 lg:gap-10 lg:my-30">
 
-                    <h2 id="title-fitur-benefit">{{ $fiturBenefit_title }}</h2>
+                        <h2 id="title-fitur-benefit">{{ $fiturBenefit['heading'] }}</h2>
 
-                    {{-- Grid Fitur & Benefit --}}
-                    <div id="fitur-benefit-content" data-equal-height class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-                        @foreach ($fiturBenefit_items as $item)
-                            <div
-                                class="flex flex-col gap-14 p-6 bg-(--color-surface) rounded-3xl md:p-6 md:gap-14 lg:p-6 lg:gap-20">
-                                <img src="{{ !empty($item['icon']) ? $item['icon'] : $fiturBenefit_iconplaceholder }}"
-                                    alt="Icon" class="w-10 h-10">
-                                <div class="flow">
-                                    <h4 class="text-black">{{ $item['title'] }}</h4>
-                                    <p>{{ $item['desc'] }}</p>
+                        {{-- Grid Fitur & Benefit --}}
+                        <div id="fitur-benefit-content" data-equal-height class="grid gap-5 {{ $featureColumns }}">
+                            @foreach ($fiturBenefit['features'] as $item)
+                                <div
+                                    class="flex flex-col gap-14 p-6 bg-(--color-surface) rounded-3xl md:p-6 md:gap-14 lg:p-6 lg:gap-20">
+                                    <img src="{{ $item['icon'] ?: $iconBenefitPlaceholder }}" alt="Icon"
+                                        class="w-10 h-10">
+                                    <div class="flow">
+                                        <h4 class="text-black">{{ $item['title'] }}</h4>
+                                        <p>{{ $item['text'] }}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
 
         {{-- Pemantauan trucks --}}
-        <section id="cta-gm-teletech">
-            <div class="container">
-                <div class="flex flex-col items-center gap-6 my-18 md:flex-row md:my-18 lg:flex-row lg:my-30">
-                    <img src="{{ $imageCTA_fiturBenefit }}" alt=" {{ $titleCTA_fiturBenefit }} "
-                        class="md:w-[40%] lg:w-[40%]">
+        @if ($ctaGrid)
+            <section id="cta-gm-teletech">
+                <div class="container">
+                    <div class="flex flex-col items-center gap-6 my-18 md:flex-row md:my-18 lg:flex-row lg:my-30">
+                        <img src="{{ $ctaGrid['image_call_to_action'] }}" alt="{{ $ctaGrid['heading'] }}"
+                            class="md:w-[40%] lg:w-[40%]">
 
-                    {{-- Konten CTA --}}
-                    <div class="flex flex-col gap-4">
-                        <h2 class="lg:w-180">{{ $titleCTA_fiturBenefit }}</h2>
-                        @foreach ($contactCTA_fiturBenefit as $contact)
-                            <a @if (!empty($contact['whatsappURL'])) href="{{ $contact['whatsappURL'] }}" target="_blank" @endif
-                                class="group bg-(--color-surface) hover:bg-(--color-secondary) flex justify-between items-center rounded-full p-3 pl-6 md:p-3 md:pl-6 lg:p-3 lg:pl-8 transition-colors">
+                        {{-- Konten CTA --}}
+                        <div class="flex flex-col gap-4">
+                            <h2 class="lg:w-180">{{ $ctaGrid['heading'] }}</h2>
 
-                                {{-- WhatsApp number --}}
-                                <div class="lg:flex lg:w-[90%] lg:items-center lg:justify-between">
-                                    <p class="font-medium group-hover:text-black transition-colors">
-                                        {{ $contact['title'] }}
-                                    </p>
-                                    <span
-                                        class="title-display group-hover:text-black -mb-1 transition-colors">{{ $contact['name'] }}
-                                </div>
+                            @if (!empty($ctaGrid['description']))
+                                <div class="flow">{!! $ctaGrid['description'] !!}</div>
+                            @endif
 
-                                {{-- Icon WhatsApp --}}
-                                <div
-                                    class="bg-(--color-primary) group-hover:bg-black flex items-center justify-center rounded-full transition-colors w-12 h-12 md:w-12 md:h-12 lg:w-12 lg:h-12">
-                                    <img src="{{ $contact['icon'] }}" alt="{{ $contact['title'] }}" class="w-5 h-5">
-                                </div>
-                            </a>
-                        @endforeach
+                            @foreach ($ctaGrid['call_to_action'] as $contact)
+                                @php
+                                    $contactUrl = $buildContactUrl($contact['label'] ?? '', $contact['kontak'] ?? '');
+                                    $isWhatsapp = str_starts_with($contactUrl, 'https://wa.me');
+                                    $contactIcon = $contact['icon'] ?? null ?: $iconCtaDefault;
+                                @endphp
+                                <a href="{{ $contactUrl }}"
+                                    @if ($isWhatsapp) target="_blank" rel="noopener" @endif
+                                    class="group bg-(--color-surface) hover:bg-(--color-secondary) flex justify-between items-center rounded-full p-3 pl-6 md:p-3 md:pl-6 lg:p-3 lg:pl-8 transition-colors">
+
+                                    {{-- WhatsApp number --}}
+                                    <div class="lg:flex lg:w-[90%] lg:items-center lg:justify-between">
+                                        <p class="font-medium group-hover:text-black transition-colors">
+                                            {{ $contact['label'] }}
+                                        </p>
+                                        <span
+                                            class="title-display group-hover:text-black -mb-1 transition-colors">{{ $contact['kontak'] }}</span>
+                                    </div>
+
+                                    {{-- Icon kontak --}}
+                                    <div
+                                        class="bg-(--color-primary) group-hover:bg-black flex items-center justify-center rounded-full transition-colors w-12 h-12 md:w-12 md:h-12 lg:w-12 lg:h-12">
+                                        <img src="{{ $contactIcon }}" alt="{{ $contact['label'] }}" class="w-5 h-5">
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
 
     </main>
 

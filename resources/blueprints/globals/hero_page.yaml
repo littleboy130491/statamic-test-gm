@@ -1,0 +1,14 @@
+title: 'Hero Page'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: placeholder_hero_page
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Placeholder Hero Page'

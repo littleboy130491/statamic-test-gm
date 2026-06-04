@@ -244,6 +244,11 @@ tabs:
                       fields:
                         -
                           import: blocks.certificate_gallery
+                    call_to_action_grid:
+                      display: 'Call to Action Grid'
+                      fields:
+                        -
+                          import: blocks.cta_grid
       -
         display: 'Simple content'
         instructions: 'Optional content.'

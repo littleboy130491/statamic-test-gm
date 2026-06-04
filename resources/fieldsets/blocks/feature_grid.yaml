@@ -1,5 +1,10 @@
-title: Feature grid
+title: 'Feature grid'
 fields:
+  -
+    handle: identifier
+    field:
+      type: text
+      display: Identifier
   -
     handle: heading
     field:
@@ -17,23 +22,32 @@ fields:
       display: Columns
       default: '3'
       options:
-        '2': '2 columns'
-        '3': '3 columns'
-        '4': '4 columns'
+        -
+          key: 1
+          value: '1 columns'
+        -
+          key: 2
+          value: '2 columns'
+        -
+          key: 3
+          value: '3 columns'
+        -
+          key: 4
+          value: '4 columns'
   -
     handle: features
     field:
       type: grid
       display: Features
       mode: stacked
-      add_row: Add feature
+      add_row: 'Add feature'
       validate: required
       fields:
         -
           handle: icon
           field:
             type: assets
-            display: Icon / image
+            display: 'Icon / image'
             container: assets
             max_files: 1
         -
@@ -52,3 +66,8 @@ fields:
           field:
             type: link
             display: Link
+  -
+    handle: show
+    field:
+      type: toggle
+      display: Show
