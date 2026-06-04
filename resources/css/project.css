@@ -309,10 +309,36 @@ footer.grey-footer {
 /* Misson Number - TENTANG KAMI */
 .mission-list {
    font-family: var(--font-body) !important;
-   font-weight: 500;
-   
+   font-weight: 500;  
 }
 
+.mission-list-content ol {
+    list-style: none;
+    counter-reset: mission;
+    display: flex;
+    flex-direction: column;
+}
+
+.mission-list-content ol li {
+    counter-increment: mission;
+    display: flex;
+    gap: 5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid white;
+}
+
+.mission-list-content ol li:last-child {
+    border-bottom: none;
+}
+
+.mission-list-content ol li::before {
+    content: counter(mission, decimal-leading-zero) ".";
+    flex-shrink: 0;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: var(--font-body) !important;
+}
 
 
 /* Text Paragraf */
