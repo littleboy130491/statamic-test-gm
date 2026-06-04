@@ -337,7 +337,7 @@ footer.grey-footer {
     color: black;
     font-size: 1.5rem;
     font-weight: 500;
-    font-family: var(--font-body) !important;
+    font-family: var(--font-display);
 }
 
 
