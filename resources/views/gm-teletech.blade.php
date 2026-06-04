@@ -35,9 +35,8 @@
     ];
     $featureColumns = $columnClassMap[(string) ($fiturBenefit['columns'] ?? '3')] ?? 'md:grid-cols-2 lg:grid-cols-3';
 
-    // URL kontak
-    $buildContactUrl = function ($label, $kontak) {
-        $label = strtolower((string) $label);
+    // URL kontak (WhatsApp & Email)
+    $buildContactUrl = function ($kontak) {
         $kontak = trim((string) $kontak);
 
         // Email
@@ -46,14 +45,8 @@
         }
 
         // WhatsApp
-        if (str_contains($label, 'whatsapp') || preg_match('/\bwa\b/', $label)) {
-            $number = preg_replace('/[^0-9]/', '', $kontak);
-            return 'https://wa.me/' . $number;
-        }
-
-        // Nomor Telepon
-        $number = preg_replace('/[^0-9+]/', '', $kontak);
-        return 'tel:' . $number;
+        $number = preg_replace('/[^0-9]/', '', $kontak);
+        return 'https://wa.me/' . $number;
     };
 @endphp
 
@@ -131,7 +124,7 @@
 
                             @foreach ($ctaGrid['call_to_action'] as $contact)
                                 @php
-                                    $contactUrl = $buildContactUrl($contact['label'] ?? '', $contact['kontak'] ?? '');
+                                    $contactUrl = $buildContactUrl($contact['kontak'] ?? '');
                                     $isWhatsapp = str_starts_with($contactUrl, 'https://wa.me');
                                     $contactIcon = $contact['icon'] ?? null ?: $iconCtaDefault;
                                 @endphp
@@ -139,7 +132,7 @@
                                     @if ($isWhatsapp) target="_blank" rel="noopener" @endif
                                     class="group bg-(--color-surface) hover:bg-(--color-secondary) flex justify-between items-center rounded-full p-3 pl-6 md:p-3 md:pl-6 lg:p-3 lg:pl-8 transition-colors">
 
-                                    {{-- WhatsApp number --}}
+                                    {{-- Kontak --}}
                                     <div class="lg:flex lg:w-[90%] lg:items-center lg:justify-between">
                                         <p class="font-medium group-hover:text-black transition-colors">
                                             {{ $contact['label'] }}
