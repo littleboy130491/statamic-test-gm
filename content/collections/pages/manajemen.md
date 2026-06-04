@@ -4,7 +4,7 @@ blueprint: page
 title: Manajemen
 template: manajemen
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780480333
+updated_at: 1780561347
 featured_image: hero-manajemen.jpg
 parent: home
 sections:
@@ -83,20 +83,27 @@ sections:
     members:
       -
         id: IIF3OB9FRPZw_yCo5Gyc6
-        image: inawati-1.png
+        image: tim-placeholder.png
         name: 'Lie Fen Sin'
         role: 'Komisaris Utama'
       -
         id: FeoiV3JxqB59oYxFUCc46
-        image: inawati-1.png
+        image: tim-placeholder.png
         name: 'Cahyadi Lie'
         role: Komisaris
       -
         id: 6JnvDeVfnoeQQ11h99Qia
-        image: inawati-1.png
+        image: tim-placeholder.png
         name: Hendry
         role: Komisaris
     background: default
     type: team_grid
+    enabled: true
+  -
+    id: LBnB4pIe04CWlMAEgDJz5
+    identifier: placeholder-tim
+    section_images: tim-placeholder.png
+    show: true
+    type: section_images
     enabled: true
 ---

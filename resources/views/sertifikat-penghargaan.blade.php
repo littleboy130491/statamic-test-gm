@@ -1,12 +1,14 @@
 @php
-    $placeholder = asset('assets/placeholder.jpg');
-
     $sertifikatOpening = collect($page->sections)->first(
         fn($section) => (string) ($section['identifier'] ?? '') === 'sertifikatopening',
     );
 
     $certificateGallery = collect($page->sections)->first(
         fn($section) => (string) ($section['identifier'] ?? '') === 'certificate',
+    );
+
+    $placeholderSection = collect($page->sections)->first(
+        fn($section) => (string) ($section['identifier'] ?? '') === 'placeholder-sertifikat',
     );
 @endphp
 
@@ -40,8 +42,9 @@
                         class="grid grid-cols-2 gap-x-2 gap-y-8 md:grid-cols-4 lg:grid-cols-4 lg:gap-x-5 lg:gap-y-20">
                         @foreach ($certificateGallery['grid_field'] as $certificate)
                             <div class="certificate-item">
-                                <a data-fslightbox="certificates" href="{{ $placeholder }}">
-                                    <img src="{{ $placeholder }}" alt="{{ $certificate['certificate_name'] ?? '' }}"
+                                <a data-fslightbox="certificates" href="{{ $placeholderSection['section_images'] }}">
+                                    <img src="{{ $placeholderSection['section_images'] }}"
+                                        alt="{{ $certificate['certificate_name'] ?? '' }}"
                                         class="w-full h-auto object-cover rounded-md mb-4">
                                 </a>
                                 <span

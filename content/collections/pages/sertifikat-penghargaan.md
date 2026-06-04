@@ -3,7 +3,7 @@ id: 051c55b2-219f-41d3-a00e-18959f30f177
 blueprint: page
 title: 'Sertifikat & Penghargaan'
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780472846
+updated_at: 1780483777
 parent: home
 template: sertifikat-penghargaan
 featured_image: hero-sertifikat.jpg
@@ -50,11 +50,11 @@ sections:
         certificate_name: 'ISO XXXX:2015'
         certificate_year: '2025'
       -
-        id: Iqb5OjvALEp2UVlGKIVca
+        id: SBwbF6EYV-zm-LUI9MxOS
         certificate_name: 'ISO XXXX:2015'
         certificate_year: '2025'
       -
-        id: SBwbF6EYV-zm-LUI9MxOS
+        id: Iqb5OjvALEp2UVlGKIVca
         certificate_name: 'ISO XXXX:2015'
         certificate_year: '2025'
       -
@@ -77,4 +77,11 @@ sections:
     enabled: true
     identifier: certificate
     show: true
+  -
+    id: kAIRWdBFz1G2sUZRrXEpo
+    identifier: placeholder-sertifikat
+    show: true
+    type: section_images
+    enabled: true
+    section_images: placeholder.jpg
 ---
