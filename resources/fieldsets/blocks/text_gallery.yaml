@@ -6,11 +6,23 @@ fields:
       type: text
       display: Identifier
   -
-    handle: gallery
+    handle: gallery_grid
     field:
-      container: assets
-      type: assets
-      display: Gallery
+      type: grid
+      display: 'Gallery Grid'
+      fields:
+        -
+          handle: label
+          field:
+            type: text
+            display: Label
+        -
+          handle: assets_field
+          field:
+            container: assets
+            max_files: 1
+            type: assets
+            display: 'Assets Field'
   -
     handle: heading
     field:

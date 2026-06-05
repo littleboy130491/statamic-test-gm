@@ -101,12 +101,15 @@
                         class="flex flex-col-reverse md:flex-col-reverse lg:flex-row gap-8 md:gap-10 lg:gap-30 my-18 md:my-18 lg:my-30">
 
                         {{-- Faw image --}}
-                        @if (!empty($fawText['gallery']))
+                        @if (!empty($fawText['gallery_grid']))
                             <div id="certificate"
                                 class="w-full md:w-[60%] lg:w-[23%] flex flex-row md:flex-row lg:flex-col gap-4">
-                                @foreach ($fawText['gallery'] as $cert)
+                                @foreach ($fawText['gallery_grid'] as $cert)
                                     <div class="bg-white rounded-2xl p-4 md:p-4 lg:p-6 flex flex-col gap-2">
-                                        <img src="{{ $cert }}" alt="{{ $fawText['heading'] ?? '' }}">
+                                        @if (!empty($cert['label']))
+                                            <p>{{ $cert['label'] }}</p>
+                                        @endif
+                                        <img src="{{ $cert['assets_field'] }}" alt="{{ $cert['label'] ?? '' }}">
                                     </div>
                                 @endforeach
                             </div>

@@ -340,6 +340,28 @@ footer.grey-footer {
     font-family: var(--font-display);
 }
 
+/* Misson Number - TENTANG KAMI (Tablet) */
+@media (max-width: 768px) {
+   .mission-list-content ol li {
+      gap: 2rem;
+   }
+
+   .mission-list-content ol li::before {
+      font-size: 1.2rem;
+   }
+}
+
+/* Misson Number - TENTANG KAMI (Mobile) */
+@media (max-width: 640px) {
+   .mission-list-content ol li {
+      gap: 1rem;
+   }
+
+   .mission-list-content ol li::before {
+      font-size: 1.2rem;
+   }
+}
+
 
 /* Text Paragraf */
 .text-par {
@@ -347,3 +369,4 @@ footer.grey-footer {
    flex-direction: column;
    gap: 1.2rem;
 }
+
