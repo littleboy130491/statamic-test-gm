@@ -1,99 +1,107 @@
-<x-layouts.app>
-    @php
-        $employmentLabels = [
-            'full_time' => 'Full Time',
-            'part_time' => 'Part Time',
-            'contract' => 'Contract',
-            'internship' => 'Internship',
-            'temporary' => 'Temporary',
-        ];
-    @endphp
+<x-layouts.main bodyClass="background-grey career-single career-{{ $page->slug }} {{ $collection }}">
+    <x-layouts.header.single-header />
 
-    <article class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:py-16">
-        <header class="mb-8">
-            @if ($page->tags || $page->locations)
-                <p class="text-sm font-semibold uppercase tracking-widest text-emerald-600">
-                    @if ($page->locations)
-                        @foreach ($page->locations as $location)
-                            {{ $location->title }}@unless($loop->last), @endunless
-                        @endforeach
-                    @endif
-                    @if ($page->tags && $page->locations)
-                        &middot;
-                    @endif
-                    @if ($page->tags)
-                        @foreach ($page->tags as $tag)
-                            {{ $tag->title }}@unless($loop->last), @endunless
-                        @endforeach
-                    @endif
-                </p>
+    <section id="career-single">
+        <div class="container my-18 md:my-18 lg:my-30">
+            <div class="flex flex-col gap-8 lg:flex-row lg:gap-10">
+
+                {{-- Konten utama --}}
+                <article class="w-full lg:w-[65%]">
+                    <header class="mb-8">
+                        @if ($page->tags || $page->locations)
+                            <p class="text-sm font-semibold uppercase tracking-widest text-(--color-primary)">
+                                @if ($page->locations)
+                                    @foreach ($page->locations as $location)
+                                        {{ $location->title }}@unless ($loop->last)
+                                        ,
+                                    @endunless
+                                @endforeach
+                            @endif
+                            @if ($page->tags && $page->locations)
+                                &middot;
+                            @endif
+                            @if ($page->tags)
+                                @foreach ($page->tags as $tag)
+                                    {{ $tag->title }}@unless ($loop->last)
+                                    ,
+                                @endunless
+                            @endforeach
+                        @endif
+                    </p>
+                @endif
+
+                <h1 class="mt-3">{{ $page->title }}</h1>
+
+                @if ($page->employment_status)
+                    <p class="mt-2 text-zinc-600">
+                        {{ $page->employment_status->label() }}
+                    </p>
+                @endif
+            </header>
+
+            @if ($page->description)
+                <section class="mb-8">
+                    <div class="flow">{!! $page->description !!}</div>
+                </section>
             @endif
 
-            <h1 class="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-100">
-                {{ $page->title }}
-            </h1>
-
-            @if ($page->employment_status)
-                <p class="mt-2 text-zinc-600 dark:text-zinc-400">
-                    {{ $employmentLabels[$page->employment_status] ?? Str::title(str_replace('_', ' ', $page->employment_status)) }}
-                </p>
+            @if ($page->qualifications)
+                <section class="mb-8">
+                    <h2>Persyaratan</h2>
+                    <div class="flow mt-4">{!! $page->qualifications !!}</div>
+                </section>
             @endif
-        </header>
 
-        @if ($page->description)
-            <section class="mb-8">
-                <div class="prose prose-zinc dark:prose-invert max-w-none">
-                    {!! $page->description !!}
-                </div>
-            </section>
-        @endif
+            @if ($page->jobdesc)
+                <section class="mb-8">
+                    <h2>Jobdesc</h2>
+                    <div class="flow mt-4">{!! $page->jobdesc !!}</div>
+                </section>
+            @endif
 
-        @if ($page->qualifications)
-            <section class="mb-8">
-                <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Qualifications</h2>
-                <div class="prose prose-zinc dark:prose-invert mt-4 max-w-none">
-                    {!! $page->qualifications !!}
-                </div>
-            </section>
-        @endif
+            {{-- Meta footer (employment, lokasi, tag) --}}
+            <div class="mt-8 flex flex-wrap gap-x-3 gap-y-2 text-sm text-zinc-600">
+                @if ($page->employment_status)
+                    <span>{{ $page->employment_status->label() }}</span>
+                @endif
+                @if ($page->locations)
+                    @foreach ($page->locations as $location)
+                        <span>{{ $location->title }}</span>
+                    @endforeach
+                @endif
+                @if ($page->tags)
+                    @foreach ($page->tags as $tag)
+                        <span>{{ $tag->title }}</span>
+                    @endforeach
+                @endif
+            </div>
 
-        @if ($page->jobdesc)
-            <section class="mb-8">
-                <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Job Description</h2>
-                <div class="prose prose-zinc dark:prose-invert mt-4 max-w-none">
-                    {!! $page->jobdesc !!}
-                </div>
-            </section>
-        @endif
-
-        <div class="mt-10">
-            @include('partials.forms.career-apply', ['position' => $page->title])
-        </div>
-
-        @if ($page->apply_email || $page->apply_link)
-            <div class="mt-6 flex flex-wrap gap-3">
+            {{-- Tombol kirim lamaran --}}
+            <div class="mt-10 flex flex-wrap gap-3">
                 @if ($page->apply_email)
-                    <a
-                        href="mailto:{{ $page->apply_email }}"
-                        class="inline-block rounded-full border border-emerald-500 px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-emerald-600 transition hover:bg-emerald-50 dark:text-emerald-400 dark:hover:bg-emerald-950/40"
-                    >
-                        Apply via Email
+                    <a href="mailto:{{ $page->apply_email }}"
+                        class="bg-(--color-primary) hover:bg-black inline-block rounded-full px-8 py-3 text-sm font-semibold uppercase tracking-wide text-white transition-colors">
+                        Kirim Lamaran
                     </a>
                 @endif
 
                 @if ($page->apply_link)
-                    <a
-                        href="{{ $page->apply_link }}"
-                        class="inline-block rounded-full border border-zinc-300 px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-zinc-600 transition hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-900"
-                    >
-                        External application
+                    <a href="{{ $page->apply_link }}" target="_blank" rel="noopener"
+                        class="border border-zinc-300 hover:bg-zinc-50 inline-block rounded-full px-8 py-3 text-sm font-semibold uppercase tracking-wide text-zinc-600 transition-colors">
+                        Lamar Eksternal
                     </a>
                 @endif
             </div>
-        @endif
+        </article>
 
-        <p class="mt-12 text-center">
-            <a href="/careers" class="text-sm text-emerald-600 hover:underline">&larr; Back to careers</a>
-        </p>
-    </article>
-</x-layouts.app>
+        {{-- Sidebar --}}
+        <aside class="w-full lg:w-[35%]">
+            <div class="flex flex-col gap-6">
+
+            </div>
+        </aside>
+
+    </div>
+</div>
+</section>
+</x-layouts.main>

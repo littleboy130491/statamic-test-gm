@@ -13,6 +13,13 @@ tabs:
               required: true
               display: Title
               localizable: true
+              validate:
+                - required
+          -
+            handle: excerpt
+            field:
+              type: textarea
+              display: Excerpt
           -
             handle: description
             field:
@@ -43,7 +50,7 @@ tabs:
             handle: jobdesc
             field:
               type: bard
-              display: Job Description
+              display: 'Job Description'
               localizable: true
               buttons:
                 - bold
@@ -56,20 +63,20 @@ tabs:
             handle: employment_status
             field:
               type: select
-              display: Employment Status
+              display: 'Employment Status'
               localizable: true
               options:
-                full_time: Full Time
-                part_time: Part Time
+                full_time: 'Full Time'
+                part_time: 'Part Time'
                 contract: Contract
                 internship: Internship
                 temporary: Temporary
-              placeholder: Select employment type
+              placeholder: 'Select employment type'
           -
             handle: apply_email
             field:
               type: text
-              display: Apply Email
+              display: 'Apply Email'
               localizable: true
               input_type: email
               validate: nullable|email
@@ -77,11 +84,11 @@ tabs:
             handle: apply_link
             field:
               type: text
-              display: Apply Link
+              display: 'Apply Link'
               localizable: true
               input_type: url
               validate: nullable|url
-              instructions: Optional application URL only.
+              instructions: 'Optional application URL only.'
   sidebar:
     display: Sidebar
     sections:
@@ -93,3 +100,45 @@ tabs:
               type: slug
               localizable: true
               validate: 'max:200'
+          -
+            handle: tags
+            field:
+              type: terms
+              taxonomies:
+                - tags
+              display: Tags
+              mode: select
+          -
+            handle: locations
+            field:
+              type: terms
+              taxonomies:
+                - locations
+              display: Locations
+              mode: select
+  'SEO Meta':
+    display: 'SEO Meta'
+    sections:
+      -
+        fields:
+          -
+            handle: seo
+            field:
+              type: seo_pro
+              listable: false
+              display: SEO
+  'SEO Previews':
+    display: 'SEO Previews'
+    sections:
+      -
+        fields:
+          -
+            handle: seo_previews
+            field:
+              type: seo_pro_previews
+              listable: false
+              display: 'SEO Previews'
+              localizable: false
+              hide_display: true
+              unless:
+                seo.enabled: 'equals false'

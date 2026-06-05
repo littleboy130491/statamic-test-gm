@@ -21,7 +21,7 @@
     $vision = $visionMission['content'][0] ?? null;
     $mission = $visionMission['content'][1] ?? null;
 
-    // Mapping jumlah kolom feature grid (string penuh biar gak ke-purge Tailwind)
+    // Jumlah kolom feature grid
     $columnClassMap = [
         '1' => 'lg:grid-cols-1',
         '2' => 'md:grid-cols-2 lg:grid-cols-2',
