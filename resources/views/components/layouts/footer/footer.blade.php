@@ -4,7 +4,7 @@
     $footer_desc =
         'Tim konsultan kami siap mendengarkan kebutuhan Anda dan memberikan rekomendasi solusi yang paling sesuai.';
     $footer_button = ['btnText' => 'Konsultasi Sekarang', 'btnLink' => '/kontak'];
-    $footer_background = asset('/assets/footer-background.jpg');
+    $footer_background = asset('/assets/cta-footer-img.jpg');
     $image_footer = asset('/assets/footer-image-2.png');
     $socials = [
         [
@@ -27,7 +27,7 @@
         {{-- Background Footer --}}
         <div id="footer-background" class="overlay-footer">
             <img src="{{ $footer_background }}" alt="Footer Background"
-                class="image-grayscale w-full h-200 md:h-110 lg:h-150 object-cover mix-blend-multiply/90 pointer-events-none">
+                class="w-full h-200 md:h-110 lg:h-150 object-cover pointer-events-none">
         </div>
 
         {{-- Content Footer --}}

@@ -4,31 +4,6 @@
         'phone' => '1500-329',
         'email' => 'gmmcare@gmmobil.com',
     ];
-    $menus = [
-        ['menu_text' => 'Beranda', 'menu_link' => '/'],
-        [
-            'menu_text' => 'Tentang',
-            'children' => [
-                ['menu_text' => 'Tentang Kami', 'menu_link' => '/tentang-kami'],
-                ['menu_text' => 'Manajemen', 'menu_link' => '/manajemen'],
-                ['menu_text' => 'Sertifikat & Penghargaan', 'menu_link' => '/sertifikat-penghargaan'],
-            ],
-        ],
-        ['menu_text' => 'Dealer', 'menu_link' => '/dealer'],
-        ['menu_text' => 'Produk', 'menu_link' => '/produk'],
-        [
-            'menu_text' => 'Layanan',
-            'children' => [
-                ['menu_text' => 'Industri', 'menu_link' => '/industri'],
-                ['menu_text' => 'Layanan Purna Jual', 'menu_link' => '/layanan-purna-jual'],
-                ['menu_text' => 'Reman Center', 'menu_link' => '/reman-center'],
-                ['menu_text' => 'GM Teletech', 'menu_link' => '/gm-teletech'],
-            ],
-        ],
-        ['menu_text' => 'Berita dan Artikel', 'menu_link' => '/artikel'],
-        ['menu_text' => 'Karier', 'menu_link' => '/karier'],
-        ['menu_text' => 'Kontak', 'menu_link' => '/kontak'],
-    ];
 @endphp
 
 <nav>
@@ -55,15 +30,13 @@
             <!-- Flyout Menu -->
             <div id="flyout-menu" class="border-t border-(--color-line) py-6">
                 <ul class="flex flex-col gap-4 font-(family-name:--font-body)">
-                    @foreach ($menus as $menu)
+                    <s:nav handle="header_primary">
                         <li>
-                            @if (!empty($menu['children']))
+                            @if (count($children) > 0)
                                 <details class="group">
                                     <summary
                                         class="flex cursor-pointer list-none items-center justify-between gap-4 text-black transition-colors hover:text-(--color-primary)">
-                                        <span class="block flex-1">
-                                            {{ $menu['menu_text'] }}
-                                        </span>
+                                        <span class="block flex-1">{{ $title }}</span>
                                         <span
                                             class="flex h-3 w-3 items-center justify-center text-black transition-transform duration-200 group-open:rotate-180">
                                             <svg viewBox="0 0 12 8" fill="none" aria-hidden="true" class="h-2.5 w-3">
@@ -74,34 +47,31 @@
                                     </summary>
 
                                     <ul class="mt-1 ml-2 flex flex-col gap-2">
-                                        @foreach ($menu['children'] as $child)
+                                        @foreach ($children as $child)
                                             <li>
-                                                <a href="{{ $child['menu_link'] }}"
+                                                <a href="{{ $child['url'] }}"
                                                     class="block text-sm text-(--color-text) hover:text-(--color-primary) active:text-(--color-primary)">
-                                                    {{ $child['menu_text'] }}
+                                                    {{ $child['title'] }}
                                                 </a>
                                             </li>
                                         @endforeach
                                     </ul>
                                 </details>
                             @else
-                                <a href="{{ $menu['menu_link'] }}"
+                                <a href="{{ $url }}"
                                     class="block text-black hover:text-(--color-primary) active:text-(--color-primary)">
-                                    {{ $menu['menu_text'] }}
+                                    {{ $title }}
                                 </a>
                             @endif
                         </li>
-                    @endforeach
+                    </s:nav>
                 </ul>
             </div>
 
             <div class="border-t border-(--color-line) py-6 font-(family-name:--font-body) text-black">
 
                 <!-- Language Mobile -->
-                <div class="mb-6 flex justify-between items-center">
-                    <p class="text-black uppercase text-[1rem]">Pilih Bahasa</p>
-                    <div class="gtranslate_wrapper"></div>
-                </div>
+                <div class="gtranslate_wrapper mb-6"></div>
 
                 <!-- Contact Info -->
                 <div id="contact-flyout" class="border-t border-(--color-line) pt-8 flex flex-col gap-6">

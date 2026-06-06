@@ -15,6 +15,11 @@ preferences:
       view: list
     careers:
       view: list
+      columns:
+        - title
+        - slug
+        - status
+        - locations
   color_mode: light
   assets:
     assets:

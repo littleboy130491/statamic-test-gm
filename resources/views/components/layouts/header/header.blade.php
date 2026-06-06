@@ -1,30 +1,5 @@
 @php
     $logo_url = asset('/assets/gm-logo.png');
-    $menus = [
-        ['menu_text' => 'Beranda', 'menu_link' => '/'],
-        [
-            'menu_text' => 'Tentang',
-            'children' => [
-                ['menu_text' => 'Tentang Kami', 'menu_link' => '/tentang-kami'],
-                ['menu_text' => 'Manajemen', 'menu_link' => '/manajemen'],
-                ['menu_text' => 'Sertifikat & Penghargaan', 'menu_link' => '/sertifikat-penghargaan'],
-            ],
-        ],
-        ['menu_text' => 'Dealer', 'menu_link' => '/dealer'],
-        ['menu_text' => 'Produk', 'menu_link' => '/produk'],
-        [
-            'menu_text' => 'Layanan',
-            'children' => [
-                ['menu_text' => 'Industri', 'menu_link' => '/industri'],
-                ['menu_text' => 'Layanan Purna Jual', 'menu_link' => '/layanan-purna-jual'],
-                ['menu_text' => 'Reman Center', 'menu_link' => '/reman-center'],
-                ['menu_text' => 'GM Teletech', 'menu_link' => '/gm-teletech'],
-            ],
-        ],
-        ['menu_text' => 'Berita dan Artikel', 'menu_link' => '/artikel'],
-        ['menu_text' => 'Karier', 'menu_link' => '/karier'],
-        ['menu_text' => 'Kontak', 'menu_link' => '/kontak'],
-    ];
 @endphp
 
 <header id="header" class="header-fixed">
@@ -37,12 +12,12 @@
             <!-- Desktop Navigation -->
             <nav id="desktop-menu" class="hidden lg:flex flex-1 justify-center">
                 <ul class="flex items-center justify-center gap-16 font-(family-name:--font-body)">
-                    @foreach ($menus as $menu)
+                    <s:nav handle="header_primary">
                         <li class="group relative shrink-0">
-                            @if (!empty($menu['children']))
+                            @if (count($children) > 0)
                                 <div
                                     class="flex cursor-pointer items-center gap-2 font-medium text-white hover:text-(--color-secondary)">
-                                    <span>{{ $menu['menu_text'] }}</span>
+                                    <span>{{ $title }}</span>
                                     <span
                                         class="flex h-2.5 w-2.5 items-center justify-center transition-transform duration-200 group-hover:rotate-180">
                                         <svg viewBox="0 0 12 8" fill="none" aria-hidden="true" class="h-2.5 w-3">
@@ -51,28 +26,26 @@
                                         </svg>
                                     </span>
                                 </div>
-                            @else
-                                <a href="{{ $menu['menu_link'] }}"
-                                    class="flex items-center gap-2 font-medium text-white hover:text-(--color-secondary) active:text-(--color-secondary)">
-                                    <span>{{ $menu['menu_text'] }}</span>
-                                </a>
-                            @endif
 
-                            @if (!empty($menu['children']))
                                 <ul
                                     class="invisible absolute left-1/2 z-30 mt-8 min-w-56 -translate-x-1/2 rounded-2xl bg-black/50 backdrop-blur p-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                                    @foreach ($menu['children'] as $child)
+                                    @foreach ($children as $child)
                                         <li>
-                                            <a href="{{ $child['menu_link'] }}"
+                                            <a href="{{ $child['url'] }}"
                                                 class="block px-1 py-1.5 text-white transition-colors hover:text-(--color-secondary) text-sm">
-                                                {{ $child['menu_text'] }}
+                                                {{ $child['title'] }}
                                             </a>
                                         </li>
                                     @endforeach
                                 </ul>
+                            @else
+                                <a href="{{ $url }}"
+                                    class="flex items-center gap-2 font-medium text-white hover:text-(--color-secondary) active:text-(--color-secondary)">
+                                    <span>{{ $title }}</span>
+                                </a>
                             @endif
                         </li>
-                    @endforeach
+                    </s:nav>
                 </ul>
             </nav>
 
