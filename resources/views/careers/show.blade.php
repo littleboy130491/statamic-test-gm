@@ -116,5 +116,7 @@
         </div>
     </div>
 </section>
+
+<x-layouts.footer.secondary-footer />
 </main>
 </x-layouts.main>

@@ -106,13 +106,6 @@ body.background-grey {
 
 
 
-/* Footer Background */
-footer.grey-footer {
-   background: var(--color-surface);
-}
-
-
-
 /* Judul informasi - KONTAK PAGE */
 .title-display {
    font-family: var(--font-display);
@@ -263,7 +256,7 @@ footer.grey-footer {
 
 
 
-/* Background Footer */
+/* Background Grayscale */
 .image-grayscale {
    filter: grayscale(100%);
 }

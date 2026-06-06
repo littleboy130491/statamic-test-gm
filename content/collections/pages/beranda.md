@@ -1,7 +1,7 @@
 ---
 id: home
 blueprint: page
-title: Home
+title: Beranda
 template: home
 sections:
   -
@@ -48,6 +48,7 @@ sections:
         text: 'Dealer locator with contact details.'
         link: /dealers
     enabled: true
+    show: false
   -
     id: Fu36Plzd
     type: rich_text
@@ -98,5 +99,5 @@ sections:
         style: secondary
     enabled: true
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780129244
+updated_at: 1780719650
 ---
