@@ -39,7 +39,7 @@
         @if ($opening && $opening['show'])
             <section id="manajemen">
                 <div class="container">
-                    <div class="my-18 md:my18 lg:my-30 flow flex flex-col items-center">
+                    <div class="my-18 md:my18 lg:my-30 flow flex flex-col gap-4 items-center">
                         <h2 class="text-left md:text-center lg:text-center w-full md:w-120 lg:w-155">
                             {{ $opening['heading'] }}
                         </h2>
@@ -55,7 +55,7 @@
             <div class="container">
 
                 {{-- Kata sambutan --}}
-                @if ($direkturUtama)
+                @if ($direkturUtama && $direkturUtama['show'])
                     <div id="highlight-management"
                         class="flex flex-col-reverse gap-6 bg-white rounded-3xl p-5 md:p-6 lg:p-10 md:flex-row lg:flex-row my-18 md:my-18 lg:my-30">
                         <div class="flex flex-col justify-between gap-8 md:gap-2 lg:gap-2 w-full md:w-[60%] lg:w-[60%]">
@@ -84,7 +84,7 @@
                 @if ($teamGrids->isNotEmpty())
                     <div id="card-manajemen" class="flex flex-col gap-18 md:gap-18 lg:gap-30 my-18 md:my-18 lg:my-30">
                         @foreach ($teamGrids as $grid)
-                            @if (!empty($grid['members']))
+                            @if (($grid['show'] ?? true) && !empty($grid['members']))
                                 <div class="flex flex-col gap-6 md:gap-6 lg:gap-10">
                                     <h2>{{ $grid['heading'] }}</h2>
                                     <div

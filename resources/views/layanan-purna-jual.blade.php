@@ -10,7 +10,7 @@
         ->implode(' ');
 
     $purnaJual = collect($page->sections)->first(
-        fn($section) => (string) ($section['type'] ?? '') === 'alternating_rows',
+        fn($section) => (string) ($section['identifier'] ?? '') === 'section-purna-jual',
     );
 @endphp
 
@@ -20,7 +20,7 @@
     <main>
         <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
 
-        @if ($purnaJual)
+        @if ($purnaJual && ($purnaJual['show'] ?? true))
             {{-- Deskripsi halaman purna jual --}}
             @if (!empty($purnaJual['heading']) || !empty($purnaJual['intro']))
                 <section id="purna-jual">

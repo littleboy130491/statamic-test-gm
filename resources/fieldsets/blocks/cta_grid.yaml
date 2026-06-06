@@ -1,6 +1,8 @@
 title: 'CTA Grid'
 fields:
   -
+    import: common.identifier
+  -
     handle: image_call_to_action
     field:
       container: assets
@@ -47,3 +49,5 @@ fields:
             type: text
             display: Kontak
             instructions: 'Nomor WhatsApp, Email.'
+  -
+    import: common.section_settings

@@ -116,7 +116,7 @@
         @endif
 
         {{-- Pemantauan trucks --}}
-        @if ($ctaGrid)
+        @if ($ctaGrid && ($ctaGrid['show'] ?? true))
             <section id="cta-gm-teletech">
                 <div class="container">
                     <div class="flex flex-col items-center gap-6 my-18 md:flex-row md:my-18 lg:flex-row lg:my-30">

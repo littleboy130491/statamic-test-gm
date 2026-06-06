@@ -22,7 +22,7 @@
     $fawValue = collect($page->sections)->first(fn($section) => (string) ($section['type'] ?? '') === 'feature_grid');
 
     $iconPlaceholderSection = collect($page->sections)->first(
-        fn($section) => (string) ($section['identifier'] ?? '') === 'placeholdericon-faw-trucks',
+        fn($section) => (string) ($section['identifier'] ?? '') === 'placeholder-icon-faw-trucks',
     );
 
     $iconPlaceholder = $iconPlaceholderSection['section_images'] ?? null;

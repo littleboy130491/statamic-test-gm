@@ -1,0 +1,55 @@
+title: 'Slider Hero Banner'
+fields:
+  -
+    handle: slider_banner
+    field:
+      mode: stacked
+      type: grid
+      display: 'Slider Banner'
+      fields:
+        -
+          handle: heading
+          field:
+            type: text
+            display: Heading
+            validate:
+              - required
+        -
+          handle: short_description
+          field:
+            type: textarea
+            display: 'Short Description'
+        -
+          handle: label_button
+          field:
+            type: text
+            display: 'Label Button'
+            validate:
+              - required
+        -
+          handle: url_button
+          field:
+            collections:
+              - pages
+              - careers
+              - posts
+              - products
+            type: link
+            display: 'URL Button'
+            validate:
+              - required
+        -
+          handle: backgound_image
+          field:
+            container: assets
+            max_files: 1
+            type: assets
+            display: 'Backgound Image'
+        -
+          handle: backgound_video
+          field:
+            type: video
+            display: 'Backgound Video'
+            instructions: 'Paste URL YouTube.'
+  -
+    import: common.section_settings

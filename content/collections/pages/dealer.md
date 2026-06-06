@@ -5,7 +5,7 @@ title: Dealer
 template: dealer
 parent: home
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780386410
+updated_at: 1780726299
 featured_image: hero-dealer.jpg
 sections:
   -
@@ -20,6 +20,6 @@ sections:
             text: 'Didukung jaringan dealer, workshop, dan layanan purna jual yang tersebar di berbagai untuk memastikan armada Anda tetap produktif dan bekerja optimal.'
     type: heading_description
     enabled: true
-    identifier: formtext
+    identifier: opening-dealer
     show: true
 ---

@@ -1,0 +1,10 @@
+title: Identifier
+fields:
+  -
+    handle: identifier
+    field:
+      type: text
+      display: Identifier
+      instructions: 'element markers (lowercase and no spaces).'
+      validate:
+        - required

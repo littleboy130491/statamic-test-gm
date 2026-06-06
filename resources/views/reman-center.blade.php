@@ -8,10 +8,12 @@
         ->filter()
         ->implode(' ');
 
-    $remanSection = collect($page->sections)->first(fn($section) => (string) $section['identifier'] === 'reman');
+    $remanSection = collect($page->sections)->first(
+        fn($section) => (string) $section['identifier'] === 'opening-reman',
+    );
 
     $imgRemanSection = collect($page->sections)->first(
-        fn($section) => (string) $section['identifier'] === 'imgsection',
+        fn($section) => (string) $section['identifier'] === 'section-image-reman',
     );
 @endphp
 

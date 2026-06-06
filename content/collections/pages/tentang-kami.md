@@ -4,7 +4,7 @@ blueprint: page
 title: 'Tentang Kami'
 template: tentang-kami
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780647478
+updated_at: 1780724514
 featured_image: hero-tentang.jpg
 sections:
   -
@@ -144,7 +144,7 @@ sections:
     enabled: true
   -
     id: p94GLGiGLYU83mbjj0xlO
-    identifier: placeholdericon-faw-trucks
+    identifier: placeholder-icon-faw-trucks
     section_images: icon-placeholder.svg
     show: true
     type: section_images

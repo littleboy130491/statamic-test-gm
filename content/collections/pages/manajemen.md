@@ -4,7 +4,7 @@ blueprint: page
 title: Manajemen
 template: manajemen
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780561347
+updated_at: 1780727361
 featured_image: hero-manajemen.jpg
 parent: home
 sections:
@@ -60,6 +60,8 @@ sections:
     background: default
     type: team_primary
     enabled: true
+    identifier: section-highight-management
+    show: true
   -
     id: R8my1k3qVbE4yybYz0-22
     heading: 'Board Of Directors'
@@ -77,6 +79,8 @@ sections:
     background: default
     type: team_grid
     enabled: true
+    identifier: section-management-1
+    show: true
   -
     id: '-397wH92kdJgCQ7cA75cV'
     heading: 'Board Of Commissioners'
@@ -99,6 +103,8 @@ sections:
     background: default
     type: team_grid
     enabled: true
+    identifier: section-management-2
+    show: true
   -
     id: LBnB4pIe04CWlMAEgDJz5
     identifier: placeholder-tim

@@ -1,22 +1,24 @@
-title: Alternating rows
+title: 'Alternating rows'
 fields:
+  -
+    import: common.identifier
   -
     handle: heading
     field:
       type: text
-      display: Section heading
+      display: 'Section heading'
   -
     handle: intro
     field:
       type: textarea
-      display: Intro text
+      display: 'Intro text'
   -
     handle: rows
     field:
       type: grid
       display: Rows
       mode: stacked
-      add_row: Add row
+      add_row: 'Add row'
       validate: required
       fields:
         -
@@ -46,3 +48,5 @@ fields:
             container: assets
             max_files: 1
             validate: required
+  -
+    import: common.section_settings

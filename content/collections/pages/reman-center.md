@@ -4,13 +4,13 @@ blueprint: page
 title: 'Reman Center'
 template: reman-center
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780470407
+updated_at: 1780726718
 parent: home
 featured_image: hero-reman-center.jpg
 sections:
   -
     id: 5rT226vEbdYMmujUyBJOD
-    identifier: reman
+    identifier: opening-reman
     description:
       -
         type: paragraph
@@ -27,5 +27,5 @@ sections:
     type: section_images
     enabled: true
     show: true
-    identifier: imgsection
+    identifier: section-image-reman
 ---

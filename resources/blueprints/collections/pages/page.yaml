@@ -37,6 +37,11 @@ tabs:
                 main:
                   display: Main
                   sets:
+                    slider_hero_banner:
+                      display: 'Slider Hero Banner'
+                      fields:
+                        -
+                          import: blocks.slider_hero_banner
                     hero:
                       display: Hero
                       instructions: 'Large headline area with optional image and buttons.'
@@ -141,6 +146,14 @@ tabs:
                           import: blocks.gallery
                         -
                           import: common.section_settings
+                    service_cards:
+                      display: 'Service cards'
+                      instructions: 'Layanan Kami-style cards with image, title, and link.'
+                      fields:
+                        -
+                          import: blocks.service_cards
+                        -
+                          import: common.section_settings
                     section_intro:
                       display: 'Section intro'
                       instructions: 'Centered heading and intro copy (Management intro, service intro, etc.).'
@@ -163,14 +176,6 @@ tabs:
                       fields:
                         -
                           import: blocks.product_showcase
-                        -
-                          import: common.section_settings
-                    service_cards:
-                      display: 'Service cards'
-                      instructions: 'Layanan Kami-style cards with image, title, and link.'
-                      fields:
-                        -
-                          import: blocks.service_cards
                         -
                           import: common.section_settings
                     entries_highlight:

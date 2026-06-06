@@ -8,7 +8,9 @@
         ->filter()
         ->implode(' ');
 
-    $dealerSection = collect($page->sections)->first(fn($section) => (string) $section['identifier'] === 'dealer');
+    $dealerSection = collect($page->sections)->first(
+        fn($section) => (string) $section['identifier'] === 'opening-dealer',
+    );
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
@@ -21,11 +23,11 @@
         @if ($dealerSection && $dealerSection['show'])
             <section id="dealer-page">
                 <div class="container">
-                    <div class="my-18 md:my-18 lg:my-30 flow flex flex-col items-center">
+                    <div class="my-18 md:my-18 lg:my-30 flow flex flex-col gap-4 items-center">
                         <h2 class="text-left md:text-center lg:text-center">{{ $dealerSection['heading'] }}</h2>
-                        <p class="w-full lg:w-160 text-left md:text-center lg:text-center">
+                        <div class="w-full lg:w-160 text-left md:text-center lg:text-center">
                             {!! $dealerSection['description'] !!}
-                        </p>
+                        </div>
                     </div>
                 </div>
             </section>

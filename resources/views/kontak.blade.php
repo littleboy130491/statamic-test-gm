@@ -45,8 +45,7 @@
     $mapEmbed = $mapEmbed =
         '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.706041215713!2d106.72720077588374!3d-6.170101793817197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f785e478eed7%3A0x22011b641a6b1e4!2sGaya%20Makmur%20Mobil%20Pt.%2C%20Rw.%20Buaya%2C%20Kecamatan%20Cengkareng%2C%20Kota%20Jakarta%20Barat%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2011740!5e0!3m2!1sen!2sid!4v1779440004920!5m2!1sen!2sid" width="100%" height="450" style="border:0;width:100%;height:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
 
-    //   New
-    $formText = collect($page->sections)->first(fn($section) => (string) $section['identifier'] === 'formtext');
+    $formText = collect($page->sections)->first(fn($section) => (string) $section['identifier'] === 'text-form');
 
 @endphp
 
@@ -67,8 +66,8 @@
                         <div id="header-form"
                             class="px-4 py-6 bg-(--color-surface) rounded-2xl flow lg:p-6 lg:rounded-3xl">
                             @if ($formText && $formText['show'])
-                                <h2 class="lg:w-180">{{ $formText['heading'] }}</h2>
-                                <p>{!! $formText['description'] !!}</p>
+                                <h2 class="lg:w-180 mb-4">{{ $formText['heading'] }}</h2>
+                                <div class="lg:w-150">{!! $formText['description'] !!}</div>
                             @endif
                             <div id="form"></div>
                         </div>

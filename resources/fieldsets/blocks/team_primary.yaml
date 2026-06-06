@@ -1,5 +1,7 @@
-title: Team profile (primary)
+title: 'Team profile (primary)'
 fields:
+  -
+    import: common.identifier
   -
     handle: image
     field:
@@ -18,7 +20,7 @@ fields:
     handle: role
     field:
       type: text
-      display: Role / title
+      display: 'Role / title'
       validate: required
   -
     handle: bio
@@ -31,3 +33,5 @@ fields:
         - unorderedlist
         - orderedlist
         - removeformat
+  -
+    import: common.section_settings

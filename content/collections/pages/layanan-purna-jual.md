@@ -4,13 +4,12 @@ blueprint: page
 title: 'Layanan Purna Jual'
 template: layanan-purna-jual
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780479014
+updated_at: 1780727868
 featured_image: hero-purna-jual.jpg
 parent: home
 sections:
   -
     id: R2le-cb_4WHzfeXAWME7U
-    intro: 'Setiap penjualan dari GM Mobil selalu didukung oleh layanan purna jual yang maksimal sebagai bentuk komitmen GM Mobil untuk memberikan pelayanan yang terbaik dan berkualitas. Kami selalu menyediakan berbagai macam suku cadang dan didukung oleh mekanik yang berpengalaman untuk memenuhi kebutuhan pelanggan setia kami.'
     rows:
       -
         id: 5MhzTXy0HDgqq-CEjzORo
@@ -57,4 +56,7 @@ sections:
     background: default
     type: alternating_rows
     enabled: true
+    identifier: section-purna-jual
+    show: true
+    intro: 'Setiap penjualan dari GM Mobil selalu didukung oleh layanan purna jual yang maksimal sebagai bentuk komitmen GM Mobil untuk memberikan pelayanan yang terbaik dan berkualitas. Kami selalu menyediakan berbagai macam suku cadang dan didukung oleh mekanik yang berpengalaman untuk memenuhi kebutuhan pelanggan setia kami.'
 ---
