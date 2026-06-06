@@ -1,43 +1,48 @@
-fields:
-  -
-    handle: name
-    field:
-      display: Name
-      type: text
-      validate: required|max:255
-  -
-    handle: phone
-    field:
-      display: Phone
-      type: text
-      input_type: tel
-      validate: required|max:50
-  -
-    handle: email
-    field:
-      display: Email
-      type: text
-      input_type: email
-      validate: required|email|max:255
-  -
-    handle: source
-    field:
-      display: How did you hear about us?
-      type: select
-      placeholder: Select a source
-      options:
-        website: Website
-        search_engine: Search engine
-        social_media: Social media
-        dealer: Dealer / partner
-        referral: Referral
-        email: Email
-        phone: Phone
-        other: Other
-      validate: required
-  -
-    handle: message
-    field:
-      display: Message
-      type: textarea
-      validate: required|max:5000
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: name
+            field:
+              display: Name
+              type: text
+              validate: 'required|max:255'
+          -
+            handle: phone
+            field:
+              display: Phone
+              type: text
+              input_type: tel
+              validate: 'required|max:50'
+          -
+            handle: email
+            field:
+              display: Email
+              type: text
+              input_type: email
+              validate: 'required|email|max:255'
+          -
+            handle: source
+            field:
+              display: 'How did you hear about us?'
+              type: select
+              placeholder: 'Select a source'
+              options:
+                website: Website
+                search_engine: 'Search engine'
+                social_media: 'Social media'
+                dealer: 'Dealer / partner'
+                referral: Referral
+                email: Email
+                phone: Phone
+                other: Other
+              validate: required
+          -
+            handle: message
+            field:
+              display: Message
+              type: textarea
+              validate: 'required|max:5000'

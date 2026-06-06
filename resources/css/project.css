@@ -358,7 +358,7 @@ body.background-grey {
 
 /* Languange Header Transparant */
 .glink {
-   background: Transparant;
+   background: transparent;
    font-weight: 500 !important;
    border-radius: 100px;
    width: 40px;
@@ -375,7 +375,7 @@ body.background-grey {
 }
 
 .glink.gt-current-lang {
-   background: var(--color-secondary);
+   background: white;
    color: black;
 }
 
@@ -388,23 +388,25 @@ body.background-grey {
 
 /* Languange Header Single */
 #single-header .glink {
-   color: black;
-   background: var(--color-surface);
+    color: black;
+    background: transparent;
 }
 
+#single-header .glink:hover,
 #single-header .glink.gt-current-lang {
-   color: black;
-   background: var(--color-surface);
+    background: var(--color-surface);
+    color: black;
 }
 
 
 /* Languange Header Flyout */
 #mobile-menu .glink {
-   color: black;
-   background: var(--color-surface);
+    color: black;
+    background: transparent;
 }
 
+#mobile-menu .glink:hover,
 #mobile-menu .glink.gt-current-lang {
-   color: black;
-   background: var(--color-secondary);
+    background: var(--color-secondary);
+    color: black;
 }
