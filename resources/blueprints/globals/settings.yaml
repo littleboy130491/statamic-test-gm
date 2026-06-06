@@ -9,18 +9,27 @@ tabs:
             handle: site_title
             field:
               type: text
-              display: Site title
+              display: 'Site title'
               localizable: true
           -
             handle: site_logo
             field:
               type: assets
-              display: Site logo
+              display: 'Site logo'
               container: assets
               max_files: 1
               localizable: true
+          -
+            handle: favicon
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: Favicon
+              validate:
+                - required
   social:
-    display: Social media
+    display: 'Social media'
     sections:
       -
         fields:
@@ -28,7 +37,7 @@ tabs:
             handle: social_media
             field:
               type: group
-              display: Social media
+              display: 'Social media'
               localizable: true
               fields:
                 -
@@ -64,12 +73,12 @@ tabs:
             handle: phone_numbers
             field:
               type: replicator
-              display: Phone numbers
+              display: 'Phone numbers'
               localizable: true
               collapse: true
               sets:
                 phone:
-                  display: Phone number
+                  display: 'Phone number'
                   fields:
                     -
                       import: common.contact_phone
@@ -90,9 +99,9 @@ tabs:
             handle: call_center
             field:
               type: text
-              display: Call center
+              display: 'Call center'
               localizable: true
-              instructions: Primary call & WhatsApp center number or label.
+              instructions: 'Primary call & WhatsApp center number or label.'
           -
             handle: address
             field:
@@ -103,7 +112,7 @@ tabs:
             handle: google_map_link
             field:
               type: text
-              display: Google Maps link
+              display: 'Google Maps link'
               input_type: url
               localizable: true
               validate: nullable|url
