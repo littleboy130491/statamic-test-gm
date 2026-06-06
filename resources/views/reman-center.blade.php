@@ -1,11 +1,21 @@
 @php
+    $bodyClass = collect([
+        $is_entry ?? false ? 'entry' : null,
+        isset($collection) ? 'entry-' . $collection : null,
+        isset($collection) ? $collection : null,
+        isset($slug) ? 'slug-' . $slug : null,
+    ])
+        ->filter()
+        ->implode(' ');
+
     $remanSection = collect($page->sections)->first(fn($section) => (string) $section['identifier'] === 'reman');
+
     $imgRemanSection = collect($page->sections)->first(
         fn($section) => (string) $section['identifier'] === 'imgsection',
     );
 @endphp
 
-<x-layouts.main>
+<x-layouts.main :body-class="$bodyClass">
     <x-layouts.header.header />
 
     <main>

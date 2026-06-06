@@ -1,4 +1,14 @@
 @php
+    $bodyClass = collect([
+        'background-grey',
+        $is_entry ?? false ? 'entry' : null,
+        isset($collection) ? 'entry-' . $collection : null,
+        isset($collection) ? $collection : null,
+        isset($slug) ? 'slug-' . $slug : null,
+    ])
+        ->filter()
+        ->implode(' ');
+
     $bgDireksi = asset('assets/manajemen-back.jpg');
 
     $opening = collect($page->sections)->first(
@@ -18,7 +28,7 @@
     $placeholderTim = $placeholderSection['section_images'] ?? null;
 @endphp
 
-<x-layouts.main bodyClass="background-grey">
+<x-layouts.main :body-class="$bodyClass">
     <x-layouts.header.header />
 
     {{-- Manajemen halaman --}}

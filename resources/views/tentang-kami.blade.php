@@ -1,4 +1,14 @@
 @php
+    $bodyClass = collect([
+        'background-grey',
+        $is_entry ?? false ? 'entry' : null,
+        isset($collection) ? 'entry-' . $collection : null,
+        isset($collection) ? $collection : null,
+        isset($slug) ? 'slug-' . $slug : null,
+    ])
+        ->filter()
+        ->implode(' ');
+
     $opening = collect($page->sections)->first(
         fn($section) => (string) ($section['identifier'] ?? '') === 'opening-about',
     );
@@ -17,7 +27,7 @@
 
     $iconPlaceholder = $iconPlaceholderSection['section_images'] ?? null;
 
-    // Visi & Misi diambil dari repeater "content"
+    // Visi & Misi
     $vision = $visionMission['content'][0] ?? null;
     $mission = $visionMission['content'][1] ?? null;
 
@@ -28,10 +38,11 @@
         '3' => 'md:grid-cols-2 lg:grid-cols-3',
         '4' => 'md:grid-cols-2 lg:grid-cols-4',
     ];
+
     $fawColumns = $columnClassMap[(string) ($fawValue['columns'] ?? '3')] ?? 'md:grid-cols-2 lg:grid-cols-3';
 @endphp
 
-<x-layouts.main bodyClass="background-grey">
+<x-layouts.main :body-class="$bodyClass">
     <x-layouts.header.header />
 
     <main>

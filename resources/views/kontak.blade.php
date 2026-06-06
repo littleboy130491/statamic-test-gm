@@ -1,4 +1,13 @@
 @php
+    $bodyClass = collect([
+        $is_entry ?? false ? 'entry' : null,
+        isset($collection) ? 'entry-' . $collection : null,
+        isset($collection) ? $collection : null,
+        isset($slug) ? 'slug-' . $slug : null,
+    ])
+        ->filter()
+        ->implode(' ');
+
     $contact = [
         [
             'title_phone' => 'Nomor Telp',
@@ -41,7 +50,7 @@
 
 @endphp
 
-<x-layouts.main>
+<x-layouts.main :body-class="$bodyClass">
     <x-layouts.header.header />
 
     <main>

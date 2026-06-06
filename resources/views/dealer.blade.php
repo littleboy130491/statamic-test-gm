@@ -1,8 +1,17 @@
 @php
+    $bodyClass = collect([
+        $is_entry ?? false ? 'entry' : null,
+        isset($collection) ? 'entry-' . $collection : null,
+        isset($collection) ? $collection : null,
+        isset($slug) ? 'slug-' . $slug : null,
+    ])
+        ->filter()
+        ->implode(' ');
+
     $dealerSection = collect($page->sections)->first(fn($section) => (string) $section['identifier'] === 'dealer');
 @endphp
 
-<x-layouts.main>
+<x-layouts.main :body-class="$bodyClass">
     <x-layouts.header.header />
 
     <main>
