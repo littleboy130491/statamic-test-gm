@@ -1,7 +1,5 @@
 @php
     $logo_url = asset('/assets/gm-logo.png');
-    $langs = ['ID', 'EN'];
-    $activeLang = request('lang', 'id');
     $contact = [
         'phone' => '1500-329',
         'email' => 'gmmcare@gmmobil.com',
@@ -41,7 +39,7 @@
             class="absolute inset-0 bg-black/45 opacity-0 transition-opacity duration-300 ease-out"></button>
 
         <div id="mobile-menu-panel"
-            class="-translate-x-full flex h-full w-full max-w-[90%] md:max-w-[40%] flex-col bg-white px-4 py-5 transition-transform duration-300 ease-out">
+            class="-translate-x-full flex h-full w-full max-w-[90%] md:max-w-[40%] flex-col bg-white px-4 py-6 transition-transform duration-300 ease-out">
 
             <!-- Flyout Header -->
             <div id="logo-flyout" class="flex items-start justify-between pb-8">
@@ -55,7 +53,7 @@
             </div>
 
             <!-- Flyout Menu -->
-            <div id="flyout-menu" class="border-t border-(--color-line) py-8">
+            <div id="flyout-menu" class="border-t border-(--color-line) py-6">
                 <ul class="flex flex-col gap-4 font-(family-name:--font-body)">
                     @foreach ($menus as $menu)
                         <li>
@@ -97,19 +95,12 @@
                 </ul>
             </div>
 
-            <div class="mt-auto border-t border-(--color-line) py-6 font-(family-name:--font-body) text-black">
+            <div class="border-t border-(--color-line) py-6 font-(family-name:--font-body) text-black">
 
                 <!-- Language Mobile -->
-                <div id="lang-flyout" class="flex items-center justify-between pb-6">
-                    <span class="uppercase">Pilih Bahasa</span>
-                    <div class="flex items-center gap-2 font-(family-name:--font-body)">
-                        @foreach ($langs as $lang)
-                            <a href="?lang={{ strtolower($lang) }}"
-                                class="text-black grid h-10 w-10 place-items-center rounded-full border border-(--color-line) text-center leading-none transition-colors hover:bg-(--color-secondary) hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-(--color-secondary) text-(--color-text-button-secondary)' : '' }}">
-                                <span style="line-height:1;display:block;">{{ $lang }}</span>
-                            </a>
-                        @endforeach
-                    </div>
+                <div class="mb-6 flex justify-between items-center">
+                    <p class="text-black uppercase text-[1rem]">Pilih Bahasa</p>
+                    <div class="gtranslate_wrapper"></div>
                 </div>
 
                 <!-- Contact Info -->

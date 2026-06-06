@@ -1,7 +1,5 @@
 @php
     $logo_url = asset('/assets/gm-logo.png');
-    $langs = ['ID', 'EN'];
-    $activeLang = request('lang', 'id');
     $menus = [
         ['menu_text' => 'Beranda', 'menu_link' => '/'],
         [
@@ -90,13 +88,16 @@
             </nav>
 
             <!-- Language Desktop -->
-            <div class="hidden lg:flex items-center gap-0.5 text-sm font-(family-name:--font-body)">
-                @foreach ($langs as $lang)
-                    <a href="?lang={{ strtolower($lang) }}"
-                        class="grid h-9 w-9 place-items-center rounded-full text-center leading-none transition-colors hover:bg-(--color-surface) hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-(--color-surface) text-(--color-text-button-secondary)' : 'text-black' }}">
-                        <span style="line-height:1;display:block;">{{ $lang }}</span>
-                    </a>
-                @endforeach
+            <div class="hidden lg:flex items-center shrink-0">
+                <div class="gtranslate_wrapper"></div>
+                <script>
+                    window.gtranslateSettings = {
+                        "default_language": "id",
+                        "languages": ["id", "en"],
+                        "wrapper_selector": ".gtranslate_wrapper",
+                    }
+                </script>
+                <script src="https://cdn.gtranslate.net/widgets/latest/lc.js" defer></script>
             </div>
 
             <!-- Hamburger Button -->
