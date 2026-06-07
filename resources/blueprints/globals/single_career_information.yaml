@@ -1,0 +1,66 @@
+title: 'Single Career Information'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: 'Information Label'
+        instructions: 'change the label on the single career page.'
+        fields:
+          -
+            handle: requirements_label
+            field:
+              type: text
+              display: 'Requirements Label'
+              validate:
+                - required
+          -
+            handle: label_jobdesc
+            field:
+              type: text
+              display: 'Label Jobdesc'
+              validate:
+                - required
+          -
+            handle: label_submit_button
+            field:
+              type: text
+              display: 'Label Submit Button'
+              validate:
+                - required
+          -
+            handle: icon_employment_status
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Icon Employment Status'
+              validate:
+                - required
+          -
+            handle: icon_location
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Icon Location'
+              validate:
+                - required
+      -
+        display: 'Call to Action'
+        fields:
+          -
+            import: common.identifier
+          -
+            handle: background_images
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Background Images'
+              validate:
+                - required
+          -
+            import: blocks.cta_grid
+          -
+            import: common.section_settings

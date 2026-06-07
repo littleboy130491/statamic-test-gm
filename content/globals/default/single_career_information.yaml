@@ -1,11 +1,16 @@
-identifier: cat-career-single
+requirements_label: Persyaratan
+label_jobdesc: Jobdesc
+label_submit_button: 'Kirim Lamaran'
+icon_employment_status: employment-icon.svg
+icon_location: location-icon.svg
+identifier: cta-career-single
 background_images: cta-background-career-single-(1).jpg
 image_call_to_action: cta-img-career.png
 heading: 'Butuh Informasi Lebih Lanjut?'
 short_description: 'Temukan jawaban atas pertanyaan umum seputar proses seleksi kami atau sampaikan pertanyaan Anda langsung kepada tim HRD kami melalui kontak di bawah ini.'
 call_to_action:
   -
-    id: V7naptpyr0zso8oLSPDDP
+    id: F6kORC3_YkyiM7jWoydpG
     label: 'Call & WA Center'
     kontak: '62 000 0000 0000'
 show: true
