@@ -1,0 +1,22 @@
+title: 'CTA Career Single'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            import: common.identifier
+          -
+            handle: background_images
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Background Images'
+              validate:
+                - required
+          -
+            import: blocks.cta_grid
+          -
+            import: common.section_settings

@@ -9,18 +9,20 @@ fields:
       max_files: 1
       type: assets
       display: 'Image Call to Action'
+      validate:
+        - required
   -
     handle: heading
     field:
       type: text
       display: Heading
+      validate:
+        - required
   -
-    handle: description
+    handle: short_description
     field:
-      container: assets
-      remove_empty_nodes: false
-      type: bard
-      display: Description
+      type: textarea
+      display: 'Short Description'
   -
     handle: call_to_action
     field:
@@ -28,6 +30,8 @@ fields:
       add_row: 'Add Row'
       type: grid
       display: 'Call to Action'
+      validate:
+        - required
       fields:
         -
           handle: icon

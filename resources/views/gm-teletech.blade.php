@@ -127,8 +127,8 @@
                         <div class="flex flex-col gap-4">
                             <h2 class="lg:w-180">{{ $ctaGrid['heading'] }}</h2>
 
-                            @if (!empty($ctaGrid['description']))
-                                <div class="flow">{!! $ctaGrid['description'] !!}</div>
+                            @if (!empty($ctaGrid['short_description']))
+                                <div class="flow">{{ $ctaGrid['short_description'] }}</div>
                             @endif
 
                             @foreach ($ctaGrid['call_to_action'] as $contact)
