@@ -10,7 +10,7 @@
 
     $globals = \Statamic\Facades\GlobalSet::findByHandle('settings')?->inCurrentSite()?->data();
 
-    // Telepon (semua yang enabled)
+    // Telepon
     $phones = collect($globals['phone_numbers'] ?? [])
         ->filter(fn($item) => $item['enabled'] ?? false)
         ->pluck('number')
@@ -18,7 +18,7 @@
         ->values()
         ->all();
 
-    // Email (semua yang enabled)
+    // Email
     $emails = collect($globals['emails'] ?? [])
         ->filter(fn($item) => $item['enabled'] ?? false)
         ->pluck('email')
@@ -30,8 +30,8 @@
     $address = $globals['address'] ?? null;
     $addressUrl = $globals['google_map_link'] ?? null;
 
-    // Embed maps (iframe lengkap dari YAML)
-    $mapEmbed = $globals['embed_google_maps'] ?? null;
+    // Embed maps
+    $mapEmbed = $globals['google_maps_embed'] ?? null;
 
     // Sosmed
     $socials = collect($globals['social_media'] ?? [])
@@ -113,8 +113,7 @@
 
                                 {{-- Email --}}
                                 @if (count($emails) > 0)
-                                    <div id="email"
-                                        class="flex flex-col gap-2 border-t border-(--color-line) mt-6 pt-6">
+                                    <div id="email" class="flex flex-col gap-2 border-t border-(--color-line) pt-6">
                                         <span class="title-display text-(--color-primary)">Email</span>
                                         <div class="flex flex-col gap-1">
                                             @foreach ($emails as $email)
@@ -130,7 +129,7 @@
                                 {{-- Alamat kantor --}}
                                 @if ($address)
                                     <div id="address-office"
-                                        class="flex flex-col gap-2 border-t border-(--color-line) mt-6 pt-6">
+                                        class="flex flex-col gap-2 border-t border-(--color-line) pt-6">
                                         <span class="title-display text-(--color-primary)">Alamat</span>
                                         @if (!empty($addressUrl))
                                             <a href="{{ $addressUrl }}" target="_blank" rel="noopener noreferrer"
@@ -146,7 +145,7 @@
                                 {{-- Media sosial --}}
                                 @if (count($socials) > 0)
                                     <div id="social-media"
-                                        class="flex flex-col gap-4 border-t border-(--color-line) mt-6 pt-6">
+                                        class="flex flex-col gap-4 border-t border-(--color-line) pt-6">
                                         <span class="title-display text-(--color-primary)">Media Sosial</span>
                                         <div class="flex gap-6">
                                             @foreach ($socials as $social)
