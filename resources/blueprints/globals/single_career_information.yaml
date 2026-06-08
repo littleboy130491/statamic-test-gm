@@ -64,3 +64,5 @@ tabs:
             import: blocks.cta_grid
           -
             import: common.section_settings
+          -
+            import: blocks.section_images
