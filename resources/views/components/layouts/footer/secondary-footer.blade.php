@@ -20,14 +20,16 @@
         <div id="footer-menu-wrapper" class="overflow-x-auto border-b border-(--color-line)">
             <ul
                 class="flex min-w-max items-center gap-6 whitespace-nowrap py-8 md:justify-between lg:min-w-0 lg:justify-between lg:gap-4">
-                <s:nav handle="secondary_footer">
-                    <li class="shrink-0">
-                        <a href="{{ $url }}"
-                            class="text-(--color-text) hover:text-(--color-primary) font-(family-name:--font-body) font-normal">
-                            {{ $title }}
-                        </a>
-                    </li>
-                </s:nav>
+                @if (\Statamic\Facades\Nav::findByHandle('secondary_footer'))
+                    <s:nav handle="secondary_footer">
+                        <li class="shrink-0">
+                            <a href="{{ $url ?? '#' }}"
+                                class="text-(--color-text) hover:text-(--color-primary) font-(family-name:--font-body) font-normal">
+                                {{ $title }}
+                            </a>
+                        </li>
+                    </s:nav>
+                @endif
             </ul>
         </div>
 

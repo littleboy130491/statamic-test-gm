@@ -10,44 +10,46 @@
             </a>
 
             <!-- Desktop Navigation -->
-            <nav id="desktop-menu" class="hidden lg:flex flex-1 justify-center">
-                <ul class="flex items-center justify-center gap-16 font-(family-name:--font-body)">
-                    <s:nav handle="header_primary">
-                        <li class="group relative shrink-0">
-                            @if (count($children) > 0)
-                                <div
-                                    class="flex cursor-pointer items-center gap-2 font-medium text-white hover:text-(--color-secondary)">
-                                    <span>{{ $title }}</span>
-                                    <span
-                                        class="flex h-2.5 w-2.5 items-center justify-center transition-transform duration-200 group-hover:rotate-180">
-                                        <svg viewBox="0 0 12 8" fill="none" aria-hidden="true" class="h-2.5 w-3">
-                                            <path d="M1 1.25L6 6.25L11 1.25" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                </div>
+            @if (\Statamic\Facades\Nav::findByHandle('nav_header'))
+                <nav id="desktop-menu" class="hidden lg:flex flex-1 justify-center">
+                    <ul class="flex items-center justify-center gap-16 font-(family-name:--font-body)">
+                        <s:nav handle="nav_header">
+                            <li class="group relative shrink-0">
+                                @if (count($children) > 0)
+                                    <div
+                                        class="flex cursor-pointer items-center gap-2 font-medium text-white hover:text-(--color-secondary)">
+                                        <span>{{ $title }}</span>
+                                        <span
+                                            class="flex h-2.5 w-2.5 items-center justify-center transition-transform duration-200 group-hover:rotate-180">
+                                            <svg viewBox="0 0 12 8" fill="none" aria-hidden="true" class="h-2.5 w-3">
+                                                <path d="M1 1.25L6 6.25L11 1.25" stroke="currentColor" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </div>
 
-                                <ul
-                                    class="invisible absolute left-1/2 z-30 mt-8 min-w-56 -translate-x-1/2 rounded-2xl bg-black/50 backdrop-blur p-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                                    @foreach ($children as $child)
-                                        <li>
-                                            <a href="{{ $child['url'] }}"
-                                                class="block px-1 py-1.5 text-white transition-colors hover:text-(--color-secondary) text-sm">
-                                                {{ $child['title'] }}
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            @else
-                                <a href="{{ $url }}"
-                                    class="flex items-center gap-2 font-medium text-white hover:text-(--color-secondary) active:text-(--color-secondary)">
-                                    <span>{{ $title }}</span>
-                                </a>
-                            @endif
-                        </li>
-                    </s:nav>
-                </ul>
-            </nav>
+                                    <ul
+                                        class="invisible absolute left-1/2 z-30 mt-8 min-w-56 -translate-x-1/2 rounded-2xl bg-black/50 backdrop-blur p-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                                        @foreach ($children as $child)
+                                            <li>
+                                                <a href="{{ $child['url'] }}"
+                                                    class="block px-1 py-1.5 text-white transition-colors hover:text-(--color-secondary) text-sm">
+                                                    {{ $child['title'] }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @else
+                                    <a href="{{ $url ?? '#' }}"
+                                        class="flex items-center gap-2 font-medium text-white hover:text-(--color-secondary) active:text-(--color-secondary)">
+                                        <span>{{ $title }}</span>
+                                    </a>
+                                @endif
+                            </li>
+                        </s:nav>
+                    </ul>
+                </nav>
+            @endif
 
             <!-- Language Desktop -->
             <div class="hidden lg:flex items-center shrink-0">

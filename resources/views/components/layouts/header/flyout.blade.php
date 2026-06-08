@@ -28,9 +28,10 @@
             </div>
 
             <!-- Flyout Menu -->
+            @if (\Statamic\Facades\Nav::findByHandle('nav_header'))
             <div id="flyout-menu" class="border-t border-(--color-line) py-6">
                 <ul class="flex flex-col gap-4 font-(family-name:--font-body)">
-                    <s:nav handle="header_primary">
+                    <s:nav handle="nav_header">
                         <li>
                             @if (count($children) > 0)
                                 <details class="group">
@@ -58,7 +59,7 @@
                                     </ul>
                                 </details>
                             @else
-                                <a href="{{ $url }}"
+                                <a href="{{ $url ?? '#' }}"
                                     class="block text-black hover:text-(--color-primary) active:text-(--color-primary)">
                                     {{ $title }}
                                 </a>
@@ -67,6 +68,7 @@
                     </s:nav>
                 </ul>
             </div>
+            @endif
 
             <div class="border-t border-(--color-line) py-6 font-(family-name:--font-body) text-black">
 
