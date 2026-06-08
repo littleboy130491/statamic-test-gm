@@ -1,24 +1,33 @@
 @php
     $footer = \Statamic\Facades\GlobalSet::findByHandle('primary_footer')?->inCurrentSite();
 
-    // URL button
+    // URL Button
     $footerUrlRaw = $footer?->augmentedValue('url_button')->value();
     $footerUrl = is_object($footerUrlRaw) ? $footerUrlRaw->url() ?? (string) $footerUrlRaw : $footerUrlRaw;
     $footerUrl = $footerUrl ?: null;
 
-    $socials = [
-        [
-            'name' => 'Instagram',
-            'link' => 'https://instagram.com/gayamakmurmobil',
-            'icon' => asset('assets/instagram.svg'),
-        ],
-        ['name' => 'Facebook', 'link' => 'https://facebook.com/fawindonesia/', 'icon' => asset('assets/facebook.svg')],
-        [
-            'name' => 'LinkedIn',
-            'link' => 'https://linkedin.com/company/fawindonesia',
-            'icon' => asset('assets/linkedin.svg'),
-        ],
-    ];
+    $globals = \Statamic\Facades\GlobalSet::findByHandle('settings')?->inCurrentSite()?->data();
+
+    $company_name = $globals['site_title'] ?? 'PT Gaya Makmur Mobil';
+
+    $socials = collect($globals['social_media'] ?? [])
+        ->map(function ($item, $key) {
+            $url = $item['url'] ?? null;
+            if (!$url) {
+                return null;
+            }
+
+            $iconRaw = $item['image'] ?? null;
+
+            return [
+                'name' => ucfirst($key),
+                'link' => $url,
+                'icon' => $iconRaw ? asset('assets/' . $iconRaw) : null,
+            ];
+        })
+        ->filter()
+        ->values()
+        ->all();
 @endphp
 
 @if ($footer?->get('show'))
@@ -52,20 +61,22 @@
                                 {{-- Media Sosial --}}
                                 <div
                                     class="flex flex-col-reverse gap-6 items-start mt-4 lg:flex-row lg:items-center lg:mt-8">
-                                    <div
-                                        class="flex justify-between w-full border-t border-white/20 py-4 mt-2 md:border-white/0 md:py-0 md:mt-0 lg:border-white/0 lg:py-0 lg:mt-0 lg:w-min">
-                                        <p class="uppercase text-white border-white md:hidden lg:hidden">Media
-                                            Sosial</p>
-                                        <div class="flex gap-4">
-                                            @foreach ($socials as $social)
-                                                <a href="{{ $social['link'] }}" target="_blank"
-                                                    rel="noopener noreferrer" title="{{ $social['name'] }}">
-                                                    <span class="social-icon block w-5 h-5 social-icon-white"
-                                                        style="--icon-url: url('{{ $social['icon'] }}');"></span>
-                                                </a>
-                                            @endforeach
+                                    @if (count($socials) > 0)
+                                        <div
+                                            class="flex justify-between w-full border-t border-white/20 py-4 mt-2 md:border-white/0 md:py-0 md:mt-0 lg:border-white/0 lg:py-0 lg:mt-0 lg:w-min">
+                                            <p class="uppercase text-white border-white md:hidden lg:hidden">Media
+                                                Sosial</p>
+                                            <div class="flex gap-4">
+                                                @foreach ($socials as $social)
+                                                    <a href="{{ $social['link'] }}" target="_blank"
+                                                        rel="noopener noreferrer" title="{{ $social['name'] }}">
+                                                        <span class="social-icon block w-5 h-5 social-icon-white"
+                                                            style="--icon-url: url('{{ $social['icon'] }}');"></span>
+                                                    </a>
+                                                @endforeach
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
 
                                     {{-- Button Konsultasi --}}
                                     @if ($footerUrl)
@@ -87,7 +98,7 @@
 
         {{-- Copyright Footer --}}
         <div id="copyrigth-footer" class="-mt-12 md:-mt-14 relative z-10">
-            <p class="text-white text-center">© {{ date('Y') }} PT Gaya Makmur Mobil</p>
+            <p class="text-white text-center">© {{ date('Y') }} {{ $company_name }}</p>
         </div>
     </footer>
 @endif

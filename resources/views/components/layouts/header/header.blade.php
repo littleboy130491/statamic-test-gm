@@ -2,7 +2,7 @@
     $globals = \Statamic\Facades\GlobalSet::findByHandle('settings')?->inCurrentSite()?->data();
 
     $site_logo = $globals['site_logo'] ?? null;
-    $site_title = $globals['site_title'] ?? 'GM Mobil';
+    $site_title = $globals['site_title'];
 
     $logo_asset = $site_logo ? \Statamic\Facades\Asset::find('assets::' . $site_logo) : null;
     $logo_url = $logo_asset?->url();

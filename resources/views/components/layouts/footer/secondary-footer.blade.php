@@ -1,18 +1,26 @@
 @php
-    $company_name = 'PT Gaya Makmur Mobil';
-    $socials = [
-        [
-            'name' => 'Instagram',
-            'link' => 'https://instagram.com/gayamakmurmobil',
-            'icon' => asset('assets/instagram.svg'),
-        ],
-        ['name' => 'Facebook', 'link' => 'https://facebook.com/fawindonesia/', 'icon' => asset('assets/facebook.svg')],
-        [
-            'name' => 'LinkedIn',
-            'link' => 'https://linkedin.com/company/fawindonesia',
-            'icon' => asset('assets/linkedin.svg'),
-        ],
-    ];
+    $globals = \Statamic\Facades\GlobalSet::findByHandle('settings')?->inCurrentSite()?->data();
+
+    $company_name = $globals['site_title'] ?? 'PT Gaya Makmur Mobil';
+
+    $socials = collect($globals['social_media'] ?? [])
+        ->map(function ($item, $key) {
+            $url = $item['url'] ?? null;
+            if (!$url) {
+                return null;
+            }
+
+            $iconRaw = $item['image'] ?? null;
+
+            return [
+                'name' => ucfirst($key),
+                'link' => $url,
+                'icon' => $iconRaw ? asset('assets/' . $iconRaw) : null,
+            ];
+        })
+        ->filter()
+        ->values()
+        ->all();
 @endphp
 
 <footer id="secondary-footer" class="bg-white relative z-10 rounded-t-2xl md:rounded-t-3xl lg:rounded-t-4xl">
@@ -36,14 +44,17 @@
         <div id="footer-copyright"
             class="flex flex-col-reverse md:flex-row lg:flex-row items-center justify-between gap-4 py-8">
             <p class="text-(--color-text)">© {{ date('Y') }} {{ $company_name }}</p>
-            <div id="social-icons-wrapper" class="flex items-center gap-5">
-                @foreach ($socials as $social)
-                    <a href="{{ $social['link'] }}" target="_blank" rel="noopener noreferrer"
-                        title="{{ $social['name'] }}">
-                        <svg class="social-icon block w-5 h-5" style="--icon-url: url('{{ $social['icon'] }}');"></svg>
-                    </a>
-                @endforeach
-            </div>
+            @if (count($socials) > 0)
+                <div id="social-icons-wrapper" class="flex items-center gap-5">
+                    @foreach ($socials as $social)
+                        <a href="{{ $social['link'] }}" target="_blank" rel="noopener noreferrer"
+                            title="{{ $social['name'] }}">
+                            <svg class="social-icon block w-5 h-5"
+                                style="--icon-url: url('{{ $social['icon'] }}');"></svg>
+                        </a>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 </footer>
