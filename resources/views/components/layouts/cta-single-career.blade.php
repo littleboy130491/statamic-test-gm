@@ -17,7 +17,7 @@
 
 @if ($cta && ($cta['show'] ?? false))
     <section id="cta-career-single">
-        <div class="container">
+        <div class="container my-18 md:my-18 lg:my-30">
             <div class="relative">
 
                 {{-- Background --}}
