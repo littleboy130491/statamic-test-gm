@@ -1,0 +1,9 @@
+title: 'Hero Page Placeholder'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            import: blocks.section_images

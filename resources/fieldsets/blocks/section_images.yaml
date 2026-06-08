@@ -9,5 +9,7 @@ fields:
       type: assets
       display: 'Section Images'
       max_files: 1
+      validate:
+        - required
   -
     import: common.section_settings

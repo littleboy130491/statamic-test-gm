@@ -46,3 +46,8 @@ tabs:
               display: Message
               type: textarea
               validate: 'required|max:5000'
+          -
+            handle: tes_field
+            field:
+              type: text
+              display: 'Tes Field'
