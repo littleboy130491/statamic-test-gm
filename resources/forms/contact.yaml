@@ -1,4 +1,8 @@
 title: Contact
 honeypot: website_url
-store: true
-email: []
+email:
+  -
+    id: rM-yQtdBhmo4NtjD0qkvk
+    to: webmaster.imajiner@gmail.com
+    reply_to: webmaster.imajiner@gmail.com
+    subject: 'Form Kontak'

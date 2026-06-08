@@ -4,13 +4,13 @@
         [
             'name' => 'Instagram',
             'link' => 'https://instagram.com/gayamakmurmobil',
-            'icon' => asset('images/instagram.svg'),
+            'icon' => asset('assets/instagram.svg'),
         ],
-        ['name' => 'Facebook', 'link' => 'https://facebook.com/fawindonesia/', 'icon' => asset('images/facebook.svg')],
+        ['name' => 'Facebook', 'link' => 'https://facebook.com/fawindonesia/', 'icon' => asset('assets/facebook.svg')],
         [
             'name' => 'LinkedIn',
             'link' => 'https://linkedin.com/company/fawindonesia',
-            'icon' => asset('images/linkedin.svg'),
+            'icon' => asset('assets/linkedin.svg'),
         ],
     ];
 @endphp
@@ -40,8 +40,7 @@
                 @foreach ($socials as $social)
                     <a href="{{ $social['link'] }}" target="_blank" rel="noopener noreferrer"
                         title="{{ $social['name'] }}">
-                        <span class="social-icon block w-5 h-5"
-                            style="--icon-url: url('{{ $social['icon'] }}');"></span>
+                        <svg class="social-icon block w-5 h-5" style="--icon-url: url('{{ $social['icon'] }}');"></svg>
                     </a>
                 @endforeach
             </div>
