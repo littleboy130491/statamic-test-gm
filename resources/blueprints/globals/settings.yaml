@@ -100,13 +100,6 @@ tabs:
                     -
                       import: common.contact_email
           -
-            handle: call_center
-            field:
-              type: text
-              display: 'Call center'
-              localizable: true
-              instructions: 'Primary call & WhatsApp center number or label.'
-          -
             handle: address
             field:
               type: textarea
@@ -120,3 +113,8 @@ tabs:
               input_type: url
               localizable: true
               validate: nullable|url
+          -
+            handle: embed_google_maps
+            field:
+              type: text
+              display: 'Embed Google Maps'
