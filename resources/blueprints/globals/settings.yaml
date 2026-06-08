@@ -11,6 +11,8 @@ tabs:
               type: text
               display: 'Site title'
               localizable: true
+              validate:
+                - required
           -
             handle: site_logo
             field:
@@ -19,6 +21,8 @@ tabs:
               container: assets
               max_files: 1
               localizable: true
+              validate:
+                - required
           -
             handle: favicon
             field:

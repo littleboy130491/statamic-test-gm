@@ -1,13 +1,22 @@
 @php
-    $logo_url = asset('/assets/gm-logo.png');
+    $globals = \Statamic\Facades\GlobalSet::findByHandle('settings')?->inCurrentSite()?->data();
+
+    $site_logo = $globals['site_logo'] ?? null;
+    $site_title = $globals['site_title'];
+
+    $logo_asset = $site_logo ? \Statamic\Facades\Asset::find('assets::' . $site_logo) : null;
+    $logo_url = $logo_asset?->url();
 @endphp
 
 <header id="single-header">
     <div class="container">
-        <div class="flex items-center justify-between border-b border-(--color-line)/20 py-5 lg:gap-8">
-            <a href="/" class="inline-flex items-center">
-                <img src="{{ $logo_url }}" alt="GM Mobil Logo" class="h-auto w-28 md:w-28 lg:w-32" />
-            </a>
+        <div
+            class="flex items-center {{ $logo_url ? 'justify-between' : 'justify-end' }} border-b border-(--color-line)/20 py-5 lg:gap-8">
+            @if ($logo_url)
+                <a href="/" class="inline-flex items-center">
+                    <img src="{{ $logo_url }}" alt="{{ $site_title }} Logo" class="h-auto w-24 md:w-28 lg:w-32" />
+                </a>
+            @endif
 
             <!-- Desktop Navigation -->
             @if (\Statamic\Facades\Nav::findByHandle('nav_header'))
