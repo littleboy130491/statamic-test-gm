@@ -21,12 +21,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"rel="stylesheet" />
 
-
     {{-- SEO Pro meta tags --}}
     <s:seo_pro:meta />
 
     {{-- Main CSS/JS assets --}}
     <s:vite src="resources/js/app.js|resources/css/app.css" />
+
     @stack('styles')
     @stack('head')
 </head>

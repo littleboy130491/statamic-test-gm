@@ -7,10 +7,7 @@
     $logo_asset = $site_logo ? \Statamic\Facades\Asset::find('assets::' . $site_logo) : null;
     $logo_url = $logo_asset?->url();
 
-    // Ambil nomor telepon pertama yang enabled
     $phone = collect($globals['phone_numbers'] ?? [])->first(fn($item) => $item['enabled'] ?? false)['number'] ?? null;
-
-    // Ambil email pertama yang enabled
     $email = collect($globals['emails'] ?? [])->first(fn($item) => $item['enabled'] ?? false)['email'] ?? null;
 @endphp
 
