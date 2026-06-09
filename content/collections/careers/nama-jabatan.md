@@ -2,7 +2,7 @@
 id: 2f5b55b7-6432-4a51-bcba-4f8b42464558
 blueprint: career
 title: 'Nama Jabatan'
-excerpt: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.'
+excerpt: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat'
 description:
   -
     type: paragraph
@@ -121,5 +121,5 @@ seo:
   title: '@seo:title'
   description: '@seo:description'
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780648781
+updated_at: 1780989880
 ---
