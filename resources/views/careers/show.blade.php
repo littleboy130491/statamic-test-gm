@@ -53,7 +53,7 @@
 
                             {{-- Deskripsi --}}
                             @if ($page->description)
-                                <div id="description" class="flow mt-5">{!! $page->description !!}</div>
+                                <div id="description" class="rich-text mt-5">{!! $page->description !!}</div>
                             @endif
 
 
@@ -61,7 +61,7 @@
                             @if ($page->qualifications)
                                 <div id="qualifications">
                                     <h3 class="mb-2">Persyaratan</h3>
-                                    <p class="flow">{!! $page->qualifications !!}</p>
+                                    {!! $page->qualifications !!}
                                 </div>
                             @endif
 
@@ -69,7 +69,7 @@
                             @if ($page->jobdesc)
                                 <div id="jobdesc">
                                     <h3 class="mb-2">Jobdesc</h3>
-                                    <p class="flow">{!! $page->jobdesc !!}</p>
+                                    {!! $page->jobdesc !!}
                                 </div>
                             @endif
 
