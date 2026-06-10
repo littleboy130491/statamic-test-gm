@@ -31,7 +31,7 @@
     <main>
         <section id="single-career">
             <div class="container mt-10 mb-18 md:mt-10 md:mb-18 lg:mt-20 lg:mb-30">
-                <div class="flex flex-col md:flex-row lg:flex-row gap-18 md:gap-6 lg:gap-20">
+                <div class="flex flex-col md:flex-row lg:flex-row gap-18 md:gap-6 lg:gap-30">
                     <article class="w-full md:w-[70%] lg:w-[70%]">
 
                         {{-- Head --}}
@@ -40,7 +40,7 @@
 
                                 {{-- Employment --}}
                                 @if ($page->employment_status)
-                                    <p class="flex items-center gap-2 uppercase text-(--color-primary)">
+                                    <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium">
                                         @if (!empty($career['icon_employment_status']))
                                             <img src="{{ $career['icon_employment_status'] }}" alt=""
                                                 class="w-5 h-5 shrink-0" />
@@ -51,7 +51,7 @@
 
                                 {{-- Location --}}
                                 @if ($page->locations)
-                                    <p class="flex items-center gap-2 uppercase text-(--color-primary)">
+                                    <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium">
                                         @if (!empty($career['icon_location']))
                                             <img src="{{ $career['icon_location'] }}" alt=""
                                                 class="w-5 h-5 shrink-0" />
@@ -96,7 +96,7 @@
 
                         {{-- Tag Career --}}
                         <div id="tag-career"
-                            class="flex flex-wrap gap-x-2 gap-y-2 md:gap-x-4 md:gap-y-2 lg:gap-x-8 lg:gap-y-8 my-2 md:my-2 lg:my-4">
+                            class="flex flex-wrap gap-x-4 gap-y-2 md:gap-x-4 md:gap-y-2 lg:gap-x-8 lg:gap-y-8">
                             @if ($page->tags)
                                 @foreach ($page->tags as $tag)
                                     <p>{{ $tag->title }}</p>
@@ -120,9 +120,11 @@
 
                     </section>
                 </article>
-                <aside class="w-full md:w-[40%] lg:w-[30%]">
+
+                {{-- Career Lainnya --}}
+                <aside class="w-full md:w-[40%] lg:w-[35%]">
                     @if ($relatedCareers->isNotEmpty())
-                        <div class="flex flex-col gap-4 md:gap-6">
+                        <div class="flex flex-col gap-6">
                             @foreach ($relatedCareers as $entry)
                                 <x-layouts.skin.career-skin :entry="$entry" :career="$career" />
                             @endforeach

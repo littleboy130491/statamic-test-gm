@@ -8,68 +8,74 @@
             ?->toAugmentedArray();
 @endphp
 
-<article class="career-card flex flex-col gap-4 rounded-3xl bg-white p-6">
+<div class="flex flex-col gap-6 md:gap-3 lg:gap-8 rounded-2xl lg:rounded-3xl bg-white p-5 md:p-4 lg:p-6">
 
-    {{-- Employment & Location --}}
-    <div class="flex flex-wrap gap-4 md:gap-6">
+    <header class="flex flex-col gap-3">
 
-        {{-- Employment --}}
-        @if ($entry->employment_status)
-            <p class="flex items-center gap-2 uppercase font-semibold text-(--color-primary)">
-                @if (!empty($career['icon_employment_status']))
-                    <img src="{{ $career['icon_employment_status'] }}" alt="" class="w-5 h-5 shrink-0" />
-                @endif
-                {{ $entry->employment_status->label() }}
-            </p>
+        {{-- Employment & Location --}}
+        <div class="flex flex-wrap gap-4 md:gap-6">
+            @if ($entry->employment_status)
+                <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium">
+                    @if (!empty($career['icon_employment_status']))
+                        <img src="{{ $career['icon_employment_status'] }}" alt="" class="w-4 h-4 shrink-0 -mt-1" />
+                    @endif
+                    {{ $entry->employment_status->label() }}
+                </p>
+            @endif
+
+            @if ($entry->locations)
+                <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium">
+                    @if (!empty($career['icon_location']))
+                        <img src="{{ $career['icon_location'] }}" alt="" class="w-4 h-4 shrink-0 -mt-1" />
+                    @endif
+                    @foreach ($entry->locations as $location)
+                        {{ $location->title }}
+                        @unless ($loop->last)
+                            ,
+                        @endunless
+                    @endforeach
+                </p>
+            @endif
+        </div>
+
+        {{-- Heading --}}
+        <h4>
+            <a href="{{ $entry->url() }}" class="text-(--color-heading) title-display">{{ $entry->title }}</a>
+        </h4>
+    </header>
+
+    <div class="flex flex-col gap-4">
+
+        {{-- Excerpt --}}
+        @if ($entry->excerpt)
+            <p>{{ $entry->excerpt }}</p>
         @endif
 
-        {{-- Location --}}
-        @if ($entry->locations)
-            <p class="flex items-center gap-2 uppercase font-semibold text-(--color-primary)">
-                @if (!empty($career['icon_location']))
-                    <img src="{{ $career['icon_location'] }}" alt="" class="w-5 h-5 shrink-0" />
-                @endif
-                @foreach ($entry->locations as $location)
-                    {{ $location->title }}@unless ($loop->last)
-                    ,
-                @endunless
-            @endforeach
-        </p>
-    @endif
-</div>
+        {{-- Tags --}}
+        @if ($entry->tags)
+            <div class="flex flex-wrap gap-2">
+                @foreach ($entry->tags as $tag)
+                    <p class="rounded-full bg-(--color-surface) px-3.5 py-2 text-sm">
+                        {{ $tag->title }}
+                    </p>
+                @endforeach
+            </div>
+        @endif
 
-{{-- Title --}}
-<h3 class="career-card__title">
-    <a href="{{ $entry->url() }}">{{ $entry->title }}</a>
-</h3>
-
-{{-- Short Description --}}
-@if ($entry->short_description)
-    <p class="career-card__excerpt">{{ $entry->short_description }}</p>
-@endif
-
-{{-- Tags --}}
-@if ($entry->tags)
-    <div class="flex flex-wrap gap-2 md:gap-3">
-        @foreach ($entry->tags as $tag)
-            <span class="career-card__tag rounded-full bg-(--color-bg-grey) px-4 py-2">
-                {{ $tag->title }}
-            </span>
-        @endforeach
+        {{-- Button Selengkapnya --}}
+        <a href="{{ $entry->url() }}"
+            class="mt-2 bg-(--color-surface) rounded-full flex justify-between items-center py-2 pl-6 pr-2">
+            <p class="uppercase title-display text-(--color-primary) tracking-widest">
+                {{ $career['label_card_button'] ?? 'Selengkapnya' }}
+            </p>
+            <p
+                class="flex h-10 w-10 md:h-8 md:w-8 lg:h-10 lg:w-10 shrink-0 items-center justify-center rounded-full bg-(--color-primary)">
+                <svg class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+            </p>
+        </a>
     </div>
-@endif
 
-{{-- Button Selengkapnya --}}
-<a href="{{ $entry->url() }}"
-    class="career-card__button mt-2 flex items-center justify-between gap-4 rounded-full bg-(--color-bg-grey) py-3 pl-6 pr-3">
-    <span class="uppercase font-semibold text-(--color-primary)">
-        {{ $career['label_card_button'] ?? 'Selengkapnya' }}
-    </span>
-    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-(--color-primary)">
-        <svg class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-    </span>
-</a>
-
-</article>
+</div>
