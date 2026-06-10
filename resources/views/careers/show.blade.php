@@ -10,7 +10,7 @@
         ->implode(' ');
 
     // Global Label
-    $career = \Statamic\Facades\GlobalSet::findByHandle('single_career_information')
+    $career = \Statamic\Facades\GlobalSet::findByHandle('career_label_information')
         ?->in(\Statamic\Facades\Site::current()->handle())
         ?->toAugmentedArray();
 
@@ -19,7 +19,7 @@
         ->where('collection', 'careers')
         ->whereStatus('published')
         ->where('id', '!=', $page->id)
-        ->limit(3)
+        ->limit(2)
         ->get();
 @endphp
 

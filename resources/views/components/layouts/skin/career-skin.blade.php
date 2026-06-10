@@ -3,7 +3,7 @@
 @php
     $career =
         $career ??
-        \Statamic\Facades\GlobalSet::findByHandle('single_career_information')
+        \Statamic\Facades\GlobalSet::findByHandle('career_label_information')
             ?->in(\Statamic\Facades\Site::current()->handle())
             ?->toAugmentedArray();
 @endphp
@@ -69,7 +69,7 @@
         <a href="{{ $entry->url() }}"
             class="mt-4 bg-(--color-surface) rounded-full flex justify-between items-center py-2 pl-6 pr-2 group-hover:bg-(--color-primary)">
             <p class="uppercase title-display text-(--color-primary) tracking-widest group-hover:text-white">
-                {{ $career['label_card_button'] ?? 'Selengkapnya' }}
+                {{ $career['button_label'] ?? 'Selengkapnya' }}
             </p>
             <p
                 class="flex h-10 w-10 md:h-8 md:w-8 lg:h-10 lg:w-10 shrink-0 items-center justify-center rounded-full bg-(--color-primary) group-hover:bg-white">

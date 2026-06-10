@@ -6,7 +6,6 @@ mount: dealers
 taxonomies:
   - dealer_categories
 revisions: false
-route: '/dealers/{slug}'
 sort_by: title
 sort_dir: asc
 date_behavior:

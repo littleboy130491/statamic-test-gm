@@ -1,0 +1,73 @@
+title: 'Career Label Information'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: 'Single - Information Label'
+        fields:
+          -
+            handle: requirements_label
+            field:
+              type: text
+              display: 'Requirements Label'
+              validate:
+                - required
+          -
+            handle: label_jobdesc
+            field:
+              type: text
+              display: 'Label Jobdesc'
+              validate:
+                - required
+          -
+            handle: label_submit_button
+            field:
+              type: text
+              display: 'Label Submit Button'
+              validate:
+                - required
+          -
+            handle: icon_employment_status
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Icon Employment Status'
+              validate:
+                - required
+          -
+            handle: icon_location
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Icon Location'
+              validate:
+                - required
+      -
+        display: 'Single - Call to Action'
+        fields:
+          -
+            import: common.identifier
+          -
+            import: blocks.cta_grid
+          -
+            import: common.section_settings
+          -
+            handle: background_call_to_action
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Background Call to Action'
+              validate:
+                - required
+      -
+        display: 'Skin - Label'
+        fields:
+          -
+            handle: button_label
+            field:
+              type: text
+              display: 'Button Label'
