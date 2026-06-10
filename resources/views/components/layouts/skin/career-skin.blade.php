@@ -8,25 +8,28 @@
             ?->toAugmentedArray();
 @endphp
 
-<div class="flex flex-col gap-6 md:gap-3 lg:gap-8 rounded-2xl lg:rounded-3xl bg-white p-5 md:p-4 lg:p-6">
+<div
+    class="group hover:bg-[#E8F1E8] flex flex-col gap-6 md:gap-3 lg:gap-8 rounded-2xl lg:rounded-3xl bg-white p-5 md:p-4 lg:p-6">
 
     <header class="flex flex-col gap-3">
 
         {{-- Employment & Location --}}
         <div class="flex flex-wrap gap-4 md:gap-6">
             @if ($entry->employment_status)
-                <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium">
+                <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium group-hover:text-black">
                     @if (!empty($career['icon_employment_status']))
-                        <img src="{{ $career['icon_employment_status'] }}" alt="" class="w-4 h-4 shrink-0 -mt-1" />
+                        <img src="{{ $career['icon_employment_status'] }}" alt=""
+                            class="w-4 h-4 shrink-0 -mt-1 group-hover:brightness-0" />
                     @endif
                     {{ $entry->employment_status->label() }}
                 </p>
             @endif
 
             @if ($entry->locations)
-                <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium">
+                <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium group-hover:text-black">
                     @if (!empty($career['icon_location']))
-                        <img src="{{ $career['icon_location'] }}" alt="" class="w-4 h-4 shrink-0 -mt-1" />
+                        <img src="{{ $career['icon_location'] }}" alt=""
+                            class="w-4 h-4 shrink-0 -mt-1 group-hover:brightness-0" />
                     @endif
                     @foreach ($entry->locations as $location)
                         {{ $location->title }}
@@ -64,14 +67,14 @@
 
         {{-- Button Selengkapnya --}}
         <a href="{{ $entry->url() }}"
-            class="mt-2 bg-(--color-surface) rounded-full flex justify-between items-center py-2 pl-6 pr-2">
-            <p class="uppercase title-display text-(--color-primary) tracking-widest">
+            class="mt-4 bg-(--color-surface) rounded-full flex justify-between items-center py-2 pl-6 pr-2 group-hover:bg-(--color-primary)">
+            <p class="uppercase title-display text-(--color-primary) tracking-widest group-hover:text-white">
                 {{ $career['label_card_button'] ?? 'Selengkapnya' }}
             </p>
             <p
-                class="flex h-10 w-10 md:h-8 md:w-8 lg:h-10 lg:w-10 shrink-0 items-center justify-center rounded-full bg-(--color-primary)">
-                <svg class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                    stroke-width="2.5">
+                class="flex h-10 w-10 md:h-8 md:w-8 lg:h-10 lg:w-10 shrink-0 items-center justify-center rounded-full bg-(--color-primary) group-hover:bg-white">
+                <svg class="h-4 w-4 text-white group-hover:text-(--color-primary)" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
             </p>
