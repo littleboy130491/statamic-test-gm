@@ -237,3 +237,64 @@ section, .section {
 .prose hr {
   margin-block: var(--margin-block-prose-hr);
 }
+
+
+
+/* Layout Paragraf */
+.richtext > * + * {
+  margin-block-start: var(--flow-space);
+}
+
+.richtext :is(ul, ol) {
+  padding-inline-start: var(--padding-inline-prose-list);
+}
+
+.richtext ul {
+  list-style: disc;
+}
+
+.richtext ol {
+  list-style: decimal;
+}
+
+.richtext :is(ul, ol) li + li {
+  margin-block-start: var(--flow-space-prose-list-item);
+}
+
+.richtext :is(ul, ol) li > p {
+  margin-block: 0;
+}
+
+.richtext > :is(h1, h2, h3, h4, h5, h6) {
+  margin-block-start: var(--flow-space-prose-before-heading);
+}
+
+.richtext > :is(h1, h2, h3, h4, h5, h6):first-child {
+  margin-block-start: 0;
+}
+
+.richtext > :is(h1, h2, h3, h4, h5, h6) + * {
+  margin-block-start: var(--flow-space-prose-after-heading);
+}
+
+.richtext blockquote {
+  padding-inline-start: var(--padding-inline-prose-blockquote);
+}
+
+.richtext a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.richtext :is(img, video) {
+  max-width: 100%;
+  height: auto;
+}
+
+.richtext p + p {
+  margin-block-start: 0.75rem;
+}
+
+.richtext p:empty {
+  min-height: 1em;
+}

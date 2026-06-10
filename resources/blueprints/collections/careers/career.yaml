@@ -46,6 +46,9 @@ tabs:
                 - unorderedlist
                 - orderedlist
                 - removeformat
+                - h2
+              container: assets
+              remove_empty_nodes: false
           -
             handle: jobdesc
             field:
