@@ -13,6 +13,14 @@
     $career = \Statamic\Facades\GlobalSet::findByHandle('single_career_information')
         ?->in(\Statamic\Facades\Site::current()->handle())
         ?->toAugmentedArray();
+
+    // Sidebar Career
+    $relatedCareers = \Statamic\Facades\Entry::query()
+        ->where('collection', 'careers')
+        ->whereStatus('published')
+        ->where('id', '!=', $page->id)
+        ->limit(3)
+        ->get();
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
@@ -112,7 +120,15 @@
 
                     </section>
                 </article>
-                <aside class="w-full md:w-[40%] lg:w-[30%]"> Sidebar </aside>
+                <aside class="w-full md:w-[40%] lg:w-[30%]">
+                    @if ($relatedCareers->isNotEmpty())
+                        <div class="flex flex-col gap-4 md:gap-6">
+                            @foreach ($relatedCareers as $entry)
+                                <x-layouts.skin.career-skin :entry="$entry" :career="$career" />
+                            @endforeach
+                        </div>
+                    @endif
+                </aside>
             </div>
         </div>
     </section>

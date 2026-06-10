@@ -2,10 +2,10 @@
 id: careers
 blueprint: page
 title: Karier
-template: careers
+template: careers/index
 parent: home
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780718216
+updated_at: 1781080086
 content:
   -
     type: paragraph
