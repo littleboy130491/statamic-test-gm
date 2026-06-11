@@ -1,7 +1,7 @@
 ---
-id: 2f5b55b7-6432-4a51-bcba-4f8b42464558
+id: ed5266f0-8339-41c5-9b5a-90c096c73051
 blueprint: career
-title: 'Nama Jabatan 1'
+title: 'Nama Jabatan 6'
 excerpt: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placera'
 description:
   -
@@ -109,6 +109,7 @@ jobdesc:
                 type: text
                 text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud '
 employment_status: full_time
+apply_link: 'https://imajiner.id/'
 tags:
   - s1-management
   - 3-tahun-pengalaman
@@ -119,5 +120,7 @@ seo:
   title: '@seo:title'
   description: '@seo:description'
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1781171910
+updated_at: 1781171771
+apply_email: email@dummy.com
+duplicated_from: 3ce05f7b-7862-43f9-9aa2-a264d10f2a70
 ---

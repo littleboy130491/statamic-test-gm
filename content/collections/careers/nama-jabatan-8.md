@@ -1,8 +1,8 @@
 ---
-id: 08202dd1-8add-433e-b6ff-e5687c1fd617
+id: ec605e6e-5ae9-43bf-9dc1-353e67867743
 blueprint: career
-title: 'Judul 2'
-excerpt: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat'
+title: 'Nama Jabatan 8'
+excerpt: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placera'
 description:
   -
     type: paragraph
@@ -111,16 +111,16 @@ jobdesc:
 employment_status: full_time
 apply_link: 'https://imajiner.id/'
 tags:
-  - fresh-graduate
-  - jabodetabek
+  - s1-management
   - 3-tahun-pengalaman
+  - jabodetabek
 locations:
   - jakarta
 seo:
   title: '@seo:title'
   description: '@seo:description'
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1781082745
+updated_at: 1781171961
 apply_email: email@dummy.com
-duplicated_from: 2f5b55b7-6432-4a51-bcba-4f8b42464558
+duplicated_from: c81cdfbe-e396-4a2c-9db6-b1b49f2dfc23
 ---

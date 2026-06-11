@@ -1,8 +1,8 @@
 ---
-id: e9ffb7c8-b7c0-453d-b6b9-ed8b15a21732
+id: 3ce05f7b-7862-43f9-9aa2-a264d10f2a70
 blueprint: career
-title: 'Judul 1'
-excerpt: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat'
+title: 'Nama Jabatan 5'
+excerpt: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placera'
 description:
   -
     type: paragraph
@@ -120,7 +120,7 @@ seo:
   title: '@seo:title'
   description: '@seo:description'
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1781080469
+updated_at: 1781171813
 apply_email: email@dummy.com
-duplicated_from: 08202dd1-8add-433e-b6ff-e5687c1fd617
+duplicated_from: 71fef739-a9e4-4241-ab8b-4f61d0affc3a
 ---
