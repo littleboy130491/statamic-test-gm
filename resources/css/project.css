@@ -410,3 +410,30 @@ body.background-grey {
     background: var(--color-secondary);
     color: black;
 }
+
+
+
+
+/* Popup Form Career */
+.career-popup {
+    width: min(90%, 900px);
+    max-height: 90vh;
+    margin: auto;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 0;
+    background: var(--color-surface);
+    overflow-y: auto;
+}
+
+.career-popup::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.career-popup-inner {
+    position: relative;
+}
+
+body:has(dialog[open].career-popup) {
+    overflow: hidden;
+}

@@ -115,6 +115,11 @@
                                     class="button button--primary">
                                     {{ $career['label_submit_button'] ?? 'Lamar Eksternal' }}
                                 </a>
+                            @else
+                                <button type="button" class="button button--primary"
+                                    onclick="document.getElementById('career-popup').showModal()">
+                                    {{ $career['label_submit_button'] ?? 'Kirim Lamaran' }}
+                                </button>
                             @endif
                         </div>
 
@@ -139,6 +144,7 @@
     {{-- Call to Action --}}
     <x-layouts.cta-single-career />
 
+    {{-- Popup Form --}}
     <x-layouts.popup-form-career />
 </main>
 

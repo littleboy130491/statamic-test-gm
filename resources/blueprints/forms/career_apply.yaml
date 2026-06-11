@@ -43,16 +43,8 @@ tabs:
               container: assets
               max_files: 1
               folder: form-uploads/careers
-              instructions: 'PDF, DOC, or DOCX. Max 5 MB.'
               validate:
                 - required
                 - file
                 - 'mimes:pdf,doc,docx'
                 - 'max:5120'
-          -
-            handle: accept_docs
-            field:
-              display: 'Document consent'
-              type: toggle
-              inline_label: 'I consent to submitting my CV and related documents for this application.'
-              validate: required|accepted

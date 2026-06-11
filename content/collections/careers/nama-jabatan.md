@@ -109,7 +109,6 @@ jobdesc:
                 type: text
                 text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud '
 employment_status: full_time
-apply_link: 'https://imajiner.id/'
 tags:
   - s1-management
   - 3-tahun-pengalaman
@@ -120,6 +119,5 @@ seo:
   title: '@seo:title'
   description: '@seo:description'
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1781081937
-apply_email: email@dummy.com
+updated_at: 1781168560
 ---
