@@ -16,3 +16,8 @@ show: true
 background_call_to_action: cta-background-career-single-(1).jpg
 section_images: whatsapp-white.svg
 button_label: Selengkapnya
+form_heading: 'Bergabunglah Bersama Tim Kami'
+form_description: 'Kami mencari talenta berbakat yang siap berkolaborasi dan berkembang. Kirimkan data diri Anda untuk memulai perjalanan karir yang kompetitif.'
+button_submit_label: Kirim
+success_message: Sukses
+message_failed: Gagal

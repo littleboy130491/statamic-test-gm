@@ -10,6 +10,7 @@ tabs:
               display: Name
               type: text
               validate: 'required|max:255'
+              width: 50
           -
             handle: position
             field:
@@ -17,6 +18,7 @@ tabs:
               type: text
               validate: 'required|max:255'
               instructions: 'Role you are applying for.'
+              width: 50
           -
             handle: email
             field:
@@ -24,6 +26,7 @@ tabs:
               type: text
               input_type: email
               validate: 'required|email|max:255'
+              width: 50
           -
             handle: phone
             field:
@@ -31,6 +34,7 @@ tabs:
               type: text
               input_type: tel
               validate: 'required|max:50'
+              width: 50
           -
             handle: cv
             field:
@@ -40,7 +44,11 @@ tabs:
               max_files: 1
               folder: form-uploads/careers
               instructions: 'PDF, DOC, or DOCX. Max 5 MB.'
-              validate: 'required|file|mimes:pdf,doc,docx|max:5120'
+              validate:
+                - required
+                - file
+                - 'mimes:pdf,doc,docx'
+                - 'max:5120'
           -
             handle: accept_docs
             field:
@@ -48,8 +56,3 @@ tabs:
               type: toggle
               inline_label: 'I consent to submitting my CV and related documents for this application.'
               validate: required|accepted
-          -
-            handle: tes
-            field:
-              type: text
-              display: Tes

@@ -73,3 +73,37 @@ tabs:
             field:
               type: text
               display: 'Button Label'
+      -
+        display: 'Form Popup'
+        fields:
+          -
+            handle: form_heading
+            field:
+              type: text
+              display: 'Form Heading'
+          -
+            handle: form_description
+            field:
+              type: textarea
+              display: 'Form Description'
+          -
+            handle: button_submit_label
+            field:
+              type: text
+              display: 'Button Submit Label'
+              validate:
+                - required
+          -
+            handle: success_message
+            field:
+              type: textarea
+              display: 'Success message'
+              validate:
+                - required
+          -
+            handle: message_failed
+            field:
+              type: textarea
+              display: 'Message failed'
+              validate:
+                - required
