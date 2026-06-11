@@ -63,6 +63,8 @@ tabs:
               display: 'Background Call to Action'
               validate:
                 - required
+          -
+            import: blocks.section_images
       -
         display: 'Skin - Label'
         fields:

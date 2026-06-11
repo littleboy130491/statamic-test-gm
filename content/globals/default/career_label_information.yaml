@@ -6,16 +6,13 @@ icon_location: location-icon.svg
 identifier: cta-career-single
 image_call_to_action: cta-img-career.png
 heading: 'Butuh Informasi Lebih Lanjut?'
-short_description: 'Temukan jawaban atas pertanyaan umum seputar proses seleksi kami atau sampaikan pertanyaan Anda langsung kepada tim HRD kami melalui kontak di bawah ini.'
+short_description: 'Temukan jawaban atas pertanyaan umum seputar proses seleksi kami atau sampaikan pertanyaan Anda langsung kepada tim HRD kami melalui kontak di bawah ini..'
 call_to_action:
   -
     id: hByL0wfZ1leua032-AMvk
     label: 'Call & WA Center'
     kontak: '62 000 0000 0000'
-  -
-    id: CEPI_xX5YjoG2VwKf5Qqe
-    label: Email
-    kontak: imajner@gmail.com
 show: true
 background_call_to_action: cta-background-career-single-(1).jpg
+section_images: whatsapp-white.svg
 button_label: Selengkapnya

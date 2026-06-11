@@ -1,5 +1,5 @@
 @php
-    $cta = \Statamic\Facades\GlobalSet::findByHandle('single_career_information')?->inCurrentSite()?->data();
+    $cta = \Statamic\Facades\GlobalSet::findByHandle('career_label_information')?->inCurrentSite()?->data();
 
     $contactIcon = !empty($cta['section_images']) ? asset('assets/' . $cta['section_images']) : null;
 
@@ -21,14 +21,14 @@
             <div class="relative">
 
                 {{-- Background --}}
-                @if (!empty($cta['background_images']))
-                    <img src="{{ asset('assets/' . $cta['background_images']) }}" alt="" aria-hidden="true"
+                @if (!empty($cta['background_call_to_action']))
+                    <img src="{{ asset('assets/' . $cta['background_call_to_action']) }}" alt="" aria-hidden="true"
                         class="inset-0 w-full h-185 md:h-90 lg:h-112 object-cover pointer-events-none rounded-3xl">
                 @endif
 
                 {{-- Konten --}}
                 <div
-                    class="absolute inset-0 bottom-0 flex flex-col-reverse gap-8 md:gap-8 lg:gap-20 px-4 md:flex-row lg:flex-row">
+                    class="absolute inset-0 top-0 flex flex-col-reverse gap-8 md:gap-8 lg:gap-20 px-4 md:flex-row lg:flex-row">
 
                     {{-- Gambar CTA --}}
                     @if (!empty($cta['image_call_to_action']))
@@ -70,11 +70,13 @@
                                         </div>
 
                                         {{-- Icon kontak --}}
-                                        <div
-                                            class="bg-(--color-primary) group-hover:bg-black flex items-center justify-center rounded-full transition-colors w-12 h-12 md:w-12 md:h-12 lg:w-12 lg:h-12">
-                                            <img src="{{ $contactIcon }}" alt="{{ $contact['label'] }}"
-                                                class="w-5 h-5">
-                                        </div>
+                                        @if ($contactIcon)
+                                            <div
+                                                class="bg-(--color-primary) group-hover:bg-black flex items-center justify-center rounded-full transition-colors w-12 h-12 md:w-12 md:h-12 lg:w-12 lg:h-12">
+                                                <img src="{{ $contactIcon }}" alt="{{ $contact['label'] }}"
+                                                    class="w-5 h-5">
+                                            </div>
+                                        @endif
                                     </a>
                                 @endforeach
                             </div>

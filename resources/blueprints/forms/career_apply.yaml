@@ -1,46 +1,55 @@
-fields:
-  -
-    handle: name
-    field:
-      display: Name
-      type: text
-      validate: required|max:255
-  -
-    handle: position
-    field:
-      display: Position
-      type: text
-      validate: required|max:255
-      instructions: Role you are applying for.
-  -
-    handle: email
-    field:
-      display: Email
-      type: text
-      input_type: email
-      validate: required|email|max:255
-  -
-    handle: phone
-    field:
-      display: Phone
-      type: text
-      input_type: tel
-      validate: required|max:50
-  -
-    handle: cv
-    field:
-      display: CV / Resume
-      type: assets
-      container: assets
-      max_files: 1
-      allow_uploads: true
-      folder: form-uploads/careers
-      instructions: PDF, DOC, or DOCX. Max 5 MB.
-      validate: required|file|mimes:pdf,doc,docx|max:5120
-  -
-    handle: accept_docs
-    field:
-      display: Document consent
-      type: toggle
-      inline_label: I consent to submitting my CV and related documents for this application.
-      validate: required|accepted
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: name
+            field:
+              display: Name
+              type: text
+              validate: 'required|max:255'
+          -
+            handle: position
+            field:
+              display: Position
+              type: text
+              validate: 'required|max:255'
+              instructions: 'Role you are applying for.'
+          -
+            handle: email
+            field:
+              display: Email
+              type: text
+              input_type: email
+              validate: 'required|email|max:255'
+          -
+            handle: phone
+            field:
+              display: Phone
+              type: text
+              input_type: tel
+              validate: 'required|max:50'
+          -
+            handle: cv
+            field:
+              display: 'CV / Resume'
+              type: assets
+              container: assets
+              max_files: 1
+              folder: form-uploads/careers
+              instructions: 'PDF, DOC, or DOCX. Max 5 MB.'
+              validate: 'required|file|mimes:pdf,doc,docx|max:5120'
+          -
+            handle: accept_docs
+            field:
+              display: 'Document consent'
+              type: toggle
+              inline_label: 'I consent to submitting my CV and related documents for this application.'
+              validate: required|accepted
+          -
+            handle: tes
+            field:
+              type: text
+              display: Tes
