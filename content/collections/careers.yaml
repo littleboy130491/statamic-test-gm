@@ -1,14 +1,23 @@
 title: Careers
-blueprints:
-  - career
-route: '/careers/{slug}'
-sort_by: title
-sort_dir: asc
+icon: collections
 template: careers/show
+layout: layout
 taxonomies:
   - tags
   - locations
 revisions: false
+route: '/careers/{slug}'
+date: true
+sort_by: title
+sort_dir: desc
+date_behavior:
+  past: public
+  future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true
 inject:
   seo:
     title: '@seo:title'

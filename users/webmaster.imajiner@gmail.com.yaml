@@ -20,6 +20,7 @@ preferences:
         - slug
         - status
         - locations
+        - date
   color_mode: light
   assets:
     assets:

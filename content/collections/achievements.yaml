@@ -1,13 +1,11 @@
 title: Achievements
-blueprints:
-  - achievement
-route: '/achievements/{slug}'
-sort_by: title
-sort_dir: desc
 template: achievements/show
 taxonomies:
   - years
 revisions: false
+route: '/achievements/{slug}'
+sort_by: title
+sort_dir: desc
 inject:
   seo:
     title: '@seo:title'

@@ -9,13 +9,13 @@
 @endphp
 
 <div
-    class="group hover:bg-[#E8F1E8] flex flex-col gap-6 md:gap-3 lg:gap-8 rounded-2xl lg:rounded-3xl bg-white p-5 md:p-4 lg:p-6">
+    class="group hover:bg-[#E8F1E8] flex flex-col gap-6 md:gap-3 lg:gap-8 rounded-2xl lg:rounded-3xl bg-white p-5 md:p-4 lg:p-6 justify-between">
 
     <header class="flex flex-col gap-3">
 
         {{-- Employment & Location --}}
         <div class="flex flex-wrap gap-4 md:gap-6">
-            @if ($entry->employment_status)
+            @if ($entry->employment_status && $entry->employment_status->label())
                 <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium group-hover:text-black">
                     @if (!empty($career['icon_employment_status']))
                         <img src="{{ $career['icon_employment_status'] }}" alt=""
@@ -25,7 +25,7 @@
                 </p>
             @endif
 
-            @if ($entry->locations)
+            @if ($entry->locations && $entry->locations->isNotEmpty())
                 <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium group-hover:text-black">
                     @if (!empty($career['icon_location']))
                         <img src="{{ $career['icon_location'] }}" alt=""
