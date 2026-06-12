@@ -21,6 +21,8 @@ preferences:
         - status
         - locations
         - date
+      calendar:
+        view: month
   color_mode: light
   assets:
     assets:

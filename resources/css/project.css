@@ -440,24 +440,3 @@ body:has(dialog[open].career-popup) {
 
 
 
-/* Pagination Page */
-.careers-pagination > * {
-   background: var(--color-primary);
-   width: 45px;
-   height: 45px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   border-radius: 100px;
-   color: white;
-}
-
-.careers-pagination a:hover {
-   background: var(--color-primary);
-   color: white;
-}
-
-.careers-pagination a {
-   background: white;
-   color: var(--color-primary);
-}

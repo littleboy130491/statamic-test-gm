@@ -13,10 +13,10 @@
         ?->in(\Statamic\Facades\Site::current()->handle())
         ?->toAugmentedArray();
 
-    // Query career published, 9 per halaman
+    // Query career published, 9 per halaman, terbaru dulu (termasuk future-dated)
     $careers = \Statamic\Facades\Entry::query()
         ->where('collection', 'careers')
-        ->whereStatus('published')
+        ->where('published', true)
         ->orderBy('date', 'desc')
         ->paginate(9);
 @endphp
@@ -41,14 +41,8 @@
 
                 {{-- Pagination --}}
                 @if ($careers->hasPages())
-                    <div class="careers-pagination flex flex-wrap items-center gap-2">
-                        @foreach ($careers->getUrlRange(1, $careers->lastPage()) as $page => $url)
-                            @if ($page == $careers->currentPage())
-                                <p>{{ $page }}</p>
-                            @else
-                                <a href="{{ $url }}">{{ $page }}</a>
-                            @endif
-                        @endforeach
+                    <div class="careers-pagination">
+                        {{ $careers->links() }}
                     </div>
                 @endif
 
