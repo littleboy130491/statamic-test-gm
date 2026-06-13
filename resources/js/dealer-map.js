@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
                 <div class="wrap-popup-dealer">
                     <div class="dealer-popup-company">${loc.company || ''}</div>
-                    <div class="dealer-popup-address">${loc.address || ''}</div>
+                    <div class="dealer-popup-address">${(loc.address || '').replace(/\n/g, '<br>')}</div>
                     ${contacts ? `<div class="dealer-popup-contacts">${contacts}</div>` : ''}
                     ${mapsLink}
                 </div>

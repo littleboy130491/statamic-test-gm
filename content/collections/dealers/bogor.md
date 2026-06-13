@@ -11,8 +11,9 @@ location:
 is_active: true
 dealer_categories:
   - cabang-dealer
+  - part-shop
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1781338243
+updated_at: 1781339802
 address: |-
   Lorem
   Ipsum
