@@ -1,94 +1,72 @@
-<x-layouts.app>
-    @php
-        $dealers = Statamic::tag('collection:dealers')->where('is_active', true)->sort('title:asc')->fetch();
+@php
+    $bodyClass = collect([
+        $is_entry ?? false ? 'entry' : null,
+        isset($collection) ? 'entry-' . $collection : null,
+        isset($collection) ? $collection : null,
+        isset($slug) ? 'slug-' . $slug : null,
+    ])
+        ->filter()
+        ->implode(' ');
 
-        $mapDealers = collect($dealers)
-            ->filter(function ($dealer) {
-                return $dealer->location?->latitude && $dealer->location?->longitude;
-            })
-            ->map(function ($dealer) {
-                return [
-                    'id' => $dealer->id(),
-                    'title' => $dealer->title,
-                    'url' => $dealer->url,
-                    'latitude' => (float) $dealer->location->latitude,
-                    'longitude' => (float) $dealer->location->longitude,
-                    'zoom' => (int) ($dealer->location->map_zoom ?: 14),
-                    'city' => $dealer->city,
-                    'region' => $dealer->region,
-                    'country' => $dealer->country,
-                ];
-            })
-            ->values();
-    @endphp
+    $dealerSection = collect($page->sections)->first(
+        fn($section) => (string) $section['identifier'] === 'opening-dealer',
+    );
 
-    <div class="mx-auto w-full max-w-6xl px-4 py-8">
-        <header class="mb-8">
-            <h1 class="text-3xl font-bold text-zinc-900 dark:text-zinc-100">{{ $page->title }}</h1>
-            @if ($page->content)
-                <div class="prose prose-zinc dark:prose-invert mt-3 max-w-none">{!! $page->content !!}</div>
-            @endif
-        </header>
+    // Query dealer aktif
+    $dealers = \Statamic\Facades\Entry::query()
+        ->where('collection', 'dealers')
+        ->where('is_active', true)
+        ->get()
+        ->map(function ($dealer) {
+            $cat = $dealer->dealer_categories?->first();
+            return [
+                'company' => $dealer->title,
+                'address' => $dealer->address,
+                'city' => $dealer->city,
+                'region' => $dealer->region,
+                'phone' => $dealer->phone_number,
+                'whatsapp' => $dealer->whatsapp_number,
+                'whatsapp_link' => $dealer->whatsapp_link,
+                'maps_url' => $dealer->google_maps_url,
+                'lat' => $dealer->location['latitude'] ?? null,
+                'lng' => $dealer->location['longitude'] ?? null,
+                'dealer-category' => $cat?->slug() ?? '',
+            ];
+        })
+        ->filter(fn($d) => $d['lat'] && $d['lng'])
+        ->values();
 
-        <div id="dealers-map" class="mb-8 aspect-video w-full rounded-xl bg-zinc-100 dark:bg-zinc-900"
-            data-dealers='@json($mapDealers)'></div>
+    // Label kategori
+    $dealerCategories = \Statamic\Facades\Term::query()
+        ->where('taxonomy', 'dealer_categories')
+        ->get()
+        ->mapWithKeys(fn($term) => [$term->slug() => $term->title]);
+@endphp
 
-        <aside class="mb-8 rounded-xl bg-white p-4 shadow dark:bg-zinc-950">
-            <h2 class="mb-3 text-sm font-semibold uppercase tracking-wide text-zinc-500">Dealer Categories</h2>
-            <ul class="flex flex-wrap gap-2">
-                <s:taxonomy:dealer_categories>
-                    <li>
-                        <a href="{{ $url }}"
-                            class="rounded-full bg-zinc-100 px-3 py-1 text-sm text-zinc-700 hover:bg-emerald-100 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-emerald-900/40">
-                            {{ $title }}
-                        </a>
-                    </li>
-                </s:taxonomy:dealer_categories>
-            </ul>
-        </aside>
+<x-layouts.main :body-class="$bodyClass">
+    <x-layouts.header.header />
 
-        <section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            @forelse ($dealers as $dealer)
-                <article class="rounded-xl bg-white p-6 shadow dark:bg-zinc-950">
-                    <h2 class="text-lg font-semibold">
-                        <a href="{{ $dealer->url }}"
-                            class="text-emerald-700 hover:underline dark:text-emerald-400">{{ $dealer->title }}</a>
-                    </h2>
+    <main>
+        <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
 
-                    @if ($dealer->dealer_categories)
-                        <p class="mt-1 text-xs uppercase tracking-wide text-zinc-500">
-                            @foreach ($dealer->dealer_categories as $category)
-                                {{ $category->title }}@unless ($loop->last)
-                                ,
-                            @endunless
-                        @endforeach
-                    </p>
-                @endif
+        {{-- Halaman dealer --}}
+        @if ($dealerSection && $dealerSection['show'])
+            <section id="dealer-page">
+                <div class="container">
+                    <div class="my-18 md:my-18 lg:my-30 flow flex flex-col gap-4 items-center">
+                        <h2 class="text-left md:text-center lg:text-center">{{ $dealerSection['heading'] }}</h2>
+                        <div class="w-full lg:w-160 text-left md:text-center lg:text-center">
+                            {!! $dealerSection['description'] !!}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        @endif
 
-                @if ($dealer->city || $dealer->region || $dealer->country)
-                    <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                        {{ collect([$dealer->city, $dealer->region, $dealer->country])->filter()->implode(', ') }}
-                    </p>
-                @endif
+        {{-- Maps dealer --}}
+        <x-layouts.dealer-map :dealers="$dealers" :categories="$dealerCategories" />
 
-                @if ($dealer->address)
-                    <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{{ Str::limit($dealer->address, 120) }}
-                    </p>
-                @endif
+    </main>
 
-                @if ($dealer->phone_number)
-                    <p class="mt-3 text-sm">
-                        <a href="tel:{{ $dealer->phone_number }}"
-                            class="text-emerald-600 hover:underline">{{ $dealer->phone_number }}</a>
-                    </p>
-                @endif
-
-                <a href="{{ $dealer->url }}"
-                    class="mt-4 inline-block text-sm font-medium text-emerald-600 hover:underline">View dealer</a>
-            </article>
-            @empty
-                <p class="col-span-full text-zinc-600 dark:text-zinc-400">No active dealers found.</p>
-            @endforelse
-        </section>
-    </div>
-</x-layouts.app>
+    <x-layouts.footer.footer />
+</x-layouts.main>

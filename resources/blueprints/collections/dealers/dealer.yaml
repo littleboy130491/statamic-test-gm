@@ -11,8 +11,10 @@ tabs:
             field:
               type: text
               required: true
-              display: Dealer Name
+              display: 'Dealer Name'
               localizable: true
+              validate:
+                - required
       -
         display: Location
         fields:
@@ -21,7 +23,6 @@ tabs:
             field:
               type: textarea
               display: Address
-              localizable: true
           -
             handle: city
             field:
@@ -51,14 +52,14 @@ tabs:
             handle: phone_number
             field:
               type: text
-              display: Phone Number
+              display: 'Phone Number'
               localizable: true
               input_type: tel
           -
             handle: whatsapp_number
             field:
               type: text
-              display: WhatsApp Number
+              display: 'WhatsApp Number'
               localizable: true
               input_type: tel
               instructions: 'Include country code, e.g. 6281234567890.'
@@ -66,7 +67,7 @@ tabs:
             handle: whatsapp_link
             field:
               type: text
-              display: WhatsApp Link
+              display: 'WhatsApp Link'
               localizable: true
               input_type: url
               validate: nullable|url
@@ -75,7 +76,7 @@ tabs:
             handle: google_maps_url
             field:
               type: text
-              display: Google Maps URL
+              display: 'Google Maps URL'
               localizable: true
               input_type: url
               validate: nullable|url
@@ -84,7 +85,7 @@ tabs:
             handle: location
             field:
               type: group
-              display: Map Coordinates
+              display: 'Map Coordinates'
               localizable: true
               instructions: 'Used for Leaflet map pins. Populate manually or via Google Geocoding API from the address.'
               fields:
@@ -104,13 +105,13 @@ tabs:
                   handle: google_place_id
                   field:
                     type: text
-                    display: Google Place ID
+                    display: 'Google Place ID'
                     instructions: 'Optional. Useful for geocoding lookups and place details.'
                 -
                   handle: map_zoom
                   field:
                     type: integer
-                    display: Map Zoom
+                    display: 'Map Zoom'
                     default: 14
                     instructions: 'Default zoom level when this dealer is focused on the map.'
   sidebar:
@@ -131,3 +132,37 @@ tabs:
               display: Active
               default: true
               instructions: 'Inactive dealers are hidden from the dealer locator map and listing.'
+          -
+            handle: dealer_categories
+            field:
+              type: terms
+              taxonomies:
+                - dealer_categories
+              display: 'Dealer Categories'
+              mode: select
+  'SEO Meta':
+    display: 'SEO Meta'
+    sections:
+      -
+        fields:
+          -
+            handle: seo
+            field:
+              type: seo_pro
+              listable: false
+              display: SEO
+  'SEO Previews':
+    display: 'SEO Previews'
+    sections:
+      -
+        fields:
+          -
+            handle: seo_previews
+            field:
+              type: seo_pro_previews
+              listable: false
+              display: 'SEO Previews'
+              localizable: false
+              hide_display: true
+              unless:
+                seo.enabled: 'equals false'

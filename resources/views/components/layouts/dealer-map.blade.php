@@ -1,49 +1,7 @@
-@php
-    $categoriesDealer = [
-        ['id' => 'cabang-dealer', 'label' => 'Cabang & Dealer'],
-        ['id' => 'service-center', 'label' => 'Service Center'],
-        ['id' => 'part-shop', 'label' => 'Part Shop'],
-    ];
-
-    $locationsDealer = [
-        [
-            'city' => 'Jakarta',
-            'dealer-category' => 'cabang-dealer',
-            'company' => 'PT. GM Mobil Jakarta',
-            'address' =>
-                'Kawasan Pergudangan Diamond Cipta Niaga, Jl. Arteri Jl. Yos Sudarso No.A15, Bandarharjo, Kec. Semarang Utara, Kota Semarang, Jawa Tengah 50175',
-            'whatsapp' => '0811 1212 0566',
-            'phone' => '(024) 86570705',
-            'maps_url' => 'https://maps.google.com/?q=-6.1944,106.8229',
-            'lat' => -6.1944,
-            'lng' => 106.8229,
-        ],
-        [
-            'city' => 'Jakarta',
-            'dealer-category' => 'service-center',
-            'company' => 'GM Service Center Jakarta Selatan',
-            'address' =>
-                'Kawasan Pergudangan Diamond Cipta Niaga, Jl. Arteri Jl. Yos Sudarso No.A15, Bandarharjo, Kec. Semarang Utara, Kota Semarang, Jawa Tengah 50175',
-            'whatsapp' => '0811 1212 0566',
-            'phone' => '(024) 86570705',
-            'maps_url' => 'https://maps.google.com/?q=-6.2607,106.7816',
-            'lat' => -6.2607,
-            'lng' => 106.7816,
-        ],
-        [
-            'city' => 'Bandung',
-            'dealer-category' => 'part-shop',
-            'company' => 'GM Part Shop Bandung',
-            'address' =>
-                'Kawasan Pergudangan Diamond Cipta Niaga, Jl. Arteri Jl. Yos Sudarso No.A15, Bandarharjo, Kec. Semarang Utara, Kota Semarang, Jawa Tengah 50175',
-            'whatsapp' => '0811 1212 0566',
-            'phone' => '(024) 86570705',
-            'maps_url' => 'https://maps.google.com/?q=-6.9175,107.6191',
-            'lat' => -6.9175,
-            'lng' => 107.6191,
-        ],
-    ];
-@endphp
+@props([
+    'dealers' => [],
+    'categories' => [],
+])
 
 <section id="dealer-maps">
     <div class="container">
@@ -74,11 +32,11 @@
 
                 {{-- Desktop: Button --}}
                 <div id="dealer-category-filter" class="hidden flex-col gap-2 lg:flex lg:flex-row">
-                    @foreach ($categoriesDealer as $cat)
+                    @foreach ($categories as $slug => $label)
                         <a href="javascript:void(0)"
                             class="dealer-cat-btn flex items-center gap-2 text-sm text-(--color-primary) hover:text-white bg-(--color-surface) hover:bg-(--color-primary) uppercase py-3 px-8 rounded-full"
-                            data-category="{{ $cat['id'] }}">
-                            <span>{{ $cat['label'] }}</span>
+                            data-category="{{ $slug }}">
+                            <span>{{ $label }}</span>
                             <svg viewBox="0 0 12 12" fill="none" aria-hidden="true" class="h-4 w-4">
                                 <path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"
                                     stroke-linejoin="round" />
@@ -91,8 +49,8 @@
                 <select id="dealer-category-select"
                     class="lg:hidden w-full border border-(--color-border) rounded-lg px-4 py-2 text-sm text-(--color-text) bg-white focus:outline-none focus:border-(--color-primary) md:w-[30%]">
                     <option value="all">Semua</option>
-                    @foreach ($categoriesDealer as $cat)
-                        <option value="{{ $cat['id'] }}">{{ $cat['label'] }}</option>
+                    @foreach ($categories as $slug => $label)
+                        <option value="{{ $slug }}">{{ $label }}</option>
                     @endforeach
                 </select>
 
@@ -107,5 +65,6 @@
 
 {{-- Share data lokasi > dealer-map.js --}}
 <script>
-    window.dealerLocations = @json($locationsDealer);
+    window.dealerLocations = @json($dealers);
+    window.dealerCategoryLabels = @json($categories);
 </script>
