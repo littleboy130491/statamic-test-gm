@@ -1,0 +1,23 @@
+slider_banner:
+  -
+    id: wdDititmjENvW30fcWIsN
+    heading: 'Kepastian Operasional untuk Bisnis Anda'
+    short_description: 'Investasi aman dengan jaminan layanan purna jual yang andal.'
+    label_button: 'Mulai Konsultasi'
+    url_button: 'entry::02bd16ee-6482-47b6-bdd1-28440329ffad'
+    backgound_image: hero-slide1.jpg
+  -
+    id: UwsR4PrGIT2jxEh7KvFhP
+    heading: 'Kepastian Operasional untuk Bisnis Anda'
+    short_description: 'Investasi aman dengan jaminan layanan purna jual yang andal.'
+    label_button: 'Mulai Konsultasi'
+    url_button: 'entry::02bd16ee-6482-47b6-bdd1-28440329ffad'
+    backgound_image: hero-gm-teletech.jpg
+  -
+    id: oa5FvQrDxbnzCHAUVg6C0
+    heading: 'Kepastian Operasional untuk Bisnis Anda'
+    short_description: 'Investasi aman dengan jaminan layanan purna jual yang andal.'
+    label_button: 'Mulai Konsultasi'
+    url_button: 'entry::02bd16ee-6482-47b6-bdd1-28440329ffad'
+    backgound_image: purnajual-7.jpg
+show: true

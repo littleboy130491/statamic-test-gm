@@ -1,0 +1,9 @@
+title: 'Hero Banner Slider'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            import: blocks.slider_hero_banner
