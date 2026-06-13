@@ -23,6 +23,13 @@ preferences:
         - date
       calendar:
         view: month
+    achievements:
+      view: list
+      columns:
+        - featured_image
+        - title
+        - years
+        - status
   color_mode: light
   assets:
     assets:

@@ -2,10 +2,10 @@
 id: dealers
 blueprint: page
 title: Dealer
-template: dealer
+template: dealers
 parent: home
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780726299
+updated_at: 1781336777
 featured_image: hero-dealer.jpg
 sections:
   -

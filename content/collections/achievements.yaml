@@ -1,13 +1,24 @@
 title: Achievements
+icon: collections
 template: achievements/show
+layout: layout
 taxonomies:
   - years
 revisions: false
-route: '/achievements/{slug}'
 sort_by: title
-sort_dir: desc
+sort_dir: asc
+date_behavior:
+  past: null
+  future: null
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true
 inject:
   seo:
     title: '@seo:title'
     description: '@seo:description'
     image: '@seo:featured_image'
+structure:
+  root: false
