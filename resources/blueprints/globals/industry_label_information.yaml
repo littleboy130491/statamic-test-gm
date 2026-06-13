@@ -1,0 +1,39 @@
+title: 'Industry Label Information'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: icon_accordion
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Icon Accordion'
+              validate:
+                - required
+          -
+            handle: icon_accordion_active
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Icon Accordion Active'
+              validate:
+                - required
+          -
+            handle: button_label
+            field:
+              type: text
+              display: 'Button Label'
+              validate:
+                - required
+          -
+            handle: related_product_label
+            field:
+              type: text
+              display: 'Related Product Label'
+              validate:
+                - required

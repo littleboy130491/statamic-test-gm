@@ -1,1 +1,4 @@
-{  }
+icon_accordion: acc-deactive.svg
+icon_accordion_active: acc-active.svg
+button_label: 'Semua Produk'
+related_product_label: 'Produk Terkait'

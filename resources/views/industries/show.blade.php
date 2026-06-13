@@ -16,7 +16,7 @@
                     <div class="mb-6 overflow-hidden rounded-xl">
                         @foreach ($page->featured_image as $image)
                             <img src="{{ $image->url }}" alt="{{ $page->title }}"
-                                class="aspect-[21/9] w-full object-cover">
+                                class="aspect-21/9 w-full object-cover">
                         @endforeach
                     </div>
                 @endif
