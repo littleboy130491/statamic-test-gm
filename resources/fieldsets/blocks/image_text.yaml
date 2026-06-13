@@ -1,4 +1,4 @@
-title: Image & text
+title: 'Image & text'
 fields:
   -
     handle: image
@@ -8,15 +8,6 @@ fields:
       container: assets
       max_files: 1
       validate: required
-  -
-    handle: image_position
-    field:
-      type: select
-      display: Image position
-      default: left
-      options:
-        left: Left
-        right: Right
   -
     handle: heading
     field:

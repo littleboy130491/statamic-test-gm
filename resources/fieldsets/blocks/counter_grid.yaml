@@ -1,0 +1,10 @@
+title: 'Counter Grid'
+fields:
+  -
+    handle: counter_grid
+    field:
+      type: grid
+      display: 'Counter Grid'
+      fields:
+        -
+          import: blocks.counter

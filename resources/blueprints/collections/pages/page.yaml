@@ -264,6 +264,26 @@ tabs:
                       fields:
                         -
                           import: blocks.text_gallery
+                    text_counter_image:
+                      display: 'Text, Counter & Image'
+                      fields:
+                        -
+                          import: common.identifier
+                        -
+                          import: blocks.image_text
+                        -
+                          import: blocks.gallery
+                        -
+                          import: blocks.counter_grid
+                        -
+                          import: blocks.section_images
+                        -
+                          import: common.section_settings
+                    text_button:
+                      display: 'Text & Button'
+                      fields:
+                        -
+                          import: blocks.text_button
       -
         display: 'Simple content'
         instructions: 'Optional content.'

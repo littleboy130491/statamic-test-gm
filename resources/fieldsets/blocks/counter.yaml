@@ -1,0 +1,26 @@
+title: Counter
+fields:
+  -
+    handle: number
+    field:
+      type: integer
+      display: Number
+      width: 25
+  -
+    handle: prefix
+    field:
+      type: text
+      display: Prefix
+      width: 25
+  -
+    handle: suffix
+    field:
+      type: text
+      display: Suffix
+      width: 25
+  -
+    handle: caption
+    field:
+      type: text
+      display: Caption
+      width: 25
