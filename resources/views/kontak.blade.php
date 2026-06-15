@@ -10,6 +10,9 @@
 
     $globals = \Statamic\Facades\GlobalSet::findByHandle('settings')?->inCurrentSite()?->data();
 
+    // Global label kontak
+    $contactLabel = \Statamic\Facades\GlobalSet::findByHandle('contact_label_information')?->inCurrentSite()?->data();
+
     // Telepon
     $phones = collect($globals['phone_numbers'] ?? [])
         ->filter(fn($item) => $item['enabled'] ?? false)
@@ -79,7 +82,7 @@
                                 class="px-4 py-6 bg-(--color-surface) rounded-2xl flow lg:p-6 lg:rounded-3xl">
                                 @if ($formText && $formText['show'])
                                     <h2 class="lg:w-180 mb-4">{{ $formText['heading'] }}</h2>
-                                    <div class="lg:w-150">{!! $formText['description'] !!}</div>
+                                    <div class="richtext lg:w-150">{!! $formText['description'] !!}</div>
                                 @endif
 
                                 {{-- Form halaman kontak --}}
@@ -99,7 +102,10 @@
                                 {{-- Nomor telepon --}}
                                 @if (count($phones) > 0)
                                     <div id="phone-number" class="flex flex-col gap-2">
-                                        <span class="title-display text-xl text-(--color-primary)">Nomor Telp</span>
+                                        @if (!empty($contactLabel['phone_number_heading']))
+                                            <span
+                                                class="title-display text-xl text-(--color-primary)">{{ $contactLabel['phone_number_heading'] }}</span>
+                                        @endif
                                         <div class="flex flex-col gap-1">
                                             @foreach ($phones as $phone)
                                                 <a href="tel:{{ preg_replace('/\s+/', '', $phone) }}"
@@ -114,7 +120,10 @@
                                 {{-- Email --}}
                                 @if (count($emails) > 0)
                                     <div id="email" class="flex flex-col gap-2 border-t border-(--color-line) pt-6">
-                                        <span class="title-display text-(--color-primary)">Email</span>
+                                        @if (!empty($contactLabel['email_heading']))
+                                            <span
+                                                class="title-display text-xl text-(--color-primary)">{{ $contactLabel['email_heading'] }}</span>
+                                        @endif
                                         <div class="flex flex-col gap-1">
                                             @foreach ($emails as $email)
                                                 <a href="mailto:{{ $email }}"
@@ -130,7 +139,10 @@
                                 @if ($address)
                                     <div id="address-office"
                                         class="flex flex-col gap-2 border-t border-(--color-line) pt-6">
-                                        <span class="title-display text-(--color-primary)">Alamat</span>
+                                        @if (!empty($contactLabel['address_heading']))
+                                            <span
+                                                class="title-display text-xl text-(--color-primary)">{{ $contactLabel['address_heading'] }}</span>
+                                        @endif
                                         @if (!empty($addressUrl))
                                             <a href="{{ $addressUrl }}" target="_blank" rel="noopener noreferrer"
                                                 class="text-(--color-body) hover:text-(--color-secondary) lg:w-[90%]">
@@ -146,7 +158,10 @@
                                 @if (count($socials) > 0)
                                     <div id="social-media"
                                         class="flex flex-col gap-4 border-t border-(--color-line) pt-6">
-                                        <span class="title-display text-(--color-primary)">Media Sosial</span>
+                                        @if (!empty($contactLabel['social_media_labels']))
+                                            <span
+                                                class="title-display text-xl text-(--color-primary)">{{ $contactLabel['social_media_labels'] }}</span>
+                                        @endif
                                         <div class="flex gap-6">
                                             @foreach ($socials as $social)
                                                 <a href="{{ $social['link'] }}" target="_blank"
