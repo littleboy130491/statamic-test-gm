@@ -24,6 +24,8 @@ tabs:
             field:
               type: text
               display: 'Address Heading'
+              validate:
+                - required
           -
             handle: social_media_labels
             field:

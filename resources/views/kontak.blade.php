@@ -79,15 +79,17 @@
                         <div id="form-contact" class="lg:w-[70%]">
 
                             <div id="header-form"
-                                class="px-4 py-6 bg-(--color-surface) rounded-2xl flow lg:p-6 lg:rounded-3xl">
-                                @if ($formText && $formText['show'])
-                                    <h2 class="lg:w-180 mb-4">{{ $formText['heading'] }}</h2>
-                                    <div class="richtext lg:w-150">{!! $formText['description'] !!}</div>
-                                @endif
+                                class="px-4 py-6 bg-(--color-surface) rounded-2xl flow lg:p-6 lg:rounded-3xl flex flex-col gap-10">
+                                <div id="text-form">
+                                    @if ($formText && $formText['show'])
+                                        <h2 class="lg:w-180 mb-4">{{ $formText['heading'] }}</h2>
+                                        <div class="richtext lg:w-150">{!! $formText['description'] !!}</div>
+                                    @endif
+                                </div>
 
                                 {{-- Form halaman kontak --}}
                                 <div id="form">
-                                    <s:form:contact></s:form:contact>
+                                    <x-layouts.form.contact-form />
                                 </div>
                             </div>
 

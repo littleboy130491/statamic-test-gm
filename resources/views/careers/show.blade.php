@@ -145,7 +145,7 @@
     <x-layouts.cta-single-career />
 
     {{-- Popup Form --}}
-    <x-layouts.popup-form-career />
+    <x-layouts.form.popup-form-career />
 </main>
 
 <x-layouts.footer.secondary-footer />

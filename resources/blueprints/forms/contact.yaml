@@ -17,6 +17,7 @@ tabs:
               type: text
               input_type: tel
               validate: 'required|max:50'
+              width: 50
           -
             handle: email
             field:
@@ -24,6 +25,7 @@ tabs:
               type: text
               input_type: email
               validate: 'required|email|max:255'
+              width: 50
           -
             handle: source
             field:
@@ -46,8 +48,3 @@ tabs:
               display: Message
               type: textarea
               validate: 'required|max:5000'
-          -
-            handle: tes_field
-            field:
-              type: text
-              display: 'Tes Field'
