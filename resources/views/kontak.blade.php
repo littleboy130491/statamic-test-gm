@@ -82,7 +82,7 @@
             @endif
 
             {{-- Halaman kontak --}}
-            <section id="kontak">
+            <section id="{{ $formText['anchor'] ?? 'kontak' }}">
                 <div class="container">
                     <div class="mt-18 flex flex-col-reverse gap-18 lg:my-0 lg:mt-30 lg:flex-row lg:gap-8">
 

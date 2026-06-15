@@ -61,7 +61,7 @@
 
         {{-- Halaman dealer --}}
         @if ($dealerSection && ($dealerSection['show'] ?? false))
-            <section id="dealer-page">
+            <section id="{{ $dealerSection['anchor'] ?? 'dealer-page' }}">
                 <div class="container">
                     <div class="my-18 md:my-18 lg:my-30 flow flex flex-col gap-4 items-center">
                         <h2 class="text-left md:text-center lg:text-center">{{ $dealerSection['heading'] ?? '' }}</h2>

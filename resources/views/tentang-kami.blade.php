@@ -59,7 +59,7 @@
 
         {{-- Tentang perusahaan --}}
         @if ($opening && ($opening['show'] ?? false))
-            <section id="tentang-kami">
+            <section id="{{ $opening['anchor'] ?? 'tentang-kami' }}">
                 <div class="container">
                     <div class="flow flex flex-col items-center gap-4 my-18 md:my18 lg:mt-30 lg:mb-8">
                         <h2 class="text-left md:text-center lg:text-center w-full md:w-150 lg:w-180">
@@ -74,7 +74,7 @@
 
         {{-- Visi dan misi --}}
         @if ($visionMission && ($visionMission['show'] ?? false))
-            <section id="visi-misi">
+            <section id="{{ $visionMission['anchor'] ?? 'visi-misi' }}">
                 <div class="container">
                     <div id="background-visi-misi" class="overlay-visimisi relative my-18 md:my-18 lg:my-30 rounded-3xl">
                         <img src="{{ $visionMission['photo_background'] ?? '' }}" alt="Visi Misi Background"
@@ -115,7 +115,7 @@
 
         {{-- Sertifikasi --}}
         @if ($fawText && ($fawText['show'] ?? false))
-            <section id="faw-trucks">
+            <section id="{{ $fawText['anchor'] ?? 'faw-trucks' }}">
                 <div class="container">
                     <div
                         class="flex flex-col-reverse md:flex-col-reverse lg:flex-row gap-8 md:gap-10 lg:gap-30 my-18 md:my-18 lg:my-30">
@@ -147,7 +147,7 @@
 
         {{-- Keunggulan Faw Trucks --}}
         @if ($fawValue && ($fawValue['show'] ?? false) && !empty($fawValue['features']))
-            <section id="faw-value">
+            <section id="{{ $fawValue['anchor'] ?? 'faw-value' }}">
                 <div class="container">
                     <div class="flex flex-col gap-8 md:gap-8 lg:gap-10 my-18 md:my-18 lg:my-30">
                         <div class="flow text-left md:text-left lg:text-center">

@@ -4,7 +4,7 @@ blueprint: page
 title: Manajemen
 template: manajemen
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780727361
+updated_at: 1781500397
 featured_image: hero-manajemen.jpg
 parent: home
 sections:

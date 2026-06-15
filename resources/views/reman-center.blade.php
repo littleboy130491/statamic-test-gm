@@ -38,11 +38,13 @@
                 <div class="flex flex-col items-center my-18 gap-18 lg:my-30 lg:gap-30">
 
                     @if ($remanSection && ($remanSection['show'] ?? false))
-                        <div class="text-left md:text-center lg:text-center lg:w-240">{!! $remanSection['description'] ?? '' !!}</div>
+                        <div id="{{ $remanSection['anchor'] ?? 'reman-center' }}"
+                            class="text-left md:text-center lg:text-center lg:w-240">{!! $remanSection['description'] ?? '' !!}</div>
                     @endif
 
                     @if ($imgRemanSection && ($imgRemanSection['show'] ?? false))
-                        <img src="{{ $imgRemanSection['section_images'] ?? '' }}" alt=""
+                        <img id="{{ $imgRemanSection['anchor'] ?? 'image-reman-center' }}"
+                            src="{{ $imgRemanSection['section_images'] ?? '' }}" alt=""
                             class="rounded-2xl w-full lg:h-150 object-cover">
                     @endif
                 </div>

@@ -10,7 +10,7 @@
         ->implode(' ');
 
     $sertifikatOpening = collect($page->sections)->first(
-        fn($section) => (string) ($section['identifier'] ?? '') === 'sertifikatopening',
+        fn($section) => (string) ($section['identifier'] ?? '') === 'opening-sertifikat',
     );
 
     $certificateGallery = collect($page->sections)->first(
@@ -46,7 +46,7 @@
 
         {{-- Heading Sertifikat --}}
         @if ($sertifikatOpening && ($sertifikatOpening['show'] ?? false))
-            <section id="sertification-heading">
+            <section id="{{ $sertifikatOpening['anchor'] ?? 'sertification-heading' }}">
                 <div class="container my-18 md:my-18 lg:my-30">
                     <div class="flow flex flex-col gap-2 md:gap-2 lg:gap-3 items-left md:items-center lg:items-center">
 
@@ -62,7 +62,7 @@
 
         {{-- Galeri Sertifikat --}}
         @if ($certificates->isNotEmpty())
-            <section id="sertification-gallery">
+            <section id="{{ $certificateGallery['anchor'] ?? 'sertification-gallery' }}">
                 <div class="container my-18 md:my-18 lg:my-30">
                     <div id="certificate-gallery"
                         class="grid grid-cols-2 gap-x-2 gap-y-8 md:grid-cols-4 lg:grid-cols-4 lg:gap-x-5 lg:gap-y-20">

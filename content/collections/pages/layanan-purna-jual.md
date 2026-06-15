@@ -4,7 +4,7 @@ blueprint: page
 title: 'Layanan Purna Jual'
 template: layanan-purna-jual
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780727868
+updated_at: 1781500631
 featured_image: hero-purna-jual.jpg
 parent: home
 sections:

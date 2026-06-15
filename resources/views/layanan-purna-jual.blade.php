@@ -32,7 +32,7 @@
         @if ($purnaJual && ($purnaJual['show'] ?? true))
             {{-- Deskripsi halaman purna jual --}}
             @if (!empty($purnaJual['heading']) || !empty($purnaJual['intro']))
-                <section id="purna-jual">
+                <section id="{{ $purnaJual['anchor'] ?? 'purna-jual' }}">
                     <div class="container flex flex-col items-center my-18 md:my-18 lg:my-30">
                         @if (!empty($purnaJual['heading']))
                             <h2 class="text-left md:text-center lg:text-center mb-2 md:mb-2 lg:mb-3">
@@ -49,7 +49,7 @@
 
             {{-- Konten layanan purna jual --}}
             @if (!empty($purnaJual['rows']))
-                <section>
+                <section id="items-pruna-jual">
                     <div class="container my-18 md:my-18 lg:my-30">
                         <div id="purna-jual-content" class="reverse-div flex flex-col gap-20 w-full">
                             @foreach ($purnaJual['rows'] as $item)

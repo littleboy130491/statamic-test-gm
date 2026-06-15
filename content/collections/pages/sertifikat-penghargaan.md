@@ -3,14 +3,14 @@ id: 051c55b2-219f-41d3-a00e-18959f30f177
 blueprint: page
 title: 'Sertifikat & Penghargaan'
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1781333642
+updated_at: 1781499831
 parent: home
 template: sertifikat-penghargaan
 featured_image: hero-sertifikat.jpg
 sections:
   -
     id: qq7NCXTs5k6vGj2Y1c6p_
-    identifier: sertifikatopening
+    identifier: opening-sertifikat
     description:
       -
         type: paragraph

@@ -76,7 +76,7 @@
 
         {{-- Deskripsi teletech --}}
         @if ($opening && ($opening['show'] ?? false))
-            <section id="gm-teletech-desc">
+            <section id="{{ $opening['anchor'] ?? 'gm-teletech-desc' }}">
                 <div class="container">
                     <div class="flex flex-col items-center my-18 lg:my-30">
                         <div class="text-left md:text-center lg:text-center lg:w-285">{!! $opening['description'] ?? '' !!}</div>
@@ -87,7 +87,7 @@
 
         {{-- Image teletech --}}
         @if ($teletechImage && ($teletechImage['show'] ?? false))
-            <section id="gm-teletech-map">
+            <section id="{{ $teletechImage['anchor'] ?? 'gm-teletech-map' }}">
                 <div class="container">
                     <div class="flex flex-col items-center my-18 lg:my-30">
                         <img src="{{ $teletechImage['section_images'] ?? '' }}" alt="{{ $page->title }}"
@@ -99,7 +99,7 @@
 
         {{-- Fitur & Benefit --}}
         @if ($fiturBenefit && ($fiturBenefit['show'] ?? false) && !empty($fiturBenefit['features']))
-            <section id="fitur-benefit">
+            <section id="{{ $fiturBenefit['anchor'] ?? 'fitur-benefit' }}">
                 <div class="container">
                     <div class="flex flex-col gap-6 my-18 md:gap-10 md:my-18 lg:gap-10 lg:my-30">
 
@@ -126,7 +126,7 @@
 
         {{-- Pemantauan trucks --}}
         @if ($ctaGrid && ($ctaGrid['show'] ?? true))
-            <section id="cta-gm-teletech">
+            <section id="{{ $ctaGrid['anchor'] ?? 'cta-gm-teletech' }}">
                 <div class="container">
                     <div class="flex flex-col items-center gap-6 my-18 md:flex-row md:my-18 lg:flex-row lg:my-30">
                         <img src="{{ $ctaGrid['image_call_to_action'] ?? '' }}" alt="{{ $ctaGrid['heading'] ?? '' }}"

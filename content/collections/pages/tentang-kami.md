@@ -4,7 +4,7 @@ blueprint: page
 title: 'Tentang Kami'
 template: tentang-kami
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1780914768
+updated_at: 1781499675
 sections:
   -
     id: 9Zt_Gqul-qZQxosrpNLS1
