@@ -1,0 +1,48 @@
+title: 'Blog Label Information'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: 'Archive & Single Blog'
+        fields:
+          -
+            handle: category_labels
+            field:
+              type: text
+              display: 'Category Labels'
+              validate:
+                - required
+          -
+            handle: latest_blog_label
+            field:
+              type: text
+              display: 'Latest Blog Label'
+              validate:
+                - required
+          -
+            handle: label_share
+            field:
+              type: text
+              display: 'Label Share'
+              validate:
+                - required
+          -
+            handle: related_news_labels
+            field:
+              type: text
+              display: 'Related News Labels'
+              validate:
+                - required
+      -
+        display: 'Loop Blog'
+        fields:
+          -
+            handle: image_placeholders
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Image Placeholders'
+              validate:
+                - required

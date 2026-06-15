@@ -6,6 +6,11 @@ preferences:
   collections:
     posts:
       view: list
+      columns:
+        - title
+        - date
+        - author
+        - status
     products:
       view: list
     pages:
