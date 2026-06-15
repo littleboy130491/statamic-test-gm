@@ -27,25 +27,34 @@
         ->where('collection', 'achievements')
         ->whereStatus('published')
         ->get();
+
+    // Cek component
+    $hasHeader = view()->exists('components.layouts.header.header');
+    $hasHeroPage = view()->exists('components.layouts.hero.heropage');
+    $hasFooter = view()->exists('components.layouts.footer.footer');
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
-    <x-layouts.header.header />
+    @if ($hasHeader)
+        <x-layouts.header.header />
+    @endif
 
     <main>
-        <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
+        @if ($hasHeroPage)
+            <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
+        @endif
 
         {{-- Heading Sertifikat --}}
-        @if ($sertifikatOpening && $sertifikatOpening['show'])
+        @if ($sertifikatOpening && ($sertifikatOpening['show'] ?? false))
             <section id="sertification-heading">
                 <div class="container my-18 md:my-18 lg:my-30">
                     <div class="flow flex flex-col gap-2 md:gap-2 lg:gap-3 items-left md:items-center lg:items-center">
 
                         <h2 class="text-left w-[90%] md:text-center md:w-full lg:w-full lg:text-center">
-                            {{ $sertifikatOpening['heading'] }}
+                            {{ $sertifikatOpening['heading'] ?? '' }}
                         </h2>
 
-                        <div class="text-left md:text-center lg:text-center lg:w-[45%]">{!! $sertifikatOpening['description'] !!}</div>
+                        <div class="text-left md:text-center lg:text-center lg:w-[45%]">{!! $sertifikatOpening['description'] ?? '' !!}</div>
                     </div>
                 </div>
             </section>
@@ -67,7 +76,7 @@
                                 <span
                                     class="title-display font-semibold tracking-tighter text-xl lg:text-2xl">{{ $certificate->title }}</span>
                                 <p class="text-(--color-primary) font-medium">
-                                    @foreach ($certificate->years as $year)
+                                    @foreach ($certificate->years ?? [] as $year)
                                         {{ $year->title }}
                                         @unless ($loop->last)
                                             ,
@@ -83,5 +92,7 @@
 
     </main>
 
-    <x-layouts.footer.footer />
+    @if ($hasFooter)
+        <x-layouts.footer.footer />
+    @endif
 </x-layouts.main>

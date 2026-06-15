@@ -7,12 +7,23 @@
     ])
         ->filter()
         ->implode(' ');
+
+    // Cek component
+    $hasHeader = view()->exists('components.layouts.header.header');
+    $hasSlider = view()->exists('components.layouts.hero.slider');
+    $hasFooter = view()->exists('components.layouts.footer.footer');
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
-    <x-layouts.header.header />
+    @if ($hasHeader)
+        <x-layouts.header.header />
+    @endif
     <main>
-        <x-layouts.hero.slider />
+        @if ($hasSlider)
+            <x-layouts.hero.slider />
+        @endif
     </main>
-    <x-layouts.footer.footer />
+    @if ($hasFooter)
+        <x-layouts.footer.footer />
+    @endif
 </x-layouts.main>

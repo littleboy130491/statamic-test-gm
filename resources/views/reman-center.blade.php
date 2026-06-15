@@ -9,31 +9,40 @@
         ->implode(' ');
 
     $remanSection = collect($page->sections)->first(
-        fn($section) => (string) $section['identifier'] === 'opening-reman',
+        fn($section) => (string) ($section['identifier'] ?? '') === 'opening-reman',
     );
 
     $imgRemanSection = collect($page->sections)->first(
-        fn($section) => (string) $section['identifier'] === 'section-image-reman',
+        fn($section) => (string) ($section['identifier'] ?? '') === 'section-image-reman',
     );
+
+    // Cek component
+    $hasHeader = view()->exists('components.layouts.header.header');
+    $hasHeroPage = view()->exists('components.layouts.hero.heropage');
+    $hasFooter = view()->exists('components.layouts.footer.footer');
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
-    <x-layouts.header.header />
+    @if ($hasHeader)
+        <x-layouts.header.header />
+    @endif
 
     <main>
-        <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
+        @if ($hasHeroPage)
+            <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
+        @endif
 
         {{-- Halaman REMAN Center --}}
         <section id="reman-center">
             <div class="container">
                 <div class="flex flex-col items-center my-18 gap-18 lg:my-30 lg:gap-30">
 
-                    @if ($remanSection && $remanSection['show'])
-                        <div class="text-left md:text-center lg:text-center lg:w-240">{!! $remanSection['description'] !!}</div>
+                    @if ($remanSection && ($remanSection['show'] ?? false))
+                        <div class="text-left md:text-center lg:text-center lg:w-240">{!! $remanSection['description'] ?? '' !!}</div>
                     @endif
 
-                    @if ($imgRemanSection && $imgRemanSection['show'])
-                        <img src="{{ $imgRemanSection['section_images'] }}" alt=""
+                    @if ($imgRemanSection && ($imgRemanSection['show'] ?? false))
+                        <img src="{{ $imgRemanSection['section_images'] ?? '' }}" alt=""
                             class="rounded-2xl w-full lg:h-150 object-cover">
                     @endif
                 </div>
@@ -42,5 +51,7 @@
 
     </main>
 
-    <x-layouts.footer.footer />
+    @if ($hasFooter)
+        <x-layouts.footer.footer />
+    @endif
 </x-layouts.main>

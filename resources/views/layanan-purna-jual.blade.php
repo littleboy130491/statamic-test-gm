@@ -12,13 +12,22 @@
     $purnaJual = collect($page->sections)->first(
         fn($section) => (string) ($section['identifier'] ?? '') === 'section-purna-jual',
     );
+
+    // Cek component
+    $hasHeader = view()->exists('components.layouts.header.header');
+    $hasHeroPage = view()->exists('components.layouts.hero.heropage');
+    $hasFooter = view()->exists('components.layouts.footer.footer');
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
-    <x-layouts.header.header />
+    @if ($hasHeader)
+        <x-layouts.header.header />
+    @endif
 
     <main>
-        <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
+        @if ($hasHeroPage)
+            <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
+        @endif
 
         @if ($purnaJual && ($purnaJual['show'] ?? true))
             {{-- Deskripsi halaman purna jual --}}
@@ -45,7 +54,7 @@
                         <div id="purna-jual-content" class="reverse-div flex flex-col gap-20 w-full">
                             @foreach ($purnaJual['rows'] as $item)
                                 <div class="flex flex-col gap-4 md:gap-4 lg:gap-6 lg:flex-row">
-                                    <img src="{{ $item['image'] }}" alt="{{ $item['title'] ?? '' }}"
+                                    <img src="{{ $item['image'] ?? '' }}" alt="{{ $item['title'] ?? '' }}"
                                         class="w-full object-cover rounded-3xl h-50 md:h-60 lg:h-112 lg:w-[50%]">
                                     <div
                                         class="flex flex-col justify-center flow bg-white rounded-3xl py-8 px-5 md:px-6 lg:p-10 lg:w-[50%]">
@@ -65,5 +74,7 @@
         @endif
     </main>
 
-    <x-layouts.footer.footer />
+    @if ($hasFooter)
+        <x-layouts.footer.footer />
+    @endif
 </x-layouts.main>

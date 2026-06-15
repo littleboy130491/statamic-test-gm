@@ -9,7 +9,7 @@
         ->implode(' ');
 
     $dealerSection = collect($page->sections)->first(
-        fn($section) => (string) $section['identifier'] === 'opening-dealer',
+        fn($section) => (string) ($section['identifier'] ?? '') === 'opening-dealer',
     );
 
     // Query dealer aktif
@@ -41,22 +41,32 @@
         ->where('taxonomy', 'dealer_categories')
         ->get()
         ->mapWithKeys(fn($term) => [$term->slug() => $term->title]);
+
+    // Cek component
+    $hasHeader = view()->exists('components.layouts.header.header');
+    $hasHeroPage = view()->exists('components.layouts.hero.heropage');
+    $hasDealerMap = view()->exists('components.layouts.dealer-map');
+    $hasFooter = view()->exists('components.layouts.footer.footer');
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
-    <x-layouts.header.header />
+    @if ($hasHeader)
+        <x-layouts.header.header />
+    @endif
 
     <main>
-        <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
+        @if ($hasHeroPage)
+            <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
+        @endif
 
         {{-- Halaman dealer --}}
-        @if ($dealerSection && $dealerSection['show'])
+        @if ($dealerSection && ($dealerSection['show'] ?? false))
             <section id="dealer-page">
                 <div class="container">
                     <div class="my-18 md:my-18 lg:my-30 flow flex flex-col gap-4 items-center">
-                        <h2 class="text-left md:text-center lg:text-center">{{ $dealerSection['heading'] }}</h2>
+                        <h2 class="text-left md:text-center lg:text-center">{{ $dealerSection['heading'] ?? '' }}</h2>
                         <div class="w-full lg:w-160 text-left md:text-center lg:text-center">
-                            {!! $dealerSection['description'] !!}
+                            {!! $dealerSection['description'] ?? '' !!}
                         </div>
                     </div>
                 </div>
@@ -64,9 +74,13 @@
         @endif
 
         {{-- Maps dealer --}}
-        <x-layouts.dealer-map :dealers="$dealers" :categories="$dealerCategories" />
+        @if ($hasDealerMap)
+            <x-layouts.dealer-map :dealers="$dealers" :categories="$dealerCategories" />
+        @endif
 
     </main>
 
-    <x-layouts.footer.footer />
+    @if ($hasFooter)
+        <x-layouts.footer.footer />
+    @endif
 </x-layouts.main>

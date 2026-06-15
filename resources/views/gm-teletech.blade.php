@@ -57,31 +57,40 @@
         $number = preg_replace('/[^0-9]/', '', $kontak);
         return 'https://wa.me/' . $number;
     };
+
+    // Cek keberadaan komponen (biar page tetap jalan kalau filenya kehapus)
+    $hasHeader = view()->exists('components.layouts.header.header');
+    $hasHeroPage = view()->exists('components.layouts.hero.heropage');
+    $hasFooter = view()->exists('components.layouts.footer.footer');
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
-    <x-layouts.header.header />
+    @if ($hasHeader)
+        <x-layouts.header.header />
+    @endif
 
     <main>
-        <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
+        @if ($hasHeroPage)
+            <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
+        @endif
 
         {{-- Deskripsi teletech --}}
-        @if ($opening && $opening['show'])
+        @if ($opening && ($opening['show'] ?? false))
             <section id="gm-teletech-desc">
                 <div class="container">
                     <div class="flex flex-col items-center my-18 lg:my-30">
-                        <div class="text-left md:text-center lg:text-center lg:w-285">{!! $opening['description'] !!}</div>
+                        <div class="text-left md:text-center lg:text-center lg:w-285">{!! $opening['description'] ?? '' !!}</div>
                     </div>
                 </div>
             </section>
         @endif
 
         {{-- Image teletech --}}
-        @if ($teletechImage && $teletechImage['show'])
+        @if ($teletechImage && ($teletechImage['show'] ?? false))
             <section id="gm-teletech-map">
                 <div class="container">
                     <div class="flex flex-col items-center my-18 lg:my-30">
-                        <img src="{{ $teletechImage['section_images'] }}" alt="{{ $page->title }}"
+                        <img src="{{ $teletechImage['section_images'] ?? '' }}" alt="{{ $page->title }}"
                             class="rounded-2xl w-full lg:h-150 object-cover">
                     </div>
                 </div>
@@ -89,12 +98,12 @@
         @endif
 
         {{-- Fitur & Benefit --}}
-        @if ($fiturBenefit && $fiturBenefit['show'] && !empty($fiturBenefit['features']))
+        @if ($fiturBenefit && ($fiturBenefit['show'] ?? false) && !empty($fiturBenefit['features']))
             <section id="fitur-benefit">
                 <div class="container">
                     <div class="flex flex-col gap-6 my-18 md:gap-10 md:my-18 lg:gap-10 lg:my-30">
 
-                        <h2 id="title-fitur-benefit">{{ $fiturBenefit['heading'] }}</h2>
+                        <h2 id="title-fitur-benefit">{{ $fiturBenefit['heading'] ?? '' }}</h2>
 
                         {{-- Grid Fitur & Benefit --}}
                         <div id="fitur-benefit-content" data-equal-height class="grid gap-5 {{ $featureColumns }}">
@@ -104,8 +113,8 @@
                                     <img src="{{ $item['icon'] ?: $iconBenefitPlaceholder }}" alt="Icon"
                                         class="w-10 h-10">
                                     <div class="flow">
-                                        <h4 class="text-black">{{ $item['title'] }}</h4>
-                                        <p>{{ $item['text'] }}</p>
+                                        <h4 class="text-black">{{ $item['title'] ?? '' }}</h4>
+                                        <p>{{ $item['text'] ?? '' }}</p>
                                     </div>
                                 </div>
                             @endforeach
@@ -120,18 +129,18 @@
             <section id="cta-gm-teletech">
                 <div class="container">
                     <div class="flex flex-col items-center gap-6 my-18 md:flex-row md:my-18 lg:flex-row lg:my-30">
-                        <img src="{{ $ctaGrid['image_call_to_action'] }}" alt="{{ $ctaGrid['heading'] }}"
+                        <img src="{{ $ctaGrid['image_call_to_action'] ?? '' }}" alt="{{ $ctaGrid['heading'] ?? '' }}"
                             class="md:w-[40%] lg:w-[40%]">
 
                         {{-- Konten CTA --}}
                         <div class="flex flex-col gap-4">
-                            <h2 class="lg:w-180">{{ $ctaGrid['heading'] }}</h2>
+                            <h2 class="lg:w-180">{{ $ctaGrid['heading'] ?? '' }}</h2>
 
                             @if (!empty($ctaGrid['short_description']))
                                 <div class="flow">{{ $ctaGrid['short_description'] }}</div>
                             @endif
 
-                            @foreach ($ctaGrid['call_to_action'] as $contact)
+                            @foreach ($ctaGrid['call_to_action'] ?? [] as $contact)
                                 @php
                                     $contactUrl = $buildContactUrl($contact['kontak'] ?? '');
                                     $isWhatsapp = str_starts_with($contactUrl, 'https://wa.me');
@@ -144,16 +153,17 @@
                                     {{-- Kontak --}}
                                     <div class="lg:flex lg:w-[90%] lg:items-center lg:justify-between">
                                         <p class="font-medium group-hover:text-black transition-colors">
-                                            {{ $contact['label'] }}
+                                            {{ $contact['label'] ?? '' }}
                                         </p>
                                         <span
-                                            class="title-display group-hover:text-black -mb-1 transition-colors">{{ $contact['kontak'] }}</span>
+                                            class="title-display group-hover:text-black -mb-1 transition-colors">{{ $contact['kontak'] ?? '' }}</span>
                                     </div>
 
                                     {{-- Icon kontak --}}
                                     <div
                                         class="bg-(--color-primary) group-hover:bg-black flex items-center justify-center rounded-full transition-colors w-12 h-12 md:w-12 md:h-12 lg:w-12 lg:h-12">
-                                        <img src="{{ $contactIcon }}" alt="{{ $contact['label'] }}" class="w-5 h-5">
+                                        <img src="{{ $contactIcon }}" alt="{{ $contact['label'] ?? '' }}"
+                                            class="w-5 h-5">
                                     </div>
                                 </a>
                             @endforeach
@@ -165,6 +175,8 @@
 
     </main>
 
-    <x-layouts.footer.footer />
+    @if ($hasFooter)
+        <x-layouts.footer.footer />
+    @endif
 
 </x-layouts.main>

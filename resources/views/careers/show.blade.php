@@ -21,11 +21,20 @@
         ->where('id', '!=', $page->id)
         ->limit(2)
         ->get();
+
+    // Cek keberadaan komponen (biar page tetap jalan kalau filenya kehapus)
+    $hasHeader = view()->exists('components.layouts.header.single-header');
+    $hasCareerSkin = view()->exists('components.layouts.skin.career-skin');
+    $hasCtaSingle = view()->exists('components.layouts.cta-single-career');
+    $hasPopupForm = view()->exists('components.layouts.form.popup-form-career');
+    $hasFooter = view()->exists('components.layouts.footer.secondary-footer');
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
 
-    <x-layouts.header.single-header />
+    @if ($hasHeader)
+        <x-layouts.header.single-header />
+    @endif
 
     {{-- Singel career --}}
     <main>
@@ -128,7 +137,7 @@
 
                 {{-- Career Lainnya --}}
                 <aside class="w-full md:w-[40%] lg:w-[35%]">
-                    @if ($relatedCareers->isNotEmpty())
+                    @if ($relatedCareers->isNotEmpty() && $hasCareerSkin)
                         <div class="flex flex-col gap-6">
                             @foreach ($relatedCareers as $entry)
                                 <x-layouts.skin.career-skin :entry="$entry" :career="$career" />
@@ -142,12 +151,18 @@
 
 
     {{-- Call to Action --}}
-    <x-layouts.cta-single-career />
+    @if ($hasCtaSingle)
+        <x-layouts.cta-single-career />
+    @endif
 
     {{-- Popup Form --}}
-    <x-layouts.form.popup-form-career />
+    @if ($hasPopupForm)
+        <x-layouts.form.popup-form-career />
+    @endif
 </main>
 
-<x-layouts.footer.secondary-footer />
+@if ($hasFooter)
+    <x-layouts.footer.secondary-footer />
+@endif
 
 </x-layouts.main>

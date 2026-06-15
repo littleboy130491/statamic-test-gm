@@ -13,13 +13,22 @@
         ?->toAugmentedArray();
 
     $industries = \Statamic\Facades\Term::query()->where('taxonomy', 'industries')->get();
+
+    // Cek component
+    $hasHeader = view()->exists('components.layouts.header.header');
+    $hasHeroPage = view()->exists('components.layouts.hero.heropage');
+    $hasFooter = view()->exists('components.layouts.footer.footer');
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
-    <x-layouts.header.header />
+    @if ($hasHeader)
+        <x-layouts.header.header />
+    @endif
 
     <main>
-        <x-layouts.hero.heropage :title="$title ?? 'Industri'" :image="$featured_image ?? null" />
+        @if ($hasHeroPage)
+            <x-layouts.hero.heropage :title="$title ?? 'Industri'" :image="$featured_image ?? null" />
+        @endif
 
         <section id="industries-accordion">
             <div class="container my-18 md:my-18 lg:my-30">
@@ -106,5 +115,7 @@
 
     </main>
 
-    <x-layouts.footer.footer />
+    @if ($hasFooter)
+        <x-layouts.footer.footer />
+    @endif
 </x-layouts.main>

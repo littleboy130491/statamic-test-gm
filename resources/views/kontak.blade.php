@@ -56,8 +56,15 @@
         ->values()
         ->all();
 
-    $formText = collect($page->sections)->first(fn($section) => (string) $section['identifier'] === 'text-form');
+    $formText = collect($page->sections)->first(
+        fn($section) => (string) ($section['identifier'] ?? '') === 'text-form',
+    );
 
+    // Cek component
+    $hasHeader = view()->exists('components.layouts.header.header');
+    $hasHeroPage = view()->exists('components.layouts.hero.heropage');
+    $hasContactForm = view()->exists('components.layouts.form.contact-form');
+    $hasFooter = view()->exists('components.layouts.footer.cp-footer');
 @endphp
 
 @push('head')
@@ -65,10 +72,14 @@
     @endpush
 
     <x-layouts.main :body-class="$bodyClass">
-        <x-layouts.header.header />
+        @if ($hasHeader)
+            <x-layouts.header.header />
+        @endif
 
         <main>
-            <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
+            @if ($hasHeroPage)
+                <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
+            @endif
 
             {{-- Halaman kontak --}}
             <section id="kontak">
@@ -81,15 +92,17 @@
                             <div id="header-form"
                                 class="px-4 py-6 bg-(--color-surface) rounded-2xl flow lg:p-6 lg:rounded-3xl flex flex-col gap-10">
                                 <div id="text-form">
-                                    @if ($formText && $formText['show'])
-                                        <h2 class="lg:w-180 mb-4">{{ $formText['heading'] }}</h2>
-                                        <div class="richtext lg:w-150">{!! $formText['description'] !!}</div>
+                                    @if ($formText && ($formText['show'] ?? false))
+                                        <h2 class="lg:w-180 mb-4">{{ $formText['heading'] ?? '' }}</h2>
+                                        <div class="richtext lg:w-150">{!! $formText['description'] ?? '' !!}</div>
                                     @endif
                                 </div>
 
                                 {{-- Form halaman kontak --}}
                                 <div id="form">
-                                    <x-layouts.form.contact-form />
+                                    @if ($hasContactForm)
+                                        <x-layouts.form.contact-form />
+                                    @endif
                                 </div>
                             </div>
 
@@ -192,5 +205,7 @@
             </section>
         </main>
 
-        <x-layouts.footer.cp-footer />
+        @if ($hasFooter)
+            <x-layouts.footer.cp-footer />
+        @endif
     </x-layouts.main>
