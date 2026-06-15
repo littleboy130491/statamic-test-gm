@@ -10,14 +10,16 @@ tabs:
               display: Name
               type: text
               validate: 'required|max:255'
+              placeholder: Nama
           -
             handle: phone
             field:
-              display: Phone
+              display: 'Phone Number'
               type: text
               input_type: tel
               validate: 'required|max:50'
               width: 50
+              placeholder: 'No Telepon'
           -
             handle: email
             field:
@@ -26,21 +28,38 @@ tabs:
               input_type: email
               validate: 'required|email|max:255'
               width: 50
+              placeholder: Email
           -
             handle: source
             field:
               display: 'How did you hear about us?'
               type: select
-              placeholder: 'Select a source'
+              placeholder: 'Dari mana Anda mendengar tentang GM Mobil?'
               options:
-                website: Website
-                search_engine: 'Search engine'
-                social_media: 'Social media'
-                dealer: 'Dealer / partner'
-                referral: Referral
-                email: Email
-                phone: Phone
-                other: Other
+                -
+                  key: website
+                  value: Website
+                -
+                  key: search_engine
+                  value: 'Search engine'
+                -
+                  key: social_media
+                  value: 'Social media'
+                -
+                  key: dealer
+                  value: 'Dealer / partner'
+                -
+                  key: referral
+                  value: Referral
+                -
+                  key: email
+                  value: Email
+                -
+                  key: phone
+                  value: Phone
+                -
+                  key: other
+                  value: Other
               validate: required
           -
             handle: message
@@ -48,3 +67,4 @@ tabs:
               display: Message
               type: textarea
               validate: 'required|max:5000'
+              placeholder: 'Pesan Anda'

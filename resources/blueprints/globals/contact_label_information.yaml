@@ -40,3 +40,17 @@ tabs:
               display: 'Submit Button Label'
               validate:
                 - required
+          -
+            handle: success_message
+            field:
+              type: textarea
+              display: 'Success message'
+              validate:
+                - required
+          -
+            handle: message_failed
+            field:
+              type: textarea
+              display: 'Message failed'
+              validate:
+                - required
