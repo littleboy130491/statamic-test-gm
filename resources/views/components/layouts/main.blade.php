@@ -6,7 +6,20 @@
 @php
     $locale = $locale ?? app()->getLocale();
     $classes = trim('locale-' . $locale . ' ' . $bodyClass);
+    $settings = \Statamic\Facades\GlobalSet::findByHandle('settings')?->inCurrentSite();
 @endphp
+
+@if ($settings?->custom_code_head)
+    @push('head')
+        {!! $settings->custom_code_head !!}
+    @endpush
+@endif
+
+@if ($settings?->custom_code_body)
+    @push('body_start')
+        {!! $settings->custom_code_body !!}
+    @endpush
+@endif
 
 <!doctype html>
 <html lang="{{ $locale }}">

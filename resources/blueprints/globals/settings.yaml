@@ -118,3 +118,23 @@ tabs:
             field:
               type: text
               display: 'Google Maps Embed'
+  custom_code:
+    display: 'Custom Code'
+    sections:
+      -
+        display: 'New Section'
+        fields:
+          -
+            handle: custom_code_head
+            field:
+              mode_selectable: false
+              show_mode_label: false
+              type: code
+              display: 'Custom Code Head'
+          -
+            handle: custom_code_body
+            field:
+              mode_selectable: false
+              show_mode_label: false
+              type: code
+              display: 'Custom Code Body'
