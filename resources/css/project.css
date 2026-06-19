@@ -440,8 +440,3 @@ body:has(dialog[open].career-popup) {
 
 
 
-/* Container */
-.container {
-    max-width: 1200px !important;
-    margin-inline: auto;
-}

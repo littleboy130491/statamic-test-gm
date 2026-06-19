@@ -15,3 +15,23 @@
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+
+@layer utilities {
+   .container {
+  max-width: var(--width-container-max);
+  margin-inline: auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: var(--width-container-tablet);
+    padding-inline: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-inline: 16px;
+  }
+}
+}

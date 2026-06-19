@@ -183,7 +183,7 @@
 
     /*layout*/
     --width-default: 100%;
-    --width-container-max: 1200px;
+    --width-container-max: 1280px;
     --width-container-tablet: 720px;
     --padding-block-container: var(--space-8);
     --padding-inline-container: 24px;
