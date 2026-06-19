@@ -1,3 +1,3 @@
-<x-layouts.app>
+<x-layouts.main>
     @include('partials.categories.index')
-</x-layouts.app>
+</x-layouts.main>

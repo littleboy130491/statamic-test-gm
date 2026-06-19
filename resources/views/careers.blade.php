@@ -38,28 +38,31 @@
             <x-layouts.hero.heropage :title="$title ?? 'Karier'" :image="$featured_image ?? null" />
         @endif
 
-        <section id="careers-listing">
-            <div class="container my-18 md:my-18 lg:my-30 flex flex-col gap-20">
+        @if ($hasCareerSkin)
+            <section id="careers-listing">
+                <div class="container my-18 md:my-18 lg:my-30 flex flex-col gap-20">
 
-                {{-- Grid 3 kolom --}}
-                <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-x-4 md:gap-y-10 lg:gap-x-5 lg:gap-y-20">
-                    @if ($hasCareerSkin)
+                    {{-- Grid 3 kolom --}}
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-x-4 md:gap-y-10 lg:gap-x-5 lg:gap-y-20">
                         @foreach ($careers as $entry)
-                            <x-layouts.skin.career-skin :entry="$entry" :career="$career" />
+                            @includeIf('components.layouts.skin.career-skin', [
+                                'entry' => $entry,
+                                'career' => $career,
+                            ])
                         @endforeach
-                    @endif
-                </div>
-
-                {{-- Pagination --}}
-                @if ($careers->hasPages())
-                    <div class="careers-pagination">
-                        {{ $careers->links() }}
                     </div>
-                @endif
 
-            </div>
-        </section>
+                    {{-- Pagination --}}
+                    @if ($careers->hasPages())
+                        <div class="careers-pagination">
+                            {{ $careers->links() }}
+                        </div>
+                    @endif
+
+                </div>
+            </section>
+        @endif
     </main>
 
     @if ($hasFooter)

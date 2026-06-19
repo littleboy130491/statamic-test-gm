@@ -22,7 +22,7 @@
         ->limit(2)
         ->get();
 
-    // Cek keberadaan komponen (biar page tetap jalan kalau filenya kehapus)
+    // Cek Component
     $hasHeader = view()->exists('components.layouts.header.single-header');
     $hasCareerSkin = view()->exists('components.layouts.skin.career-skin');
     $hasCtaSingle = view()->exists('components.layouts.cta-single-career');
@@ -136,15 +136,18 @@
                 </article>
 
                 {{-- Career Lainnya --}}
-                <aside class="w-full md:w-[40%] lg:w-[35%]">
-                    @if ($relatedCareers->isNotEmpty() && $hasCareerSkin)
+                @if ($relatedCareers->isNotEmpty() && $hasCareerSkin)
+                    <aside class="w-full md:w-[40%] lg:w-[35%]">
                         <div class="flex flex-col gap-6">
                             @foreach ($relatedCareers as $entry)
-                                <x-layouts.skin.career-skin :entry="$entry" :career="$career" />
+                                @includeIf('components.layouts.skin.career-skin', [
+                                    'entry' => $entry,
+                                    'career' => $career,
+                                ])
                             @endforeach
                         </div>
-                    @endif
-                </aside>
+                    </aside>
+                @endif
             </div>
         </div>
     </section>
