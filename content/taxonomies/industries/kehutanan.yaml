@@ -5,8 +5,9 @@ content:
     content:
       -
         type: text
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
+        text: 'Perkembangan di sektor penebangan kayu baik dari Hutan Alam maupun Hutan Tanaman Industri yang makin tumbuh dengan cepat membutuhkan kendaraan angkut dengan kapasitas angkut yang maksimal, tenaga besar, handal dan efisien.'
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1781327018
+updated_at: 1781854203
 blueprint: industry
 show: true
+featured_image: industri-kehutanan.jpg

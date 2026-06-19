@@ -5,7 +5,9 @@ content:
     content:
       -
         type: text
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        text: 'Proyek-proyek konstruksi membutuhkan dukungan kendaraan dan alat angkut yang efisien, mempunyai daya angkut yang besar serta mempunyai nilai ekonomis yang tinggi.'
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1781173113
+updated_at: 1781854312
 blueprint: industry
+featured_image: industri-konstruksi.jpg
+show: true

@@ -5,7 +5,9 @@ content:
     content:
       -
         type: text
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        text: 'Pertumbuhan ekonomi perkotaan membutuhkan keandalan pasokan barang dan komoditas guna memenuhi kebutuhan sektor industri dan rumah tangga, dengan berbagai macam komoditas seperti; pangan, industry, bahan bangunan dll.'
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1781173097
+updated_at: 1781854229
 blueprint: industry
+featured_image: industri-logistik.jpg
+show: true
