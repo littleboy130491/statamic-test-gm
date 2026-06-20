@@ -12,12 +12,16 @@ tabs:
               required: true
               display: Title
               localizable: true
+              validate:
+                - required
           -
-            handle: content
+            handle: hero_banner_image
             field:
-              type: textarea
-              display: Description
-              localizable: true
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Hero banner image'
+              instructions: optional
   sidebar:
     display: Sidebar
     sections:
@@ -27,8 +31,11 @@ tabs:
             handle: slug
             field:
               type: slug
+              required: true
+              validate:
+                - required
+                - 'max:200'
               localizable: true
-              validate: 'max:200'
           -
             handle: parent
             field:
@@ -36,5 +43,31 @@ tabs:
               taxonomies:
                 - categories
               max_items: 1
-              display: Parent Category
+              display: 'Parent Category'
               localizable: true
+  'SEO Meta':
+    display: 'SEO Meta'
+    sections:
+      -
+        fields:
+          -
+            handle: seo
+            field:
+              type: seo_pro
+              listable: false
+              display: SEO
+  'SEO Previews':
+    display: 'SEO Previews'
+    sections:
+      -
+        fields:
+          -
+            handle: seo_previews
+            field:
+              type: seo_pro_previews
+              listable: false
+              display: 'SEO Previews'
+              localizable: false
+              hide_display: true
+              unless:
+                seo.enabled: 'equals false'

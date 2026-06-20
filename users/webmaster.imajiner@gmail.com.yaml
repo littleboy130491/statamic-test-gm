@@ -11,6 +11,7 @@ preferences:
         - date
         - author
         - status
+      per_page: 100
     products:
       view: list
     pages:
@@ -35,6 +36,7 @@ preferences:
         - title
         - years
         - status
+    listing_mode: list
   color_mode: light
   assets:
     assets:

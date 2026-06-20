@@ -12,15 +12,32 @@
     // Cek component
     $hasHeader = view()->exists('components.layouts.header.header');
     $hasHeroPage = view()->exists('components.layouts.hero.heropage');
+    $hasBlogSkin = view()->exists('components.layouts.skin.blog-skin');
+    $hasBlogNewSkin = view()->exists('components.layouts.skin.blog-new-skin');
     $hasFooter = view()->exists('components.layouts.footer.footer');
 
-    //  Post
-    $postsData = Statamic::tag('collection:posts')->sort('date:desc')->paginate(10)->as('posts')->fetch();
-
-    //  Content opening
+    // Content opening
     $opening = collect($page->sections)->first(
         fn($section) => (string) ($section['identifier'] ?? '') === 'opening-blog',
     );
+
+    // Grid post
+    $posts = \Statamic\Facades\Entry::query()
+        ->where('collection', 'posts')
+        ->whereStatus('published')
+        ->orderBy('date', 'desc')
+        ->paginate(6);
+
+    // Sidebar: 3 post terbaru (independen dari pagination)
+    $latestPosts = \Statamic\Facades\Entry::query()
+        ->where('collection', 'posts')
+        ->whereStatus('published')
+        ->orderBy('date', 'desc')
+        ->limit(3)
+        ->get();
+
+    // Sidebar kategori
+    $categories = \Statamic\Facades\Term::query()->where('taxonomy', 'categories')->get();
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
@@ -28,78 +45,93 @@
         <x-layouts.header.header />
     @endif
 
-    @if ($hasHeroPage)
-        <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
-    @endif
+    <main>
+        @if ($hasHeroPage)
+            <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
+        @endif
 
-    {{-- Text opening --}}
-    @if ($opening && ($opening['show'] ?? false))
-        <section id="{{ $opening['anchor'] ?? 'opening-blog' }}">
-            <div class="container">
-                <div class="flex flex-col items-center my-18 lg:my-30 richtext">
-                    <h2 class="text-left md:text-center lg:text-center w-full md:w-[80%] lg:w-[50%]">
-                        {{ $opening['heading'] ?? '' }}</h2>
-                    <div class="text-left md:text-center lg:text-center w-full md:w-[80%] lg:w-[50%]">
-                        {!! $opening['description'] ?? '' !!}</div>
+        {{-- Text opening --}}
+        @if ($opening && ($opening['show'] ?? false))
+            <section id="{{ $opening['anchor'] ?? 'opening-blog' }}">
+                <div class="container">
+                    <div class="flex flex-col items-center my-18 lg:my-30 richtext">
+                        <h2 class="text-left md:text-center lg:text-center w-full md:w-[80%] lg:w-[50%]">
+                            {{ $opening['heading'] ?? '' }}</h2>
+                        <div class="text-left md:text-center lg:text-center w-full md:w-[80%] lg:w-[50%]">
+                            {!! $opening['description'] ?? '' !!}</div>
+                    </div>
+                </div>
+            </section>
+        @endif
+
+        {{-- Article + sidebar --}}
+        <section id="article-content">
+            <div class="container my-18 md:my-18 lg:my-30">
+                <div class="flex flex-col lg:flex-row gap-6 lg:gap-6">
+
+                    {{-- Kiri: grid card blog --}}
+                    <div class="w-full lg:w-[70%] flex flex-col gap-20">
+                        <div id="article-grid"
+                            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-x-4 md:gap-y-10 lg:gap-x-6 lg:gap-y-16">
+                            @if ($hasBlogSkin)
+                                @foreach ($posts as $post)
+                                    <x-layouts.skin.blog-skin :entry="$post" />
+                                @endforeach
+                            @endif
+                        </div>
+
+                        {{-- Pagination --}}
+                        @if ($posts->hasPages())
+                            <div class="blog-pagination">
+                                {{ $posts->links() }}
+                            </div>
+                        @endif
+                    </div>
+
+                    {{-- Sidebar --}}
+                    <aside class="w-full lg:w-[30%] flex flex-col gap-6">
+
+                        {{-- Kategori --}}
+                        @if ($categories->isNotEmpty())
+                            <div id="sidebar-categories" class="bg-white rounded-3xl p-6 flex flex-col gap-8">
+                                <p class="uppercase text-black font-medium">Kategori</p>
+                                <ul class="flex flex-col">
+                                    @foreach ($categories as $category)
+                                        <li
+                                            class="py-3 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
+                                            <a href="{{ $category->url() }}"
+                                                class="text-(--color-body) hover:text-(--color-primary) transition-colors">
+                                                {{ $category->title }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        {{-- Terbaru --}}
+                        <div id="sidebar-latest" class="bg-white rounded-3xl p-6 flex flex-col gap-8">
+                            <p class="uppercase text-black font-medium">Terbaru</p>
+                            @if ($hasBlogNewSkin && $latestPosts->isNotEmpty())
+                                <div class="flex flex-col">
+                                    @foreach ($latestPosts as $post)
+                                        <div
+                                            class="py-4 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
+                                            <x-layouts.skin.blog-new-skin :entry="$post" />
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+                        </div>
+
+                    </aside>
                 </div>
             </div>
         </section>
+
+    </main>
+
+    @if ($hasFooter)
+        <x-layouts.footer.footer />
     @endif
-
-
-
-
-
-
-    <div class="mx-auto w-full max-w-3xl px-4 py-8">
-
-        <aside class="mb-8 rounded-xl bg-white p-4 shadow dark:bg-zinc-950">
-            <h2 class="mb-3 text-sm font-semibold uppercase tracking-wide text-zinc-500">Categories</h2>
-            <ul class="flex flex-wrap gap-2">
-                <s:taxonomy:categories>
-                    <li>
-                        <a href="{{ $url }}"
-                            class="rounded-full bg-zinc-100 px-3 py-1 text-sm text-zinc-700 hover:bg-indigo-100 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-indigo-900/40">
-                            {{ $title }}
-                        </a>
-                    </li>
-                </s:taxonomy:categories>
-            </ul>
-        </aside>
-
-        <section class="space-y-6">
-            @foreach ($postsData['posts'] as $post)
-                <article class="rounded-xl bg-white p-6 shadow dark:bg-zinc-950">
-                    <h2 class="text-xl font-semibold">
-                        <a href="{{ $post->url }}"
-                            class="text-indigo-700 hover:underline dark:text-indigo-400">{{ $post->title }}</a>
-                    </h2>
-                    <p class="mt-1 text-sm text-zinc-500">
-                        {{ $post->date?->format('F j, Y') }}
-                        @if ($post->categories)
-                            &middot;
-                            @foreach ($post->categories as $category)
-                                <a href="{{ $category->url }}" class="hover:underline">{{ $category->title }}</a>
-                                @unless ($loop->last)
-                                    ,
-                                @endunless
-                            @endforeach
-                        @endif
-                    </p>
-                    @if ($post->excerpt)
-                        <p class="mt-3 text-zinc-600 dark:text-zinc-400">{{ $post->excerpt }}</p>
-                    @endif
-                    <a href="{{ $post->url }}"
-                        class="mt-3 inline-block text-sm text-indigo-700 hover:underline dark:text-indigo-400">Read
-                        more</a>
-                </article>
-            @endforeach
-
-            @include('partials.pagination', [
-                'paginate' => $postsData['paginate'] ?? null,
-                'prevLabel' => '&larr; Newer',
-                'nextLabel' => 'Older &rarr;',
-            ])
-        </section>
-    </div>
 </x-layouts.main>
