@@ -186,7 +186,6 @@
     --width-container-max: 1280px;
     --width-container-tablet: 720px;
     --padding-block-container: var(--space-8);
-    --padding-inline-container: 24px;
     --padding-inline-container-tablet: var(--space-4);
     --padding-inline-container-mobile: var(--space-5);
 

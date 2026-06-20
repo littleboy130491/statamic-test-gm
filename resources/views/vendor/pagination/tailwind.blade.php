@@ -3,7 +3,7 @@
         class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
         {{-- Page numbers --}}
-        <div class="flex flex-wrap justify-center items-center gap-2">
+        <div class="flex flex-wrap lg:justify-center items-center gap-2">
 
             {{-- Pagination Elements --}}
             @foreach ($elements as $element)

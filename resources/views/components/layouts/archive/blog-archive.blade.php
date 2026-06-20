@@ -83,12 +83,12 @@
         {{-- Article + sidebar --}}
         <section id="article-content">
             <div class="container my-18 md:my-18 lg:my-30">
-                <div class="flex flex-col lg:flex-row gap-6 lg:gap-6">
+                <div class="flex flex-col md:flex-row lg:flex-row gap-18 md:gap-6 lg:gap-6">
 
                     {{-- Grid card blog --}}
-                    <div class="w-full lg:w-[70%] flex flex-col gap-20">
+                    <div class="w-full md:w-[60%] lg:w-[70%] flex flex-col gap-20">
                         <div id="article-grid"
-                            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-x-4 md:gap-y-10 lg:gap-x-6 lg:gap-y-16">
+                            class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 md:gap-x-4 md:gap-y-10 lg:gap-x-6 lg:gap-y-16">
                             @if ($hasBlogSkin)
                                 @foreach ($posts as $post)
                                     <x-layouts.skin.blog-skin :entry="$post" />
@@ -105,7 +105,7 @@
                     </div>
 
                     {{-- Sidebar --}}
-                    <aside class="w-full lg:w-[30%] flex flex-col gap-6">
+                    <aside class="w-full md:w-[40%] lg:w-[30%] flex flex-col gap-6">
 
                         {{-- Kategori --}}
                         @if ($categories->isNotEmpty())
