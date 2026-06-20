@@ -46,3 +46,43 @@ tabs:
               display: 'Image Placeholders'
               validate:
                 - required
+      -
+        display: 'Share Button'
+        fields:
+          -
+            handle: platforms
+            field:
+              type: grid
+              display: Platforms
+              fields:
+                -
+                  handle: icon
+                  field:
+                    container: assets
+                    max_files: 1
+                    type: assets
+                    display: Icon
+                    width: 25
+                    validate:
+                      - required
+                -
+                  handle: url_share
+                  field:
+                    type: link
+                    display: 'URL Share'
+                    width: 25
+                    validate:
+                      - required
+                -
+                  handle: label
+                  field:
+                    type: text
+                    display: Label
+                    width: 25
+                -
+                  handle: show
+                  field:
+                    default: true
+                    type: toggle
+                    display: Show
+                    width: 25

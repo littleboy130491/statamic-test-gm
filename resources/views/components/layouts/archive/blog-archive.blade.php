@@ -117,7 +117,7 @@
                             <div id="sidebar-categories" class="bg-white rounded-3xl p-6 flex flex-col gap-8">
                                 <p class="uppercase text-black font-medium">{{ $blog['category_labels'] ?? 'Kategori' }}
                                 </p>
-                                <ul class="flex flex-col">
+                                <ul class="flex flex-col list-none pl-0 mb-0">
                                     @foreach ($categories as $category)
                                         <li
                                             class="py-4 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">

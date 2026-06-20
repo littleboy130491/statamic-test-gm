@@ -251,10 +251,12 @@ section, .section {
 
 .richtext ul {
   list-style: disc;
+  margin: 0 0 1rem 0;
 }
 
 .richtext ol {
   list-style: decimal;
+  margin: 0 0 1rem 0;
 }
 
 .richtext :is(ul, ol) li + li {
@@ -292,7 +294,7 @@ section, .section {
 }
 
 .richtext p + p {
-  margin-block-start: 0.75rem;
+  margin-block-start: 1rem;
 }
 
 .richtext p:empty {
