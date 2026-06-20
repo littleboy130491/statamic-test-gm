@@ -16,6 +16,11 @@
     $hasBlogNewSkin = view()->exists('components.layouts.skin.blog-new-skin');
     $hasFooter = view()->exists('components.layouts.footer.footer');
 
+    // Global label blog
+    $blog = \Statamic\Facades\GlobalSet::findByHandle('blog_label_information')
+        ?->in(\Statamic\Facades\Site::current()->handle())
+        ?->toAugmentedArray();
+
     $isCategory = ($page->taxonomy ?? null) !== null;
 
     // Banner page
@@ -25,7 +30,7 @@
         ->first()?->featured_image;
 
     // Banner category
-    $heroImage = $page->hero_banner_image ?? ($page->featured_image ?? (null ?? $blogMainImage));
+    $heroImage = $page->hero_banner_image ?? ($page->featured_image ?? $blogMainImage);
 
     // Content opening
     $opening = collect($page->sections ?? [])->first(
@@ -110,7 +115,8 @@
                         {{-- Kategori --}}
                         @if ($categories->isNotEmpty())
                             <div id="sidebar-categories" class="bg-white rounded-3xl p-6 flex flex-col gap-8">
-                                <p class="uppercase text-black font-medium">Kategori</p>
+                                <p class="uppercase text-black font-medium">{{ $blog['category_labels'] ?? 'Kategori' }}
+                                </p>
                                 <ul class="flex flex-col">
                                     @foreach ($categories as $category)
                                         <li
@@ -127,7 +133,8 @@
 
                         {{-- Terbaru --}}
                         <div id="sidebar-latest" class="bg-white rounded-3xl p-6 flex flex-col gap-8">
-                            <p class="uppercase text-black font-medium">Terbaru</p>
+                            <p class="uppercase text-black font-medium">{{ $blog['latest_blog_label'] ?? 'Terbaru' }}
+                            </p>
                             @if ($hasBlogNewSkin && $latestPosts->isNotEmpty())
                                 <div class="flex flex-col">
                                     @foreach ($latestPosts as $post)
