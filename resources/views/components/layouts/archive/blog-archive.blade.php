@@ -16,19 +16,35 @@
     $hasBlogNewSkin = view()->exists('components.layouts.skin.blog-new-skin');
     $hasFooter = view()->exists('components.layouts.footer.footer');
 
+    $isCategory = ($page->taxonomy ?? null) !== null;
+
+    // Banner page
+    $blogMainImage = \Statamic\Facades\Entry::query()
+        ->where('collection', 'pages')
+        ->where('slug', 'berita-dan-artikel')
+        ->first()?->featured_image;
+
+    // Banner category
+    $heroImage = $page->hero_banner_image ?? ($page->featured_image ?? (null ?? $blogMainImage));
+
     // Content opening
-    $opening = collect($page->sections)->first(
+    $opening = collect($page->sections ?? [])->first(
         fn($section) => (string) ($section['identifier'] ?? '') === 'opening-blog',
     );
 
     // Grid post
-    $posts = \Statamic\Facades\Entry::query()
+    $postsQuery = \Statamic\Facades\Entry::query()
         ->where('collection', 'posts')
         ->whereStatus('published')
-        ->orderBy('date', 'desc')
-        ->paginate(6);
+        ->orderBy('date', 'desc');
 
-    // Sidebar: 3 post terbaru (independen dari pagination)
+    if ($isCategory) {
+        $postsQuery->whereTaxonomy('categories::' . $page->slug());
+    }
+
+    $posts = $postsQuery->paginate(8);
+
+    // Sidebar 3 post terbaru
     $latestPosts = \Statamic\Facades\Entry::query()
         ->where('collection', 'posts')
         ->whereStatus('published')
@@ -47,7 +63,7 @@
 
     <main>
         @if ($hasHeroPage)
-            <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
+            <x-layouts.hero.heropage :title="$page->title" :image="$heroImage" />
         @endif
 
         {{-- Text opening --}}
@@ -69,7 +85,7 @@
             <div class="container my-18 md:my-18 lg:my-30">
                 <div class="flex flex-col lg:flex-row gap-6 lg:gap-6">
 
-                    {{-- Kiri: grid card blog --}}
+                    {{-- Grid card blog --}}
                     <div class="w-full lg:w-[70%] flex flex-col gap-20">
                         <div id="article-grid"
                             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-x-4 md:gap-y-10 lg:gap-x-6 lg:gap-y-16">
@@ -98,7 +114,7 @@
                                 <ul class="flex flex-col">
                                     @foreach ($categories as $category)
                                         <li
-                                            class="py-3 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
+                                            class="py-4 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
                                             <a href="{{ $category->url() }}"
                                                 class="text-(--color-body) hover:text-(--color-primary) transition-colors">
                                                 {{ $category->title }}
@@ -116,7 +132,7 @@
                                 <div class="flex flex-col">
                                     @foreach ($latestPosts as $post)
                                         <div
-                                            class="py-4 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
+                                            class="py-8 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
                                             <x-layouts.skin.blog-new-skin :entry="$post" />
                                         </div>
                                     @endforeach

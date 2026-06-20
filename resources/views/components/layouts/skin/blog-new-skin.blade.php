@@ -10,7 +10,7 @@
 
 <article class="group">
     <a href="{{ $entry->url() }}">
-        <div class="flex flex-col gap-2 uppercase text-(--color-primary) font-medium">
+        <div class="flex flex-col gap-3 uppercase text-(--color-primary) font-medium">
 
             {{-- Kategori - Tanggal --}}
             <div class="flex gap-5">
@@ -23,17 +23,20 @@
                             @endunless
                         @endforeach
                     </span>
+                    @if ($entry->date)
+                        <span>•</span>
+                    @endif
                 @endif
                 @if ($entry->date)
-                    <span>•</span>
                     <span>{{ $entry->date->format('d.m.Y') }}</span>
                 @endif
             </div>
 
             {{-- Heading --}}
-            <div class="richtext">
-                <h4 class="text-(--color-heading) title-display group-hover:text-(--color-primary)">{{ $entry->title }}
-                </h4>
+            <div class="richtext custom-heading-blog">
+                <h2 class="text-(--color-heading) text-2xl title-display group-hover:text-(--color-primary)">
+                    {{ $entry->title }}
+                </h2>
             </div>
         </div>
     </a>

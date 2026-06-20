@@ -7,10 +7,12 @@ preferences:
     posts:
       view: list
       columns:
+        - featured_image
         - title
-        - date
+        - categories
         - author
         - status
+        - date
       per_page: 100
     products:
       view: list

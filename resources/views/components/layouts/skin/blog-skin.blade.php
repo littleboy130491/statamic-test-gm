@@ -9,7 +9,7 @@
 @endphp
 
 <article class="group overflow-hidden rounded-3xl bg-white flex flex-col">
-    <a href="{{ $entry->url() }}" class="flex flex-col gap-12">
+    <a href="{{ $entry->url() }}" class="flex flex-col">
 
         {{-- Featured Image --}}
         <div class="overflow-hidden">
@@ -21,8 +21,8 @@
         <div class="p-5 flex flex-col gap-10">
 
             {{-- Heading --}}
-            <div class="richtext">
-                <h4 class="text-(--color-heading) title-display">{{ $entry->title }}</h4>
+            <div class="richtext custom-heading-blog">
+                <h2 class="text-(--color-heading) title-display">{{ $entry->title }}</h2>
 
                 @if ($entry->excerpt)
                     <p>{{ \Illuminate\Support\Str::words($entry->excerpt, 18, '...') }}</p>
@@ -41,9 +41,11 @@
                                 @endunless
                             @endforeach
                         </span>
+                        @if ($entry->date)
+                            <span>•</span>
+                        @endif
                     @endif
                     @if ($entry->date)
-                        <span>•</span>
                         <span>{{ $entry->date->format('d.m.Y') }}</span>
                     @endif
                 </div>
@@ -56,6 +58,8 @@
                     </svg>
                 </span>
             </div>
+
+        </div>
 
     </a>
 </article>

@@ -440,3 +440,9 @@ body:has(dialog[open].career-popup) {
 
 
 
+/* Heading Size - SKIN BLOG */
+.custom-heading-blog h2,
+.custom-heading-blog span {
+   font-size: 1.5rem;
+   text-transform: none;
+}

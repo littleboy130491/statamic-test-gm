@@ -1,11 +1,16 @@
 @props(['title', 'image', 'height' => 'min-h-[300px] md:min-h-[300px] lg:min-h-[500px]'])
 
 @php
-    // Resolve URL gambar utama (kalau ada)
-    $imageUrl = $image?->url ?? null;
-    $imageAlt = $image?->alt ?? $title;
+    // URL gambar utama
+    if (is_string($image)) {
+        $imageUrl = $image ?: null;
+        $imageAlt = $title;
+    } else {
+        $imageUrl = $image?->url() ?? null;
+        $imageAlt = $image?->alt ?? $title;
+    }
 
-    // Fallback: placeholder dari global set
+    // Placeholder global set
     if (!$imageUrl) {
         $placeholder = \Statamic\Facades\GlobalSet::findByHandle('hero_page_placeholder')?->inCurrentSite()?->data();
         $placeholderRaw = $placeholder['section_images'] ?? null;
