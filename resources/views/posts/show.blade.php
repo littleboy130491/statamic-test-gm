@@ -125,11 +125,11 @@
                                     </div>
 
                                     {{-- Thumbnail slider + arrow --}}
-                                    <div class="flex items-center gap-4 lg:gap-0">
+                                    <div class="flex items-center gap-1 md:gap-1 lg:gap-0">
 
                                         {{-- Prev --}}
                                         <button type="button"
-                                            class="gallery-prev shrink-0 w-6 h-6 text-black lg:-ml-6">
+                                            class="gallery-prev shrink-0 w-4 h-4 md:w-4 md:h-4 lg:w-6 lg:h-6 text-black -ml-4 md:-ml-4 lg:-ml-6">
                                             <svg class="rotate-180 w-full h-full" fill="none" viewBox="0 0 24 24"
                                                 stroke="currentColor" stroke-width="1.5">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -138,19 +138,19 @@
 
                                         {{-- Track thumbnail (4 tampil) --}}
                                         <div
-                                            class="gallery-thumbs-track flex gap-3 overflow-x-auto scroll-smooth flex-1 scrollbar-none [&::-webkit-scrollbar]:hidden">
+                                            class="gallery-thumbs-track flex overflow-x-auto scroll-smooth flex-1 scrollbar-none [&::-webkit-scrollbar]:hidden">
                                             @foreach ($page->gallery as $image)
                                                 <button type="button"
-                                                    class="gallery-thumb shrink-0 w-[calc((100%-3*0.75rem)/4)] rounded-xl overflow-hidden transition-opacity {{ $loop->first ? 'opacity-100' : 'opacity-50' }}">
+                                                    class="gallery-thumb shrink-0 mr-3 last:mr-0 w-[calc((100%-3*0.75rem)/4)] rounded-xl overflow-hidden transition-opacity {{ $loop->first ? 'opacity-100' : 'opacity-50' }}">
                                                     <img src="{{ $image->url() }}" alt=""
-                                                        class="w-full h-30 object-cover" />
+                                                        class="w-full h-15 md:h-15 lg:h-30 object-cover" />
                                                 </button>
                                             @endforeach
                                         </div>
 
                                         {{-- Next --}}
                                         <button type="button"
-                                            class="gallery-next shrink-0 w-6 h-6 text-black lg:-mr-6">
+                                            class="gallery-next shrink-0 w-4 h-4 md:w-4 md:h-4 lg:w-6 lg:h-6 text-black -mr-4 md:-mr-4 lg:-mr-6">
                                             <svg class="w-full h-full" fill="none" viewBox="0 0 24 24"
                                                 stroke="currentColor" stroke-width="1.5">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
