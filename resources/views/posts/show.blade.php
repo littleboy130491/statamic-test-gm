@@ -230,8 +230,8 @@
         {{-- Berita terkait --}}
         @if ($hasBlogSkin && $posts->isNotEmpty())
             <section id="related-news" class="bg-(--color-surface)">
-                <div class="container py-18 md:py-18 lg:pt-30 lg:pb-50 lg:-mb-20">
-                    <div class="flex flex-col gap-8">
+                <div class="container pt-18 pb-25 md:pt-18 md:pb-25 -mb-10 lg:pt-30 lg:pb-50 lg:-mb-20">
+                    <div class="flex flex-col gap-6 md:gap-6 lg:gap-8">
                         <h2>{{ $blog['related_news_labels'] ?? 'Berita Terkait' }}</h2>
                         <div id="article-grid"
                             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-x-4 md:gap-y-10 lg:gap-x-6 lg:gap-y-16">
