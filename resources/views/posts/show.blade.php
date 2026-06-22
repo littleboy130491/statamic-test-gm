@@ -36,17 +36,23 @@
         fn($section) => (string) ($section['identifier'] ?? '') === 'opening-blog',
     );
 
-    // Grid post
-    $postsQuery = \Statamic\Facades\Entry::query()
+    // Kategori post ini (buat filter related)
+    $currentCategorySlugs = collect($page->categories ?? [])
+        ->map(fn($cat) => $cat->slug())
+        ->all();
+
+    // Grid post terkait
+    $relatedQuery = \Statamic\Facades\Entry::query()
         ->where('collection', 'posts')
         ->whereStatus('published')
+        ->where('id', '!=', $page->id())
         ->orderBy('date', 'desc');
 
-    if ($isCategory) {
-        $postsQuery->whereTaxonomy('categories::' . $page->slug());
+    if (!empty($currentCategorySlugs)) {
+        $relatedQuery->whereTaxonomyIn(collect($currentCategorySlugs)->map(fn($s) => 'categories::' . $s)->all());
     }
 
-    $posts = $postsQuery->paginate(8);
+    $posts = $relatedQuery->limit(3)->get();
 
     // Sidebar 3 post terbaru
     $latestPosts = \Statamic\Facades\Entry::query()
@@ -79,14 +85,17 @@
                             @endif
 
                             @if ($page->categories && $page->categories->isNotEmpty())
-                                <a class="uppercase text-(--color-primary) tracking-wider">
+                                <span class="flex items-center gap-2">
                                     @foreach ($page->categories as $category)
-                                        {{ $category->title }}
+                                        <a href="{{ $category->url() }}"
+                                            class="uppercase text-(--color-primary) tracking-wider">
+                                            {{ $category->title }}
+                                        </a>
                                         @unless ($loop->last)
-                                            ,
+                                            <span class="text-(--color-primary)">,</span>
                                         @endunless
                                     @endforeach
-                                </a>
+                                </span>
                             @endif
                         </div>
 
@@ -171,6 +180,23 @@
                 </article>
             </div>
         </section>
+
+        {{-- Berita terkait --}}
+        @if ($hasBlogSkin && $posts->isNotEmpty())
+            <section id="related-news" class="bg-(--color-surface)">
+                <div class="container py-18 md:py-18 lg:pt-30 lg:pb-50 lg:-mb-20">
+                    <div class="flex flex-col gap-8">
+                        <h2>{{ $blog['related_news_labels'] ?? 'Berita Terkait' }}</h2>
+                        <div id="article-grid"
+                            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-x-4 md:gap-y-10 lg:gap-x-6 lg:gap-y-16">
+                            @foreach ($posts as $post)
+                                <x-layouts.skin.blog-skin :entry="$post" />
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </section>
+        @endif
     </main>
 
     @if ($hasFooter)
