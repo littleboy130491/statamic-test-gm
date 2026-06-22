@@ -13,11 +13,13 @@ tabs:
               required: true
               display: Title
               localizable: true
+              validate:
+                - required
           -
             handle: featured_image
             field:
               type: assets
-              display: Featured Image
+              display: 'Featured Image'
               container: assets
               max_files: 1
               localizable: true
@@ -27,7 +29,7 @@ tabs:
               type: bard
               display: Description
               localizable: true
-              instructions: Introductory copy shown below the title.
+              instructions: 'Introductory copy shown below the title.'
               buttons:
                 - bold
                 - italic
@@ -39,15 +41,67 @@ tabs:
             handle: cta_label
             field:
               type: text
-              display: CTA Label
-              default: Kontak Kami
+              display: 'CTA Label'
+              default: 'Kontak Kami'
               localizable: true
           -
             handle: cta_link
             field:
               type: link
-              display: CTA Link
+              display: 'CTA Link'
               localizable: true
+      -
+        display: Spesification
+        fields:
+          -
+            handle: product_specifications
+            field:
+              type: grid
+              display: 'Product Specifications'
+              fields:
+                -
+                  handle: heading
+                  field:
+                    type: text
+                    display: Heading
+                    width: 50
+                    validate:
+                      - required
+                -
+                  handle: short_description
+                  field:
+                    type: text
+                    display: 'Short Description'
+                    width: 50
+                    validate:
+                      - required
+      -
+        display: 'Product Comparison'
+        fields:
+          -
+            handle: dimention
+            field:
+              type: text
+              display: Dimention
+              width: 25
+          -
+            handle: engine
+            field:
+              type: text
+              display: Engine
+              width: 25
+          -
+            handle: chassis
+            field:
+              type: text
+              display: Chassis
+              width: 25
+          -
+            handle: safety_security
+            field:
+              type: text
+              display: 'Safety & Security'
+              width: 25
       -
         display: Catalogue
         fields:
@@ -55,7 +109,7 @@ tabs:
             handle: catalogue_link
             field:
               type: group
-              display: Catalogue Link
+              display: 'Catalogue Link'
               localizable: true
               fields:
                 -
@@ -85,7 +139,7 @@ tabs:
               type: grid
               display: Specifications
               mode: stacked
-              add_row: Add Specification
+              add_row: 'Add Specification'
               fields:
                 -
                   handle: label
@@ -119,3 +173,45 @@ tabs:
               display: SKU
               localizable: true
               validate: 'new \Statamic\Rules\UniqueEntryValue({collection}, {id}, {site})'
+          -
+            handle: product_categories
+            field:
+              type: terms
+              taxonomies:
+                - product_categories
+              display: 'Product Categories'
+              mode: select
+          -
+            handle: industries
+            field:
+              type: terms
+              taxonomies:
+                - industries
+              display: Industries
+              mode: select
+  'SEO Meta':
+    display: 'SEO Meta'
+    sections:
+      -
+        fields:
+          -
+            handle: seo
+            field:
+              type: seo_pro
+              listable: false
+              display: SEO
+  'SEO Previews':
+    display: 'SEO Previews'
+    sections:
+      -
+        fields:
+          -
+            handle: seo_previews
+            field:
+              type: seo_pro_previews
+              listable: false
+              display: 'SEO Previews'
+              localizable: false
+              hide_display: true
+              unless:
+                seo.enabled: 'equals false'

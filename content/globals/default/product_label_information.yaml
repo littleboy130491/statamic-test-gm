@@ -1,0 +1,14 @@
+category_labels: Kategori
+industry_labels: Industri
+spesification_labels: Spesifikasi
+comparison_labels: Perbandingan
+type_labels: 'Tipe Model'
+model_labels: Model
+dimention_labels: Dimensi
+engine_labels: Engine
+chassis_labels: Chassis
+safety_security_labels: 'Safety & Security'
+icon_accordion:
+  - acc-product.svg
+icon_accordion_active:
+  - acc-product-active.svg

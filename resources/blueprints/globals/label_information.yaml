@@ -1,0 +1,79 @@
+title: 'Label Information'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: 'Archive & Single Product'
+        fields:
+          -
+            handle: category_labels
+            field:
+              type: text
+              display: 'Category Labels'
+              validate:
+                - required
+          -
+            handle: industry_labels
+            field:
+              type: text
+              display: 'Industry Labels'
+          -
+            handle: spesification_labels
+            field:
+              type: text
+              display: 'Spesification Labels'
+              validate:
+                - required
+          -
+            handle: comparison
+            field:
+              type: text
+              display: 'Comparison Labels'
+              validate:
+                - required
+      -
+        display: 'Comparison Labels'
+        fields:
+          -
+            handle: type_labels
+            field:
+              type: text
+              display: 'Type Labels'
+              validate:
+                - required
+          -
+            handle: model_labels
+            field:
+              type: text
+              display: 'Model Labels'
+              validate:
+                - required
+          -
+            handle: dimention_labels
+            field:
+              type: text
+              display: 'Dimention Labels'
+              validate:
+                - required
+          -
+            handle: engine_labels
+            field:
+              type: text
+              display: 'Engine Labels'
+              validate:
+                - required
+          -
+            handle: chassis_labels
+            field:
+              type: text
+              display: 'Chassis Labels'
+              validate:
+                - required
+          -
+            handle: safety_security_labels
+            field:
+              type: text
+              display: 'Safety & Security Labels'
+              validate:
+                - required

@@ -99,7 +99,8 @@
                             @endif
                         </div>
 
-                        <h1 class="heading-single text-5xl w-full lg:w-[80%]">{{ $page->title }}</h1>
+                        <h1 class="heading-single text-3xl md:text-3xl lg:text-5xl w-full lg:w-[80%]">
+                            {{ $page->title }}</h1>
                     </div>
 
                     {{-- Content blog --}}
@@ -109,14 +110,59 @@
                         {{-- Kolom konten utama --}}
                         <div class="w-full md:w-[60%] lg:w-[70%] flex flex-col gap-10">
 
-                            {{-- Gallery --}}
-                            @if ($page->gallery)
-                                <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                                    @foreach ($page->gallery as $image)
-                                        <img src="{{ $image->url() }}" alt="{{ $page->title }}"
-                                            class="aspect-square w-full rounded-lg object-cover" />
-                                    @endforeach
+                            {{-- Gallery / Featured Image --}}
+                            @if ($page->gallery && $page->gallery->isNotEmpty())
+                                <div class="gallery-wrapper flex flex-col gap-4">
+
+                                    {{-- Gambar besar --}}
+                                    <div class="gallery-main rounded-2xl overflow-hidden">
+                                        @foreach ($page->gallery as $image)
+                                            <div class="gallery-slide {{ $loop->first ? '' : 'hidden' }}">
+                                                <img src="{{ $image->url() }}" alt="{{ $page->title }}"
+                                                    class="w-full aspect-video object-cover" />
+                                            </div>
+                                        @endforeach
+                                    </div>
+
+                                    {{-- Thumbnail slider + arrow --}}
+                                    <div class="flex items-center gap-4 lg:gap-0">
+
+                                        {{-- Prev --}}
+                                        <button type="button"
+                                            class="gallery-prev shrink-0 w-6 h-6 text-black lg:-ml-6">
+                                            <svg class="rotate-180 w-full h-full" fill="none" viewBox="0 0 24 24"
+                                                stroke="currentColor" stroke-width="1.5">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </button>
+
+                                        {{-- Track thumbnail (4 tampil) --}}
+                                        <div
+                                            class="gallery-thumbs-track flex gap-3 overflow-x-auto scroll-smooth flex-1 scrollbar-none [&::-webkit-scrollbar]:hidden">
+                                            @foreach ($page->gallery as $image)
+                                                <button type="button"
+                                                    class="gallery-thumb shrink-0 w-[calc((100%-3*0.75rem)/4)] rounded-xl overflow-hidden transition-opacity {{ $loop->first ? 'opacity-100' : 'opacity-50' }}">
+                                                    <img src="{{ $image->url() }}" alt=""
+                                                        class="w-full h-30 object-cover" />
+                                                </button>
+                                            @endforeach
+                                        </div>
+
+                                        {{-- Next --}}
+                                        <button type="button"
+                                            class="gallery-next shrink-0 w-6 h-6 text-black lg:-mr-6">
+                                            <svg class="w-full h-full" fill="none" viewBox="0 0 24 24"
+                                                stroke="currentColor" stroke-width="1.5">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </button>
+
+                                    </div>
+
                                 </div>
+                            @elseif ($page->featured_image)
+                                <img src="{{ $page->featured_image->url() }}" alt="{{ $page->title }}"
+                                    class="w-full aspect-video object-cover rounded-2xl" />
                             @endif
 
                             {{-- Content --}}

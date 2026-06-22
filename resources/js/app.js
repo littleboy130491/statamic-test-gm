@@ -1,6 +1,7 @@
 import './bootstrap';
 import './flyout-menu';
 import './hero-slider';
+import './slider-thumbnail.js';
 import './equal-height-cards';
 import 'fslightbox';
 import L from 'leaflet';
