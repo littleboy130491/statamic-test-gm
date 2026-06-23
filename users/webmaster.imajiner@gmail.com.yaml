@@ -48,4 +48,6 @@ preferences:
   forms:
     contact:
       columns:
+        - name
+        - email
         - datestamp

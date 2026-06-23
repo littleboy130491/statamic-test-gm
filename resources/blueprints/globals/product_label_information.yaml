@@ -95,3 +95,15 @@ tabs:
               width: 50
               validate:
                 - required
+      -
+        display: 'Skin Product'
+        fields:
+          -
+            handle: image_placeholders
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Image Placeholders'
+              validate:
+                - required
