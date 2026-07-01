@@ -1,3 +1,1 @@
-<x-layouts.app>
-    @include('partials.industries.show')
-</x-layouts.app>
+@include('components.layouts.archive.product-archive')

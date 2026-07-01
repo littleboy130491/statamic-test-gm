@@ -38,7 +38,8 @@
     $productsQuery = \Statamic\Facades\Entry::query()->where('collection', 'products')->whereStatus('published');
 
     if ($isCategory) {
-        $productsQuery->whereTaxonomy('product_categories::' . $page->slug());
+        $taxonomyHandle = $page->taxonomy->handle(); // product_categories atau industries
+        $productsQuery->whereTaxonomy($taxonomyHandle . '::' . $page->slug());
     }
 
     $products = $productsQuery->paginate(8);
@@ -91,10 +92,11 @@
                                 </p>
                                 <ul class="flex flex-col list-none pl-0 mb-0">
                                     @foreach ($product_categories as $category)
+                                        @php $isActive = ($page->slug ?? null) === $category->slug(); @endphp
                                         <li
                                             class="md:text-sm py-4 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
                                             <a href="{{ $category->url() }}"
-                                                class="text-(--color-body) hover:text-(--color-primary) transition-colors">
+                                                class="transition-colors hover:text-(--color-primary) {{ $isActive ? 'text-(--color-primary)' : 'text-(--color-body)' }}">
                                                 {{ $category->title }}
                                             </a>
                                         </li>
@@ -112,10 +114,11 @@
                                 </p>
                                 <ul class="flex flex-col list-none pl-0 mb-0">
                                     @foreach ($industries as $industry)
+                                        @php $isActive = ($page->slug ?? null) === $industry->slug(); @endphp
                                         <li
                                             class="md:text-sm py-4 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
                                             <a href="{{ $industry->url() }}"
-                                                class="text-(--color-body) hover:text-(--color-primary) transition-colors">
+                                                class="transition-colors hover:text-(--color-primary) {{ $isActive ? 'text-(--color-primary)' : 'text-(--color-body)' }}">
                                                 {{ $industry->title }}
                                             </a>
                                         </li>

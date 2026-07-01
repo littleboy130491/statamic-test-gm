@@ -34,6 +34,25 @@ tabs:
               display: 'Comparison Labels'
               validate:
                 - required
+          -
+            handle: product_not_found
+            field:
+              buttons:
+                - bold
+                - italic
+                - unorderedlist
+                - orderedlist
+                - removeformat
+                - quote
+                - anchor
+                - image
+                - table
+              container: assets
+              remove_empty_nodes: false
+              type: bard
+              display: 'Product Not Found'
+              validate:
+                - required
       -
         display: Comparison
         fields:
