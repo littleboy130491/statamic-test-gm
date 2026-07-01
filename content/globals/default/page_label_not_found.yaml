@@ -1,0 +1,5 @@
+not_found: '404'
+heading: 'Halaman Tidak Ditemukan'
+description: 'Sepertinya halaman yang Anda cari sudah berpindah atau mungkin tidak pernah ada.'
+button_label: 'Kembali ke Beranda'
+link: /

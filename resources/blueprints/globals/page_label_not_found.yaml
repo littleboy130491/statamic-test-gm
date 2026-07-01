@@ -1,0 +1,44 @@
+title: 'Page Label Not Found'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: not_found
+            field:
+              type: text
+              display: 'Not Found'
+              validate:
+                - required
+          -
+            handle: heading
+            field:
+              type: text
+              display: Heading
+              validate:
+                - required
+          -
+            handle: description
+            field:
+              type: textarea
+              display: Description
+              validate:
+                - required
+          -
+            handle: button_label
+            field:
+              type: text
+              display: 'Button Label'
+              width: 50
+              validate:
+                - required
+          -
+            handle: link
+            field:
+              type: link
+              display: Link
+              width: 50
+              validate:
+                - required
