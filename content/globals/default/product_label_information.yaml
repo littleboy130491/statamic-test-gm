@@ -2,6 +2,22 @@ category_labels: Kategori
 industry_labels: Industri
 spesification_labels: Spesifikasi
 comparison_labels: Perbandingan
+product_not_found:
+  -
+    type: paragraph
+    content:
+      -
+        type: text
+        marks:
+          -
+            type: bold
+        text: 'Maaf, produk yang Anda cari belum tersedia.'
+  -
+    type: paragraph
+    content:
+      -
+        type: text
+        text: 'Sepertinya produk yang sedang Anda cari sudah tidak lagi tersedia di katalog kami, atau mungkin tautan yang Anda gunakan sudah kedaluwarsa.'
 type_labels: 'Tipe Model'
 model_labels: Model
 dimention_labels: Dimensi

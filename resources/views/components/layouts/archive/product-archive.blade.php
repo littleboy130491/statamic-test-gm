@@ -42,13 +42,19 @@
         $productsQuery->whereTaxonomy($taxonomyHandle . '::' . $page->slug());
     }
 
-    $products = $productsQuery->paginate(8);
+    $products = $productsQuery->paginate(18);
 
-    // Sidebar kategori produk
-    $product_categories = \Statamic\Facades\Term::query()->where('taxonomy', 'product_categories')->get();
+    // Sidebar kategori
+    $product_categories = \Statamic\Facades\Term::query()
+        ->where('taxonomy', 'product_categories')
+        ->get()
+        ->filter(fn($term) => $term->queryEntries()->where('collection', 'products')->count() > 0);
 
     // Sidebar industri
-    $industries = \Statamic\Facades\Term::query()->where('taxonomy', 'industries')->get();
+    $industries = \Statamic\Facades\Term::query()
+        ->where('taxonomy', 'industries')
+        ->get()
+        ->filter(fn($term) => $term->queryEntries()->where('collection', 'products')->count() > 0);
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
@@ -131,19 +137,26 @@
 
                     {{-- Grid card produk (kanan) --}}
                     <div class="w-full md:w-[70%] lg:w-[70%] flex flex-col gap-20">
-                        <div id="product-grid"
-                            class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 md:gap-x-4 md:gap-y-10 lg:gap-x-5 lg:gap-y-16">
-                            @if ($hasProductSkin)
-                                @foreach ($products as $entry)
-                                    <x-layouts.skin.product-skin :entry="$entry" />
-                                @endforeach
-                            @endif
-                        </div>
+                        @if ($products->isNotEmpty())
+                            <div id="product-grid"
+                                class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 md:gap-x-4 md:gap-y-10 lg:gap-x-5 lg:gap-y-16">
+                                @if ($hasProductSkin)
+                                    @foreach ($products as $entry)
+                                        <x-layouts.skin.product-skin :entry="$entry" />
+                                    @endforeach
+                                @endif
+                            </div>
 
-                        {{-- Pagination --}}
-                        @if ($products->hasPages())
-                            <div class="blog-pagination">
-                                {{ $products->links() }}
+                            {{-- Pagination --}}
+                            @if ($products->hasPages())
+                                <div class="blog-pagination">
+                                    {{ $products->links() }}
+                                </div>
+                            @endif
+                        @else
+                            {{-- Not found --}}
+                            <div id="product-not-found" class="richtext">
+                                {!! $product['product_not_found'] ?? '<p>Produk tidak ditemukan.</p>' !!}
                             </div>
                         @endif
                     </div>
