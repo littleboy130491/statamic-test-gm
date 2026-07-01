@@ -17,6 +17,7 @@ preferences:
     products:
       view: list
       columns:
+        - featured_image
         - title
         - product_categories
         - industries

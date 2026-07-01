@@ -126,3 +126,66 @@ tabs:
               display: 'Image Placeholders'
               validate:
                 - required
+      -
+        display: Spesifikasi
+        fields:
+          -
+            handle: power
+            field:
+              type: text
+              display: Power
+              width: 50
+              validate:
+                - required
+          -
+            handle: torque
+            field:
+              type: text
+              display: Torque
+              width: 50
+              validate:
+                - required
+          -
+            handle: gvw
+            field:
+              type: text
+              display: GVW
+              width: 50
+          -
+            handle: standard_emission
+            field:
+              type: text
+              display: 'Standard Emission'
+              width: 50
+              validate:
+                - required
+          -
+            handle: fuel_tank_capacity
+            field:
+              type: text
+              display: 'Fuel Tank Capacity'
+              width: 50
+          -
+            handle: dump_dimensions
+            field:
+              type: text
+              display: 'Dump Dimensions'
+              width: 50
+              validate:
+                - required
+          -
+            handle: transmission
+            field:
+              type: text
+              display: Transmission
+              width: 50
+              validate:
+                - required
+          -
+            handle: brake_system
+            field:
+              type: text
+              display: 'Brake System'
+              width: 50
+              validate:
+                - required

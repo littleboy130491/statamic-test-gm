@@ -1,73 +1,159 @@
-<x-layouts.app>
-    <article class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:py-16">
-        <header class="text-center">
-            @if ($page->featured_image)
-                <div class="mb-10 flex justify-center">
-                    @foreach ($page->featured_image as $image)
-                        <x-asset-figure :asset="$image" :alt="$page->title" class="max-h-80 w-auto object-contain" />
-                    @endforeach
-                </div>
-            @endif
+@php
+    $bodyClass = collect([
+        $is_entry ?? false ? 'entry' : null,
+        isset($collection) ? 'entry-' . $collection : null,
+        isset($collection) ? $collection : null,
+        isset($slug) ? 'slug-' . $slug : null,
+    ])
+        ->filter()
+        ->implode(' ');
 
-            @if ($page->product_categories)
-                <p class="text-sm font-semibold uppercase tracking-widest text-emerald-600">
-                    @foreach ($page->product_categories as $category)
-                        {{ $category->title }}@unless ($loop->last)
-                        ,
-                    @endunless
-                @endforeach
-            </p>
-        @endif
+    // Cek component
+    $hasHeader = view()->exists('components.layouts.header.header');
+    $hasHeroPage = view()->exists('components.layouts.hero.heropage');
+    $hasFooter = view()->exists('components.layouts.footer.footer');
 
-        <h1 class="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
-            {{ $page->title }}
-        </h1>
+    // Global label product
+    $product = \Statamic\Facades\GlobalSet::findByHandle('product_label_information')
+        ?->in(\Statamic\Facades\Site::current()->handle())
+        ?->toAugmentedArray();
 
-        @if ($page->description)
-            <div class="prose prose-zinc mx-auto mt-6 max-w-2xl text-base leading-relaxed">
-                {!! $page->description !!}
-            </div>
-        @endif
+    $resolveUrl = function ($value) {
+        if (!$value) {
+            return null;
+        }
+        if (is_string($value) && str_starts_with($value, 'entry::')) {
+            return \Statamic\Facades\Entry::find(str_replace('entry::', '', $value))?->url();
+        }
+        return $value;
+    };
 
-        @if ($page->cta_link)
-            <div class="mt-8">
-                <a href="{{ $page->cta_link }}"
-                    class="inline-block rounded-full bg-emerald-500 px-8 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-emerald-600">
-                    {{ $page->cta_label ?: 'Kontak Kami' }}
-                </a>
-            </div>
-        @endif
+    $ctaUrl = $resolveUrl($page->cta_link);
 
-        @if ($page->catalogue_link?->displayed && $page->catalogue_link?->url)
-            <div class="mt-4">
-                <a href="{{ $page->catalogue_link->url }}"
-                    class="inline-block text-sm font-semibold text-emerald-600 transition hover:text-emerald-700 hover:underline"
-                    target="_blank" rel="noopener noreferrer">
-                    {{ $page->catalogue_link->label ?: 'View catalogue' }}
-                </a>
-            </div>
-        @endif
-    </header>
+    // Catalogue link
+    $catalogue = $page->catalogue_link ?? null;
+    $catalogueShow = $catalogue['displayed'] ?? false;
+    $catalogueLabel = $catalogue['label'] ?? '';
+    $catalogueUrl = $catalogue['url'] ?? '#';
 
-    @if ($page->specifications)
-        <section class="mt-16 rounded-lg bg-zinc-50 px-6 py-10 sm:px-10">
-            <h2 class="text-center text-xl font-bold uppercase tracking-wide text-zinc-900">
-                Spesifikasi
-            </h2>
+    // Spesifikasi
+    $specs = collect([
+        ['label' => $product['power'] ?? '', 'value' => $page->power],
+        ['label' => $product['fuel_tank_capacity'] ?? '', 'value' => $page->fuel_tank_capacity],
+        ['label' => $product['torque'] ?? '', 'value' => $page->torque],
+        ['label' => $product['dump_dimensions'] ?? '', 'value' => $page->dump_dimensions],
+        ['label' => $product['gvw'] ?? '', 'value' => $page->gvw],
+        ['label' => $product['transmission'] ?? '', 'value' => $page->transmission],
+        ['label' => $product['standard_emission'] ?? '', 'value' => $page->standard_emission],
+        ['label' => $product['brake_system'] ?? '', 'value' => $page->brake_system],
+    ])
+        ->concat(
+            collect($page->product_specifications ?? [])->map(
+                fn($s) => ['label' => $s['heading'] ?? '', 'value' => $s['short_description'] ?? ''],
+            ),
+        )
+        ->filter(fn($s) => !empty($s['value']))
+        ->values();
+@endphp
 
-            <dl class="mx-auto mt-8 grid max-w-3xl gap-x-12 sm:grid-cols-2">
-                @foreach ($page->specifications as $spec)
-                    <div class="flex items-baseline justify-between gap-4 border-b border-zinc-200 py-4">
-                        <dt class="shrink-0 font-semibold text-zinc-900">{{ $spec->label }}</dt>
-                        <dd class="text-right text-zinc-700">{{ $spec->value }}</dd>
-                    </div>
-                @endforeach
-            </dl>
-        </section>
+<x-layouts.main :body-class="$bodyClass">
+    @if ($hasHeader)
+        <x-layouts.header.single-header />
     @endif
 
-    <p class="mt-12 text-center">
-        <a href="/products" class="text-sm text-emerald-600 hover:underline">&larr; Back to products</a>
-    </p>
-</article>
-</x-layouts.app>
+    <main>
+
+        {{-- Produk informasi --}}
+        <section id="product-information">
+            <article class="container">
+                <div class="flex flex-col gap-10 lg:gap-15 pt-10 pb-18 lg:pt-20 lg:pb-30">
+
+                    {{-- Featured Image --}}
+                    @if ($page->featured_image)
+                        <div class="flex justify-center">
+                            <img src="{{ $page->featured_image->url() }}" alt="{{ $page->title }}"
+                                class="w-full md:w-[80%] lg:w-[60%] aspect-video object-contain" />
+                        </div>
+                    @endif
+
+                    {{-- Konten --}}
+                    <div class="flex flex-col gap-3 lg:gap-6">
+                        <div class="flex flex-col gap-4">
+                            @if ($page->product_categories && $page->product_categories->isNotEmpty())
+                                <p
+                                    class="font-medium uppercase text-(--color-primary) text-left md:text-center lg:text-center">
+                                    @foreach ($page->product_categories as $category)
+                                        {{ $category->title }}
+                                        @unless ($loop->last)
+                                            ,
+                                        @endunless
+                                    @endforeach
+                                </p>
+                            @endif
+                            <h1 class="heading-single text-left md:text-center lg:text-center">{{ $page->title }}</h1>
+                        </div>
+
+
+                        <div
+                            class="flex flex-col gap-8 lg:gap-10 md:justify-center md:items-center lg:justify-center lg:items-center">
+                            <div class="text-left md:text-center lg:text-center richtext w-full md:w-[80%] lg:w-[60%]">
+                                {!! $page->description !!}
+                            </div>
+
+                            <div class="flex flex-wrap gap-3  md:justify-center lg:justify-center">
+
+                                {{-- Button Kontak --}}
+                                @if ($ctaUrl)
+                                    <a href="{{ $ctaUrl }}" class="button button--primary">
+                                        {{ $page->cta_label ?: '' }}
+                                    </a>
+                                @endif
+
+                                {{-- Button Download Brosur --}}
+                                @if ($catalogueShow)
+                                    <a href="{{ $catalogueUrl }}" class="button button--secondary">
+                                        {{ $catalogueLabel }}
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        {{-- Specification --}}
+        <section id="specification" class="bg-(--color-surface)">
+            <div class="container">
+                <div class="py-18 md:py-18 lg:py-30 flex flex-col gap-4">
+                    <h2>{{ $product['spesification_labels'] ?? '' }}</h2>
+                    <div id="specification-grid">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:gap-x-6 lg:gap-x-10">
+                            @foreach ($specs as $spec)
+                                <div
+                                    class="flex justify-between gap-4 border-b border-[#CECECE] py-4 {{ $loop->remaining < 2 ? 'sm:border-b-0' : '' }} {{ $loop->last ? 'border-b-0' : '' }}">
+                                    <p class="specifi-title w-[45%] font-medium">{{ $spec['label'] }}</p>
+                                    <p class="w-[55%] text-(--color-body)">{{ $spec['value'] }}</p>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {{-- Comparison --}}
+        <section id="comparison">
+            <div class="container">
+                <div class="py-18 md:py-18 lg:py-30">
+                    <h2>{{ $product['comparison_labels'] ?? '' }}</h2>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    @if ($hasFooter)
+        <x-layouts.footer.footer />
+    @endif
+</x-layouts.main>

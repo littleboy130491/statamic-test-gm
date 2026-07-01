@@ -54,6 +54,54 @@ tabs:
         display: Spesification
         fields:
           -
+            handle: power
+            field:
+              type: text
+              display: Power
+              width: 33
+          -
+            handle: fuel_tank_capacity
+            field:
+              type: text
+              display: 'Fuel Tank Capacity'
+              width: 33
+          -
+            handle: torque
+            field:
+              type: text
+              display: Torque
+              width: 33
+          -
+            handle: dump_dimensions
+            field:
+              type: text
+              display: 'Dump Dimensions'
+              width: 33
+          -
+            handle: gvw
+            field:
+              type: text
+              display: GVW
+              width: 33
+          -
+            handle: transmission
+            field:
+              type: text
+              display: Transmission
+              width: 33
+          -
+            handle: standard_emission
+            field:
+              type: text
+              display: 'Standard Emission'
+              width: 33
+          -
+            handle: brake_system
+            field:
+              type: text
+              display: 'Brake System'
+              width: 33
+          -
             handle: product_specifications
             field:
               type: grid

@@ -29,3 +29,11 @@ icon_accordion:
 icon_accordion_active:
   - acc-product-active.svg
 image_placeholders: placeholder.jpg
+power: Power
+torque: Torque
+gvw: GVW
+standard_emission: 'Standard Emission'
+fuel_tank_capacity: 'Fuel Tank Capacity'
+dump_dimensions: 'Dump Dimensions'
+transmission: Transmission
+brake_system: 'Brake System'

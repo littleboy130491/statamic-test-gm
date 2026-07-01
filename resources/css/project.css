@@ -494,3 +494,40 @@ blockquote {
 .gallery-thumbs .swiper-slide {
     width: auto;
 }
+
+
+
+/* Heading Single Produk dan Blog */
+.heading-single {
+   font-size: 3rem !important;
+}
+
+
+@media (max-width: 768px) {
+   .heading-single  {
+      font-size: 2.2rem !important;
+   }
+}
+
+@media (max-width: 640px) {
+   .heading-single  {
+      font-size: 2rem !important;
+   }
+}
+
+
+
+
+/* Spesifikasi Heading Single Produk */
+.specifi-title {
+   font-family: var(--font-display) !important;
+   font-weight: 700 !important;
+   letter-spacing: -0.5px;
+   font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+   .specifi-title {
+      font-size: 1rem;
+   }
+}
