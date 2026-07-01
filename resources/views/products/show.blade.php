@@ -123,33 +123,37 @@
         </section>
 
         {{-- Specification --}}
-        <section id="specification" class="bg-(--color-surface)">
-            <div class="container">
-                <div class="py-18 md:py-18 lg:py-30 flex flex-col gap-4">
-                    <h2>{{ $product['spesification_labels'] ?? '' }}</h2>
-                    <div id="specification-grid">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:gap-x-6 lg:gap-x-10">
-                            @foreach ($specs as $spec)
-                                <div
-                                    class="flex justify-between gap-4 border-b border-[#CECECE] py-4 {{ $loop->remaining < 2 ? 'sm:border-b-0' : '' }} {{ $loop->last ? 'border-b-0' : '' }}">
-                                    <p class="specifi-title w-[45%] font-medium">{{ $spec['label'] }}</p>
-                                    <p class="w-[55%] text-(--color-body)">{{ $spec['value'] }}</p>
-                                </div>
-                            @endforeach
+        @if ($specs->isNotEmpty())
+            <section id="specification" class="bg-(--color-surface)">
+                <div class="container">
+                    <div class="py-18 md:py-18 lg:py-30 flex flex-col gap-4">
+                        <h2>{{ $product['spesification_labels'] ?? '' }}</h2>
+                        <div id="specification-grid">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:gap-x-6 lg:gap-x-10">
+                                @foreach ($specs as $spec)
+                                    <div
+                                        class="flex justify-between gap-4 border-b border-[#CECECE] py-4 {{ $loop->remaining < 2 ? 'sm:border-b-0' : '' }} {{ $loop->last ? 'border-b-0' : '' }}">
+                                        <p class="specifi-title w-[45%] font-medium">{{ $spec['label'] }}</p>
+                                        <p class="w-[55%] text-(--color-body)">{{ $spec['value'] }}</p>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
 
         {{-- Comparison --}}
-        <section id="comparison">
-            <div class="container">
-                <div class="py-18 md:py-18 lg:py-30">
-                    <h2>{{ $product['comparison_labels'] ?? '' }}</h2>
+        @if (!empty($page->comparison))
+            <section id="comparison">
+                <div class="container">
+                    <div class="py-18 md:py-18 lg:py-30">
+                        <h2>{{ $product['comparison_labels'] ?? '' }}</h2>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
 
     </main>
 

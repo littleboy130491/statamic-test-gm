@@ -105,7 +105,7 @@ tabs:
             handle: product_specifications
             field:
               type: grid
-              display: 'Product Specifications'
+              display: 'Product Specifications (Optional)'
               fields:
                 -
                   handle: heading
@@ -125,31 +125,6 @@ tabs:
                       - required
       -
         display: 'Product Comparison'
-        fields:
-          -
-            handle: dimention
-            field:
-              type: text
-              display: Dimention
-              width: 25
-          -
-            handle: engine
-            field:
-              type: text
-              display: Engine
-              width: 25
-          -
-            handle: chassis
-            field:
-              type: text
-              display: Chassis
-              width: 25
-          -
-            handle: safety_security
-            field:
-              type: text
-              display: 'Safety & Security'
-              width: 25
       -
         display: Catalogue
         fields:
