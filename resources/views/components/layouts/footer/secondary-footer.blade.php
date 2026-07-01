@@ -42,7 +42,7 @@
         </div>
 
         <div id="footer-copyright"
-            class="flex flex-col-reverse md:flex-row lg:flex-row items-center justify-between gap-4 py-8">
+            class="flex flex-col-reverse md:flex-row lg:flex-row items-center justify-between gap-8 pt-8 pb-6">
             <p class="text-(--color-text)">© {{ date('Y') }} {{ $company_name }}</p>
             @if (count($socials) > 0)
                 <div id="social-icons-wrapper" class="flex items-center gap-5">

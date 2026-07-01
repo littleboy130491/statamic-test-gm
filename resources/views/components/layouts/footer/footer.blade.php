@@ -44,16 +44,16 @@
             <div id="content-footer" class="absolute inset-0 z-10 mt-18 md:mt-15 lg:mt-15">
                 <div class="container flex flex-col gap-8 justify-center md:flex-row lg:flex-row">
 
-                    <div class="flex flex-col-reverse justify-center md:flex-row lg:flex-row gap-8 md:gap-2 lg:gap-10">
+                    <div class="flex flex-col-reverse md:flex-row lg:flex-row gap-8 md:gap-10 lg:gap-10">
 
                         {{-- Image Footer --}}
-                        <div id="image-footer" class="flex mb-0 md:-mb-40 md:w-[70%] lg:w-[40%]">
+                        <div id="image-footer" class="flex mb-0 md:-mb-40 md:w-[70%] lg:w-[50%]">
                             <img src="{{ $footer->augmentedValue('image')->value()?->url() }}"
                                 alt="{{ $footer->get('heading') }}" class="w-ful object-contain">
                         </div>
 
                         {{-- CTA Footer --}}
-                        <div id="cta-footer" class="flex flex-col justify-between lg:justify-center lg:w-[30%]">
+                        <div id="cta-footer" class="flex flex-col justify-between lg:justify-center lg:w-[50%]">
                             <div class="flow">
                                 <h2 class="text-white lg:w-110">{{ $footer->get('heading') }}</h2>
                                 <p class="text-white lg:w-120">{{ $footer->get('short_description') }}</p>
@@ -97,7 +97,7 @@
         </div>
 
         {{-- Copyright Footer --}}
-        <div id="copyrigth-footer" class="-mt-12 md:-mt-14 relative z-10">
+        <div id="copyrigth-footer" class="-mt-12 md:-mt-10 lg:-mt-12 relative z-10">
             <p class="text-white text-center">© {{ date('Y') }} {{ $company_name }}</p>
         </div>
     </footer>
