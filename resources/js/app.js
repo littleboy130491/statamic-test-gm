@@ -8,3 +8,4 @@ import L from 'leaflet';
 window.L = L;
 import './dealer-map';
 import './form-career-popup';
+import './share.js';

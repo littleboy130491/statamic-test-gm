@@ -50,39 +50,28 @@ tabs:
         display: 'Share Button'
         fields:
           -
-            handle: platforms
+            handle: social_share
             field:
+              fullscreen: false
+              max_rows: 5
+              min_rows: 5
               type: grid
-              display: Platforms
+              display: 'Social Share'
               fields:
                 -
                   handle: icon
                   field:
                     container: assets
-                    max_files: 1
                     type: assets
                     display: Icon
-                    width: 25
+                    width: 50
                     validate:
                       - required
-                -
-                  handle: url_share
-                  field:
-                    type: link
-                    display: 'URL Share'
-                    width: 25
-                    validate:
-                      - required
-                -
-                  handle: label
-                  field:
-                    type: text
-                    display: Label
-                    width: 25
+                    max_files: 1
                 -
                   handle: show
                   field:
                     default: true
                     type: toggle
                     display: Show
-                    width: 25
+                    width: 50

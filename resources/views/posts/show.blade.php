@@ -64,6 +64,19 @@
 
     // Sidebar kategori
     $categories = \Statamic\Facades\Term::query()->where('taxonomy', 'categories')->get();
+
+    // Share icons
+    $shareIcons = collect($blog['social_share'] ?? [])->filter(fn($s) => $s['show'] ?? false);
+    $currentUrl = urlencode($page->absoluteUrl());
+    $currentTitle = urlencode($page->title);
+
+    $shareLinks = [
+        'share-wa' => 'https://wa.me/?text=' . $currentTitle . '%20' . $currentUrl,
+        'share-fb' => 'https://www.facebook.com/sharer/sharer.php?u=' . $currentUrl,
+        'share-th' => 'https://www.threads.net/intent/post?text=' . $currentTitle . '%20' . $currentUrl,
+        'share-x' => 'https://twitter.com/intent/tweet?text=' . $currentTitle . '&url=' . $currentUrl,
+        'share-link' => $page->absoluteUrl(),
+    ];
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
@@ -214,11 +227,40 @@
                             </div>
 
                             {{-- Share --}}
-                            <div id="share-icon"
-                                class="bg-(--color-surface) rounded-3xl p-6 flex flex-row gap-4 items-center justify-between">
-                                <p class="uppercase text-black font-medium">{{ $blog['label_share'] ?? 'Share' }}</p>
-                                <div class="flex items-center gap-4"></div>
-                            </div>
+                            @if ($shareIcons->isNotEmpty())
+                                <div id="share-icon"
+                                    class="bg-(--color-surface) rounded-3xl p-6 flex flex-row gap-4 items-center justify-between">
+                                    <p class="uppercase text-black font-medium">{{ $blog['label_share'] ?? 'Bagikan' }}
+                                    </p>
+                                    <div class="flex items-center gap-5">
+                                        @foreach ($shareIcons as $share)
+                                            @php
+                                                $iconUrl = $share['icon']?->url() ?? null;
+                                                $iconKey = pathinfo($share['icon']?->path() ?? '', PATHINFO_FILENAME);
+                                                $isCopy = str_contains($iconKey, 'link');
+                                                $link = $shareLinks[$iconKey] ?? '#';
+                                            @endphp
+
+                                            @if ($iconUrl)
+                                                @if ($isCopy)
+                                                    <a href="#"
+                                                        class="share-link shrink-0 relative transition-opacity hover:opacity-70">
+                                                        <img src="{{ $iconUrl }}" alt=""
+                                                            class="w-5 h-5" />
+                                                    </a>
+                                                @else
+                                                    <a href="{{ $link }}" target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        class="shrink-0 transition-opacity hover:opacity-70">
+                                                        <img src="{{ $iconUrl }}" alt=""
+                                                            class="w-5 h-5" />
+                                                    </a>
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
 
                         </aside>
                     </div>

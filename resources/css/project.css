@@ -598,3 +598,13 @@ blockquote {
 .contact-form-input option::checkmark {
   display: none;
 }
+
+/* Share icons */
+#share-icon img {
+    filter: invert(64%) sepia(100%) saturate(400%) hue-rotate(65deg) brightness(69%);
+    transition: filter 0.2s;
+}
+
+#share-icon a:hover img {
+    filter: invert(65%) sepia(100%) saturate(600%) brightness(103%);
+}

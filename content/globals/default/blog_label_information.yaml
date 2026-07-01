@@ -3,34 +3,24 @@ latest_blog_label: Terbaru
 label_share: Bagikan
 related_news_labels: 'Berita Terkait'
 image_placeholders: placeholder.jpg
-platforms:
+social_share:
   -
-    id: _lzGrVxCRJ46qdc7GPrvb
+    id: zdI9Dulo
     icon: share-wa.svg
-    url_share: 'https://wa.me/?text='
-    label: WhatsApp
     show: true
   -
-    id: NwZlaBEH0Yk91WQ1FqF-Z
+    id: uhTtRqbU
     icon: share-fb.svg
-    url_share: 'https://www.facebook.com/sharer/sharer.php?u='
-    label: Facebook
     show: true
   -
-    id: QHx4rGFNK6uWWcjbNACTF
+    id: eu5aENV3
     icon: share-th.svg
-    url_share: 'https://www.threads.net/intent/post?text='
-    label: Thread
     show: true
   -
-    id: u9S_V7yJ72jugx7OIbwrT
+    id: QzOnUApB
     icon: share-x.svg
-    url_share: 'https://twitter.com/intent/tweet?url='
-    label: X
     show: true
   -
-    id: HgJpVp0dF19N-IyWJZJ8L
+    id: uRuqnEz4
     icon: share-link.svg
-    url_share: '#'
-    label: 'Copy Link'
     show: true

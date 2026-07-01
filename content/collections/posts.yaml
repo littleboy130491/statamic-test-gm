@@ -1,13 +1,18 @@
 title: Posts
-date: true
-blueprints:
-  - post
-date_behavior:
-  past: public
-  future: private
-route: '/blog/{year}/{month}/{day}/{slug}'
-sort_dir: desc
+icon: collections
 template: posts/show
+layout: layout
 taxonomies:
   - categories
 revisions: false
+route: '/berita-dan-artikel/{slug}'
+date: true
+sort_dir: desc
+date_behavior:
+  past: public
+  future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true
