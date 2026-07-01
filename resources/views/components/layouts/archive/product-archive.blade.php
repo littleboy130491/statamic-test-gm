@@ -77,21 +77,22 @@
         {{-- Product + sidebar --}}
         <section id="product-content">
             <div class="container my-18 md:my-18 lg:my-30">
-                <div class="flex flex-col md:flex-row lg:flex-row gap-18 md:gap-5 lg:gap-5">
+                <div class="flex flex-col-reverse md:flex-row lg:flex-row gap-18 md:gap-5 lg:gap-5">
 
                     {{-- Sidebar (kiri) --}}
-                    <aside class="w-full md:w-[40%] lg:w-[30%] flex flex-col gap-5">
+                    <aside class="w-full md:w-[30%] lg:w-[30%] flex flex-col gap-5">
 
                         {{-- Kategori produk --}}
                         @if ($product_categories->isNotEmpty())
-                            <div id="sidebar-categories" class="bg-white rounded-3xl p-6 flex flex-col gap-8">
+                            <div id="sidebar-categories"
+                                class="bg-white p-4 lg:p-6 flex flex-col gap-6 lg:gap-8 rounded-2xl lg:rounded-3xl">
                                 <p class="uppercase text-black font-medium">
                                     {{ $product['category_labels'] ?? 'Kategori' }}
                                 </p>
                                 <ul class="flex flex-col list-none pl-0 mb-0">
                                     @foreach ($product_categories as $category)
                                         <li
-                                            class="py-4 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
+                                            class="md:text-sm py-4 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
                                             <a href="{{ $category->url() }}"
                                                 class="text-(--color-body) hover:text-(--color-primary) transition-colors">
                                                 {{ $category->title }}
@@ -104,14 +105,15 @@
 
                         {{-- Industri --}}
                         @if ($industries->isNotEmpty())
-                            <div id="sidebar-industries" class="bg-white rounded-3xl p-6 flex flex-col gap-8">
+                            <div id="sidebar-industries"
+                                class="bg-white p-4 lg:p-6 flex flex-col gap-6 lg:gap-8 rounded-2xl lg:rounded-3xl">
                                 <p class="uppercase text-black font-medium">
                                     {{ $product['industry_labels'] ?? 'Industri' }}
                                 </p>
                                 <ul class="flex flex-col list-none pl-0 mb-0">
                                     @foreach ($industries as $industry)
                                         <li
-                                            class="py-4 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
+                                            class="md:text-sm py-4 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
                                             <a href="{{ $industry->url() }}"
                                                 class="text-(--color-body) hover:text-(--color-primary) transition-colors">
                                                 {{ $industry->title }}
@@ -125,9 +127,9 @@
                     </aside>
 
                     {{-- Grid card produk (kanan) --}}
-                    <div class="w-full md:w-[60%] lg:w-[70%] flex flex-col gap-20">
+                    <div class="w-full md:w-[70%] lg:w-[70%] flex flex-col gap-20">
                         <div id="product-grid"
-                            class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 md:ga p-x-4 md:gap-y-10 lg:gap-x-5 lg:gap-y-16">
+                            class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 md:gap-x-4 md:gap-y-10 lg:gap-x-5 lg:gap-y-16">
                             @if ($hasProductSkin)
                                 @foreach ($products as $entry)
                                     <x-layouts.skin.product-skin :entry="$entry" />

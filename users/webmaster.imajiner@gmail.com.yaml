@@ -16,6 +16,11 @@ preferences:
       per_page: 100
     products:
       view: list
+      columns:
+        - title
+        - product_categories
+        - industries
+        - status
     pages:
       view: list
       per_page: 100

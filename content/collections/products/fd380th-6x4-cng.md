@@ -1,12 +1,13 @@
 ---
-id: product-fd375dt
+id: 8b5d20e8-82ce-48a1-a59b-69b4892a5fc6
 blueprint: product
-title: 'FD375DT (6X4)'
-sku: 'FD375DT (6X4)'
+title: 'FD380TH 6x4 CNG'
+sku: 'FD380TH 6x4 CNG'
 product_categories:
   - dump-truck
 industries:
-  - konstruksi
+  - perkebunan
+  - pertambangan
 description:
   -
     type: paragraph
@@ -55,7 +56,7 @@ catalogue_link:
   url: /
   displayed: true
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1782878156
+updated_at: 1782878194
 product_specifications:
   -
     id: 8_Gs-tzCS60A2nq9NqntH
@@ -89,8 +90,9 @@ product_specifications:
     id: U_fSQKRF7nHln9QKauFMO
     heading: 'Brake System'
     short_description: 'Full Air Brake & Double Circuit Air Brake'
-dimention: '3'
-engine: '3'
-chassis: '3'
-safety_security: '3'
+dimention: '2'
+engine: '2'
+chassis: '2'
+safety_security: '2'
+duplicated_from: product-fd375dt
 ---

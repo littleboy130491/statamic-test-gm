@@ -114,7 +114,8 @@
 
                         {{-- Kategori --}}
                         @if ($categories->isNotEmpty())
-                            <div id="sidebar-categories" class="bg-white rounded-3xl p-6 flex flex-col gap-8">
+                            <div id="sidebar-categories"
+                                class="bg-white p-4 lg:p-6 flex flex-col gap-6 lg:gap-8 rounded-2xl lg:rounded-3xl">
                                 <p class="uppercase text-black font-medium">{{ $blog['category_labels'] ?? 'Kategori' }}
                                 </p>
                                 <ul class="flex flex-col list-none pl-0 mb-0">
@@ -132,7 +133,8 @@
                         @endif
 
                         {{-- Terbaru --}}
-                        <div id="sidebar-latest" class="bg-white rounded-3xl p-6 flex flex-col gap-8">
+                        <div id="sidebar-latest"
+                            class="bg-white p-4 lg:p-6 flex flex-col gap-6 lg:gap-8 rounded-2xl lg:rounded-3xl">
                             <p class="uppercase text-black font-medium">{{ $blog['latest_blog_label'] ?? 'Terbaru' }}
                             </p>
                             @if ($hasBlogNewSkin && $latestPosts->isNotEmpty())
