@@ -531,3 +531,70 @@ blockquote {
       font-size: 1rem;
    }
 }
+
+
+
+
+/* Form Kontak */
+.contact-form-input {
+   font-family: var(--font-body);
+}
+
+.contact-form-input::placeholder {
+  opacity: 1;
+  color: var(--color-body);
+}
+
+.contact-form-input {
+  color: var(--color-body);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: border-color 0.2s ease;
+}
+
+.contact-form-input:focus {
+  outline: none;
+}
+
+.contact-form-input,
+.contact-form-input::picker(select) {
+  appearance: base-select;
+  cursor: pointer;
+}
+
+.contact-form-input::picker-icon {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23767676' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: rotate 0.2s ease;
+}
+
+
+/* Style dropdown form Kontak */
+.contact-form-input::picker(select) {
+  background-color: white;
+  border: 1px solid var(--color-line);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  margin-top: 0.2rem;
+}
+
+/* Style tiap option */
+.contact-form-input option {
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  color: var(--color-body);
+  cursor: pointer;
+}
+
+.contact-form-input option:hover {
+  background-color: var(--color-surface);
+}
+
+.contact-form-input option::checkmark {
+  display: none;
+}
