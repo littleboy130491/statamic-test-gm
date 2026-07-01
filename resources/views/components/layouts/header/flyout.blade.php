@@ -12,7 +12,7 @@
 @endphp
 
 <nav>
-    <!-- Mobile Flyout Menu -->
+    {{-- Mobile Flyout Menu --}}
     <div id="mobile-menu"
         class="pointer-events-none invisible opacity-0 lg:hidden fixed inset-0 z-50 transition-opacity duration-300 ease-out">
         <button type="button" id="mobile-menu-backdrop" aria-label="Close menu"
@@ -21,7 +21,7 @@
         <div id="mobile-menu-panel"
             class="-translate-x-full flex h-full w-full max-w-[90%] md:max-w-[40%] flex-col bg-white px-4 py-6 transition-transform duration-300 ease-out">
 
-            <!-- Flyout Header -->
+            {{-- Flyout Header --}}
             <div id="logo-flyout" class="flex items-start {{ $logo_url ? 'justify-between' : 'justify-end' }}">
                 @if ($logo_url)
                     <a href="/" class="inline-flex items-center">
@@ -34,7 +34,7 @@
                 </button>
             </div>
 
-            <!-- Flyout Menu -->
+            {{-- Flyout Menu --}}
             @if (\Statamic\Facades\Nav::findByHandle('nav_header'))
                 <div id="flyout-menu" class="border-t border-(--color-line) my-6 py-6">
                     <ul class="flex flex-col gap-4 font-(family-name:--font-body)">
@@ -81,7 +81,7 @@
 
             <div class="border-t border-(--color-line) py-6 font-(family-name:--font-body) text-black">
 
-                <!-- Language Mobile -->
+                {{-- Language Mobile --}}
                 <div class="gtranslate_wrapper mb-6"></div>
 
                 <!-- Contact Info -->

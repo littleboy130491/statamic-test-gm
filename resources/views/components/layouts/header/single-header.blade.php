@@ -18,10 +18,10 @@
                 </a>
             @endif
 
-            <!-- Desktop Navigation -->
+            {{-- Desktop Navigation --}}
             @if (\Statamic\Facades\Nav::findByHandle('nav_header'))
                 <nav id="desktop-menu" class="hidden lg:flex flex-1 justify-center">
-                    <ul class="flex items-center justify-center gap-16 font-(family-name:--font-body)">
+                    <ul class="flex items-center justify-center gap-10 font-(family-name:--font-body)">
                         <s:nav handle="nav_header">
                             <li class="group relative shrink-0">
                                 @if (count($children) > 0)
@@ -60,7 +60,7 @@
                 </nav>
             @endif
 
-            <!-- Language Desktop -->
+            {{-- Language Desktop --}}
             <div class="hidden lg:flex items-center shrink-0">
                 <div class="gtranslate_wrapper"></div>
                 <script>
@@ -73,7 +73,7 @@
                 <script src="https://cdn.gtranslate.net/widgets/latest/lc.js" defer></script>
             </div>
 
-            <!-- Hamburger Button -->
+            {{-- Hamburger Button --}}
             <button id="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false"
                 class="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1">
                 <span class="block w-6 h-0.5 bg-black"></span>
