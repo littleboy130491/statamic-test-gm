@@ -23,12 +23,6 @@ tabs:
               display: Images
               validate:
                 - required
-          -
-            handle: content
-            field:
-              type: textarea
-              display: Description
-              localizable: true
   sidebar:
     display: Sidebar
     sections:

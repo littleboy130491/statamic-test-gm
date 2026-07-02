@@ -10,6 +10,8 @@
 
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
+@import "swiper/css";
+@import "swiper/css/navigation";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
