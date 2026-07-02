@@ -9,12 +9,12 @@
 @endphp
 
 <a href="{{ $term->url() }}"
-    class="group/card flex flex-col gap-4 rounded-2xl lg:rounded-3xl border border-(--color-line) overflow-hidden p-4 md:p-4 lg:p-6 hover:bg-(--color-surface) hover:border-(--color-surface)">
+    class="group/card flex flex-col gap-4 lg:gap-10 rounded-2xl lg:rounded-3xl border border-(--color-line) overflow-hidden p-4 md:p-4 lg:p-6 hover:bg-(--color-surface) hover:border-(--color-surface)">
 
     {{-- Image --}}
     <div>
         <img src="{{ $term->images?->url() ?? ($product['image_placeholders'] ?? '') }}" alt="{{ $term->title }}"
-            class="w-full aspect-square object-contain transition-transform duration-500" />
+            class="w-full md:w-[80%] lg:w-[70%] aspect-square object-contain mx-auto transition-transform duration-500" />
     </div>
 
     {{-- Title --}}
