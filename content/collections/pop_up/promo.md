@@ -5,7 +5,5 @@ title: Promo
 pop_up_image: bg-karier.jpg
 url: 'https://imajiner.id/'
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1782914481
-pop_up_location:
-  - home
+updated_at: 1782989780
 ---

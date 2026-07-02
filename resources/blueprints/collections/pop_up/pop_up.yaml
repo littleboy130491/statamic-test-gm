@@ -37,8 +37,6 @@ tabs:
               mode: select
               type: entries
               display: 'Pop Up Location'
-              validate:
-                - required
   sidebar:
     display: Sidebar
     sections:

@@ -650,3 +650,30 @@ blockquote {
 .blur-cus {
    backdrop-filter: blur(4px);
 }
+
+
+
+/* Popup Situs */
+.site-popup {
+    width: min(90%, 600px);
+    max-height: 90vh;
+    margin: auto;
+    border: none;
+    border-radius: 1rem;
+    padding: 0;
+    background: transparent;
+    overflow: hidden;
+}
+
+.site-popup::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.site-popup-inner {
+    position: relative;
+    overflow: hidden;
+}
+
+body:has(dialog[open].site-popup) {
+    overflow: hidden;
+}

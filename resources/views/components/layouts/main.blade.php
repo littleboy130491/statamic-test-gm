@@ -47,6 +47,7 @@
 <body class="{{ $classes }}" {{ $attributes->except('class') }}>
     @stack('body_start')
     {{ $slot }}
+    <x-layouts.popup />
     @stack('scripts')
     @stack('body_end')
 </body>
