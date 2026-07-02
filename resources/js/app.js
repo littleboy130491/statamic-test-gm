@@ -9,3 +9,4 @@ window.L = L;
 import './dealer-map';
 import './form-career-popup';
 import './share.js';
+import './counter.js';

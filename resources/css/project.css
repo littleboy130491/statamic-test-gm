@@ -626,3 +626,27 @@ blockquote {
 .industry-item[open]::details-content {
    block-size: auto;
 }
+
+
+
+
+/* Section About - HOME */
+.overlay-section-about {
+   position: relative;
+}
+
+.overlay-section-about::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   z-index: 1;
+   pointer-events: none;
+   background: linear-gradient(180deg, #FFF 50%, rgba(255, 255, 255, 0.00) 100%);
+}
+
+
+
+/* Background Blur */
+.blur-cus {
+   backdrop-filter: blur(4px);
+}

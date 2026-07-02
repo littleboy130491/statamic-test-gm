@@ -1,0 +1,26 @@
+title: 'Image & Label'
+fields:
+  -
+    handle: gallery_images
+    field:
+      type: grid
+      display: 'Gallery Images'
+      fields:
+        -
+          handle: images
+          field:
+            container: assets
+            max_files: 1
+            type: assets
+            display: Images
+            width: 50
+            validate:
+              - required
+        -
+          handle: label
+          field:
+            type: text
+            display: Label
+            width: 50
+            validate:
+              - required

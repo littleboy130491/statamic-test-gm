@@ -1,0 +1,70 @@
+title: 'Flip Box'
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+  -
+    handle: description
+    field:
+      container: assets
+      remove_empty_nodes: false
+      type: bard
+      display: Description
+  -
+    handle: flip_content
+    field:
+      mode: stacked
+      type: grid
+      display: 'Flip Content'
+      validate:
+        - required
+      fields:
+        -
+          handle: image
+          field:
+            container: assets
+            max_files: 1
+            type: assets
+            display: Image
+            validate:
+              - required
+        -
+          handle: heading_flip
+          field:
+            type: text
+            display: 'Heading Flip'
+        -
+          handle: short_description
+          field:
+            type: textarea
+            display: 'Short Description'
+            validate:
+              - required
+        -
+          handle: label_button
+          field:
+            default: Selengkapnya
+            type: text
+            display: 'Label Button'
+            width: 50
+            validate:
+              - required
+        -
+          handle: url_button
+          field:
+            type: link
+            display: 'URL Button'
+            width: 50
+            validate:
+              - required
+  -
+    handle: background_image
+    field:
+      container: assets
+      max_files: 1
+      type: assets
+      display: 'Background image'
+      validate:
+        - required
