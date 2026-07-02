@@ -45,6 +45,8 @@ preferences:
         - years
         - status
     listing_mode: list
+    pop_up:
+      view: list
   color_mode: light
   assets:
     assets:

@@ -8,8 +8,8 @@
             ?->toAugmentedArray();
 @endphp
 
-<article class="group overflow-hidden">
-    <a href="{{ $entry->url() }}" class="flex flex-col gap-4 md:gap-4 ld:gap-5">
+<article class="overflow-hidden">
+    <a href="{{ $entry->url() }}" class="group/card flex flex-col gap-4 md:gap-4 lg:gap-5">
 
         {{-- Featured Image --}}
         <div class="overflow-hidden p-6 bg-white rounded-2xl lg:rounded-3xl">
@@ -28,7 +28,8 @@
             <div class="flex items-end justify-between">
                 <div class="flex items-center">
                     @if ($entry->product_categories && $entry->product_categories->isNotEmpty())
-                        <p class="uppercase text-(--color-primary) font-medium group-hover:text-(--color-secondary)">
+                        <p
+                            class="uppercase text-(--color-primary) font-medium group-hover/card:text-(--color-secondary)">
                             @foreach ($entry->product_categories as $category)
                                 {{ $category->title }}
                                 @unless ($loop->last)

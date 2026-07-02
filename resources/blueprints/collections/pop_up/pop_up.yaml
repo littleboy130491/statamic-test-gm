@@ -1,0 +1,78 @@
+title: 'Pop Up'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: pop_up_image
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Pop-up Image'
+          -
+            handle: url
+            field:
+              collections:
+                - pages
+                - posts
+                - products
+                - careers
+              type: link
+              display: URL
+          -
+            handle: pop_up_location
+            field:
+              collections:
+                - pages
+              mode: select
+              type: entries
+              display: 'Pop Up Location'
+              validate:
+                - required
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+  'SEO Meta':
+    display: 'SEO Meta'
+    sections:
+      -
+        fields:
+          -
+            handle: seo
+            field:
+              type: seo_pro
+              listable: false
+              display: SEO
+  'SEO Previews':
+    display: 'SEO Previews'
+    sections:
+      -
+        fields:
+          -
+            handle: seo_previews
+            field:
+              type: seo_pro_previews
+              listable: false
+              display: 'SEO Previews'
+              localizable: false
+              hide_display: true
+              unless:
+                seo.enabled: 'equals false'

@@ -17,7 +17,9 @@
     // Cek component
     $hasHeader = view()->exists('components.layouts.header.header');
     $hasHeroPage = view()->exists('components.layouts.hero.heropage');
+    $hasProductSkin = view()->exists('components.layouts.skin.product-skin');
     $hasFooter = view()->exists('components.layouts.footer.footer');
+
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
@@ -36,7 +38,20 @@
 
                     {{-- Accordion industri --}}
                     @foreach ($industries as $industry)
-                        <details class="industry-item group overflow-hidden" {{ $loop->first ? 'open' : '' }}>
+                        @php
+                            // Produk yang punya industri ini (maksimal 6)
+                            $relatedProducts = $hasProductSkin
+                                ? \Statamic\Facades\Entry::query()
+                                    ->where('collection', 'products')
+                                    ->whereStatus('published')
+                                    ->whereTaxonomyIn(['industries::' . $industry->slug()])
+                                    ->limit(6)
+                                    ->get()
+                                : collect();
+                        @endphp
+
+                        <details class="industry-item group overflow-hidden" name="industry-accordion"
+                            {{ $loop->first ? 'open' : '' }}>
 
                             {{-- Header --}}
                             <summary class="flex items-center justify-between gap-4 cursor-pointer">
@@ -82,23 +97,30 @@
                                 </div>
 
                                 {{-- Label produk terkait --}}
-                                <div class="flex items-center gap-5">
-                                    <p class="uppercase text-(--color-primary) font-medium">
-                                        {{ $acc['related_product_label'] ?? 'Produk Terkait' }}
-                                    </p>
-                                    <span class="flex-1 border-t border-[#E8E8E8] hidden md:flex lg:flex"></span>
-                                </div>
-
-                                {{-- Slot produk terkait --}}
-                                <div class="flex lg:flex-row lg:justify-between">
-                                    <div class="industry-products">
+                                @if ($relatedProducts->isNotEmpty())
+                                    <div class="flex items-center gap-5">
+                                        <p class="uppercase text-(--color-primary) font-medium">
+                                            {{ $acc['related_product_label'] ?? 'Produk Terkait' }}
+                                        </p>
+                                        <span class="flex-1 border-t border-[#E8E8E8] hidden md:flex lg:flex"></span>
                                     </div>
 
-                                    {{-- Button --}}
-                                    <a href="{{ $industry->url() }}" class="button button--primary">
-                                        {{ $acc['button_label'] ?? 'Semua Produk' }}
-                                    </a>
-                                </div>
+                                    {{-- Slot produk terkait --}}
+                                    <div
+                                        class="flex flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between">
+                                        <div
+                                            class="industry-products grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+                                            @foreach ($relatedProducts as $entry)
+                                                <x-layouts.skin.product-skin :entry="$entry" />
+                                            @endforeach
+                                        </div>
+
+                                        {{-- Button --}}
+                                        <a href="{{ $industry->url() }}" class="button button--primary shrink-0">
+                                            {{ $acc['button_label'] ?? 'Semua Produk' }}
+                                        </a>
+                                    </div>
+                                @endif
 
                             </div>
 
