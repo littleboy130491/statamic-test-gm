@@ -12,13 +12,3 @@ fields:
       type: link
       display: Link
       validate: required
-  -
-    handle: style
-    field:
-      type: select
-      display: Style
-      default: primary
-      options:
-        primary: Primary
-        secondary: Secondary
-        outline: Outline

@@ -71,6 +71,7 @@ body.background-grey {
     transition-property: background-color, opacity;
     transition-duration: var(--hero-slider-transition-duration, 500ms);
     transition-timing-function: ease-out;
+    margin-bottom: 60px;
 }
 
 .hero-slider-dot::after {

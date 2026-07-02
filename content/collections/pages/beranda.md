@@ -4,7 +4,7 @@ blueprint: page
 title: Beranda
 template: home
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1781343815
+updated_at: 1782965121
 sections:
   -
     id: ZLGXZE_k6w_GoDXYnWc7H
@@ -21,7 +21,6 @@ sections:
     button:
       label: 'Tentang GM Mobil'
       link: 'entry::df438d73-5602-40d0-806d-cb9c62bbe581'
-      style: primary
     images:
       - cer-1.jpg
       - cer-2.jpg
@@ -55,7 +54,7 @@ sections:
     id: vy_ndF3JTqUvIww-0ySee
     identifier: section-product-category
     heading: 'Rangkaian Produk untuk Berbagai Kebutuhan Operasional'
-    description: Desc
+    description: 'PT Gaya Makmur Mobil (GM Mobil) merupakan Agen Pemegang Merek (APM) dari First Automobile Works (FAW) yang mulai memasarkan unit FAW Truck.'
     label: 'Semua Produk'
     link: 'entry::products'
     style: primary
