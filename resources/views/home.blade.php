@@ -56,6 +56,7 @@
     $hasHeader = view()->exists('components.layouts.header.header');
     $hasSlider = view()->exists('components.layouts.hero.slider');
     $hasHeroPage = view()->exists('components.layouts.hero.heropage');
+    $hasCatProductSkin = view()->exists('components.layouts.skin.category-product-skin');
     $hasFooter = view()->exists('components.layouts.footer.footer');
 @endphp
 
@@ -69,7 +70,7 @@
             <x-layouts.hero.slider />
         @endif
 
-        {{-- Tentang GM --}}
+        {{-- Tentang --}}
         @if ($about && ($about['show'] ?? false))
             <section id="{{ $about['anchor'] ?? 'tentang-kami' }}">
                 <div class="relative overflow-hidden -mt-14">
@@ -78,7 +79,7 @@
                     <div id="background-about"
                         class="overlay-section-about rounded-t-3xl lg:rounded-t-[60px] overflow-hidden">
                         <img src="{{ $about['section_images'] ?? '' }}" alt=""
-                            class="w-full h-310 md:h-290 lg:h-260 object-cover pointer-events-none">
+                            class="w-full h-310 md:h-290 lg:h-240 object-cover pointer-events-none">
                     </div>
 
                     {{-- Konten --}}
@@ -161,6 +162,37 @@
                     </div>
 
                 </div>
+            </section>
+        @endif
+
+        {{-- Produk kategori --}}
+        @if ($productCategory && ($productCategory['show'] ?? false))
+            <section id="{{ $productCategory['anchor'] ?? 'category-product' }}" class="bg-white relative">
+                <div class="container py-18 md:py-18 lg:py-30 rounded-t-3xl lg:rounded-t-[60px] lg:-mt-15">
+                    <div class="flex flex-col md:flex-row lg:flex-row justify-between items-end">
+
+                        {{-- Heading --}}
+                        <div id="heading-product-category" class="flex flex-col gap-2 lg:w-[55%]">
+                            @if (!empty($productCategory['heading']))
+                                <h2 class="text-(--color-heading)">{{ $productCategory['heading'] }}</h2>
+                            @endif
+                            @if (!empty($productCategory['description']))
+                                <p class="color-(--color-text)">{{ $productCategory['description'] }}</p>
+                            @endif
+                        </div>
+
+                        {{-- Button --}}
+                        <div id="button-product-category">
+                            @php $productCategoryUrl = $resolveUrl($productCategory['link'] ?? null); @endphp
+                            @if ($productCategoryUrl && !empty($productCategory['label']))
+                                <a href="{{ $productCategoryUrl }}" class="button button--primary">
+                                    {{ $productCategory['label'] }}
+                                </a>
+                            @endif
+                        </div>
+
+                        {{-- Kategori Produk --}}
+                    </div>
             </section>
         @endif
 
