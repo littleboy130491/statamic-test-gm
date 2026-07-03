@@ -27,6 +27,11 @@ preferences:
       per_page: 100
     dealers:
       view: list
+      columns:
+        - title
+        - city
+        - dealer_categories
+        - status
     careers:
       view: list
       columns:

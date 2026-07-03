@@ -183,6 +183,7 @@ body.background-grey {
 .leaflet-popup-content {
    margin: 11px !important;
    border-radius: 16px !important;
+   width: 250px;
 }
 
 .dealer-popup {

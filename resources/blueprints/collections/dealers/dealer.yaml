@@ -19,32 +19,18 @@ tabs:
         display: Location
         fields:
           -
-            handle: address
-            field:
-              type: textarea
-              display: Address
-          -
             handle: city
             field:
               type: text
               display: City
               localizable: true
-              width: 33
+              validate:
+                - required
           -
-            handle: region
+            handle: address
             field:
-              type: text
-              display: Region
-              localizable: true
-              width: 33
-          -
-            handle: country
-            field:
-              type: text
-              display: Country
-              default: Indonesia
-              localizable: true
-              width: 33
+              type: textarea
+              display: Address
       -
         display: Contact
         fields:

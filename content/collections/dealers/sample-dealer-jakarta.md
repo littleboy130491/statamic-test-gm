@@ -3,10 +3,7 @@ id: dealer-sample-jakarta
 blueprint: dealer
 title: 'Sample Dealer Jakarta'
 dealer_categories:
-  - authorized-dealer
-address: |-
-  Jl. Sudirman No. 123
-  Jakarta Pusat
+  - part-shop
 city: Jakarta
 region: 'DKI Jakarta'
 country: Indonesia
@@ -19,5 +16,8 @@ location:
   map_zoom: 14
 is_active: true
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1781084611
+updated_at: 1783066390
+address: |-
+  Jl. Sudirman No. 123
+  Jakarta Pusat
 ---

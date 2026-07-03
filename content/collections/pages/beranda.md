@@ -4,7 +4,7 @@ blueprint: page
 title: Beranda
 template: home
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1783051772
+updated_at: 1783067293
 sections:
   -
     id: ZLGXZE_k6w_GoDXYnWc7H
@@ -138,7 +138,7 @@ sections:
   -
     id: Ii6nqLfa4CrDPYWfx2-Ao
     identifier: section-dealer
-    heading: 'Rekan Jaringan  PT Gaya Makmur Mobil'
+    heading: 'Rekan Jaringan<br>PT Gaya Makmur Mobil'
     show: true
     type: heading_description
     enabled: true

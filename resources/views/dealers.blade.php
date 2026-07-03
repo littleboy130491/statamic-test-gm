@@ -75,7 +75,13 @@
 
         {{-- Maps dealer --}}
         @if ($hasDealerMap)
-            <x-layouts.dealer-map :dealers="$dealers" :categories="$dealerCategories" />
+            <section id="dealer">
+                <div class="container">
+                    <div class="my-18 md:my-18 lg:my-30">
+                        <x-layouts.dealer-map :dealers="$dealers" :categories="$dealerCategories" />
+                    </div>
+                </div>
+            </section>
         @endif
 
     </main>

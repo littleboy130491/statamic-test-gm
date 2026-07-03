@@ -66,12 +66,47 @@
         ->limit(3)
         ->get();
 
+    // Query dealer aktif
+    $dealers = \Statamic\Facades\Entry::query()
+        ->where('collection', 'dealers')
+        ->where('is_active', true)
+        ->get()
+        ->map(function ($dealer) {
+            $cat = $dealer->dealer_categories?->first();
+            return [
+                'company' => $dealer->title,
+                'address' => $dealer->address,
+                'city' => $dealer->city,
+                'region' => $dealer->region,
+                'phone' => $dealer->phone_number,
+                'whatsapp' => $dealer->whatsapp_number,
+                'whatsapp_link' => $dealer->whatsapp_link,
+                'maps_url' => $dealer->google_maps_url,
+                'lat' => $dealer->location['latitude'] ?? null,
+                'lng' => $dealer->location['longitude'] ?? null,
+                'dealer-category' => $cat?->slug() ?? '',
+            ];
+        })
+        ->filter(fn($d) => $d['lat'] && $d['lng'])
+        ->values();
+
+    // Dealer kategeori
+    $dealerCategories = \Statamic\Facades\Term::query()
+        ->where('taxonomy', 'dealer_categories')
+        ->get()
+        ->mapWithKeys(fn($term) => [$term->slug() => $term->title]);
+
+    $dealerCounts = collect($dealers ?? [])
+        ->groupBy('dealer-category')
+        ->map(fn($group) => $group->count());
+
     // Cek component
     $hasHeader = view()->exists('components.layouts.header.header');
     $hasSlider = view()->exists('components.layouts.hero.slider');
     $hasHeroPage = view()->exists('components.layouts.hero.heropage');
     $hasCatProductSkin = view()->exists('components.layouts.skin.category-product-skin');
     $hasFlipService = view()->exists('components.layouts.skin.flip-service-skin');
+    $hasDealerMap = view()->exists('components.layouts.dealer-map');
     $hasFooter = view()->exists('components.layouts.footer.footer');
 @endphp
 
@@ -360,11 +395,51 @@
 
                         {{-- Konten --}}
                         @if ($sosmedPosts->isNotEmpty())
-                            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                                 @foreach ($sosmedPosts as $entry)
                                     <x-layouts.skin.sosmed-blog-skin :entry="$entry" />
                                 @endforeach
                             </div>
+                        @endif
+
+                    </div>
+                </div>
+            </section>
+        @endif
+
+        {{-- Dealer --}}
+        @if ($dealer && ($dealer['show'] ?? false))
+            <section id="{{ $dealer['anchor'] ?? 'dealer' }}">
+                <div class="container">
+                    <div class="my-18 md:my-18 lg:my-30 flex flex-col gap-8 lg:gap-10">
+
+                        {{-- Heading --}}
+                        <div class="flex flex-col md:flex-col lg:flex-row items-end gap-5">
+                            <div class="w-full lg:w-[55%]">
+                                @if (!empty($dealer['heading']))
+                                    <h2 class="text-(--color-heading) w-full md:w-[70%] lg:w-[70%]">
+                                        {!! $dealer['heading'] !!}</h2>
+                                @endif
+                            </div>
+
+                            {{-- Counter --}}
+                            <div class="w-full lg:w-[45%] grid grid-cols-3 gap-4">
+                                @foreach ($dealerCategories as $slug => $label)
+                                    <div
+                                        class="flex flex-col items-start lg:items-center gap-1 bg-(--color-surface) p-4 rounded-xl">
+                                        <p
+                                            class="text-4xl font-medium text-(--color-primary) font-(family-name:--font-display)">
+                                            {{ $dealerCounts[$slug] ?? 0 }}
+                                        </p>
+                                        <p class="text-(--color-primary) leading-[1.2rem]">{{ $label }}</p>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        {{-- Konten --}}
+                        @if ($hasDealerMap)
+                            <x-layouts.dealer-map :dealers="$dealers" :categories="$dealerCategories" />
                         @endif
 
                     </div>
