@@ -447,6 +447,65 @@
             </section>
         @endif
 
+        {{-- GM Group --}}
+        @if ($groupGm && ($groupGm['show'] ?? false))
+            <section id="{{ $groupGm['anchor'] ?? 'gm-group' }}">
+                <div class="container">
+                    <div class="mb-18 md:mb-18 lg:mb-30 flex flex-col gap-6 lg:gap-8">
+
+                        <div class="flex gap-6 items-center">
+                            {{-- Heading --}}
+                            @if (!empty($groupGm['heading']))
+                                <p class="text-(--color-primary) uppercase">
+                                    {{ $groupGm['heading'] }}</p>
+                                <span class="flex-1 border-t border-[#E8E8E8] flex"></span>
+                            @endif
+                        </div>
+
+                        {{-- Gallery --}}
+                        @if (!empty($groupGm['gallery_images']))
+                            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
+                                @foreach ($groupGm['gallery_images'] as $item)
+                                    @php $itemUrl = trim($item['url_button'] ?? ''); @endphp
+
+                                    @if ($itemUrl)
+                                        <a href="{{ $itemUrl }}" target="_blank" rel="noopener noreferrer"
+                                            class="flex flex-col gap-4 items-center lg:justify-center p-4 lg:py-5 lg:px-15 border border-(--color-line) rounded-xl">
+                                            @if (!empty($item['images']))
+                                                <img src="{{ $item['images']?->url() }}"
+                                                    alt="{{ $item['label'] ?? '' }}"
+                                                    class="w-full h-6 md:h-8 lg:h-8 object-contain">
+                                            @endif
+                                            @if (!empty($item['label']))
+                                                <p
+                                                    class="text-center text-(--color-heading) lg:text-xl font-(family-name:--font-display) font-semibold tracking-tighter">
+                                                    {{ $item['label'] }}</p>
+                                            @endif
+                                        </a>
+                                    @else
+                                        <div
+                                            class="flex flex-col gap-4 items-center lg:justify-center p-4 lg:py-5 lg:px-15 border border-(--color-line) rounded-xl">
+                                            @if (!empty($item['images']))
+                                                <img src="{{ $item['images']?->url() }}"
+                                                    alt="{{ $item['label'] ?? '' }}"
+                                                    class="w-full h-6 md:h-8 lg:h-8 object-contain">
+                                            @endif
+                                            @if (!empty($item['label']))
+                                                <p
+                                                    class="text-center text-(--color-heading) lg:text-xl font-(family-name:--font-display) font-semibold tracking-tighter">
+                                                    {{ $item['label'] }}</p>
+                                            @endif
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                        @endif
+
+                    </div>
+                </div>
+            </section>
+        @endif
+
 
     </main>
     @if ($hasFooter)

@@ -312,6 +312,13 @@ tabs:
                         -
                           import: common.identifier
                         -
+                          handle: heading
+                          field:
+                            type: text
+                            display: Heading
+                            validate:
+                              - required
+                        -
                           import: blocks.image_label
                         -
                           import: common.section_settings

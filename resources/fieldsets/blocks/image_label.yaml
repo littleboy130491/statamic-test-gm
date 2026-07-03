@@ -5,6 +5,7 @@ fields:
     field:
       type: grid
       display: 'Gallery Images'
+      mode: stacked
       fields:
         -
           handle: images
@@ -13,7 +14,6 @@ fields:
             max_files: 1
             type: assets
             display: Images
-            width: 50
             validate:
               - required
         -
@@ -24,3 +24,9 @@ fields:
             width: 50
             validate:
               - required
+        -
+          handle: url_button
+          field:
+            type: link
+            display: 'URL Button'
+            width: 50

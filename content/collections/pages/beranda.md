@@ -4,7 +4,7 @@ blueprint: page
 title: Beranda
 template: home
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1783067293
+updated_at: 1783069520
 sections:
   -
     id: ZLGXZE_k6w_GoDXYnWc7H
@@ -150,6 +150,7 @@ sections:
         id: MhmaoZri48h-DjSaTiMFO
         images: logo-dummy-2.png
         label: 'PT Gaya Makmur Tractors (GMT)'
+        url_button: 'https://tailwindcss.com/'
       -
         id: GxHm7BEWH9yMDStrIF-pf
         images: logo-dummy-2.png
@@ -165,6 +166,7 @@ sections:
     show: true
     type: image_label
     enabled: true
+    heading: 'GM Grup'
   -
     id: 1cB5qh1NOXt90wa7ESi37
     identifier: section-blog
