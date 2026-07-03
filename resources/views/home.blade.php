@@ -43,7 +43,7 @@
         fn($section) => (string) ($section['identifier'] ?? '') === 'section-blog',
     );
 
-    // Resolve link entry::ID jadi URL
+    // Resolve link
     $resolveUrl = function ($value) {
         if (!$value) {
             return null;
@@ -54,7 +54,7 @@
         return $value;
     };
 
-    // Link button (resolve dari entry::ID)
+    // Link button
     $aboutBtn = $resolveUrl($about['button']['link'] ?? null);
     $productCategoryUrl = $resolveUrl($productCategory['link'] ?? null);
 
@@ -78,7 +78,7 @@
 
         {{-- Tentang --}}
         @if ($about && ($about['show'] ?? false))
-            <section id="{{ $about['anchor'] ?? 'tentang-kami' }}">
+            <section id="{{ $about['anchor'] ?? 'about-us' }}">
                 <div class="relative overflow-hidden -mt-14">
 
                     {{-- Background --}}
@@ -170,66 +170,112 @@
 
         {{-- Produk kategori --}}
         @if ($productCategory && ($productCategory['show'] ?? false))
-            <section id="{{ $productCategory['anchor'] ?? 'category-product' }}"
-                class="bg-white relative rounded-t-3xl lg:rounded-t-[60px] -mt-12">
-                <div class="container py-18 md:py-18 lg:py-30">
-                    <div
-                        class="flex flex-col md:flex-row lg:flex-row justify-between items-start md:items-end lg:items-end flex-wrap gap-8 md:gap-8 lg:gap-10">
+            <section id="{{ $productCategory['anchor'] ?? 'category-product' }}">
+                <div class="bg-white relative rounded-t-3xl lg:rounded-t-[60px] -mt-10 lg:-mt-12">
+                    <div class="container pt-18 pb-32 md:pt-18 md:pb-32 lg:pt-30 lg:pb-45">
+                        <div
+                            class="flex flex-col md:flex-row lg:flex-row justify-between items-start md:items-end lg:items-end flex-wrap gap-8 md:gap-8 lg:gap-10">
 
-                        {{-- Heading --}}
-                        <div id="heading-product-category" class="flex flex-col gap-2 md:w-[65%] lg:w-[55%]">
-                            @if (!empty($productCategory['heading']))
-                                <h2 class="text-(--color-heading)">{{ $productCategory['heading'] }}</h2>
-                            @endif
-                            @if (!empty($productCategory['description']))
-                                <p class="color-(--color-text)">{{ $productCategory['description'] }}</p>
-                            @endif
-                        </div>
-
-                        {{-- Button --}}
-                        <div id="button-product-category" class="order-last md:order-0 lg:order-0">
-                            @if ($productCategoryUrl && !empty($productCategory['label']))
-                                <a href="{{ $productCategoryUrl }}" class="button button--primary">
-                                    {{ $productCategory['label'] }}
-                                </a>
-                            @endif
-                        </div>
-
-                        {{-- Kategori Produk --}}
-                        @if ($hasCatProductSkin && $productCategories->isNotEmpty())
-                            <div class="category-slider relative w-full">
-
-                                {{-- Arrow Prev --}}
-                                <button type="button"
-                                    class="category-prev rounded-full absolute -left-3 lg:-left-7 top-[45%] z-10 w-10 h-10 md:w-10 md:h-10 lg:w-14 lg:h-14 text-(--color-primary) hover:text-white bg-(--color-surface) hover:bg-(--color-primary) p-3 md:p-3 lg:p-4">
-                                    <svg class="rotate-180 w-full h-full" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </button>
-
-                                {{-- Arrow Next --}}
-                                <button type="button"
-                                    class="category-next rounded-full absolute -right-3 lg:-right-7 top-[45%] z-10 w-10 h-10 md:w-10 md:h-10 lg:w-14 lg:h-14 text-(--color-primary) hover:text-white bg-(--color-surface) hover:bg-(--color-primary) p-3 md:p-3 lg:p-4">
-                                    <svg class="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                        stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </button>
-
-                                <div class="swiper category-swiper">
-                                    <div class="swiper-wrapper">
-                                        @foreach ($productCategories as $term)
-                                            <div class="swiper-slide h-auto">
-                                                <x-layouts.skin.category-product-skin :term="$term" />
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-
+                            {{-- Heading --}}
+                            <div id="heading-product-category" class="flex flex-col gap-2 w-full md:w-[65%] lg:w-[55%]">
+                                @if (!empty($productCategory['heading']))
+                                    <h2 class="text-(--color-heading)">{{ $productCategory['heading'] }}</h2>
+                                @endif
+                                @if (!empty($productCategory['description']))
+                                    <p class="color-(--color-text)">{{ $productCategory['description'] }}</p>
+                                @endif
                             </div>
-                        @endif
+
+                            {{-- Button --}}
+                            <div id="button-product-category" class="order-last md:order-0 lg:order-0">
+                                @if ($productCategoryUrl && !empty($productCategory['label']))
+                                    <a href="{{ $productCategoryUrl }}" class="button button--primary">
+                                        {{ $productCategory['label'] }}
+                                    </a>
+                                @endif
+                            </div>
+
+                            {{-- Kategori Produk --}}
+                            @if ($hasCatProductSkin && $productCategories->isNotEmpty())
+                                <div class="category-slider relative w-full">
+
+                                    {{-- Arrow Prev --}}
+                                    <button type="button"
+                                        class="category-prev rounded-full absolute -left-3 lg:-left-7 top-[45%] z-10 w-10 h-10 md:w-10 md:h-10 lg:w-14 lg:h-14 text-(--color-primary) hover:text-white bg-(--color-surface) hover:bg-(--color-primary) p-3 md:p-3 lg:p-4">
+                                        <svg class="rotate-180 w-full h-full" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
+
+                                    {{-- Arrow Next --}}
+                                    <button type="button"
+                                        class="category-next rounded-full absolute -right-3 lg:-right-7 top-[45%] z-10 w-10 h-10 md:w-10 md:h-10 lg:w-14 lg:h-14 text-(--color-primary) hover:text-white bg-(--color-surface) hover:bg-(--color-primary) p-3 md:p-3 lg:p-4">
+                                        <svg class="w-full h-full" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="swiper category-swiper">
+                                        <div class="swiper-wrapper">
+                                            @foreach ($productCategories as $term)
+                                                <div class="swiper-slide h-auto">
+                                                    <x-layouts.skin.category-product-skin :term="$term" />
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+
+                                </div>
+                            @endif
+                        </div>
                     </div>
+                </div>
+            </section>
+        @endif
+
+        {{-- Layanan --}}
+        @if ($services && ($services['show'] ?? false))
+            <section id="{{ $services['anchor'] ?? 'layanan' }}">
+                <div class="relative overflow-hidden -mt-14">
+
+                    {{-- Background --}}
+                    <div id="background-services"
+                        class="overlay-section-services rounded-t-3xl lg:rounded-t-[60px] overflow-hidden">
+                        <img src="{{ $services['background_image'] ?? '' }}" alt=""
+                            class="w-full h-300 md:h-220 lg:h-190 object-cover pointer-events-none">
+                    </div>
+
+                    {{-- Konten --}}
+                    <div class="absolute inset-0 z-10 flex items-center">
+                        <div id="content-services" class="container flex flex-col gap-8 lg:gap-10">
+
+                            <div id="content-service"
+                                class="flex flex-col gap-2 items-start md:items-center lg:items-center">
+                                {{-- Heading --}}
+                                @if (!empty($services['heading']))
+                                    <h2 class="text-(--color-heading) text-start md:text-center lg:text-center">
+                                        {{ $services['heading'] }}</h2>
+                                @endif
+
+                                {{-- Text --}}
+                                @if (!empty($services['description']))
+                                    <div
+                                        class="richtext text-start md:text-center lg:text-center w-full md:w-[60%] lg:w-[55%]">
+                                        {!! $services['description'] !!}</div>
+                                @endif
+                            </div>
+
+                            <div id="flip-services" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                                @foreach ($services['flip_content'] ?? [] as $flip)
+                                    <x-layouts.skin.flip-service-skin :flip="$flip" />
+                                @endforeach
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
             </section>
         @endif
