@@ -4,7 +4,7 @@ blueprint: page
 title: Beranda
 template: home
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1782981905
+updated_at: 1783051772
 sections:
   -
     id: ZLGXZE_k6w_GoDXYnWc7H
@@ -118,7 +118,6 @@ sections:
       -
         id: 6X3Aodg_x13Fus1wuzVV0
         marketplace_logo: indonetwork.png
-        marketplace_url: '#'
     show: true
     type: marketplace
     enabled: true

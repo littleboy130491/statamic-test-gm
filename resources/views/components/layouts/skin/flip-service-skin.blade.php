@@ -14,7 +14,7 @@
     $flipBtn = $resolveUrl($flip['url_button'] ?? null);
 @endphp
 
-<div class="flip-card group/flip relative h-70 lg:h-90 rounded-2xl overflow-hidden bg-white ">
+<div class="flip-card group/flip relative h-70 lg:h-90 rounded-2xl overflow-hidden bg-(--color-surface) lg:bg-white ">
 
     {{-- Front --}}
     <div class="absolute inset-0 flex flex-col">

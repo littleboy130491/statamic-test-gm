@@ -1,6 +1,5 @@
 @php
     $bodyClass = collect([
-        'background-grey',
         $is_entry ?? false ? 'entry' : null,
         isset($collection) ? 'entry-' . $collection : null,
         isset($collection) ? $collection : null,
@@ -63,6 +62,7 @@
     $hasSlider = view()->exists('components.layouts.hero.slider');
     $hasHeroPage = view()->exists('components.layouts.hero.heropage');
     $hasCatProductSkin = view()->exists('components.layouts.skin.category-product-skin');
+    $hasFlipService = view()->exists('components.layouts.skin.flip-service-skin');
     $hasFooter = view()->exists('components.layouts.footer.footer');
 @endphp
 
@@ -267,15 +267,65 @@
                                 @endif
                             </div>
 
-                            <div id="flip-services" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                                @foreach ($services['flip_content'] ?? [] as $flip)
-                                    <x-layouts.skin.flip-service-skin :flip="$flip" />
-                                @endforeach
-                            </div>
+                            @if ($hasFlipService && !empty($services['flip_content']))
+                                <div id="flip-services" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                                    @foreach ($services['flip_content'] as $flip)
+                                        <x-layouts.skin.flip-service-skin :flip="$flip" />
+                                    @endforeach
+                                </div>
+                            @endif
 
                         </div>
                     </div>
 
+                </div>
+            </section>
+        @endif
+
+        {{-- Marketplace --}}
+        @if ($marketplace && ($marketplace['show'] ?? false))
+            <section id="{{ $marketplace['anchor'] ?? 'marketplace' }}">
+                <div class="container">
+                    <div class="mb-18 md:mb-18 lg:mb-30 flex flex-col gap-6 md:gap-8 lg:gap-10">
+
+                        <div class="flex gap-6 items-center">
+                            {{-- Heading --}}
+                            @if (!empty($marketplace['heading']))
+                                <p class="text-(--color-primary) uppercase">
+                                    {{ $marketplace['heading'] }}</p>
+                                <span class="flex-1 border-t border-[#E8E8E8] flex"></span>
+                            @endif
+                        </div>
+
+                        {{-- Marketplace --}}
+                        @if (!empty($marketplace['marketplace']))
+                            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 md:gap-6 lg:gap-6">
+                                @foreach ($marketplace['marketplace'] as $item)
+                                    @php
+                                        $mpUrl = trim($item['marketplace_url'] ?? '');
+                                        $mpValid = $mpUrl && $mpUrl !== '#';
+                                    @endphp
+
+                                    @if (!empty($item['marketplace_logo']))
+                                        @if ($mpValid)
+                                            <a href="{{ $mpUrl }}" target="_blank" rel="noopener noreferrer"
+                                                class="transition-opacity hover:opacity-70 border border-(--color-surface) md:border-0 lg:border-0 rounded-xl p-4">
+                                                <img src="{{ $item['marketplace_logo']?->url() }}" alt=""
+                                                    class="h-10 lg:h-14 object-contain mx-auto">
+                                            </a>
+                                        @else
+                                            <div
+                                                class="border border-(--color-surface) md:border-0 lg:border-0 rounded-xl p-4">
+                                                <img src="{{ $item['marketplace_logo']?->url() }}" alt=""
+                                                    class="h-10 lg:h-14 object-contain mx-auto">
+                                            </div>
+                                        @endif
+                                    @endif
+                                @endforeach
+                            </div>
+                        @endif
+
+                    </div>
                 </div>
             </section>
         @endif

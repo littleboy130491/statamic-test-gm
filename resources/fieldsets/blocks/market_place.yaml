@@ -27,5 +27,3 @@ fields:
             type: link
             display: 'Marketplace URL'
             width: 50
-            validate:
-              - required
