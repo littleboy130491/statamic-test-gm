@@ -10,7 +10,7 @@ preferences:
         - featured_image
         - title
         - categories
-        - author
+        - tags
         - status
         - date
       per_page: 100

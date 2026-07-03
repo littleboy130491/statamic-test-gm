@@ -57,6 +57,15 @@
     $aboutBtn = $resolveUrl($about['button']['link'] ?? null);
     $productCategoryUrl = $resolveUrl($productCategory['link'] ?? null);
 
+    //  Blog kategori media sosial
+    $sosmedPosts = \Statamic\Facades\Entry::query()
+        ->where('collection', 'posts')
+        ->whereStatus('published')
+        ->whereTaxonomyIn(['categories::sosial-media'])
+        ->orderBy('date', 'desc')
+        ->limit(3)
+        ->get();
+
     // Cek component
     $hasHeader = view()->exists('components.layouts.header.header');
     $hasSlider = view()->exists('components.layouts.hero.slider');
@@ -168,7 +177,7 @@
             </section>
         @endif
 
-        {{-- Produk kategori --}}
+        {{-- Produk Kategori --}}
         @if ($productCategory && ($productCategory['show'] ?? false))
             <section id="{{ $productCategory['anchor'] ?? 'category-product' }}">
                 <div class="bg-white relative rounded-t-3xl lg:rounded-t-[60px] -mt-10 lg:-mt-12">
@@ -321,6 +330,39 @@
                                             </div>
                                         @endif
                                     @endif
+                                @endforeach
+                            </div>
+                        @endif
+
+                    </div>
+                </div>
+            </section>
+        @endif
+
+        {{-- Blog Katagori Media Sosial --}}
+        @if ($blogSosmed && ($blogSosmed['show'] ?? false))
+            <section id="{{ $blogSosmed['anchor'] ?? 'social-media-blog' }}">
+                <div class="container">
+                    <div class="my-18 md:my18 lg:my-30 flex flex-col gap-8 lg:gap-10">
+
+                        {{-- Heading --}}
+                        <div class="flex flex-col gap-2">
+                            @if (!empty($blogSosmed['heading']))
+                                <h2 class="text-(--color-heading)">{{ $blogSosmed['heading'] }}</h2>
+                            @endif
+
+                            {{-- Text --}}
+                            @if (!empty($blogSosmed['description']))
+                                <div class="richtext w-full md:w-full lg:w-[50%]">
+                                    {!! $blogSosmed['description'] !!}</div>
+                            @endif
+                        </div>
+
+                        {{-- Konten --}}
+                        @if ($sosmedPosts->isNotEmpty())
+                            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+                                @foreach ($sosmedPosts as $entry)
+                                    <x-layouts.skin.sosmed-blog-skin :entry="$entry" />
                                 @endforeach
                             </div>
                         @endif

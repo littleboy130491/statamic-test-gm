@@ -43,7 +43,7 @@
         @if ($flipBtn)
             <a href="{{ $flipBtn }}"
                 class="group rounded-full py-2 pr-2 pl-6 flex items-center justify-between bg-(--color-surface) hover:bg-(--color-primary)">
-                <p class="uppercase title-display text-(--color-primary) tracking-widest group-hover:text-white">
+                <p class="uppercase title-display text-(--color-primary) tracking-widest group-hover:text-white -mb-1">
                     {{ $flip['label_button'] ?? 'Selengkapnya' }}
                 </p>
                 <span

@@ -1,4 +1,4 @@
-@props(['entry', 'blog' => null])
+@props(['entry', 'blog' => null, 'currentCategory' => null])
 
 @php
     $blog =
@@ -6,10 +6,28 @@
         \Statamic\Facades\GlobalSet::findByHandle('blog_label_information')
             ?->in(\Statamic\Facades\Site::current()->handle())
             ?->toAugmentedArray();
+
+    $cats = collect($entry->categories ?? []);
+    $tags = collect($entry->tags ?? []);
+
+    // Khusus kategori sosial-media: tampil tag, fallback kategori sosial-media
+    if ((string) $currentCategory === 'sosial-media') {
+        if ($tags->isNotEmpty()) {
+            $displayTerms = $tags->take(2);
+        } else {
+            $displayTerms = $cats->filter(fn($c) => (string) $c->slug() === 'sosial-media')->take(1);
+        }
+    } elseif ($currentCategory) {
+        $active = $cats->filter(fn($c) => (string) $c->slug() === (string) $currentCategory);
+        $rest = $cats->reject(fn($c) => (string) $c->slug() === (string) $currentCategory);
+        $displayTerms = $active->concat($rest)->take(2);
+    } else {
+        $displayTerms = $cats->take(2);
+    }
 @endphp
 
 <article class="group overflow-hidden rounded-3xl bg-white flex flex-col">
-    <a href="{{ $entry->url() }}" class="flex flex-col">
+    <a href="{{ $entry->url() }}" class="flex flex-col flex-1">
 
         {{-- Featured Image --}}
         <div class="overflow-hidden">
@@ -18,7 +36,7 @@
                 class="w-full h-60 object-cover group-hover:scale-110 transition-transform duration-500" />
         </div>
 
-        <div class="p-5 flex flex-col gap-10">
+        <div class="p-5 flex flex-col gap-10 justify-between flex-1">
 
             {{-- Heading --}}
             <div class="richtext custom-heading-blog">
@@ -32,10 +50,10 @@
             {{-- Kategori - Tanggal --}}
             <div class="flex items-end justify-between">
                 <div class="flex items-center gap-5 uppercase text-(--color-primary) font-medium">
-                    @if ($entry->categories && $entry->categories->isNotEmpty())
+                    @if ($displayTerms->isNotEmpty())
                         <span>
-                            @foreach ($entry->categories as $category)
-                                {{ $category->title }}
+                            @foreach ($displayTerms as $term)
+                                {{ $term->title }}
                                 @unless ($loop->last)
                                     ,
                                 @endunless

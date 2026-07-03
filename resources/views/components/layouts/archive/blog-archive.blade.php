@@ -58,7 +58,16 @@
         ->get();
 
     // Sidebar kategori
-    $categories = \Statamic\Facades\Term::query()->where('taxonomy', 'categories')->get();
+    $categories = \Statamic\Facades\Term::query()
+        ->where('taxonomy', 'categories')
+        ->get()
+        ->filter(function ($term) {
+            return \Statamic\Facades\Entry::query()
+                ->where('collection', 'posts')
+                ->whereStatus('published')
+                ->whereTaxonomy('categories::' . $term->slug())
+                ->count() > 0;
+        });
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
@@ -96,7 +105,7 @@
                             class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 md:gap-x-4 md:gap-y-10 lg:gap-x-6 lg:gap-y-16">
                             @if ($hasBlogSkin)
                                 @foreach ($posts as $post)
-                                    <x-layouts.skin.blog-skin :entry="$post" />
+                                    <x-layouts.skin.blog-skin :entry="$post" :current-category="$isCategory ? $page->slug ?? null : null" />
                                 @endforeach
                             @endif
                         </div>
@@ -120,10 +129,11 @@
                                 </p>
                                 <ul class="flex flex-col list-none pl-0 mb-0">
                                     @foreach ($categories as $category)
+                                        @php $isActive = ($page->slug ?? null) === $category->slug(); @endphp
                                         <li
                                             class="py-4 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
                                             <a href="{{ $category->url() }}"
-                                                class="text-(--color-body) hover:text-(--color-primary) transition-colors">
+                                                class="transition-colors hover:text-(--color-primary) {{ $isActive ? 'text-(--color-primary)' : 'text-(--color-body)' }}">
                                                 {{ $category->title }}
                                             </a>
                                         </li>

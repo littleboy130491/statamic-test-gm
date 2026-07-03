@@ -6,6 +6,8 @@
         \Statamic\Facades\GlobalSet::findByHandle('blog_label_information')
             ?->in(\Statamic\Facades\Site::current()->handle())
             ?->toAugmentedArray();
+
+    $displayCats = collect($entry->categories ?? [])->take(1);
 @endphp
 
 <article class="group">
@@ -14,9 +16,9 @@
 
             {{-- Kategori - Tanggal --}}
             <div class="flex gap-5">
-                @if ($entry->categories && $entry->categories->isNotEmpty())
+                @if ($displayCats->isNotEmpty())
                     <span>
-                        @foreach ($entry->categories as $category)
+                        @foreach ($displayCats as $category)
                             {{ $category->title }}
                             @unless ($loop->last)
                                 ,

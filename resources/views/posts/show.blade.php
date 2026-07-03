@@ -36,7 +36,7 @@
         fn($section) => (string) ($section['identifier'] ?? '') === 'opening-blog',
     );
 
-    // Kategori post ini (buat filter related)
+    // Kategori post
     $currentCategorySlugs = collect($page->categories ?? [])
         ->map(fn($cat) => $cat->slug())
         ->all();
@@ -63,7 +63,16 @@
         ->get();
 
     // Sidebar kategori
-    $categories = \Statamic\Facades\Term::query()->where('taxonomy', 'categories')->get();
+    $categories = \Statamic\Facades\Term::query()
+        ->where('taxonomy', 'categories')
+        ->get()
+        ->filter(function ($term) {
+            return \Statamic\Facades\Entry::query()
+                ->where('collection', 'posts')
+                ->whereStatus('published')
+                ->whereTaxonomy('categories::' . $term->slug())
+                ->count() > 0;
+        });
 
     // Share icons
     $shareIcons = collect($blog['social_share'] ?? [])->filter(fn($s) => $s['show'] ?? false);
@@ -91,24 +100,41 @@
 
                     {{-- Heading + Meta data --}}
                     <div id="header-article" class="flex flex-col gap-6">
+                        @php
+                            $postCats = collect($page->categories ?? []);
+                            $postTags = collect($page->tags ?? []);
+                            $isSosmed = $postCats->contains(fn($c) => (string) $c->slug() === 'sosial-media');
+                        @endphp
+
                         <div class="flex items-center gap-5">
                             @if ($page->date)
                                 <a
                                     class="uppercase text-(--color-primary) tracking-wider">{{ $page->date->format('d.m.Y') }}</a>
                             @endif
 
-                            @if ($page->categories && $page->categories->isNotEmpty())
-                                <span class="flex items-center gap-2">
-                                    @foreach ($page->categories as $category)
-                                        <a href="{{ $category->url() }}"
+                            @if ($isSosmed)
+                                {{-- Sosial media: kategori + 1 tag, tanpa link --}}
+                                <p class="flex items-center gap-4 uppercase text-(--color-primary) tracking-wider">
+                                    @php $sosmedCat = $postCats->first(fn($c) => (string) $c->slug() === 'sosial-media'); @endphp
+                                    @if ($sosmedCat)
+                                        <span>{{ $sosmedCat->title }}</span>
+                                    @endif
+                                    @if ($postTags->isNotEmpty())
+                                        <span>{{ $postTags->first()->title }}</span>
+                                    @endif
+                                </p>
+                            @elseif ($postCats->isNotEmpty())
+                                <p class="flex items-center gap-2">
+                                    @foreach ($postCats as $category)
+                                        <span href="{{ $category->url() }}"
                                             class="uppercase text-(--color-primary) tracking-wider">
                                             {{ $category->title }}
-                                        </a>
+                                        </span>
                                         @unless ($loop->last)
                                             <span class="text-(--color-primary)">,</span>
                                         @endunless
                                     @endforeach
-                                </span>
+                                </p>
                             @endif
                         </div>
 

@@ -1,4 +1,7 @@
 title: Tags
-route: '/tags/{slug}'
-blueprints:
-  - tag
+preview_targets:
+  -
+    label: Term
+    url: '{permalink}'
+    refresh: true
+layout: layout
