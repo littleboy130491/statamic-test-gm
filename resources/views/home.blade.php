@@ -98,7 +98,7 @@
         ->limit(1)
         ->get();
 
-    // List: 3 post berikutnya (skip yang pertama)
+    // List: 3 post
     $blogList = \Statamic\Facades\Entry::query()
         ->where('collection', 'posts')
         ->whereStatus('published')
@@ -187,8 +187,12 @@
 
                                 {{-- Button --}}
                                 @if ($aboutBtn && !empty($about['button']['label']))
-                                    <a href="{{ $aboutBtn }}" class="button button--primary w-fit">
-                                        {{ $about['button']['label'] }}
+                                    <a href="{{ $aboutBtn }}" class="button gap-4 button--primary w-fit">
+                                        <span>{{ $about['button']['label'] }}</span>
+                                        <svg viewBox="0 0 12 12" fill="none" aria-hidden="true" class="h-4 w-4">
+                                            <path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
                                     </a>
                                 @endif
 
@@ -250,8 +254,12 @@
                             {{-- Button --}}
                             <div id="button-product-category" class="order-last md:order-0 lg:order-0">
                                 @if ($productCategoryUrl && !empty($productCategory['label']))
-                                    <a href="{{ $productCategoryUrl }}" class="button button--primary">
-                                        {{ $productCategory['label'] }}
+                                    <a href="{{ $productCategoryUrl }}" class="button gap-4 button--primary">
+                                        <span>{{ $productCategory['label'] }}</span>
+                                        <svg viewBox="0 0 12 12" fill="none" aria-hidden="true" class="h-4 w-4">
+                                            <path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
                                     </a>
                                 @endif
                             </div>
@@ -544,14 +552,19 @@
                             {{-- Button --}}
                             <div id="button-blog" class="order-last md:order-0 lg:order-0">
                                 @if ($blogSection && !empty($blogSection['label']))
-                                    <a href="{{ $blogSection['link'] }}" class="button button--primary">
-                                        {{ $blogSection['label'] }}
+                                    <a href="{{ $blogSection['link'] }}" class="button gap-4 button--primary">
+                                        <span>{{ $blogSection['label'] }}</span>
+                                        <svg viewBox="0 0 12 12" fill="none" aria-hidden="true" class="h-4 w-4">
+                                            <path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
                                     </a>
                                 @endif
                             </div>
 
                             {{-- Blog --}}
                             <div class="blog-style flex flex-col md:flex-col lg:flex-row gap-6 w-full">
+
                                 {{-- Highlight Post --}}
                                 @if ($blogHighlight->isNotEmpty())
                                     <div class="w-full md:w-full lg:w-[50%] grid grid-cols-1 gap-5">
@@ -561,7 +574,7 @@
                                     </div>
                                 @endif
 
-                                {{-- Menampilkan 3 post --}}
+                                {{-- 3 post --}}
                                 @if ($blogList->isNotEmpty())
                                     <div class="w-full md:w-full lg:w-[60%] grid grid-cols-1 gap-5">
                                         @foreach ($blogList as $entry)
