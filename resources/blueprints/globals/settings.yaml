@@ -118,11 +118,11 @@ tabs:
             field:
               type: text
               display: 'Google Maps Embed'
-  custom_code:
-    display: 'Custom Code'
+  general_settings:
+    display: 'General Settings'
     sections:
       -
-        display: 'New Section'
+        display: 'Custom Code'
         fields:
           -
             handle: custom_code_head
@@ -138,3 +138,16 @@ tabs:
               show_mode_label: false
               type: code
               display: 'Custom Code Body'
+      -
+        display: 'Sticky Header'
+        fields:
+          -
+            handle: header_desktop
+            field:
+              type: toggle
+              display: 'Header Desktop'
+          -
+            handle: header_mobile
+            field:
+              type: toggle
+              display: 'Header Mobile'

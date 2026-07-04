@@ -90,6 +90,23 @@
         ->filter(fn($d) => $d['lat'] && $d['lng'])
         ->values();
 
+    // Highlight: 1 post terbaru
+    $blogHighlight = \Statamic\Facades\Entry::query()
+        ->where('collection', 'posts')
+        ->whereStatus('published')
+        ->orderBy('date', 'desc')
+        ->limit(1)
+        ->get();
+
+    // List: 3 post berikutnya (skip yang pertama)
+    $blogList = \Statamic\Facades\Entry::query()
+        ->where('collection', 'posts')
+        ->whereStatus('published')
+        ->orderBy('date', 'desc')
+        ->offset(1)
+        ->limit(3)
+        ->get();
+
     // Dealer kategeori
     $dealerCategories = \Statamic\Facades\Term::query()
         ->where('taxonomy', 'dealer_categories')
@@ -221,7 +238,7 @@
                             class="flex flex-col md:flex-row lg:flex-row justify-between items-start md:items-end lg:items-end flex-wrap gap-8 md:gap-8 lg:gap-10">
 
                             {{-- Heading --}}
-                            <div id="heading-product-category" class="flex flex-col gap-2 w-full md:w-[65%] lg:w-[55%]">
+                            <div id="heading-product-category" class="flex flex-col gap-2 w-full md:w-[60%] lg:w-[55%]">
                                 @if (!empty($productCategory['heading']))
                                     <h2 class="text-(--color-heading)">{{ $productCategory['heading'] }}</h2>
                                 @endif
@@ -335,7 +352,7 @@
                         <div class="flex gap-6 items-center">
                             {{-- Heading --}}
                             @if (!empty($marketplace['heading']))
-                                <p class="text-(--color-primary) uppercase">
+                                <p class="text-(--color-primary) uppercase font-medium">
                                     {{ $marketplace['heading'] }}</p>
                                 <span class="flex-1 border-t border-[#E8E8E8] flex"></span>
                             @endif
@@ -456,7 +473,7 @@
                         <div class="flex gap-6 items-center">
                             {{-- Heading --}}
                             @if (!empty($groupGm['heading']))
-                                <p class="text-(--color-primary) uppercase">
+                                <p class="text-(--color-primary) uppercase font-medium">
                                     {{ $groupGm['heading'] }}</p>
                                 <span class="flex-1 border-t border-[#E8E8E8] flex"></span>
                             @endif
@@ -502,6 +519,61 @@
                         @endif
 
                     </div>
+                </div>
+            </section>
+        @endif
+
+        {{-- Blog --}}
+        @if ($blogSection && ($blogSection['show'] ?? false))
+            <section id="{{ $blogSection['anchor'] ?? 'blog' }}">
+                <div class="bg-white">
+                    <div class="container my-18 md:my-18 lg:my-30">
+                        <div
+                            class="flex flex-col md:flex-row lg:flex-row justify-between items-start md:items-end lg:items-end flex-wrap gap-8 md:gap-8 lg:gap-10">
+
+                            {{-- Heading --}}
+                            <div id="heading-blog" class="flex flex-col gap-2 w-full md:w-[55%] lg:w-[55%]">
+                                @if (!empty($blogSection['heading']))
+                                    <h2 class="text-(--color-heading)">{{ $blogSection['heading'] }}</h2>
+                                @endif
+                                @if (!empty($blogSection['description']))
+                                    <p class="color-(--color-text)">{{ $blogSection['description'] }}</p>
+                                @endif
+                            </div>
+
+                            {{-- Button --}}
+                            <div id="button-blog" class="order-last md:order-0 lg:order-0">
+                                @if ($blogSection && !empty($blogSection['label']))
+                                    <a href="{{ $blogSection['link'] }}" class="button button--primary">
+                                        {{ $blogSection['label'] }}
+                                    </a>
+                                @endif
+                            </div>
+
+                            {{-- Blog --}}
+                            <div class="blog-style flex flex-col md:flex-col lg:flex-row gap-6 w-full">
+                                {{-- Highlight Post --}}
+                                @if ($blogHighlight->isNotEmpty())
+                                    <div class="w-full md:w-full lg:w-[50%] grid grid-cols-1 gap-5">
+                                        @foreach ($blogHighlight as $entry)
+                                            <x-layouts.skin.blog-skin :entry="$entry" />
+                                        @endforeach
+                                    </div>
+                                @endif
+
+                                {{-- Menampilkan 3 post --}}
+                                @if ($blogList->isNotEmpty())
+                                    <div class="w-full md:w-full lg:w-[60%] grid grid-cols-1 gap-5">
+                                        @foreach ($blogList as $entry)
+                                            <x-layouts.skin.blog-hori-skin :entry="$entry" />
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
                 </div>
             </section>
         @endif

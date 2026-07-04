@@ -26,29 +26,25 @@
     }
 @endphp
 
-<article class="skin-blog-cust group overflow-hidden rounded-3xl bg-white flex flex-col">
-    <a href="{{ $entry->url() }}" class="flex-cust flex flex-col flex-1">
+<article class="group overflow-hidden rounded-3xl bg-(--color-surface) flex flex-col">
+    <a href="{{ $entry->url() }}" class="flex flex-col md:flex-row lg:flex-row">
 
         {{-- Featured Image --}}
-        <div class="img-high overflow-hidden">
+        <div class="overflow-hidden w-full md:w-[50%] lg:w-[50%] shrink-0">
             <img src="{{ $entry->featured_image?->url() ?? ($blog['image_placeholders'] ?? '') }}"
                 alt="{{ $entry->title }}"
-                class="w-full h-60 object-cover group-hover:scale-110 transition-transform duration-500" />
+                class="w-full h-65 md:h-56 lg:h-52 object-cover group-hover:scale-110 transition-transform duration-500" />
         </div>
 
-        <div class="p-5 flex flex-col gap-10 justify-between flex-1">
+        <div class="p-5 flex flex-col gap-10 md:gap-6 lg:gap-6 justify-between flex-1">
 
             {{-- Heading --}}
             <div class="richtext custom-heading-blog">
                 <h2 class="text-(--color-heading) title-display">{{ $entry->title }}</h2>
-
-                @if ($entry->excerpt)
-                    <p>{{ \Illuminate\Support\Str::words($entry->excerpt, 18, '...') }}</p>
-                @endif
             </div>
 
             {{-- Kategori - Tanggal --}}
-            <div class="flex items-end justify-between">
+            <div class="flex items-center justify-between">
                 <div class="flex items-center gap-5 uppercase text-(--color-primary) font-medium">
                     @if ($displayTerms->isNotEmpty())
                         <span>

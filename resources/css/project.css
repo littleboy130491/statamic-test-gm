@@ -693,3 +693,54 @@ body:has(dialog[open].site-popup) {
    pointer-events: none;
    background: radial-gradient(50% 24.8% at 50% 25.2%, rgba(255, 255, 255, 0.92) 25.4%, rgba(255, 255, 255, 0.00) 100%), linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 90.87%);
 }
+
+
+
+/* Blog Highligth */
+.blog-style .skin-blog-cust {
+   background: var(--color-surface) !important;
+}
+
+@media (min-width: 1024px) {
+   .blog-style .skin-blog-cust h2 {
+      font-size: 2rem !important;
+   }
+
+   .blog-style .skin-blog-cust .img-high {
+      height: auto;
+   }
+
+   .blog-style .skin-blog-cust img {
+      height: 370px !important;
+   }
+}
+
+@media (max-width: 768px) {
+   .blog-style .flex-cust {
+      display: flex !important;
+      flex-direction: row !important;
+   }
+
+   .blog-style .img-high {
+      width: 50% !important;
+   }
+
+   .blog-style .skin-blog-cust img {
+      height: 260px !important;
+   }
+}
+
+@media (max-width: 640px) {
+   .blog-style .flex-cust {
+      display: flex !important;
+      flex-direction: column !important;
+   }
+
+   .blog-style .img-high {
+      width: 100% !important;
+   }
+
+   .blog-style .skin-blog-cust img {
+      height: 260px !important;
+   }
+}
