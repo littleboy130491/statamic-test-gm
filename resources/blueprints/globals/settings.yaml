@@ -138,6 +138,12 @@ tabs:
               show_mode_label: false
               type: code
               display: 'Custom Code Body'
+          -
+            handle: google_analytics_measurement_id
+            field:
+              placeholder: G-XXXXXXXXXX
+              type: text
+              display: 'Google Analytics - Measurement ID'
       -
         display: 'Sticky Header'
         fields:

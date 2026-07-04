@@ -15,6 +15,19 @@
     @endpush
 @endif
 
+@if ($settings?->google_analytics_measurement_id)
+    @push('head')
+        {{-- Google tag (gtag.js) --}}
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ $settings->google_analytics_measurement_id }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '{{ $settings->google_analytics_measurement_id }}');
+        </script>
+    @endpush
+@endif
+
 @if ($settings?->custom_code_body)
     @push('body_start')
         {!! $settings->custom_code_body !!}
