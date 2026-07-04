@@ -1,4 +1,6 @@
-data: {  }
+data:
+  alt: 'Layanan 24/7'
+  caption: 'Icon Layanan 24/7'
 size: 8227
 last_modified: 1779589276
 width: 41.0

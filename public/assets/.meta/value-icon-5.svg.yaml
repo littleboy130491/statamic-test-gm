@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Monitoring Kendaraan Real-Time'
 size: 2953
 last_modified: 1780380418
 width: 219.0

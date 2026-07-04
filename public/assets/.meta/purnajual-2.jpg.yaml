@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Kontrak Layanan Pemeliharaan'
 size: 3716997
 last_modified: 1779588859
 width: 2880

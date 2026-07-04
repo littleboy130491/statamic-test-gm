@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Share Threads'
 size: 2192
 last_modified: 1781957017
 width: 75.0

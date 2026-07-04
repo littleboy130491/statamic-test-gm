@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Laporan & Evaluasi'
 size: 2756
 last_modified: 1779597144
 width: 65.0

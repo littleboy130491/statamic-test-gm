@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Dump Truck'
 size: 320211
 last_modified: 1781865714
 width: 1796

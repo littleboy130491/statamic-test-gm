@@ -1,6 +1,7 @@
-data: {  }
+data:
+  alt: 'Hero Banner Manajemen'
 size: 510357
-last_modified: 1780039951
+last_modified: 1780028443
 width: 644
 height: 485
 mime_type: image/jpeg

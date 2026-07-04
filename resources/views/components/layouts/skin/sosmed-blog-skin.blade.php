@@ -26,7 +26,7 @@
         {{-- Featured Image --}}
         <div class="overflow-hidden">
             <img src="{{ $entry->featured_image?->url() ?? ($blog['image_placeholders'] ?? '') }}"
-                alt="{{ $entry->title }}"
+                alt="{{ $entry->featured_image?->alt ?? $entry->title }}"
                 class="w-full h-60 object-cover group-hover:scale-110 transition-transform duration-500" />
         </div>
 

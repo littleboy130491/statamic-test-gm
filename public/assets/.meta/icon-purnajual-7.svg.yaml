@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Program Pertukaran Komponen'
 size: 3038
 last_modified: 1779589276
 width: 42.0

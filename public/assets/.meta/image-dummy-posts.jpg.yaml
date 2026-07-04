@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Image Posts Dummy'
 size: 407100
 last_modified: 1781848452
 width: 843

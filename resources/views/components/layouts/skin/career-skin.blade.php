@@ -18,7 +18,7 @@
             @if ($entry->employment_status && $entry->employment_status->label())
                 <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium group-hover:text-black">
                     @if (!empty($career['icon_employment_status']))
-                        <img src="{{ $career['icon_employment_status'] }}" alt=""
+                        <img src="{{ $career['icon_employment_status'] }}" alt="{{ $career['icon_employment_status']?->alt }}"
                             class="w-4 h-4 shrink-0 -mt-1 group-hover:brightness-0" />
                     @endif
                     {{ $entry->employment_status->label() }}
@@ -28,7 +28,7 @@
             @if ($entry->locations && $entry->locations->isNotEmpty())
                 <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium group-hover:text-black">
                     @if (!empty($career['icon_location']))
-                        <img src="{{ $career['icon_location'] }}" alt=""
+                        <img src="{{ $career['icon_location'] }}" alt="{{ $career['icon_location']?->alt }}"
                             class="w-4 h-4 shrink-0 -mt-1 group-hover:brightness-0" />
                     @endif
                     @foreach ($entry->locations as $location)

@@ -65,12 +65,12 @@
                                 </div>
 
                                 @if (!empty($acc['icon_accordion']))
-                                    <img src="{{ $acc['icon_accordion'] }}" alt=""
+                                    <img src="{{ $acc['icon_accordion'] }}" alt="{{ $acc['icon_accordion']?->alt }}"
                                         class="w-6 h-6 md:w-6 md:h-6 lg:w-8 lg:h-8 shrink-0 group-open:hidden" />
                                 @endif
 
                                 @if (!empty($acc['icon_accordion_active']))
-                                    <img src="{{ $acc['icon_accordion_active'] }}" alt=""
+                                    <img src="{{ $acc['icon_accordion_active'] }}" alt="{{ $acc['icon_accordion_active']?->alt }}"
                                         class="w-6 h-6 md:w-6 md:h-6 lg:w-8 lg:h-8 shrink-0 hidden group-open:block" />
                                 @endif
                             </summary>
@@ -84,7 +84,7 @@
                                     @if ($industry->featured_image)
                                         <div class="w-full">
                                             <img src="{{ $industry->featured_image->url() }}"
-                                                alt="{{ $industry->title }}"
+                                                alt="{{ $industry->featured_image->alt ?? $industry->title }}"
                                                 class="w-full rounded-2xl md:rounded-3xl lg:rounded-3xl" />
                                         </div>
                                     @endif

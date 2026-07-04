@@ -35,7 +35,7 @@
                             {{-- Background image --}}
                             @if (!empty($slide['backgound_image']))
                                 <img src="{{ $slide['backgound_image']?->url() ?? $slide['backgound_image'] }}"
-                                    alt="{{ $slide['heading'] ?? '' }}"
+                                    alt="{{ $slide['backgound_image']?->alt ?? $slide['heading'] ?? '' }}"
                                     class="pointer-events-none absolute inset-0 h-full w-full object-cover" />
                             @endif
 

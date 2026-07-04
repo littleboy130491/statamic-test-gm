@@ -1,7 +1,7 @@
 @php
-    $cta = \Statamic\Facades\GlobalSet::findByHandle('career_label_information')?->inCurrentSite()?->data();
+    $cta = \Statamic\Facades\GlobalSet::findByHandle('career_label_information')?->inCurrentSite()?->toAugmentedArray();
 
-    $contactIcon = !empty($cta['section_images']) ? asset('assets/' . $cta['section_images']) : null;
+    $contactIcon = $cta['section_images'] ?? null;
 
     $buildContactUrl = function ($kontak) {
         $kontak = trim((string) $kontak);
@@ -22,7 +22,7 @@
 
                 {{-- Background --}}
                 @if (!empty($cta['background_call_to_action']))
-                    <img src="{{ asset('assets/' . $cta['background_call_to_action']) }}" alt="" aria-hidden="true"
+                    <img src="{{ $cta['background_call_to_action'] }}" alt="" aria-hidden="true"
                         class="inset-0 w-full h-185 md:h-90 lg:h-112 object-cover pointer-events-none rounded-3xl">
                 @endif
 
@@ -33,8 +33,8 @@
                     {{-- Gambar CTA --}}
                     @if (!empty($cta['image_call_to_action']))
                         <div class="flex items-end lg:justify-center md:w-[40%] lg:w-[45%]">
-                            <img src="{{ asset('assets/' . $cta['image_call_to_action']) }}"
-                                alt="{{ $cta['heading'] ?? '' }}" class="w-full lg:w-[83%] object-contain">
+                            <img src="{{ $cta['image_call_to_action'] }}"
+                                alt="{{ $cta['image_call_to_action']?->alt ?? $cta['heading'] ?? '' }}" class="w-full lg:w-[83%] object-contain">
                         </div>
                     @endif
 
@@ -73,7 +73,7 @@
                                         @if ($contactIcon)
                                             <div
                                                 class="bg-(--color-primary) group-hover:bg-black flex items-center justify-center rounded-full transition-colors w-12 h-12 md:w-12 md:h-12 lg:w-12 lg:h-12">
-                                                <img src="{{ $contactIcon }}" alt="{{ $contact['label'] }}"
+                                                <img src="{{ $contactIcon }}" alt="{{ $contactIcon?->alt ?? $contact['label'] }}"
                                                     class="w-5 h-5">
                                             </div>
                                         @endif

@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Image Placeholder'
 size: 39579
 last_modified: 1779443117
 width: 620

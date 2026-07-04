@@ -51,7 +51,7 @@
                                 @if ($page->employment_status)
                                     <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium">
                                         @if (!empty($career['icon_employment_status']))
-                                            <img src="{{ $career['icon_employment_status'] }}" alt=""
+                                            <img src="{{ $career['icon_employment_status'] }}" alt="{{ $career['icon_employment_status']?->alt }}"
                                                 class="w-5 h-5 shrink-0" />
                                         @endif
                                         {{ $page->employment_status->label() }}
@@ -62,7 +62,7 @@
                                 @if ($page->locations)
                                     <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium">
                                         @if (!empty($career['icon_location']))
-                                            <img src="{{ $career['icon_location'] }}" alt=""
+                                            <img src="{{ $career['icon_location'] }}" alt="{{ $career['icon_location']?->alt }}"
                                                 class="w-5 h-5 shrink-0" />
                                         @endif
                                         @foreach ($page->locations as $location)

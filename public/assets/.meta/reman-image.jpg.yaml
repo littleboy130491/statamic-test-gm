@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Reman Center'
 size: 3266656
 last_modified: 1779445478
 width: 2624

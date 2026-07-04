@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Tractor Head'
 size: 225210
 last_modified: 1781865716
 width: 1867

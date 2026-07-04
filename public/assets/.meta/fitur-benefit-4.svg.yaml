@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Perilaku Pengemudi'
 size: 1305
 last_modified: 1779597144
 width: 64.0

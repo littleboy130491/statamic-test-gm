@@ -14,7 +14,7 @@
         {{-- Featured Image --}}
         <div class="overflow-hidden p-6 bg-white rounded-2xl lg:rounded-3xl">
             <img src="{{ $entry->featured_image?->url() ?? ($product['image_placeholders'] ?? '') }}"
-                alt="{{ $entry->title }}" class="w-full aspect-square object-contain transition-transform duration-500" />
+                alt="{{ $entry->featured_image?->alt ?? $entry->title }}" class="w-full aspect-square object-contain transition-transform duration-500" />
         </div>
 
         <div class="flex flex-col gap-1">

@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'GM Logo'
 size: 57084
 last_modified: 1778379411
 width: 696

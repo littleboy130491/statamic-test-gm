@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Footer Image'
 size: 1059169
 last_modified: 1780277924
 width: 1242

@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Accordion Icon'
 size: 435
 last_modified: 1782114522
 width: 17.0

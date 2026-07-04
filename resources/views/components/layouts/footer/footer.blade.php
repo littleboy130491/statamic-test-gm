@@ -36,7 +36,7 @@
 
             {{-- Background Footer --}}
             <div id="footer-background" class="overlay-footer">
-                <img src="{{ $footer->augmentedValue('backgound_image')->value()?->url() }}" alt="Footer Background"
+                <img src="{{ $footer->augmentedValue('backgound_image')->value()?->url() }}" alt="{{ $footer->augmentedValue('backgound_image')->value()?->alt ?? 'Footer Background' }}"
                     class="w-full h-200 md:h-110 lg:h-150 object-cover pointer-events-none">
             </div>
 
@@ -49,7 +49,7 @@
                         {{-- Image Footer --}}
                         <div id="image-footer" class="flex mb-0 md:-mb-40 md:w-[70%] lg:w-[50%]">
                             <img src="{{ $footer->augmentedValue('image')->value()?->url() }}"
-                                alt="{{ $footer->get('heading') }}" class="w-ful object-contain">
+                                alt="{{ $footer->augmentedValue('image')->value()?->alt ?? $footer->get('heading') }}" class="w-ful object-contain">
                         </div>
 
                         {{-- CTA Footer --}}

@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Hero Slider'
 size: 1643055
 last_modified: 1781849119
 width: 1440

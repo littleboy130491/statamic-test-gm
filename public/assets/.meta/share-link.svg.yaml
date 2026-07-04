@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Share Link'
 size: 2121
 last_modified: 1781957017
 width: 84.0

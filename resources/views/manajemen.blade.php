@@ -9,7 +9,7 @@
         ->filter()
         ->implode(' ');
 
-    $bgDireksi = asset('assets/manajemen-back.jpg');
+    $bgDireksi = \Statamic\Facades\Asset::find('assets::manajemen-back.jpg');
 
     $opening = collect($page->sections)->first(
         fn($section) => (string) ($section['identifier'] ?? '') === 'opening-management',
@@ -78,12 +78,12 @@
                             </div>
                         </div>
                         <div class="w-full md:w-[40%] lg:w-[40%] relative">
-                            <img src="{{ $bgDireksi }}" alt="{{ $direkturUtama['name'] ?? '' }}"
+                            <img src="{{ $bgDireksi }}" alt="{{ $bgDireksi?->alt ?? $direkturUtama['name'] ?? '' }}"
                                 class="image-grayscale pointer-events-none rounded-xl w-full md:h-105 lg:h-120 object-cover">
                             <div class="overlay-bg-management"></div>
                             <div class="flex justify-center">
                                 <img src="{{ $direkturUtama['image'] ?: $placeholderTim }}"
-                                    alt="{{ $direkturUtama['name'] ?? '' }}"
+                                    alt="{{ ($direkturUtama['image'] ?: $placeholderTim)?->alt ?? $direkturUtama['name'] ?? '' }}"
                                     class="w-[48%] md:w-[90%] lg:w-[52%] absolute bottom-0 z-3">
                             </div>
                         </div>
@@ -103,11 +103,11 @@
                                         @foreach ($grid['members'] as $member)
                                             <div class="flex flex-col gap-4 md:gap-4 lg:gap-6 w-full">
                                                 <div class="relative w-full overflow-hidden rounded-xl">
-                                                    <img src="{{ $bgDireksi }}" alt=""
+                                                    <img src="{{ $bgDireksi }}" alt="{{ $bgDireksi?->alt }}"
                                                         class="image-grayscale pointer-events-none w-full h-60 md:h-70 lg:h-140 object-cover">
                                                     <div class="overlay-bg-management"></div>
                                                     <img src="{{ $member['image'] ?: $placeholderTim }}"
-                                                        alt="{{ $member['name'] ?? '' }}"
+                                                        alt="{{ ($member['image'] ?: $placeholderTim)?->alt ?? $member['name'] ?? '' }}"
                                                         class="absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-[70%] md:w-[64%] lg:w-[50%] object-contain object-bottom z-3">
                                                 </div>
                                                 <div class="flex flex-col gap-1">

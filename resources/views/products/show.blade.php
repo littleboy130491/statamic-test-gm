@@ -71,7 +71,7 @@
                     {{-- Featured Image --}}
                     @if ($page->featured_image)
                         <div class="flex justify-center">
-                            <img src="{{ $page->featured_image->url() }}" alt="{{ $page->title }}"
+                            <img src="{{ $page->featured_image->url() }}" alt="{{ $page->featured_image->alt ?? $page->title }}"
                                 class="w-full md:w-[80%] lg:w-[60%] aspect-video object-contain" />
                         </div>
                     @endif

@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Share X'
 size: 586
 last_modified: 1781957018
 width: 88.0

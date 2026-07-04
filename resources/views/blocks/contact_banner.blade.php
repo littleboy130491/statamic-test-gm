@@ -19,12 +19,12 @@
         <div class="flex items-end gap-6">
             @if ($block->side_image)
                 @foreach ($block->side_image as $image)
-                    <img src="{{ $image->url }}" alt="" class="max-h-48 w-auto object-contain">
+                    <img src="{{ $image->url }}" alt="{{ $image->alt ?? '' }}" class="max-h-48 w-auto object-contain">
                 @endforeach
             @endif
             @if ($block->visual_image)
                 @foreach ($block->visual_image as $image)
-                    <img src="{{ $image->url }}" alt="" class="max-h-64 w-auto object-contain">
+                    <img src="{{ $image->url }}" alt="{{ $image->alt ?? '' }}" class="max-h-64 w-auto object-contain">
                 @endforeach
             @endif
         </div>

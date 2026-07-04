@@ -70,7 +70,7 @@
                             @php $img = $certificate->featured_image?->url() ?? ($achievements['placeholder_image'] ?? ''); @endphp
                             <div class="certificate-item">
                                 <a data-fslightbox="certificates" href="{{ $img }}">
-                                    <img src="{{ $img }}" alt="{{ $certificate->title }}"
+                                    <img src="{{ $img }}" alt="{{ $certificate->featured_image?->alt ?? $certificate->title }}"
                                         class="w-full h-auto object-cover rounded-md mb-4">
                                 </a>
                                 <span

@@ -54,12 +54,12 @@
                         <div id="purna-jual-content" class="reverse-div flex flex-col gap-20 w-full">
                             @foreach ($purnaJual['rows'] as $item)
                                 <div class="flex flex-col gap-4 md:gap-4 lg:gap-6 lg:flex-row">
-                                    <img src="{{ $item['image'] ?? '' }}" alt="{{ $item['title'] ?? '' }}"
+                                    <img src="{{ $item['image'] ?? '' }}" alt="{{ $item['image']?->alt ?? $item['title'] ?? '' }}"
                                         class="w-full object-cover rounded-3xl h-50 md:h-60 lg:h-112 lg:w-[50%]">
                                     <div
                                         class="flex flex-col justify-center flow bg-white rounded-3xl py-8 px-5 md:px-6 lg:p-10 lg:w-[50%]">
                                         @if (!empty($item['icon']))
-                                            <img src="{{ $item['icon'] }}" alt="Icon"
+                                            <img src="{{ $item['icon'] }}" alt="{{ $item['icon']?->alt ?? 'Icon' }}"
                                                 class="w-10 h-10 mb-8 md:mb-8 lg:mb-10 lg:w-12 lg:h-12">
                                         @endif
                                         <h3>{{ $item['title'] ?? '' }}</h3>

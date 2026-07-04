@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Pemantauan Bahan Bakar'
 size: 1868
 last_modified: 1779597144
 width: 65.0

@@ -157,7 +157,7 @@
                                     <div class="gallery-main rounded-2xl overflow-hidden">
                                         @foreach ($page->gallery as $image)
                                             <div class="gallery-slide {{ $loop->first ? '' : 'hidden' }}">
-                                                <img src="{{ $image->url() }}" alt="{{ $page->title }}"
+                                                <img src="{{ $image->url() }}" alt="{{ $image->alt ?? $page->title }}"
                                                     class="w-full aspect-video object-cover" />
                                             </div>
                                         @endforeach
@@ -181,7 +181,7 @@
                                             @foreach ($page->gallery as $image)
                                                 <button type="button"
                                                     class="gallery-thumb shrink-0 mr-3 last:mr-0 w-[calc((100%-3*0.75rem)/4)] rounded-xl overflow-hidden transition-opacity {{ $loop->first ? 'opacity-100' : 'opacity-50' }}">
-                                                    <img src="{{ $image->url() }}" alt=""
+                                                    <img src="{{ $image->url() }}" alt="{{ $image->alt ?? $page->title }}"
                                                         class="w-full h-15 md:h-15 lg:h-30 object-cover" />
                                                 </button>
                                             @endforeach
@@ -200,7 +200,7 @@
 
                                 </div>
                             @elseif ($page->featured_image)
-                                <img src="{{ $page->featured_image->url() }}" alt="{{ $page->title }}"
+                                <img src="{{ $page->featured_image->url() }}" alt="{{ $page->featured_image->alt ?? $page->title }}"
                                     class="w-full aspect-video object-cover rounded-2xl" />
                             @endif
 
@@ -271,14 +271,14 @@
                                                 @if ($isCopy)
                                                     <a href="#"
                                                         class="share-link shrink-0 relative transition-opacity hover:opacity-70">
-                                                        <img src="{{ $iconUrl }}" alt=""
+                                                        <img src="{{ $iconUrl }}" alt="{{ $share['icon']?->alt ?? '' }}"
                                                             class="w-5 h-5" />
                                                     </a>
                                                 @else
                                                     <a href="{{ $link }}" target="_blank"
                                                         rel="noopener noreferrer"
                                                         class="shrink-0 transition-opacity hover:opacity-70">
-                                                        <img src="{{ $iconUrl }}" alt=""
+                                                        <img src="{{ $iconUrl }}" alt="{{ $share['icon']?->alt ?? '' }}"
                                                             class="w-5 h-5" />
                                                     </a>
                                                 @endif

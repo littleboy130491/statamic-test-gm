@@ -145,7 +145,7 @@
                     {{-- Background --}}
                     <div id="background-about"
                         class="overlay-section-about rounded-t-3xl lg:rounded-t-[60px] overflow-hidden">
-                        <img src="{{ $about['section_images'] ?? '' }}" alt=""
+                        <img src="{{ $about['section_images'] ?? '' }}" alt="{{ $about['section_images']?->alt }}"
                             class="w-full h-310 md:h-290 lg:h-240 object-cover pointer-events-none">
                     </div>
 
@@ -220,7 +220,7 @@
                                 {{-- Truk --}}
                                 @if (!empty($about['image']))
                                     <div class="md:w-full lg:w-[145%]">
-                                        <img src="{{ $about['image']->url() }}" alt="{{ $about['heading'] ?? '' }}"
+                                        <img src="{{ $about['image']->url() }}" alt="{{ $about['image']->alt ?? $about['heading'] ?? '' }}"
                                             class="w-full object-cover lg:-ml-60 lg:-mr-40 lg:-mb-50" />
                                     </div>
                                 @endif
@@ -312,7 +312,7 @@
                     {{-- Background --}}
                     <div id="background-services"
                         class="overlay-section-services rounded-t-3xl lg:rounded-t-[60px] overflow-hidden">
-                        <img src="{{ $services['background_image'] ?? '' }}" alt=""
+                        <img src="{{ $services['background_image'] ?? '' }}" alt="{{ $services['background_image']?->alt }}"
                             class="w-full h-300 md:h-220 lg:h-190 object-cover pointer-events-none">
                     </div>
 
@@ -379,13 +379,13 @@
                                         @if ($mpValid)
                                             <a href="{{ $mpUrl }}" target="_blank" rel="noopener noreferrer"
                                                 class="transition-opacity hover:opacity-70 border border-(--color-surface) md:border-0 lg:border-0 rounded-xl p-4">
-                                                <img src="{{ $item['marketplace_logo']?->url() }}" alt=""
+                                                <img src="{{ $item['marketplace_logo']?->url() }}" alt="{{ $item['marketplace_logo']?->alt ?? '' }}"
                                                     class="h-10 lg:h-14 object-contain mx-auto">
                                             </a>
                                         @else
                                             <div
                                                 class="border border-(--color-surface) md:border-0 lg:border-0 rounded-xl p-4">
-                                                <img src="{{ $item['marketplace_logo']?->url() }}" alt=""
+                                                <img src="{{ $item['marketplace_logo']?->url() }}" alt="{{ $item['marketplace_logo']?->alt ?? '' }}"
                                                     class="h-10 lg:h-14 object-contain mx-auto">
                                             </div>
                                         @endif

@@ -77,7 +77,7 @@
             <section id="{{ $visionMission['anchor'] ?? 'visi-misi' }}">
                 <div class="container">
                     <div id="background-visi-misi" class="overlay-visimisi relative my-18 md:my-18 lg:my-30 rounded-3xl">
-                        <img src="{{ $visionMission['photo_background'] ?? '' }}" alt="Visi Misi Background"
+                        <img src="{{ $visionMission['photo_background'] ?? '' }}" alt="{{ $visionMission['photo_background']?->alt ?? 'Visi Misi Background' }}"
                             class="rounded-xl md:rounded-xl lg:rounded-3xl w-full h-245 md:h-260 lg:h-205 object-cover pointer-events-none">
 
                         <div id="visi-misi-content"
@@ -85,7 +85,7 @@
 
                             {{-- Image truk --}}
                             <div class="w-full -mb-10 lg:mb-10 lg:w-[64%] lg:-ml-25 lg:-mr-45">
-                                <img src="{{ $visionMission['photo'] ?? '' }}" alt="Visi Misi">
+                                <img src="{{ $visionMission['photo'] ?? '' }}" alt="{{ $visionMission['photo']?->alt ?? 'Visi Misi' }}">
                             </div>
 
                             {{-- Teks visi misi --}}
@@ -129,7 +129,7 @@
                                         @if (!empty($cert['label']))
                                             <p>{{ $cert['label'] }}</p>
                                         @endif
-                                        <img src="{{ $cert['assets_field'] ?? '' }}" alt="{{ $cert['label'] ?? '' }}">
+                                        <img src="{{ $cert['assets_field'] ?? '' }}" alt="{{ $cert['assets_field']?->alt ?? $cert['label'] ?? '' }}">
                                     </div>
                                 @endforeach
                             </div>
@@ -162,7 +162,7 @@
                             @foreach ($fawValue['features'] as $item)
                                 <div
                                     class="flex flex-col gap-14 p-6 bg-white rounded-3xl md:p-6 md:gap-14 lg:p-6 lg:gap-10">
-                                    <img src="{{ $item['icon'] ?: $iconPlaceholder }}" alt="Icon"
+                                    <img src="{{ $item['icon'] ?: $iconPlaceholder }}" alt="{{ $item['icon']?->alt ?? 'Icon' }}"
                                         class="w-10 h-10">
                                     <div class="flow">
                                         <h4 class="text-black w-full lg:w-70">{{ $item['title'] ?? '' }}</h4>

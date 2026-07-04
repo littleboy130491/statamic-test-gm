@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Icon Lokasi'
 size: 10798
 last_modified: 1780815854
 width: 93.0
