@@ -6,9 +6,13 @@
 
     $logo_asset = $site_logo ? \Statamic\Facades\Asset::find('assets::' . $site_logo) : null;
     $logo_url = $logo_asset?->url();
+
+    $sticky_desktop = (bool) ($globals['header_desktop'] ?? false);
+    $sticky_mobile = (bool) ($globals['header_mobile'] ?? false);
 @endphp
 
-<header id="single-header">
+<header id="single-header" data-sticky-desktop="{{ $sticky_desktop ? 'true' : 'false' }}"
+    data-sticky-mobile="{{ $sticky_mobile ? 'true' : 'false' }}">
     <div class="container">
         <div
             class="flex items-center {{ $logo_url ? 'justify-between' : 'justify-end' }} border-b border-(--color-line) py-5 lg:gap-8">

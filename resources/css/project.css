@@ -744,3 +744,72 @@ body:has(dialog[open].site-popup) {
       height: 260px !important;
    }
 }
+
+
+
+/* Sticky Header (transparent header) */
+.header-fixed.is-sticky {
+   position: fixed;
+   background: white;
+   box-shadow: 0 1px 8px rgb(0 0 0 / 6%);
+   animation: header-slide-down 0.3s ease-out;
+   z-index: 9999;
+}
+
+@keyframes header-slide-down {
+   from {
+      transform: translateY(-100%);
+   }
+   to {
+      transform: translateY(0);
+   }
+}
+
+.header-fixed.is-sticky :is(nav a, nav div, nav span) {
+   color: black;
+}
+
+.header-fixed.is-sticky nav a:hover,
+.header-fixed.is-sticky nav .group:hover > div {
+   color: var(--color-secondary);
+}
+
+.header-fixed.is-sticky #menu-toggle span {
+   background: black !important;
+}
+
+@media (min-width: 1024px) {
+   .header-fixed.is-sticky nav ul ul {
+      background: white !important;
+      backdrop-filter: none !important;
+   }
+
+   .header-fixed.is-sticky nav ul ul a {
+      color: black !important;
+   }
+
+   .header-fixed.is-sticky nav ul ul a:hover {
+      color: var(--color-primary) !important;
+   }
+}
+
+.header-fixed.is-sticky .glink {
+   color: black;
+}
+
+.header-fixed.is-sticky .glink:hover,
+.header-fixed.is-sticky .glink.gt-current-lang {
+   background: var(--color-surface);
+   color: black;
+}
+
+#single-header.is-sticky {
+   position: fixed;
+   inset-inline: 0;
+   top: 0;
+   width: 100%;
+   background: white;
+   box-shadow: 0 1px 8px rgb(0 0 0 / 6%);
+   animation: header-slide-down 0.3s ease-out;
+   z-index: 9999;
+}

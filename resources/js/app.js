@@ -1,5 +1,6 @@
 import './bootstrap';
 import './flyout-menu';
+import './sticky-header';
 import './hero-slider';
 import './slider-thumbnail.js';
 import './equal-height-cards';
