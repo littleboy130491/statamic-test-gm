@@ -56,11 +56,11 @@
                                             </span>
                                         </summary>
 
-                                        <ul class="mt-1 ml-2 flex flex-col gap-2">
+                                        <ul class="mt-3 mb-1 flex flex-col gap-2">
                                             @foreach ($children as $child)
                                                 <li>
                                                     <a href="{{ $child['url'] }}"
-                                                        class="block text-sm text-(--color-text) hover:text-(--color-primary) active:text-(--color-primary)">
+                                                        class="block text-(--color-text) hover:text-(--color-primary) active:text-(--color-primary)">
                                                         {{ $child['title'] }}
                                                     </a>
                                                 </li>
