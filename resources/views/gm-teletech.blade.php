@@ -79,7 +79,7 @@
             <section id="{{ $opening['anchor'] ?? 'gm-teletech-desc' }}">
                 <div class="container">
                     <div class="flex flex-col items-center my-18 lg:my-30">
-                        <div class="text-left md:text-center lg:text-center lg:w-285">{!! $opening['description'] ?? '' !!}</div>
+                        <div class="text-left md:text-center lg:text-center lg:w-280">{!! $opening['description'] ?? '' !!}</div>
                     </div>
                 </div>
             </section>
@@ -90,7 +90,8 @@
             <section id="{{ $teletechImage['anchor'] ?? 'gm-teletech-map' }}">
                 <div class="container">
                     <div class="flex flex-col items-center my-18 lg:my-30">
-                        <img src="{{ $teletechImage['section_images'] ?? '' }}" alt="{{ $teletechImage['section_images']?->alt ?? $page->title }}"
+                        <img src="{{ $teletechImage['section_images'] ?? '' }}"
+                            alt="{{ $teletechImage['section_images']?->alt ?? $page->title }}"
                             class="rounded-2xl w-full lg:h-150 object-cover">
                     </div>
                 </div>
@@ -110,10 +111,11 @@
                             @foreach ($fiturBenefit['features'] as $item)
                                 <div
                                     class="flex flex-col gap-14 p-6 bg-(--color-surface) rounded-3xl md:p-6 md:gap-14 lg:p-6 lg:gap-20">
-                                    <img src="{{ $item['icon'] ?: $iconBenefitPlaceholder }}" alt="{{ $item['icon']?->alt ?? 'Icon' }}"
-                                        class="w-10 h-10">
+                                    <img src="{{ $item['icon'] ?: $iconBenefitPlaceholder }}"
+                                        alt="{{ $item['icon']?->alt ?? 'Icon' }}" class="w-10 h-10">
                                     <div class="flow">
-                                        <h4 class="text-black">{{ $item['title'] ?? '' }}</h4>
+                                        <h4 class="text-(--color-heading) tracking-tight">{{ $item['title'] ?? '' }}
+                                        </h4>
                                         <p>{{ $item['text'] ?? '' }}</p>
                                     </div>
                                 </div>
@@ -129,7 +131,8 @@
             <section id="{{ $ctaGrid['anchor'] ?? 'cta-gm-teletech' }}">
                 <div class="container">
                     <div class="flex flex-col items-center gap-6 my-18 md:flex-row md:my-18 lg:flex-row lg:my-30">
-                        <img src="{{ $ctaGrid['image_call_to_action'] ?? '' }}" alt="{{ $ctaGrid['image_call_to_action']?->alt ?? $ctaGrid['heading'] ?? '' }}"
+                        <img src="{{ $ctaGrid['image_call_to_action'] ?? '' }}"
+                            alt="{{ $ctaGrid['image_call_to_action']?->alt ?? ($ctaGrid['heading'] ?? '') }}"
                             class="md:w-[40%] lg:w-[40%]">
 
                         {{-- Konten CTA --}}
@@ -162,7 +165,8 @@
                                     {{-- Icon kontak --}}
                                     <div
                                         class="bg-(--color-primary) group-hover:bg-black flex items-center justify-center rounded-full transition-colors w-12 h-12 md:w-12 md:h-12 lg:w-12 lg:h-12">
-                                        <img src="{{ $contactIcon }}" alt="{{ $contactIcon?->alt ?? $contact['label'] ?? '' }}"
+                                        <img src="{{ $contactIcon }}"
+                                            alt="{{ $contactIcon?->alt ?? ($contact['label'] ?? '') }}"
                                             class="w-5 h-5">
                                     </div>
                                 </a>
