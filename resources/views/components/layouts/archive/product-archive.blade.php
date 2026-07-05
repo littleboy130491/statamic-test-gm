@@ -87,7 +87,7 @@
                 <div class="flex flex-col-reverse md:flex-row lg:flex-row gap-18 md:gap-5 lg:gap-5">
 
                     {{-- Sidebar (kiri) --}}
-                    <aside class="w-full md:w-[30%] lg:w-[30%] flex flex-col gap-5">
+                    <aside class="w-full md:w-[30%] lg:w-[25%] flex flex-col gap-5">
 
                         {{-- Kategori produk --}}
                         @if ($product_categories->isNotEmpty())
@@ -136,7 +136,7 @@
                     </aside>
 
                     {{-- Grid card produk (kanan) --}}
-                    <div class="w-full md:w-[70%] lg:w-[70%] flex flex-col gap-20">
+                    <div class="w-full md:w-[70%] lg:w-[75%] flex flex-col gap-20">
                         @if ($products->isNotEmpty())
                             <div id="product-grid"
                                 class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 md:gap-x-4 md:gap-y-10 lg:gap-x-5 lg:gap-y-16">
