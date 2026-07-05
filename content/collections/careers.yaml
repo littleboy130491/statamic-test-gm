@@ -6,7 +6,7 @@ taxonomies:
   - tags
   - locations
 revisions: false
-route: '/careers/{slug}'
+route: '/karier/{slug}'
 date: true
 sort_by: title
 sort_dir: desc

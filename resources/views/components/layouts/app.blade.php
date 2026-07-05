@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ $site->short_locale ?? 'id' }}">
+<html lang="{{ $site->short_locale ?? 'en' }}">
 
 <head>
     <meta charset="utf-8">

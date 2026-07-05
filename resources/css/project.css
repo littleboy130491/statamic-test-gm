@@ -296,7 +296,7 @@ body.background-grey {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: radial-gradient(107.43% 86.97% at 80.91% 13.03%, #F5F5F5 41.4%, rgba(245, 245, 245, 0.00) 81.58%), linear-gradient(180deg, #F5F5F5 0%, rgba(245, 245, 245, 0.00) 30%);
+  background: linear-gradient(149deg, #F5F5F5 0%, rgba(245, 245, 245, 0.00) 44.58%), linear-gradient(180deg, #F5F5F5 0%, rgba(245, 245, 245, 0.86) 14.47%, rgba(245, 245, 245, 0.68) 32.38%, rgba(245, 245, 245, 0.00) 66.81%);
 }
 
 
@@ -354,6 +354,15 @@ body.background-grey {
 
    .mission-list-content ol li::before {
       font-size: 1.2rem;
+   }
+}
+
+
+
+/* Sertifikat - TENTANG KAMI */
+@media (min-width: 1024px) {
+   .h3-cust-about {
+      font-size: 1.5rem;
    }
 }
 

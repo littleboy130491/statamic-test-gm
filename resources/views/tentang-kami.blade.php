@@ -77,20 +77,22 @@
             <section id="{{ $visionMission['anchor'] ?? 'visi-misi' }}">
                 <div class="container">
                     <div id="background-visi-misi" class="overlay-visimisi relative my-18 md:my-18 lg:my-30 rounded-3xl">
-                        <img src="{{ $visionMission['photo_background'] ?? '' }}" alt="{{ $visionMission['photo_background']?->alt ?? 'Visi Misi Background' }}"
-                            class="rounded-xl md:rounded-xl lg:rounded-3xl w-full h-245 md:h-260 lg:h-205 object-cover pointer-events-none">
+                        <img src="{{ $visionMission['photo_background'] ?? '' }}"
+                            alt="{{ $visionMission['photo_background']?->alt ?? 'Visi Misi Background' }}"
+                            class="rounded-xl md:rounded-xl lg:rounded-3xl w-full h-245 md:h-260 lg:h-190 object-cover pointer-events-none">
 
                         <div id="visi-misi-content"
-                            class="absolute bottom-0 inset-0 z-2 flex flex-col-reverse gap-10 md:gap-10 px-4 md:px-6 md:flex-col-reverse lg:flex-row lg:pr-16 lg:py-10">
+                            class="absolute bottom-0 inset-0 z-2 flex flex-col-reverse gap-10 md:gap-10 px-4 md:px-6 md:flex-col-reverse lg:flex-row lg:pr-16 lg:py-10 items-center">
 
                             {{-- Image truk --}}
-                            <div class="w-full -mb-10 lg:mb-10 lg:w-[64%] lg:-ml-25 lg:-mr-45">
-                                <img src="{{ $visionMission['photo'] ?? '' }}" alt="{{ $visionMission['photo']?->alt ?? 'Visi Misi' }}">
+                            <div class="w-full -mb-10 lg:w-[70%] lg:-mr-90">
+                                <img src="{{ $visionMission['photo'] ?? '' }}"
+                                    alt="{{ $visionMission['photo']?->alt ?? 'Visi Misi' }}" class="lg:-ml-25">
                             </div>
 
                             {{-- Teks visi misi --}}
                             <div
-                                class="flex flex-col md:flex-row inset-0 lg:flex-col gap-4 md:gap-4 lg:gap-8 md:w-full lg:w-[60%] lg:-ml-20">
+                                class="flex flex-col md:flex-row inset-0 lg:flex-col gap-4 md:gap-4 lg:gap-8 md:w-full lg:w-[60%]">
                                 @if ($vision)
                                     <div id="vision"
                                         class="glass rounded-2xl p-5 w-full md:w-[40%] lg:w-full md:p-5 lg:p-8 flex flex-col gap-6">
@@ -118,7 +120,7 @@
             <section id="{{ $fawText['anchor'] ?? 'faw-trucks' }}">
                 <div class="container">
                     <div
-                        class="flex flex-col-reverse md:flex-col-reverse lg:flex-row gap-8 md:gap-10 lg:gap-30 my-18 md:my-18 lg:my-30">
+                        class="flex flex-col-reverse md:flex-col-reverse lg:flex-row gap-8 md:gap-10 lg:gap-20 my-18 md:my-18 lg:my-30">
 
                         {{-- Faw image --}}
                         @if (!empty($fawText['gallery_grid']))
@@ -129,7 +131,8 @@
                                         @if (!empty($cert['label']))
                                             <p>{{ $cert['label'] }}</p>
                                         @endif
-                                        <img src="{{ $cert['assets_field'] ?? '' }}" alt="{{ $cert['assets_field']?->alt ?? $cert['label'] ?? '' }}">
+                                        <img src="{{ $cert['assets_field'] ?? '' }}"
+                                            alt="{{ $cert['assets_field']?->alt ?? ($cert['label'] ?? '') }}">
                                     </div>
                                 @endforeach
                             </div>
@@ -137,7 +140,7 @@
 
                         {{-- Faw konten --}}
                         <div id="faw-content" class="w-full md:w-full lg:w-[70%] flex flex-col gap-5">
-                            <h3>{{ $fawText['heading'] ?? '' }}</h3>
+                            <h3 class="h3-cust-about">{{ $fawText['heading'] ?? '' }}</h3>
                             <div class="w-full lg:w-170">{!! $fawText['description'] ?? '' !!}</div>
                         </div>
                     </div>
@@ -162,10 +165,11 @@
                             @foreach ($fawValue['features'] as $item)
                                 <div
                                     class="flex flex-col gap-14 p-6 bg-white rounded-3xl md:p-6 md:gap-14 lg:p-6 lg:gap-10">
-                                    <img src="{{ $item['icon'] ?: $iconPlaceholder }}" alt="{{ $item['icon']?->alt ?? 'Icon' }}"
-                                        class="w-10 h-10">
+                                    <img src="{{ $item['icon'] ?: $iconPlaceholder }}"
+                                        alt="{{ $item['icon']?->alt ?? 'Icon' }}" class="w-10 h-10">
                                     <div class="flow">
-                                        <h4 class="text-black w-full lg:w-70">{{ $item['title'] ?? '' }}</h4>
+                                        <h4 class="text-black w-full lg:w-70 tracking-tight">
+                                            {{ $item['title'] ?? '' }}</h4>
                                         <p>{{ $item['text'] ?? '' }}</p>
                                     </div>
                                 </div>

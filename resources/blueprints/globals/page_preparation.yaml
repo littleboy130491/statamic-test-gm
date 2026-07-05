@@ -1,0 +1,51 @@
+title: 'Page Preparation'
+tabs:
+  main:
+    display: Utama
+    sections:
+      -
+        display: 'Page Preparation'
+        fields:
+          -
+            handle: activate_mode
+            field:
+              type: toggle
+              display: 'Activate Mode'
+          -
+            handle: background_image
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Background Image'
+              validate:
+                - required
+          -
+            handle: heading
+            field:
+              type: text
+              display: Heading
+              validate:
+                - required
+          -
+            handle: description
+            field:
+              buttons:
+                - bold
+                - italic
+                - removeformat
+                - quote
+                - anchor
+                - image
+                - table
+              container: assets
+              remove_empty_nodes: false
+              type: bard
+              display: Description
+              validate:
+                - required
+          -
+            handle: duration
+            field:
+              type: date
+              display: Duration

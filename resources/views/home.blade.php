@@ -220,7 +220,8 @@
                                 {{-- Truk --}}
                                 @if (!empty($about['image']))
                                     <div class="md:w-full lg:w-[145%]">
-                                        <img src="{{ $about['image']->url() }}" alt="{{ $about['image']->alt ?? $about['heading'] ?? '' }}"
+                                        <img src="{{ $about['image']->url() }}"
+                                            alt="{{ $about['image']->alt ?? ($about['heading'] ?? '') }}"
                                             class="w-full object-cover lg:-ml-60 lg:-mr-40 lg:-mb-50" />
                                     </div>
                                 @endif
@@ -312,7 +313,8 @@
                     {{-- Background --}}
                     <div id="background-services"
                         class="overlay-section-services rounded-t-3xl lg:rounded-t-[60px] overflow-hidden">
-                        <img src="{{ $services['background_image'] ?? '' }}" alt="{{ $services['background_image']?->alt }}"
+                        <img src="{{ $services['background_image'] ?? '' }}"
+                            alt="{{ $services['background_image']?->alt }}"
                             class="w-full h-300 md:h-220 lg:h-190 object-cover pointer-events-none">
                     </div>
 
@@ -379,13 +381,15 @@
                                         @if ($mpValid)
                                             <a href="{{ $mpUrl }}" target="_blank" rel="noopener noreferrer"
                                                 class="transition-opacity hover:opacity-70 border border-(--color-surface) md:border-0 lg:border-0 rounded-xl p-4">
-                                                <img src="{{ $item['marketplace_logo']?->url() }}" alt="{{ $item['marketplace_logo']?->alt ?? '' }}"
+                                                <img src="{{ $item['marketplace_logo']?->url() }}"
+                                                    alt="{{ $item['marketplace_logo']?->alt ?? '' }}"
                                                     class="h-10 lg:h-14 object-contain mx-auto">
                                             </a>
                                         @else
                                             <div
                                                 class="border border-(--color-surface) md:border-0 lg:border-0 rounded-xl p-4">
-                                                <img src="{{ $item['marketplace_logo']?->url() }}" alt="{{ $item['marketplace_logo']?->alt ?? '' }}"
+                                                <img src="{{ $item['marketplace_logo']?->url() }}"
+                                                    alt="{{ $item['marketplace_logo']?->alt ?? '' }}"
                                                     class="h-10 lg:h-14 object-contain mx-auto">
                                             </div>
                                         @endif
@@ -439,7 +443,7 @@
                     <div class="my-18 md:my-18 lg:my-30 flex flex-col gap-8 lg:gap-10">
 
                         {{-- Heading --}}
-                        <div class="flex flex-col md:flex-col lg:flex-row items-end gap-5">
+                        <div class="flex flex-col md:flex-col lg:flex-row items-center gap-5">
                             <div class="w-full lg:w-[55%]">
                                 @if (!empty($dealer['heading']))
                                     <h2 class="text-(--color-heading) w-full md:w-[70%] lg:w-[70%]">
@@ -451,9 +455,9 @@
                             <div class="w-full lg:w-[45%] grid grid-cols-3 gap-4">
                                 @foreach ($dealerCategories as $slug => $label)
                                     <div
-                                        class="flex flex-col items-start lg:items-center gap-1 bg-(--color-surface) p-4 rounded-xl">
+                                        class="flex flex-col items-start lg:items-center gap-4 bg-(--color-surface) px-4 py-8 rounded-xl">
                                         <p
-                                            class="text-4xl font-medium text-(--color-primary) font-(family-name:--font-display)">
+                                            class="text-4xl text-(--color-primary) font-(family-name:--font-display) font-semibold">
                                             {{ $dealerCounts[$slug] ?? 0 }}
                                         </p>
                                         <p class="text-(--color-primary) leading-[1.2rem]">{{ $label }}</p>

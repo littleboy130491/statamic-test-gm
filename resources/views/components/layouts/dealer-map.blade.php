@@ -32,7 +32,7 @@
                 <a href="javascript:void(0)"
                     class="dealer-cat-btn flex items-center gap-2 text-sm text-(--color-primary) hover:text-white bg-(--color-surface) hover:bg-(--color-primary) uppercase py-3 px-8 rounded-full"
                     data-category="{{ $slug }}">
-                    <span>{{ $label }}</span>
+                    <span class="font-medium">{{ $label }}</span>
                     <svg viewBox="0 0 12 12" fill="none" aria-hidden="true" class="h-4 w-4">
                         <path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"
                             stroke-linejoin="round" />
