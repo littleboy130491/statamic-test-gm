@@ -7,14 +7,14 @@ tabs:
           -
             handle: name
             field:
-              display: Name
+              display: 'Nama Lengkap'
               type: text
               validate: 'required|max:255'
               width: 50
           -
             handle: position
             field:
-              display: Position
+              display: 'Posisi yang Diminati'
               type: text
               validate: 'required|max:255'
               instructions: 'Role you are applying for.'
@@ -30,7 +30,7 @@ tabs:
           -
             handle: phone
             field:
-              display: Phone
+              display: 'Nomor Telepon'
               type: text
               input_type: tel
               validate: 'required|max:50'
@@ -48,3 +48,4 @@ tabs:
                 - file
                 - 'mimes:pdf,doc,docx'
                 - 'max:5120'
+              hide_display: true

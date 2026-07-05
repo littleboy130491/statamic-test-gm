@@ -107,3 +107,19 @@ tabs:
               display: 'Message failed'
               validate:
                 - required
+          -
+            handle: label_input_file
+            field:
+              type: text
+              display: 'Label Input File'
+              width: 50
+              validate:
+                - required
+          -
+            handle: label_button_input_file
+            field:
+              type: text
+              display: 'Label Button Input File'
+              width: 50
+              validate:
+                - required

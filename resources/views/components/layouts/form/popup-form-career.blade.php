@@ -55,9 +55,19 @@
                         class="career-form-field flex flex-col gap-1 {{ ($field['width'] ?? 100) <= 50 ? 'w-full md:w-[calc(50%-0.5rem)]' : 'w-full' }}">
 
                         @if (($field['type'] ?? 'text') === 'assets')
-                            <label class="font-medium">{{ $field['display'] ?? '' }}</label>
-                            <input type="file" name="{{ $field['handle'] }}" accept=".pdf,.doc,.docx"
-                                class="career-form-file" />
+                            @unless ($field['hide_display'] ?? false)
+                                <label class="font-medium">{{ $field['display'] ?? '' }}</label>
+                            @endunless
+                            <label class="career-form-file flex items-center gap-3 cursor-pointer">
+                                <p class="career-form-file-button shrink-0">
+                                    {{ $form['label_input_file'] ?? 'Choose File' }}</p>
+                                <p class="career-form-file-name font-medium border border-[#A1A1A1] bg-[#F1F1F1] px-4 py-2 text-sm text-black hover:bg-gray-100"
+                                    data-placeholder="{{ $form['label_button_input_file'] ?? 'No File Choosen' }}">
+                                    {{ $form['label_button_input_file'] ?? 'No File Choosen' }}</p>
+                                <input type="file" name="{{ $field['handle'] }}" accept=".pdf,.doc,.docx"
+                                    class="hidden"
+                                    onchange="this.parentElement.querySelector('.career-form-file-name').textContent = this.files.length ? this.files[0].name : this.parentElement.querySelector('.career-form-file-name').dataset.placeholder" />
+                            </label>
                             @if (!empty($field['instructions']))
                                 <p class="text-sm text-(--color-text)">{{ $field['instructions'] }}</p>
                             @endif
@@ -65,17 +75,17 @@
                             <label class="flex items-start gap-3 cursor-pointer">
                                 <input type="checkbox" name="{{ $field['handle'] }}" value="1"
                                     {{ $old[$field['handle']] ?? false ? 'checked' : '' }} class="mt-1 shrink-0" />
-                                <span
-                                    class="text-(--color-text)">{{ $field['inline_label'] ?? ($field['display'] ?? '') }}</span>
+                                <p class="text-(--color-text)">
+                                    {{ $field['inline_label'] ?? ($field['display'] ?? '') }}</p>
                             </label>
                         @elseif (($field['type'] ?? 'text') === 'textarea')
                             <textarea name="{{ $field['handle'] }}" rows="4" placeholder="{{ $field['display'] ?? '' }}"
-                                class="career-form-input rounded-xl bg-white px-5 py-4 w-full">{{ $old[$field['handle']] ?? '' }}</textarea>
+                                class="career-form-input rounded-xl= bg-white px-5 py-4 w-full">{{ $old[$field['handle']] ?? '' }}</textarea>
                         @else
                             <input type="{{ $field['input_type'] ?? 'text' }}" name="{{ $field['handle'] }}"
                                 value="{{ $old[$field['handle']] ?? '' }}"
                                 placeholder="{{ $form['placeholder_' . $field['handle']] ?? ($field['display'] ?? '') }}"
-                                class="career-form-input rounded-xl bg-white px-5 py-4 w-full" />
+                                class="career-form-input rounded-lg bg-white px-5 py-4 w-full font-(family-name:--font-body)" />
                         @endif
 
                         @if (!empty($field['error']))

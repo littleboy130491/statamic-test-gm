@@ -451,6 +451,18 @@ body:has(dialog[open].career-popup) {
     overflow: hidden;
 }
 
+.career-form-input:focus,
+.career-form-file input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.career-form-input:focus,
+-form-input::placeholder {
+  opacity: 1;
+  color: black;
+}
+
 
 
 /* Heading Size - SKIN BLOG */

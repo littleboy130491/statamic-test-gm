@@ -21,3 +21,5 @@ form_description: 'Kami mencari talenta berbakat yang siap berkolaborasi dan ber
 button_submit_label: Kirim
 success_message: Sukses
 message_failed: Gagal
+label_input_file: 'Choose File'
+label_button_input_file: 'No File Choosen'
