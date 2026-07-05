@@ -10,6 +10,8 @@
         ->implode(' ');
 
     $bgDireksi = \Statamic\Facades\Asset::find('assets::manajemen-back.jpg');
+    $bgDireksiUrl = $bgDireksi?->url();
+    $bgDireksiAlt = $bgDireksi?->get('alt') ?? '';
 
     $opening = collect($page->sections)->first(
         fn($section) => (string) ($section['identifier'] ?? '') === 'opening-management',
@@ -48,7 +50,7 @@
         @if ($opening && ($opening['show'] ?? false))
             <section id="{{ $opening['anchor'] ?? 'manajemen' }}">
                 <div class="container">
-                    <div class="my-18 md:my18 lg:my-30 flow flex flex-col gap-4 items-center">
+                    <div class="my-18 md:my-18 lg:my-30 flow flex flex-col gap-4 items-center">
                         <h2 class="text-left md:text-center lg:text-center w-full md:w-120 lg:w-155">
                             {{ $opening['heading'] ?? '' }}
                         </h2>
@@ -65,26 +67,39 @@
 
                 {{-- Kata sambutan --}}
                 @if ($direkturUtama && ($direkturUtama['show'] ?? false))
+                    @php
+                        $direkturImage = $direkturUtama['image'] ?: $placeholderTim;
+                        $direkturImageUrl = is_string($direkturImage) ? $direkturImage : $direkturImage?->url();
+                        $direkturImageAlt =
+                            (is_string($direkturImage) ? null : $direkturImage?->get('alt')) ??
+                            ($direkturUtama['name'] ?? '');
+                    @endphp
                     <div id="{{ $direkturUtama['anchor'] ?? 'highlight-management' }}"
                         class="flex flex-col-reverse gap-6 bg-white rounded-3xl p-5 md:p-6 lg:p-10 md:flex-row lg:flex-row my-18 md:my-18 lg:my-30">
-                        <div class="flex flex-col justify-between gap-8 md:gap-2 lg:gap-2 w-full md:w-[60%] lg:w-[60%]">
-                            <div class="flow flex flex-col">
+                        <div class="flex flex-col justify-between gap-8 md:gap-10 lg:gap-2 w-full md:w-[60%] lg:w-[60%]">
+
+                            {{-- Sambutan --}}
+                            <div class="flow flex flex-col richtext">
                                 {!! $direkturUtama['bio'] ?? '' !!}
                             </div>
+
+                            {{-- Profil --}}
                             <div class="flex flex-col gap-1">
-                                <p class="title-display text-xl md:text-xl lg:text-2xl">
+                                <p class="title-display text-xl md:text-xl lg:text-2xl tracking-tight">
                                     {{ $direkturUtama['name'] ?? '' }}</p>
-                                <p class="uppercase text-(--color-primary)">{{ $direkturUtama['role'] ?? '' }}</p>
+                                <p class="uppercase text-(--color-primary) font-medium">
+                                    {{ $direkturUtama['role'] ?? '' }}</p>
                             </div>
                         </div>
+
+                        {{-- Background Member --}}
                         <div class="w-full md:w-[40%] lg:w-[40%] relative">
-                            <img src="{{ $bgDireksi }}" alt="{{ $bgDireksi?->alt ?? $direkturUtama['name'] ?? '' }}"
-                                class="image-grayscale pointer-events-none rounded-xl w-full md:h-105 lg:h-120 object-cover">
+                            <img src="{{ $bgDireksiUrl }}" alt="{{ $bgDireksiAlt ?: $direkturUtama['name'] ?? '' }}"
+                                class="image-grayscale pointer-events-none rounded-xl w-full md:h-105 lg:h-118 object-cover">
                             <div class="overlay-bg-management"></div>
                             <div class="flex justify-center">
-                                <img src="{{ $direkturUtama['image'] ?: $placeholderTim }}"
-                                    alt="{{ ($direkturUtama['image'] ?: $placeholderTim)?->alt ?? $direkturUtama['name'] ?? '' }}"
-                                    class="w-[48%] md:w-[90%] lg:w-[52%] absolute bottom-0 z-3">
+                                <img src="{{ $direkturImageUrl }}" alt="{{ $direkturImageAlt }}"
+                                    class="w-[48%] md:w-[80%] lg:w-[62%] absolute bottom-0 z-3">
                             </div>
                         </div>
                     </div>
@@ -101,19 +116,33 @@
                                     <div
                                         class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-8 gap-x-4 md:gap-y-10 md:gap-x-6 lg:gap-y-14 lg:gap-x-6">
                                         @foreach ($grid['members'] as $member)
+                                            @php
+                                                $memberImage = $member['image'] ?: $placeholderTim;
+                                                $memberImageUrl = is_string($memberImage)
+                                                    ? $memberImage
+                                                    : $memberImage?->url();
+                                                $memberImageAlt =
+                                                    (is_string($memberImage) ? null : $memberImage?->get('alt')) ??
+                                                    ($member['name'] ?? '');
+                                            @endphp
                                             <div class="flex flex-col gap-4 md:gap-4 lg:gap-6 w-full">
+
+                                                {{-- Background & Image --}}
                                                 <div class="relative w-full overflow-hidden rounded-xl">
-                                                    <img src="{{ $bgDireksi }}" alt="{{ $bgDireksi?->alt }}"
-                                                        class="image-grayscale pointer-events-none w-full h-60 md:h-70 lg:h-140 object-cover">
+                                                    <img src="{{ $bgDireksiUrl }}" alt="{{ $bgDireksiAlt }}"
+                                                        class="image-grayscale pointer-events-none w-full h-60 md:h-70 lg:h-110 object-cover">
+
                                                     <div class="overlay-bg-management"></div>
-                                                    <img src="{{ $member['image'] ?: $placeholderTim }}"
-                                                        alt="{{ ($member['image'] ?: $placeholderTim)?->alt ?? $member['name'] ?? '' }}"
+
+                                                    <img src="{{ $memberImageUrl }}" alt="{{ $memberImageAlt }}"
                                                         class="absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-[70%] md:w-[64%] lg:w-[50%] object-contain object-bottom z-3">
                                                 </div>
+
+                                                {{-- Profil member --}}
                                                 <div class="flex flex-col gap-1">
                                                     <p class="title-display text-xl md:text-xl lg:text-2xl">
                                                         {{ $member['name'] ?? '' }}</p>
-                                                    <p class="text-(--color-primary) uppercase">
+                                                    <p class="text-(--color-primary) uppercase font-medium">
                                                         {{ $member['role'] ?? '' }}</p>
                                                 </div>
                                             </div>

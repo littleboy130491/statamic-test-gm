@@ -4,7 +4,7 @@ blueprint: page
 title: Manajemen
 template: manajemen
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1781500397
+updated_at: 1783216670
 featured_image: hero-manajemen.jpg
 parent: home
 sections:
@@ -46,6 +46,8 @@ sections:
           -
             type: text
             text: 'Kami harapkan FAW Trucks akan terus menjadi pemimpin market truk Cina di Indonesia, seperti negeri asalnya RRC dan menjadi solusi alat transportasi dengan biaya investasi & operasi yang rendah.'
+      -
+        type: paragraph
       -
         type: paragraph
         content:

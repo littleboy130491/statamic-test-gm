@@ -79,7 +79,7 @@
                     <div id="background-visi-misi" class="overlay-visimisi relative my-18 md:my-18 lg:my-30 rounded-3xl">
                         <img src="{{ $visionMission['photo_background'] ?? '' }}"
                             alt="{{ $visionMission['photo_background']?->alt ?? 'Visi Misi Background' }}"
-                            class="rounded-xl md:rounded-xl lg:rounded-3xl w-full h-245 md:h-260 lg:h-190 object-cover pointer-events-none">
+                            class="rounded-xl md:rounded-xl lg:rounded-3xl w-full h-245 md:h-260 lg:h-200 object-cover pointer-events-none">
 
                         <div id="visi-misi-content"
                             class="absolute bottom-0 inset-0 z-2 flex flex-col-reverse gap-10 md:gap-10 px-4 md:px-6 md:flex-col-reverse lg:flex-row lg:pr-16 lg:py-10 items-center">

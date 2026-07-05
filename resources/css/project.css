@@ -318,8 +318,8 @@ body.background-grey {
     counter-increment: mission;
     display: flex;
     gap: 5rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid white;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid #FFFFFF90;
 }
 
 .mission-list-content ol li:last-child {
