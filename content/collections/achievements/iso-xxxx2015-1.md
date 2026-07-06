@@ -10,6 +10,6 @@ seo:
   description: '@seo:description'
   image: '@seo:featured_image'
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1781334408
+updated_at: 1783318430
 duplicated_from: 57721019-0f66-40df-8c77-70b5b9e6b816
 ---

@@ -64,3 +64,5 @@ preferences:
         - name
         - email
         - datestamp
+  locale: en
+  theme: null
