@@ -426,6 +426,14 @@ body.background-grey {
 
 
 
+/* Flyout */
+@media (max-width: 768px) {
+   #mobile-menu-panel ul {
+      margin: 0
+   }
+}
+
+
 
 /* Popup Form Career */
 .career-popup {
@@ -791,8 +799,10 @@ body:has(dialog[open].site-popup) {
 }
 
 .header-fixed.is-sticky nav a:hover,
-.header-fixed.is-sticky nav .group:hover > div {
-   color: var(--color-secondary);
+.header-fixed.is-sticky nav a:hover span,
+.header-fixed.is-sticky nav li > div:hover,
+.header-fixed.is-sticky nav li > div:hover span {
+   color: var(--color-primary) !important;
 }
 
 .header-fixed.is-sticky #menu-toggle span {
@@ -833,4 +843,8 @@ body:has(dialog[open].site-popup) {
    box-shadow: 0 1px 8px rgb(0 0 0 / 6%);
    animation: header-slide-down 0.3s ease-out;
    z-index: 9999;
+}
+
+#single-header.is-sticky .container > div {
+   border-bottom: none !important;
 }

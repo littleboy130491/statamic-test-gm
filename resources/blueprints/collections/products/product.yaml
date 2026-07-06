@@ -124,8 +124,6 @@ tabs:
                     validate:
                       - required
       -
-        display: 'Product Comparison'
-      -
         display: Catalogue
         fields:
           -
@@ -151,33 +149,12 @@ tabs:
                     type: toggle
                     display: Displayed
                     default: false
-  specifications:
-    display: Specifications
+  product_comparison:
+    display: 'Product Comparison'
     sections:
       -
-        fields:
-          -
-            handle: specifications
-            field:
-              type: grid
-              display: Specifications
-              mode: stacked
-              add_row: 'Add Specification'
-              fields:
-                -
-                  handle: label
-                  field:
-                    type: text
-                    display: Label
-                    validate: required
-                    width: 50
-                -
-                  handle: value
-                  field:
-                    type: text
-                    display: Value
-                    validate: required
-                    width: 50
+        display: Dimention
+        collapsible: true
   sidebar:
     display: Sidebar
     sections:
