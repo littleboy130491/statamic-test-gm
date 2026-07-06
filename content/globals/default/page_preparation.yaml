@@ -1,5 +1,5 @@
 activate_mode: true
-background_image: hero-slide1.jpg
+background_image: coming-soon-banner.jpg
 heading: 'Segera Hadir'
 description:
   -
@@ -8,4 +8,4 @@ description:
       -
         type: text
         text: 'Halaman ini sedang dalam tahap pengembangan. Kami sedang mempersiapkan sesuatu yang baru untuk Anda. Mohon bersabar dan nantikan kehadirannya.'
-duration: '2026-07-04 17:00'
+duration: '2026-07-07 17:00'

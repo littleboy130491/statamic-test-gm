@@ -848,3 +848,10 @@ body:has(dialog[open].site-popup) {
 #single-header.is-sticky .container > div {
    border-bottom: none !important;
 }
+
+
+
+/* Page Preparation */
+.text-cust p {
+   color: white !important;
+}

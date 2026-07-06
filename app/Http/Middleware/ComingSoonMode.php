@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Statamic\Facades\GlobalSet;
+use Statamic\Facades\Site;
+
+class ComingSoonMode
+{
+    public function handle(Request $request, Closure $next)
+    {
+        // Control Panel selalu bisa diakses
+        if ($request->is('cp') || $request->is('cp/*')) {
+            return $next($request);
+        }
+
+        // Admin yang login tetap bisa lihat site normal
+        if (auth()->check()) {
+            return $next($request);
+        }
+
+        $global = GlobalSet::findByHandle('page_preparation')
+            ?->in(Site::current()->handle());
+
+        $active = $global?->get('activate_mode') ?? false;
+
+        if ($active) {
+            return response()->view('coming-soon', [
+                'global' => $global,
+            ], 503);
+        }
+
+        return $next($request);
+    }
+}

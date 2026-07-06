@@ -149,12 +149,26 @@ tabs:
                     type: toggle
                     display: Displayed
                     default: false
-  product_comparison:
-    display: 'Product Comparison'
+  comparison:
+    display: Comparison
     sections:
       -
         display: Dimention
         collapsible: true
+        fields:
+          -
+            handle: heading_dimension_1
+            field:
+              type: text
+              display: 'Heading Dimension 1'
+              validate:
+                - required
+      -
+        display: Engine
+      -
+        display: Chassis
+      -
+        display: 'Safety & Security'
   sidebar:
     display: Sidebar
     sections:

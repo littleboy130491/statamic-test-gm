@@ -10,6 +10,7 @@ export default defineConfig({
                 "resources/js/site.js",
                 "resources/css/app.css",
                 "resources/js/app.js",
+                "resources/js/coming-soon.js",
             ],
             refresh: true,
         }),
