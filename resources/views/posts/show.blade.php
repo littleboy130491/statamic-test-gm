@@ -74,6 +74,10 @@
                 ->count() > 0;
         });
 
+    // Gallery guard — pastikan collection, buang item null/kosong
+    $galleryImages = collect($page->gallery ?? [])->filter();
+    $hasGallery = $galleryImages->isNotEmpty();
+
     // Share icons
     $shareIcons = collect($blog['social_share'] ?? [])->filter(fn($s) => $s['show'] ?? false);
     $currentUrl = urlencode($page->absoluteUrl());
@@ -150,12 +154,12 @@
                         <div class="w-full md:w-[60%] lg:w-[70%] flex flex-col gap-10">
 
                             {{-- Gallery / Featured Image --}}
-                            @if ($page->gallery && $page->gallery->isNotEmpty())
+                            @if ($hasGallery)
                                 <div class="gallery-wrapper flex flex-col gap-4">
 
                                     {{-- Gambar besar --}}
                                     <div class="gallery-main rounded-2xl overflow-hidden">
-                                        @foreach ($page->gallery as $image)
+                                        @foreach ($galleryImages as $image)
                                             <div class="gallery-slide {{ $loop->first ? '' : 'hidden' }}">
                                                 <img src="{{ $image->url() }}" alt="{{ $image->alt ?? $page->title }}"
                                                     class="w-full aspect-video object-cover" />
@@ -178,10 +182,11 @@
                                         {{-- Track thumbnail (4 tampil) --}}
                                         <div
                                             class="gallery-thumbs-track flex overflow-x-auto scroll-smooth flex-1 scrollbar-none [&::-webkit-scrollbar]:hidden">
-                                            @foreach ($page->gallery as $image)
+                                            @foreach ($galleryImages as $image)
                                                 <button type="button"
                                                     class="gallery-thumb shrink-0 mr-3 last:mr-0 w-[calc((100%-3*0.75rem)/4)] rounded-xl overflow-hidden transition-opacity {{ $loop->first ? 'opacity-100' : 'opacity-50' }}">
-                                                    <img src="{{ $image->url() }}" alt="{{ $image->alt ?? $page->title }}"
+                                                    <img src="{{ $image->url() }}"
+                                                        alt="{{ $image->alt ?? $page->title }}"
                                                         class="w-full h-15 md:h-15 lg:h-30 object-cover" />
                                                 </button>
                                             @endforeach
@@ -200,7 +205,8 @@
 
                                 </div>
                             @elseif ($page->featured_image)
-                                <img src="{{ $page->featured_image->url() }}" alt="{{ $page->featured_image->alt ?? $page->title }}"
+                                <img src="{{ $page->featured_image->url() }}"
+                                    alt="{{ $page->featured_image->alt ?? $page->title }}"
                                     class="w-full aspect-video object-cover rounded-2xl" />
                             @endif
 
@@ -271,15 +277,15 @@
                                                 @if ($isCopy)
                                                     <a href="#"
                                                         class="share-link shrink-0 relative transition-opacity hover:opacity-70">
-                                                        <img src="{{ $iconUrl }}" alt="{{ $share['icon']?->alt ?? '' }}"
-                                                            class="w-5 h-5" />
+                                                        <img src="{{ $iconUrl }}"
+                                                            alt="{{ $share['icon']?->alt ?? '' }}" class="w-5 h-5" />
                                                     </a>
                                                 @else
                                                     <a href="{{ $link }}" target="_blank"
                                                         rel="noopener noreferrer"
                                                         class="shrink-0 transition-opacity hover:opacity-70">
-                                                        <img src="{{ $iconUrl }}" alt="{{ $share['icon']?->alt ?? '' }}"
-                                                            class="w-5 h-5" />
+                                                        <img src="{{ $iconUrl }}"
+                                                            alt="{{ $share['icon']?->alt ?? '' }}" class="w-5 h-5" />
                                                     </a>
                                                 @endif
                                             @endif
