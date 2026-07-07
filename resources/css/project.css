@@ -107,6 +107,13 @@ body.background-grey {
 
 
 
+/* Hero banner single produk */
+.heropage-product-overlay {
+   background: linear-gradient(180deg, #000 3.04%, rgba(0, 0, 0, 0.50) 59.98%, rgba(0, 0, 0, 0.00) 105.31%);
+}
+
+
+
 /* Judul informasi - KONTAK PAGE */
 .title-display {
    font-family: var(--font-display);

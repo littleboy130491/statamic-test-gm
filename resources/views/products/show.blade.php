@@ -95,9 +95,9 @@
                 {{-- Background Hero Banner --}}
                 @if ($backgroundImage)
                     <div id="background-hero-product" class="relative">
-                        <div class="heropage-overlay absolute inset-0"></div>
+                        <div class="heropage-product-overlay absolute inset-0"></div>
                         <img src="{{ $backgroundImage->url() }}" alt="{{ $backgroundImage->alt ?? $page->title }}"
-                            class="object-cover w-full h-[90vh] md:h-[70vh] lg:h-[95vh]">
+                            class="object-cover w-full h-[90vh] md:h-180 lg:h-185">
                     </div>
                 @endif
 
