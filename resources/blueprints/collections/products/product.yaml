@@ -60,6 +60,7 @@ tabs:
             handle: background_image
             field:
               container: assets
+              max_files: 1
               type: assets
               display: 'Background image'
               validate:

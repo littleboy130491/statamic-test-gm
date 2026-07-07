@@ -60,9 +60,7 @@
     $features = collect($page->features_and_benefits ?? [])
         ->filter(fn($f) => !empty($f['heading']) || !empty($f['image']))
         ->values();
-    // Slider dipakai kalau ada lebih dari 1 item. Swiper otomatis berhenti
-    // scroll & menyembunyikan arrow per-breakpoint saat semua slide muat
-    // (desktop: 3, tablet: 2, mobile: 1) lewat watchOverflow.
+
     $featuresIsSlider = $features->count() > 1;
 
     // Product Gallery
@@ -73,50 +71,48 @@
 
 <x-layouts.main :body-class="$bodyClass">
     @if ($hasHeader)
-        <x-layouts.header.single-header />
+        <x-layouts.header.header />
     @endif
 
     <main>
 
         {{-- Produk informasi --}}
         <section id="product-information">
-            <article class="container">
-                <div class="flex flex-col gap-10 lg:gap-15 pt-10 pb-18 lg:pt-20 lg:pb-30">
+            <div class="relative">
+                {{-- Background Hero Banner --}}
+                @if ($page->background_image)
+                    <div id="background-hero-product" class="relative">
+                        <div class="heropage-overlay absolute inset-0"></div>
+                        <img src="{{ $page->background_image->url() }}"
+                            alt="{{ $page->background_image->alt ?? $page->title }}"
+                            class="object-cover w-full h-[90vh] md:h-[70vh] lg:h-[95vh]">
+                    </div>
+                @endif
 
-                    {{-- Featured Image --}}
-                    @if ($page->featured_image)
-                        <div class="flex justify-center">
-                            <img src="{{ $page->featured_image->url() }}"
-                                alt="{{ $page->featured_image->alt ?? $page->title }}"
-                                class="w-full md:w-[80%] lg:w-[60%] aspect-video object-contain" />
-                        </div>
-                    @endif
+                <article class="container absolute inset-0 z-10 flex items-start md:items-end lg:items-end">
+                    <div class="flex flex-col lg:flex-row gap-15 md:gap-6 lg:gap-10 w-full">
 
-                    {{-- Konten --}}
-                    <div class="flex flex-col gap-3 lg:gap-6">
-                        <div class="flex flex-col gap-4">
-                            @if ($page->product_categories && $page->product_categories->isNotEmpty())
-                                <p
-                                    class="font-medium uppercase text-(--color-primary) text-left md:text-center lg:text-center">
-                                    @foreach ($page->product_categories as $category)
-                                        {{ $category->title }}
-                                        @unless ($loop->last)
-                                            ,
-                                        @endunless
-                                    @endforeach
-                                </p>
-                            @endif
-                            <h1 class="heading-single text-left md:text-center lg:text-center">{{ $page->title }}</h1>
-                        </div>
+                        {{-- Konten --}}
+                        <div class="flex flex-col gap-8 lg:gap-10 w-full mt-35 md:mt-0 lg:mt-0">
+                            <div class="flex flex-col gap-3">
+                                @if ($page->product_categories && $page->product_categories->isNotEmpty())
+                                    <p class="font-medium uppercase text-(--color-primary) text-left">
+                                        @foreach ($page->product_categories as $category)
+                                            {{ $category->title }}
+                                            @unless ($loop->last)
+                                                ,
+                                            @endunless
+                                        @endforeach
+                                    </p>
+                                @endif
 
-
-                        <div
-                            class="flex flex-col gap-8 lg:gap-10 md:justify-center md:items-center lg:justify-center lg:items-center">
-                            <div class="text-left md:text-center lg:text-center richtext w-full md:w-[80%] lg:w-[60%]">
-                                {!! $page->description !!}
+                                <h1 class="heading-single text-left text-white">{{ $page->title }}</h1>
+                                <div class="text-left richtext w-full text-cust">
+                                    {!! $page->description !!}
+                                </div>
                             </div>
 
-                            <div class="flex flex-wrap gap-3  md:justify-center lg:justify-center">
+                            <div class="flex flex-wrap gap-3">
 
                                 {{-- Button Kontak --}}
                                 @if ($ctaUrl)
@@ -133,16 +129,27 @@
                                 @endif
                             </div>
                         </div>
+
+                        {{-- Featured Image --}}
+                        @if ($page->featured_image)
+                            <div class="flex justify-center md:justify-end w-full">
+                                <img src="{{ $page->featured_image->url() }}"
+                                    alt="{{ $page->featured_image->alt ?? $page->title }}"
+                                    class="w-full md:w-[50%] lg:w-[90%] object-contain md:-mb-16 lg:-mb-20" />
+                            </div>
+                        @endif
+
                     </div>
-                </div>
-            </article>
+
+                </article>
+            </div>
         </section>
 
         {{-- Features & Benefit --}}
         @if ($features->isNotEmpty())
             <section id="features-benefit">
                 <div class="container">
-                    <div class="py-18 md:py-18 lg:py-30 flex flex-col gap-8 lg:gap-10">
+                    <div class="mb-18 mt-24 md:mb-18 lg:my-30 flex flex-col gap-8 lg:gap-10">
                         <div class="flex items-center justify-between gap-4">
                             <h2>{{ $product['benefit_label'] ?? '' }}</h2>
 
