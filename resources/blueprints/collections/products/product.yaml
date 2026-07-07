@@ -63,8 +63,6 @@ tabs:
               max_files: 1
               type: assets
               display: 'Background image'
-              validate:
-                - required
       -
         display: Spesification
         fields:

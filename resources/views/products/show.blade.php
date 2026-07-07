@@ -67,6 +67,19 @@
     $gallery = collect($page->product_gallery ?? [])
         ->filter()
         ->values();
+
+    // Background image + fallback placeholder
+    $backgroundImage = $page->background_image;
+
+    if (!$backgroundImage) {
+        $placeholder = $product['background_image_placeholder'] ?? null;
+        // Kalau placeholder-nya berupa Asset (augmented), pakai langsung; kalau string path, ambil dari asset container
+        if ($placeholder) {
+            $backgroundImage = is_object($placeholder)
+                ? $placeholder
+                : \Statamic\Facades\Asset::find('assets::' . ltrim($placeholder, '/'));
+        }
+    }
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
@@ -80,11 +93,10 @@
         <section id="product-information">
             <div class="relative">
                 {{-- Background Hero Banner --}}
-                @if ($page->background_image)
+                @if ($backgroundImage)
                     <div id="background-hero-product" class="relative">
                         <div class="heropage-overlay absolute inset-0"></div>
-                        <img src="{{ $page->background_image->url() }}"
-                            alt="{{ $page->background_image->alt ?? $page->title }}"
+                        <img src="{{ $backgroundImage->url() }}" alt="{{ $backgroundImage->alt ?? $page->title }}"
                             class="object-cover w-full h-[90vh] md:h-[70vh] lg:h-[95vh]">
                     </div>
                 @endif
