@@ -1,8 +1,13 @@
 @php
-    $form = \Statamic\Facades\GlobalSet::findByHandle('career_label_information')?->inCurrentSite()?->data();
+    $set = \Statamic\Facades\GlobalSet::findByHandle('career_label_information')?->inCurrentSite();
+    $form = $set?->data();
 
     $str = fn($val, $default = '') => is_array($val) || is_null($val) ? $default : (string) $val;
     $oldVal = fn($handle) => is_array($old[$handle] ?? null) ? '' : $old[$handle] ?? '';
+
+    // Bard fields -> augmented value biar jadi HTML
+    $successHtml = (string) ($set?->augmentedValue('success_message')?->value() ?? '');
+    $failedHtml = (string) ($set?->augmentedValue('message_failed')?->value() ?? '');
 @endphp
 
 <dialog id="career-popup" class="career-popup"
@@ -16,7 +21,8 @@
             &times;
         </button>
 
-        <statamic:form:career_apply :files="true" class="career-form flex flex-col gap-6 md:gap-8 lg:gap-8">
+        <statamic:form:career_apply :files="true" class="career-form flex flex-col gap-6 md:gap-8 lg:gap-8"
+            data-ajax-form>
 
             {{-- Heading & Description --}}
             @if (!empty($form['form_heading']) || !empty($form['form_description']))
@@ -85,26 +91,27 @@
             </div>
 
             {{-- Success --}}
-            @if ($success)
-                <div
-                    class="rounded-xl bg-green-50 px-5 py-4 text-(--color-primary)/50 border border-(--color-primary)/30">
-                    {{ $str($form['success_message'] ?? null, $success) }}
-                </div>
-            @endif
+            <div class="career-form-success rounded-xl bg-green-50 px-5 py-4 text-(--color-primary)/50 border border-(--color-primary)/30 {{ $success ? '' : 'hidden' }}"
+                data-success-message="{{ $successHtml }}">
+                @if ($success)
+                    {!! $successHtml !!}
+                @endif
+            </div>
 
             {{-- Error --}}
-            @if (count($errors))
-                <div class="rounded-xl bg-red-50 px-5 py-4 text-red-800 border border-red-800/30">
-                    @if (!empty($form['message_failed']))
-                        <p class="mb-2 font-medium">{{ $str($form['message_failed']) }}</p>
-                    @endif
-                    <ul class="flex flex-col gap-1">
-                        @foreach ($errors as $error_message)
-                            <li>{{ $str($error_message) }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            <div class="career-form-error rounded-xl bg-red-50 px-5 py-4 text-red-800 border border-red-800/30 {{ count($errors) ? '' : 'hidden' }}"
+                data-message-failed="{{ $failedHtml }}">
+                @if (!empty($failedHtml))
+                    <div class="career-form-error-heading mb-2 font-medium">{!! $failedHtml !!}</div>
+                @else
+                    <div class="career-form-error-heading mb-2 font-medium hidden"></div>
+                @endif
+                <ul class="career-form-error-list flex flex-col gap-1">
+                    @foreach ($errors as $error_message)
+                        <li>{{ $str($error_message) }}</li>
+                    @endforeach
+                </ul>
+            </div>
 
         </statamic:form:career_apply>
 

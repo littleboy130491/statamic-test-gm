@@ -45,8 +45,5 @@ tabs:
               hide_display: true
               validate:
                 - required
-                - 'mimes:pdf'
-                - 'mimes: doc'
-                - 'mimes: docx'
                 - 'max: 5120'
               always_save: false
