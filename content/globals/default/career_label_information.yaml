@@ -19,7 +19,37 @@ button_label: Selengkapnya
 form_heading: 'Bergabunglah Bersama Tim Kami'
 form_description: 'Kami mencari talenta berbakat yang siap berkolaborasi dan berkembang. Kirimkan data diri Anda untuk memulai perjalanan karir yang kompetitif.'
 button_submit_label: Kirim
-success_message: Sukses
-message_failed: Gagal
 label_input_file: 'Choose File'
 label_button_input_file: 'No File Choosen'
+success_message:
+  -
+    type: paragraph
+    content:
+      -
+        type: text
+        marks:
+          -
+            type: bold
+        text: 'Terima kasih, lamaran Anda telah kami terima.'
+  -
+    type: paragraph
+    content:
+      -
+        type: text
+        text: 'Kami telah menerima data dan berkas yang Anda kirimkan. Tim rekrutmen kami akan meninjaunya dengan seksama.'
+message_failed:
+  -
+    type: paragraph
+    content:
+      -
+        type: text
+        marks:
+          -
+            type: bold
+        text: 'Maaf, lamaran Anda tidak berhasil dikirim.'
+  -
+    type: paragraph
+    content:
+      -
+        type: text
+        text: 'Terjadi kendala saat mengirimkan data lamaran Anda. Kemungkinan ada masalah teknis pada sistem kami saat ini.'

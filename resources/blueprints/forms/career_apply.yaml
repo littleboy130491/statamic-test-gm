@@ -36,16 +36,17 @@ tabs:
               validate: 'required|max:50'
               width: 50
           -
-            handle: cv
+            handle: cv_resume
             field:
-              display: 'CV / Resume'
-              type: assets
               container: assets
               max_files: 1
-              folder: form-uploads/careers
+              type: assets
+              display: 'CV / Resume'
+              hide_display: true
               validate:
                 - required
-                - file
-                - 'mimes:pdf,doc,docx'
-                - 'max:5120'
-              hide_display: true
+                - 'mimes:pdf'
+                - 'mimes: doc'
+                - 'mimes: docx'
+                - 'max: 5120'
+              always_save: false

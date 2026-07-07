@@ -94,20 +94,6 @@ tabs:
               validate:
                 - required
           -
-            handle: success_message
-            field:
-              type: textarea
-              display: 'Success message'
-              validate:
-                - required
-          -
-            handle: message_failed
-            field:
-              type: textarea
-              display: 'Message failed'
-              validate:
-                - required
-          -
             handle: label_input_file
             field:
               type: text
@@ -123,3 +109,33 @@ tabs:
               width: 50
               validate:
                 - required
+          -
+            handle: success_message
+            field:
+              container: assets
+              remove_empty_nodes: false
+              type: bard
+              display: 'Success message'
+              validate:
+                - required
+              buttons:
+                - bold
+                - italic
+                - removeformat
+                - quote
+                - anchor
+          -
+            handle: message_failed
+            field:
+              container: assets
+              remove_empty_nodes: false
+              type: bard
+              display: 'Message failed'
+              validate:
+                - required
+              buttons:
+                - bold
+                - italic
+                - removeformat
+                - quote
+                - anchor
