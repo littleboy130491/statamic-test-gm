@@ -43,6 +43,7 @@
         ['label' => $product['torque'] ?? '', 'value' => $page->torque],
         ['label' => $product['dump_dimensions'] ?? '', 'value' => $page->dump_dimensions],
         ['label' => $product['gvw'] ?? '', 'value' => $page->gvw],
+        ['label' => $product['gvc'] ?? '', 'value' => $page->gvc],
         ['label' => $product['transmission'] ?? '', 'value' => $page->transmission],
         ['label' => $product['standard_emission'] ?? '', 'value' => $page->standard_emission],
         ['label' => $product['brake_system'] ?? '', 'value' => $page->brake_system],
@@ -53,6 +54,20 @@
             ),
         )
         ->filter(fn($s) => !empty($s['value']))
+        ->values();
+
+    // Features & Benefits
+    $features = collect($page->features_and_benefits ?? [])
+        ->filter(fn($f) => !empty($f['heading']) || !empty($f['image']))
+        ->values();
+    // Slider dipakai kalau ada lebih dari 1 item. Swiper otomatis berhenti
+    // scroll & menyembunyikan arrow per-breakpoint saat semua slide muat
+    // (desktop: 3, tablet: 2, mobile: 1) lewat watchOverflow.
+    $featuresIsSlider = $features->count() > 1;
+
+    // Product Gallery
+    $gallery = collect($page->product_gallery ?? [])
+        ->filter()
         ->values();
 @endphp
 
@@ -71,7 +86,8 @@
                     {{-- Featured Image --}}
                     @if ($page->featured_image)
                         <div class="flex justify-center">
-                            <img src="{{ $page->featured_image->url() }}" alt="{{ $page->featured_image->alt ?? $page->title }}"
+                            <img src="{{ $page->featured_image->url() }}"
+                                alt="{{ $page->featured_image->alt ?? $page->title }}"
                                 class="w-full md:w-[80%] lg:w-[60%] aspect-video object-contain" />
                         </div>
                     @endif
@@ -122,6 +138,100 @@
             </article>
         </section>
 
+        {{-- Features & Benefit --}}
+        @if ($features->isNotEmpty())
+            <section id="features-benefit">
+                <div class="container">
+                    <div class="py-18 md:py-18 lg:py-30 flex flex-col gap-8 lg:gap-10">
+                        <div class="flex items-center justify-between gap-4">
+                            <h2>{{ $product['benefit_label'] ?? '' }}</h2>
+
+                            @if ($featuresIsSlider)
+                                {{-- Arrow navigation --}}
+                                <div class="flex items-center gap-3 shrink-0">
+                                    {{-- Arrow Prev --}}
+                                    <button type="button" aria-label="Previous"
+                                        class="features-prev rounded-full w-10 h-10 lg:w-11 lg:h-11 text-(--color-primary) hover:text-white bg-(--color-surface) hover:bg-(--color-primary) p-3 transition-colors">
+                                        <svg class="rotate-180 w-full h-full" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
+
+                                    {{-- Arrow Next --}}
+                                    <button type="button" aria-label="Next"
+                                        class="features-next rounded-full w-10 h-10 lg:w-11 lg:h-11 text-(--color-primary) hover:text-white bg-(--color-surface) hover:bg-(--color-primary) p-3 transition-colors">
+                                        <svg class="w-full h-full" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            @endif
+                        </div>
+
+                        @if ($featuresIsSlider)
+                            {{-- Slider mode --}}
+                            <div class="swiper features-swiper">
+                                <div class="swiper-wrapper">
+                                    @foreach ($features as $feature)
+                                        <div class="swiper-slide bg-(--color-surface) overflow-hidden rounded-xl">
+                                            <div class="features-card flex flex-col h-full">
+                                                @if (!empty($feature['image']))
+                                                    <div class="features-card-image">
+                                                        <img src="{{ $feature['image']->url() }}"
+                                                            alt="{{ $feature['image']->alt ?? ($feature['heading'] ?? '') }}"
+                                                            class="w-full aspect-video object-cover" />
+                                                    </div>
+                                                @endif
+                                                <div class="p-5 flex flex-col gap-2">
+                                                    @if (!empty($feature['heading']))
+                                                        <h3 class="tracking-tight">
+                                                            {{ $feature['heading'] }}</h3>
+                                                    @endif
+                                                    @if (!empty($feature['description']))
+                                                        <div class="richtext text-(--color-body)">
+                                                            {!! $feature['description'] !!}
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @else
+                            {{-- Static mode --}}
+                            <div class="md:w-1/3">
+                                @foreach ($features as $feature)
+                                    <div
+                                        class="bg-(--color-surface) overflow-hidden rounded-xl features-card flex flex-col h-full">
+                                        @if (!empty($feature['image']))
+                                            <div class="features-card-image">
+                                                <img src="{{ $feature['image']->url() }}"
+                                                    alt="{{ $feature['image']->alt ?? ($feature['heading'] ?? '') }}"
+                                                    class="w-full aspect-video object-cover" />
+                                            </div>
+                                        @endif
+                                        <div class="p-5 flex flex-col gap-2">
+                                            @if (!empty($feature['heading']))
+                                                <h3 class="tracking-tight">{{ $feature['heading'] }}</h3>
+                                            @endif
+                                            @if (!empty($feature['description']))
+                                                <div class="richtext text-(--color-body)">
+                                                    {!! $feature['description'] !!}
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </section>
+        @endif
+
         {{-- Specification --}}
         @if ($specs->isNotEmpty())
             <section id="specification" class="bg-(--color-surface)">
@@ -138,6 +248,24 @@
                                     </div>
                                 @endforeach
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        @endif
+
+        {{-- Product Gallery --}}
+        @if ($gallery->isNotEmpty())
+            <section id="product-gallery" class="bg-(--color-surface)">
+                <div class="container">
+                    <div class="py-18 md:py-18 lg:py-30">
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6">
+                            @foreach ($gallery as $image)
+                                <div class="product-gallery-item">
+                                    <img src="{{ $image->url() }}" alt="{{ $image->alt ?? $page->title }}"
+                                        class="w-full aspect-square object-cover rounded-lg" />
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -18,6 +18,7 @@ product_not_found:
       -
         type: text
         text: 'Sepertinya produk yang sedang Anda cari sudah tidak lagi tersedia di katalog kami, atau mungkin tautan yang Anda gunakan sudah kedaluwarsa.'
+benefit_label: 'Fitur dan Benefit'
 type_labels: 'Tipe Model'
 model_labels: Model
 dimention_labels: Dimensi
@@ -29,9 +30,13 @@ icon_accordion:
 icon_accordion_active:
   - acc-product-active.svg
 image_placeholders: placeholder.jpg
+image_features_benefit_placeholder:
+  - placeholder.jpg
+background_image_placeholder: hero-placeholder.jpg
 power: Power
 torque: Torque
 gvw: GVW
+gvc: GVC
 standard_emission: 'Standard Emission'
 fuel_tank_capacity: 'Fuel Tank Capacity'
 dump_dimensions: 'Dump Dimensions'

@@ -23,6 +23,8 @@ tabs:
               container: assets
               max_files: 1
               localizable: true
+              validate:
+                - required
           -
             handle: description
             field:
@@ -44,12 +46,24 @@ tabs:
               display: 'CTA Label'
               default: 'Kontak Kami'
               localizable: true
+              validate:
+                - required
           -
             handle: cta_link
             field:
               type: link
               display: 'CTA Link'
               localizable: true
+              validate:
+                - required
+          -
+            handle: background_image
+            field:
+              container: assets
+              type: assets
+              display: 'Background image'
+              validate:
+                - required
       -
         display: Spesification
         fields:
@@ -82,6 +96,12 @@ tabs:
             field:
               type: text
               display: GVW
+              width: 33
+          -
+            handle: gvc
+            field:
+              type: text
+              display: GVC
               width: 33
           -
             handle: transmission
@@ -124,6 +144,57 @@ tabs:
                     validate:
                       - required
       -
+        display: 'Features & Benefit'
+        fields:
+          -
+            handle: features_and_benefits
+            field:
+              mode: stacked
+              type: grid
+              display: 'Features and benefits'
+              fields:
+                -
+                  handle: image
+                  field:
+                    container: assets
+                    max_files: 1
+                    type: assets
+                    display: Image
+                    validate:
+                      - required
+                -
+                  handle: heading
+                  field:
+                    type: text
+                    display: Heading
+                    validate:
+                      - required
+                -
+                  handle: description
+                  field:
+                    container: assets
+                    remove_empty_nodes: false
+                    type: bard
+                    display: Description
+                    validate:
+                      - required
+                    buttons:
+                      - bold
+                      - italic
+                      - unorderedlist
+                      - orderedlist
+                      - removeformat
+                      - anchor
+      -
+        display: 'Product Gallery'
+        fields:
+          -
+            handle: product_gallery
+            field:
+              container: assets
+              type: assets
+              display: 'Product Gallery'
+      -
         display: Catalogue
         fields:
           -
@@ -155,14 +226,6 @@ tabs:
       -
         display: Dimention
         collapsible: true
-        fields:
-          -
-            handle: heading_dimension_1
-            field:
-              type: text
-              display: 'Heading Dimension 1'
-              validate:
-                - required
       -
         display: Engine
       -

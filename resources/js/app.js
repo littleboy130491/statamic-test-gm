@@ -13,4 +13,5 @@ import './site-popup';
 import './share.js';
 import './counter.js';
 import './category-slider.js';
+import './features-slider.js';
 import './scroll-to-top.js';

@@ -526,6 +526,22 @@ blockquote {
     width: auto;
 }
 
+/* Sembunyikan arrow features saat semua slide muat (watchOverflow).
+   Swiper menambah .swiper-button-lock ke nav element yang direferensikan. */
+.features-prev.swiper-button-lock,
+.features-next.swiper-button-lock {
+    display: none;
+}
+
+/* Saat sudah di ujung (awal/akhir), arrow tidak bisa diklik lagi.
+   Swiper menambah .swiper-button-disabled ke nav element. */
+.features-prev.swiper-button-disabled,
+.features-next.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: default;
+    pointer-events: none;
+}
+
 
 
 /* Heading Single Produk dan Blog */
