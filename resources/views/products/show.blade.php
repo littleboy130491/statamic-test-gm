@@ -73,11 +73,22 @@
 
     if (!$backgroundImage) {
         $placeholder = $product['background_image_placeholder'] ?? null;
-        // Kalau placeholder-nya berupa Asset (augmented), pakai langsung; kalau string path, ambil dari asset container
         if ($placeholder) {
             $backgroundImage = is_object($placeholder)
                 ? $placeholder
                 : \Statamic\Facades\Asset::find('assets::' . ltrim($placeholder, '/'));
+        }
+    }
+
+    //  Background pattern
+    $backgroundPattern = $page->background_pattern_image;
+
+    if (!$backgroundPattern) {
+        $pattern = $product['background_pattern_image'] ?? null;
+        if ($pattern) {
+            $backgroundPattern = is_object($pattern)
+                ? $pattern
+                : \Statamic\Facades\Asset::find('assets::' . ltrim($pattern, '/'));
         }
     }
 @endphp
@@ -334,15 +345,25 @@
         @endif
 
         {{-- Comparison --}}
-        @if (!empty($page->comparison))
-            <section id="comparison">
-                <div class="container">
-                    <div class="py-18 md:py-18 lg:py-30">
-                        <h2>{{ $product['comparison_labels'] ?? '' }}</h2>
-                    </div>
+        <section id="comparison" class="overflow-hidden">
+
+            @if ($backgroundPattern)
+                <div class="absolute">
+                    <img src="{{ $backgroundPattern->url() }}" alt="{{ $backgroundPattern->alt ?? $page->title }}"
+                        class="h-full w-[40%] md:w-[50%] lg:w-100 opacity-20 lg:opacity-10">
                 </div>
-            </section>
-        @endif
+            @endif
+
+            <div class="container z-10">
+                <div class="py-18 md:py-18 lg:py-30">
+                    <h2>{{ $product['comparison_labels'] ?? '' }}</h2>
+
+                    {{-- Compare Grid --}}
+                    <div></div>
+                </div>
+            </div>
+
+        </section>
 
     </main>
 

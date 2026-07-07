@@ -156,6 +156,13 @@ tabs:
               display: 'Background image Placeholder'
               validate:
                 - required
+          -
+            handle: background_pattern_image
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Background Pattern Image'
       -
         display: Spesifikasi
         fields:

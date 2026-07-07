@@ -33,6 +33,7 @@ image_placeholders: placeholder.jpg
 image_features_benefit_placeholder:
   - placeholder.jpg
 background_image_placeholder: bg-produk.jpg
+background_pattern_image: pattern-single-product.png
 power: Power
 torque: Torque
 gvw: GVW
