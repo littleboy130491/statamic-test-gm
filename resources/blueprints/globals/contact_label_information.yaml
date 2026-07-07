@@ -43,14 +43,30 @@ tabs:
           -
             handle: success_message
             field:
-              type: textarea
+              buttons:
+                - bold
+                - italic
+                - removeformat
+                - quote
+                - anchor
+              container: assets
+              remove_empty_nodes: false
+              type: bard
               display: 'Success message'
               validate:
                 - required
           -
             handle: message_failed
             field:
-              type: textarea
+              buttons:
+                - bold
+                - italic
+                - removeformat
+                - quote
+                - anchor
+              container: assets
+              remove_empty_nodes: false
+              type: bard
               display: 'Message failed'
               validate:
                 - required

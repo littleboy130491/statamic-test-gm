@@ -3,3 +3,33 @@ email_heading: Email
 address_heading: Alamat
 social_media_labels: 'Sosial media'
 submit_button_label: Kirim
+success_message:
+  -
+    type: paragraph
+    content:
+      -
+        type: text
+        marks:
+          -
+            type: bold
+        text: 'Terima kasih, pesan Anda telah berhasil dikirim.'
+      -
+        type: text
+        text: |-
+
+          Kami telah menerima pesan Anda dan akan segera meninjaunya. Tim kami akan merespons sesegera mungkin melalui email atau nomor kontak yang Anda berikan.
+message_failed:
+  -
+    type: paragraph
+    content:
+      -
+        type: text
+        marks:
+          -
+            type: bold
+        text: 'Maaf, pesan Anda tidak berhasil dikirim.'
+      -
+        type: text
+        text: |-
+
+          Terjadi kendala saat mengirimkan pesan Anda. Ini bukan kesalahan Anda, kemungkinan ada masalah teknis pada sistem kami saat ini.

@@ -1,29 +1,14 @@
 @php
-    $contactLabel = \Statamic\Facades\GlobalSet::findByHandle('contact_label_information')?->inCurrentSite()?->data();
+    use Statamic\Facades\GlobalSet;
+
+    $set = GlobalSet::findByHandle('contact_label_information')?->inCurrentSite();
+    $contactLabel = $set?->augmentedValue('data')?->value() ?? [];
+
+    $successHtml = nl2br((string) ($set['success_message'] ?? ''));
+    $failedHtml = nl2br((string) ($set['message_failed'] ?? ''));
 @endphp
 
 <statamic:form:contact class="contact-form flex flex-col gap-4">
-
-    {{-- Success --}}
-    @if ($success)
-        <div class="rounded-xl bg-green-50 px-5 py-4 text-green-800">
-            {{ $contactLabel['success_message'] ?? $success }}
-        </div>
-    @endif
-
-    {{-- Error Summary --}}
-    @if (count($errors))
-        <div class="rounded-xl bg-red-50 px-5 py-4 text-red-800">
-            @if (!empty($contactLabel['message_failed']))
-                <p class="mb-2 font-medium">{{ $contactLabel['message_failed'] }}</p>
-            @endif
-            <ul class="flex flex-col gap-1">
-                @foreach ($errors as $error_message)
-                    <li>{{ $error_message }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
 
     {{-- Fields --}}
     <div class="flex flex-wrap gap-4">
@@ -63,5 +48,26 @@
             {{ $contactLabel['submit_button_label'] ?? 'Kirim' }}
         </button>
     </div>
+
+    {{-- Success --}}
+    @if ($success)
+        <div class="rounded-xl bg-green-50 px-5 py-4 text-(--color-primary)/50 border border-(--color-primary)/30">
+            {!! $successHtml ?: $success !!}
+        </div>
+    @endif
+
+    {{-- Error Summary --}}
+    @if (count($errors))
+        <div class="rounded-xl bg-red-50 px-5 py-4 text-red-800 border border-red-800/30">
+            @if (!empty($failedHtml))
+                <div class="mb-2 font-medium">{!! $failedHtml !!}</div>
+            @endif
+            <ul class="flex flex-col gap-1">
+                @foreach ($errors as $error_message)
+                    <li">{{ $error_message }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
 </statamic:form:contact>
