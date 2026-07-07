@@ -251,6 +251,66 @@
             </section>
         @endif
 
+        {{-- Product Gallery --}}
+        @if ($gallery->isNotEmpty())
+            <section id="product-gallery">
+                <div class="container overflow-hidden md:overflow-visible lg:overflow-visible">
+                    <div class="mb-18 md:mb-18 lg:mb-30">
+                        <div class="gallery-wrapper flex flex-col gap-4">
+
+                            {{-- Gambar besar --}}
+                            <div class="gallery-main rounded-2xl overflow-hidden">
+                                @foreach ($gallery as $image)
+                                    <div class="gallery-slide {{ $loop->first ? '' : 'hidden' }}">
+                                        <img src="{{ $image->url() }}" alt="{{ $image->alt ?? $page->title }}"
+                                            class="w-full h-90 object-contain" />
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            {{-- Thumbnail slider --}}
+                            @if ($gallery->count() > 1)
+                                <div class="flex items-center gap-1 md:gap-1 lg:gap-0">
+
+                                    {{-- Prev --}}
+                                    <button type="button" aria-label="Previous"
+                                        class="gallery-prev shrink-0 w-4 h-4 md:w-4 md:h-4 lg:w-6 lg:h-6 text-black -ml-4 md:-ml-4 lg:-ml-6">
+                                        <svg class="rotate-180 w-full h-full" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" stroke-width="1.5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
+
+                                    {{-- Track thumbnail --}}
+                                    <div
+                                        class="gallery-thumbs-track flex overflow-x-auto scroll-smooth flex-1 scrollbar-none [&::-webkit-scrollbar]:hidden">
+                                        @foreach ($gallery as $image)
+                                            <button type="button"
+                                                class="gallery-thumb shrink-0 mr-3 last:mr-0 w-[calc((100%-3*0.75rem)/4)] rounded-xl overflow-hidden transition-opacity {{ $loop->first ? 'opacity-100' : 'opacity-50' }}">
+                                                <img src="{{ $image->url() }}" alt="{{ $image->alt ?? $page->title }}"
+                                                    class="w-full h-15 md:h-15 lg:h-30 object-contain" />
+                                            </button>
+                                        @endforeach
+                                    </div>
+
+                                    {{-- Next --}}
+                                    <button type="button" aria-label="Next"
+                                        class="gallery-next shrink-0 w-4 h-4 md:w-4 md:h-4 lg:w-6 lg:h-6 text-black -mr-4 md:-mr-4 lg:-mr-6">
+                                        <svg class="w-full h-full" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" stroke-width="1.5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            @endif
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        @endif
+
         {{-- Specification --}}
         @if ($specs->isNotEmpty())
             <section id="specification" class="bg-(--color-surface)">
@@ -267,24 +327,6 @@
                                     </div>
                                 @endforeach
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        @endif
-
-        {{-- Product Gallery --}}
-        @if ($gallery->isNotEmpty())
-            <section id="product-gallery" class="bg-(--color-surface)">
-                <div class="container">
-                    <div class="py-18 md:py-18 lg:py-30">
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6">
-                            @foreach ($gallery as $image)
-                                <div class="product-gallery-item">
-                                    <img src="{{ $image->url() }}" alt="{{ $image->alt ?? $page->title }}"
-                                        class="w-full aspect-square object-cover rounded-lg" />
-                                </div>
-                            @endforeach
                         </div>
                     </div>
                 </div>
