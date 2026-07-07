@@ -591,7 +591,6 @@ blockquote {
 .contact-form-input,
 .contact-form-input::picker(select) {
   appearance: base-select;
-  cursor: pointer;
 }
 
 .contact-form-input::picker-icon {
