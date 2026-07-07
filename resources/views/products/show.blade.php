@@ -105,9 +105,10 @@
             <div class="relative">
                 {{-- Background Hero Banner --}}
                 @if ($backgroundImage)
-                    <div id="background-hero-product" class="relative">
+                    <div id="background-hero-product" class="relative pointer-events-none select-none">
                         <div class="heropage-product-overlay absolute inset-0"></div>
                         <img src="{{ $backgroundImage->url() }}" alt="{{ $backgroundImage->alt ?? $page->title }}"
+                            oncontextmenu="return false" draggable="false"
                             class="object-cover w-full h-[90vh] md:h-180 lg:h-185">
                     </div>
                 @endif
@@ -155,7 +156,7 @@
 
                         {{-- Featured Image --}}
                         @if ($page->featured_image)
-                            <div class="flex justify-center md:justify-end w-full">
+                            <div class="flex justify-center md:justify-end w-full pointer-events-none">
                                 <img src="{{ $page->featured_image->url() }}"
                                     alt="{{ $page->featured_image->alt ?? $page->title }}"
                                     class="w-full md:w-[50%] lg:w-[90%] object-contain md:-mb-16 lg:-mb-20" />
@@ -345,16 +346,17 @@
         @endif
 
         {{-- Comparison --}}
-        <section id="comparison" class="overflow-hidden">
+        <section id="comparison" class="relative overflow-hidden">
 
             @if ($backgroundPattern)
-                <div class="absolute">
+                <div class="absolute inset-0 z-0 pointer-events-none select-none">
                     <img src="{{ $backgroundPattern->url() }}" alt="{{ $backgroundPattern->alt ?? $page->title }}"
-                        class="h-full w-[40%] md:w-[50%] lg:w-100 opacity-20 lg:opacity-10">
+                        oncontextmenu="return false" draggable="false"
+                        class="h-full w-[40%] md:w-[50%] lg:w-100 opacity-20 lg:opacity-10 object-cover">
                 </div>
             @endif
 
-            <div class="container z-10">
+            <div class="container relative z-10">
                 <div class="py-18 md:py-18 lg:py-30">
                     <h2>{{ $product['comparison_labels'] ?? '' }}</h2>
 
