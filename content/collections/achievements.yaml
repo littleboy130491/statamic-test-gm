@@ -4,7 +4,7 @@ template: achievements/show
 layout: layout
 taxonomies:
   - years
-revisions: false
+revisions: true
 sort_by: title
 sort_dir: asc
 date_behavior:

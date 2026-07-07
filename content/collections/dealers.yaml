@@ -5,7 +5,7 @@ layout: layout
 mount: dealers
 taxonomies:
   - dealer_categories
-revisions: false
+revisions: true
 sort_by: title
 sort_dir: asc
 date_behavior:

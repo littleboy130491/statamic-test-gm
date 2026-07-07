@@ -2,7 +2,7 @@ title: 'Pop Up'
 icon: collections
 template: default
 layout: layout
-revisions: false
+revisions: true
 sort_dir: asc
 date_behavior:
   past: null

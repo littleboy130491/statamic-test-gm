@@ -3,8 +3,6 @@ id: home
 blueprint: page
 title: Beranda
 template: home
-updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1783322794
 sections:
   -
     id: ZLGXZE_k6w_GoDXYnWc7H
@@ -177,4 +175,6 @@ sections:
     show: true
     type: text_button
     enabled: true
+updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
+updated_at: 1783418142
 ---

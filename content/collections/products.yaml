@@ -8,4 +8,4 @@ template: products/show
 taxonomies:
   - product_categories
   - industries
-revisions: false
+revisions: true

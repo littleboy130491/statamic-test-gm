@@ -5,7 +5,7 @@ layout: layout
 taxonomies:
   - tags
   - locations
-revisions: false
+revisions: true
 route: '/karier/{slug}'
 date: true
 sort_by: title
