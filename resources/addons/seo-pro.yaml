@@ -1,6 +1,6 @@
 site_defaults:
   title: '@seo:title'
-  description: '@seo:content'
+  description: '@seo:description'
   site_name: '{{ config:app:name }}'
   site_name_position: after
   site_name_separator: '|'

@@ -92,7 +92,6 @@
         }
     }
 @endphp
-
 <x-layouts.main :body-class="$bodyClass">
     @if ($hasHeader)
         <x-layouts.header.header />
