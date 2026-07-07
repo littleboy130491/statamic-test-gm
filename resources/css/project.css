@@ -854,3 +854,47 @@ body:has(dialog[open].site-popup) {
 .text-cust p {
    color: white !important;
 }
+
+
+
+/* Scroll to Top */
+#scroll-to-top {
+   position: fixed;
+   right: 24px;
+   bottom: 24px;
+   z-index: 9999;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 40px;
+   height: 40px;
+   border: none;
+   border-radius: 100px;
+   background: var(--color-primary);
+   color: white;
+   cursor: pointer;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+   opacity: 0;
+   visibility: hidden;
+   transform: translateY(16px);
+   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.2s ease;
+}
+
+#scroll-to-top.is-visible {
+   opacity: 1;
+   visibility: visible;
+   transform: translateY(0);
+}
+
+#scroll-to-top:hover {
+   background: black;
+}
+
+@media (max-width: 640px) {
+   #scroll-to-top {
+      right: 16px;
+      bottom: 16px;
+      width: 40px;
+      height: 40px;
+   }
+}
