@@ -91,6 +91,41 @@
                 : \Statamic\Facades\Asset::find('assets::' . ltrim($pattern, '/'));
         }
     }
+
+    // Comparison — daftar produk berdasarkan kategori
+    $compareProducts = \Statamic\Facades\Entry::query()
+        ->where('collection', 'products')
+        ->where('site', \Statamic\Facades\Site::current()->handle())
+        ->orderBy('title')
+        ->get();
+
+    $compareGroups = $compareProducts
+        ->groupBy(fn($entry) => optional($entry->product_categories?->first())->title ?: 'Lainnya')
+        ->map(
+            fn($group) => $group->map(
+                fn($entry) => [
+                    'id' => $entry->id(),
+                    'label' => $entry->sku ?: $entry->title,
+                ],
+            ),
+        );
+
+    // Label spesifikasi perbandingan
+    $compareRowLabels = [
+        $product['model_labels'] ?? 'Model',
+        $product['power'] ?? 'Power',
+        $product['torque'] ?? 'Torque',
+        $product['standard_emission'] ?? 'Emission',
+        $product['gcw'] ?? 'GCW',
+        $product['gvw'] ?? 'GVW',
+        $product['fuel_tank_capacity'] ?? 'Fuel Tank Capacity',
+    ];
+
+    // Kolom perbandingan
+    $compareColumns = 3;
+
+    // Produk default
+    $compareDefaults = $compareProducts->pluck('id')->prepend($page->id)->unique()->values()->take($compareColumns);
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
@@ -366,16 +401,92 @@
                 <div class="absolute inset-0 z-0 pointer-events-none select-none">
                     <img src="{{ $backgroundPattern->url() }}" alt="{{ $backgroundPattern->alt ?? $page->title }}"
                         oncontextmenu="return false" draggable="false"
-                        class="h-full w-[40%] md:w-[50%] lg:w-100 opacity-20 lg:opacity-10">
+                        class="h-full w-[40%] md:w-[50%] lg:w-100 opacity-20 lg:opacity-10 object-cover">
                 </div>
             @endif
 
             <div class="container relative z-10">
-                <div class="py-18 md:py-18 lg:py-30">
+                <div class="py-18 md:py-18 lg:py-30 flex flex-col gap-8 lg:gap-10">
                     <h2>{{ $product['comparison_labels'] ?? '' }}</h2>
 
                     {{-- Compare Grid --}}
-                    <div></div>
+                    <div id="comparison-grid" data-endpoint="{{ url('/api/products') }}"
+                        data-empty-placeholder="{{ $product['empty_placeholder_data'] ?? '' }}">
+                        <div class="overflow-x-auto">
+                            <div class="min-w-180 lg:min-w-0">
+
+                                {{-- Baris dropdown --}}
+                                <div class="grid rounded-2xl bg-(--color-surface) p-2 pl-5"
+                                    style="grid-template-columns: minmax(140px, 1fr) repeat({{ $compareColumns }}, minmax(0, 1fr));">
+                                    <div class="flex items-center">
+                                        <p class="uppercase font-medium text-(--color-body)">
+                                            {{ $product['type_labels'] ?? 'Tipe Model' }}
+                                        </p>
+                                    </div>
+
+                                    @for ($col = 0; $col < $compareColumns; $col++)
+                                        <div class="px-2">
+                                            <div class="relative">
+                                                <select
+                                                    class="comparison-select w-full appearance-none rounded-full bg-white py-2.5 pl-4 pr-9 text-xs lg:text-sm text-(--color-body) focus:border-(--color-primary) focus:outline-none"
+                                                    data-column="{{ $col }}">
+                                                    @foreach ($compareGroups as $groupName => $items)
+                                                        <optgroup label="{{ strtoupper($groupName) }}">
+                                                            @foreach ($items as $item)
+                                                                <option value="{{ $item['id'] }}"
+                                                                    @selected(($compareDefaults[$col] ?? null) === $item['id'])>
+                                                                    {{ $item['label'] }}
+                                                                </option>
+                                                            @endforeach
+                                                        </optgroup>
+                                                    @endforeach
+                                                </select>
+                                                <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-(--color-body)"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                    stroke-width="2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    @endfor
+                                </div>
+
+                                {{-- Baris gambar --}}
+                                <div class="grid my-8"
+                                    style="grid-template-columns: minmax(140px, 1fr) repeat({{ $compareColumns }}, minmax(0, 1fr));">
+                                    <div></div>
+                                    @for ($col = 0; $col < $compareColumns; $col++)
+                                        <div
+                                            class="comparison-image-wrap px-2 md:px-3 lg:px-4 flex items-center justify-center h-32 md:h-36 lg:h-44">
+                                            <img data-comparison-image="{{ $col }}" src="" alt=""
+                                                class="comparison-image w-full h-full object-contain opacity-0 transition-opacity duration-300" />
+                                        </div>
+                                    @endfor
+                                </div>
+
+                                {{-- Baris spesifikasi --}}
+                                @foreach ($compareRowLabels as $rowIndex => $rowLabel)
+                                    <div class="comparison-row grid border-b border-[#CECECE] last:border-b-0"
+                                        data-row="{{ $rowIndex }}"
+                                        style="grid-template-columns: minmax(140px, 1fr) repeat({{ $compareColumns }}, minmax(0, 1fr));">
+                                        <div class="flex items-center py-4">
+                                            <p class="specifi-title text-xl lg:text-2xl">{{ $rowLabel }}</p>
+                                        </div>
+                                        @for ($col = 0; $col < $compareColumns; $col++)
+                                            <div
+                                                class="px-2 md:px-3 lg:px-4 flex items-center justify-center py-4 text-center">
+                                                <p class="text-(--color-body) {{ $rowIndex === 0 ? 'text-xl lg:text-2xl font-(family-name:--font-display) font-semibold' : 'text-base' }}"
+                                                    data-comparison-cell="{{ $col }}"
+                                                    data-row="{{ $rowIndex }}"></p>
+                                            </div>
+                                        @endfor
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

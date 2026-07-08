@@ -61,109 +61,6 @@ tabs:
               validate:
                 - required
       -
-        display: Comparison
-        fields:
-          -
-            handle: type_labels
-            field:
-              type: text
-              display: 'Type Labels'
-              validate:
-                - required
-              width: 50
-          -
-            handle: model_labels
-            field:
-              type: text
-              display: 'Model Labels'
-              validate:
-                - required
-              width: 50
-          -
-            handle: dimention_labels
-            field:
-              type: text
-              display: 'Dimention Labels'
-              width: 50
-          -
-            handle: engine_labels
-            field:
-              type: text
-              display: 'Engine Labels'
-              validate:
-                - required
-              width: 50
-          -
-            handle: chassis_labels
-            field:
-              type: text
-              display: 'Chassis Labels'
-              validate:
-                - required
-              width: 50
-          -
-            handle: safety_security_labels
-            field:
-              type: text
-              display: 'Safety & Security Labels'
-              validate:
-                - required
-              width: 50
-          -
-            handle: icon_accordion
-            field:
-              container: assets
-              type: assets
-              display: 'Icon Accordion'
-              width: 50
-              validate:
-                - required
-          -
-            handle: icon_accordion_active
-            field:
-              container: assets
-              type: assets
-              display: 'Icon Accordion Active'
-              width: 50
-              validate:
-                - required
-      -
-        display: 'Skin Product'
-        fields:
-          -
-            handle: image_placeholders
-            field:
-              container: assets
-              max_files: 1
-              type: assets
-              display: 'Image Placeholders'
-              validate:
-                - required
-          -
-            handle: image_features_benefit_placeholder
-            field:
-              container: assets
-              type: assets
-              display: 'Image Features & Benefit Placeholder'
-              validate:
-                - required
-          -
-            handle: background_image_placeholder
-            field:
-              container: assets
-              max_files: 1
-              type: assets
-              display: 'Background image Placeholder'
-              validate:
-                - required
-          -
-            handle: background_pattern_image
-            field:
-              container: assets
-              max_files: 1
-              type: assets
-              display: 'Background Pattern Image'
-      -
         display: Spesifikasi
         fields:
           -
@@ -238,3 +135,56 @@ tabs:
               width: 50
               validate:
                 - required
+      -
+        display: Comparison
+        fields:
+          -
+            handle: type_labels
+            field:
+              type: text
+              display: 'Type Labels'
+              validate:
+                - required
+          -
+            handle: empty_placeholder_data
+            field:
+              type: text
+              display: 'Empty Placeholder Data'
+              validate:
+                - required
+      -
+        display: 'Skin Product'
+        fields:
+          -
+            handle: image_placeholders
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Image Placeholders'
+              validate:
+                - required
+          -
+            handle: image_features_benefit_placeholder
+            field:
+              container: assets
+              type: assets
+              display: 'Image Features & Benefit Placeholder'
+              validate:
+                - required
+          -
+            handle: background_image_placeholder
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Background image Placeholder'
+              validate:
+                - required
+          -
+            handle: background_pattern_image
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Background Pattern Image'
