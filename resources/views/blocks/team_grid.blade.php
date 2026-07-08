@@ -31,7 +31,7 @@
                             @endforeach
                         @endif
                         @if ($member->name)
-                            <figcaption class="mt-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">{{ $member->name }}</figcaption>
+                            <figcaption class="notranslate mt-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">{{ $member->name }}</figcaption>
                         @endif
                         @if ($member->role)
                             <p class="text-sm font-semibold uppercase tracking-wide text-emerald-600">{{ $member->role }}</p>

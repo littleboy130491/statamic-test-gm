@@ -21,7 +21,7 @@
 
             {{-- Heading --}}
             <div class="richtext">
-                <h2 class="text-(--color-heading) title-display text-xl">{{ $entry->title }}</h2>
+                <h2 class="notranslate text-(--color-heading) title-display text-xl">{{ $entry->title }}</h2>
             </div>
 
             {{-- Kategori produk --}}

@@ -165,7 +165,7 @@
                                     </p>
                                 @endif
 
-                                <h1 class="heading-single text-left text-white">{{ $page->title }}</h1>
+                                <h1 class="notranslate heading-single text-left text-white">{{ $page->title }}</h1>
                                 <div class="text-left richtext w-full text-cust">
                                     {!! $page->description !!}
                                 </div>
@@ -432,7 +432,7 @@
                                                 @foreach ($compareGroups as $groupName => $items)
                                                     <optgroup label="{{ strtoupper($groupName) }}">
                                                         @foreach ($items as $item)
-                                                            <option value="{{ $item['id'] }}"
+                                                            <option value="{{ $item['id'] }}" class="notranslate"
                                                                 @selected(($compareDefaults[$col] ?? null) === $item['id'])>
                                                                 {{ $item['label'] }}
                                                             </option>

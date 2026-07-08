@@ -85,7 +85,7 @@
 
                             {{-- Profil --}}
                             <div class="flex flex-col gap-1">
-                                <p class="title-display text-xl md:text-xl lg:text-2xl tracking-tight">
+                                <p class="notranslate title-display text-xl md:text-xl lg:text-2xl tracking-tight">
                                     {{ $direkturUtama['name'] ?? '' }}</p>
                                 <p class="uppercase text-(--color-primary) font-medium">
                                     {{ $direkturUtama['role'] ?? '' }}</p>
@@ -140,7 +140,7 @@
 
                                                 {{-- Profil member --}}
                                                 <div class="flex flex-col gap-1">
-                                                    <p class="title-display text-xl md:text-xl lg:text-2xl">
+                                                    <p class="notranslate title-display text-xl md:text-xl lg:text-2xl">
                                                         {{ $member['name'] ?? '' }}</p>
                                                     <p class="text-(--color-primary) uppercase font-medium">
                                                         {{ $member['role'] ?? '' }}</p>

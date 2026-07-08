@@ -38,7 +38,7 @@
                                 />
                             @endforeach
                         @endif
-                        <p class="mt-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">{{ $product->title }}</p>
+                        <p class="notranslate mt-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">{{ $product->title }}</p>
                     </a>
                 @endforeach
             </div>

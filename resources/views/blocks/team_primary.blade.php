@@ -29,7 +29,7 @@
                 </div>
             @endif
             @if ($block->name)
-                <p class="text-lg font-bold text-zinc-900 dark:text-zinc-100">{{ $block->name }}</p>
+                <p class="notranslate text-lg font-bold text-zinc-900 dark:text-zinc-100">{{ $block->name }}</p>
             @endif
             @if ($block->role)
                 <p class="text-sm font-semibold uppercase tracking-wide text-emerald-600">{{ $block->role }}</p>
