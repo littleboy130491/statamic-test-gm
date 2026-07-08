@@ -40,40 +40,19 @@
         \Statamic\Facades\Site::current()->handle(),
     );
 
-    // Sumber tunggal untuk Spesifikasi & Comparison: field checkboxes
-    // "spesification_info". Options (key => label) diambil dari blueprint,
-    // key yang dicentang diambil dari value tersimpan. Menghasilkan daftar
-    // baris terurut: [ ['handle' => key, 'label' => label], ... ].
-    $specInfoRows = (function () use ($productGlobal) {
-        if (!$productGlobal) {
-            return collect();
+    $specOptions = collect(
+        $productGlobal?->blueprint()?->field('spesification_info')?->config()['options'] ?? [],
+    )->mapWithKeys(function ($opt, $k) {
+        if (is_array($opt) && array_key_exists('key', $opt)) {
+            return [$opt['key'] => $opt['value'] ?? $opt['key']];
         }
+        return [$k => $opt];
+    });
 
-        // Options (key => label) dari konfigurasi field di blueprint.
-        $options = collect(
-            $productGlobal->blueprint()?->field('spesification_info')?->config()['options'] ?? [],
-        )->mapWithKeys(function ($opt, $k) {
-            // Statamic menyimpan options sbisa sebagai list {key,value} atau map.
-            if (is_array($opt) && array_key_exists('key', $opt)) {
-                return [$opt['key'] => $opt['value'] ?? $opt['key']];
-            }
-            return [$k => $opt];
-        });
+    $selectedSpecKeys = collect($productGlobal?->value('spesification_info') ?? [])->filter(fn($v) => is_string($v));
 
-        // Key yang dicentang (mempertahankan urutan options).
-        $selected = collect($productGlobal->value('spesification_info') ?? [])->filter(fn($v) => is_string($v));
-
-        return $options
-            ->filter(fn($label, $key) => $selected->contains($key))
-            ->map(fn($label, $key) => ['handle' => $key, 'label' => $label ?: $key])
-            ->values();
-    })();
-
-    // Spesifikasi (section): label dari spesification_info, value dari field
-    // produk dengan handle = key. Baris "Additional" (product_specifications)
-    // TIDAK ikut compare, tapi tetap tampil di section spesifikasi.
-    $specs = $specInfoRows
-        ->map(fn($row) => ['label' => $row['label'], 'value' => $page->{$row['handle']}])
+    $specs = $specOptions
+        ->map(fn($label, $key) => ['label' => $label ?: $key, 'value' => $page->{$key}])
         ->concat(
             collect($page->product_specifications ?? [])->map(
                 fn($s) => ['label' => $s['heading'] ?? '', 'value' => $s['short_description'] ?? ''],
@@ -136,13 +115,15 @@
             ),
         );
 
-    // Baris comparison: Model (selalu) + baris dari spesification_info yang
-    // punya field produk (key cocok handle field produk). Key tanpa field
-    // diabaikan. product_specifications (Additional) TIDAK ikut compare.
     $productFieldHandles = $page->blueprint()?->fields()->all()->keys() ?? collect();
 
     $compareRows = collect([['handle' => 'model', 'label' => $productGlobal?->value('model_labels') ?: 'Model']])
-        ->concat($specInfoRows->filter(fn($row) => $productFieldHandles->contains($row['handle'])))
+        ->concat(
+            $specOptions
+                ->filter(fn($label, $key) => $selectedSpecKeys->contains($key) && $productFieldHandles->contains($key))
+                ->map(fn($label, $key) => ['handle' => $key, 'label' => $label ?: $key])
+                ->values(),
+        )
         ->values();
 
     // Kolom perbandingan

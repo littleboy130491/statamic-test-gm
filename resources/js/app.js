@@ -16,4 +16,4 @@ import './category-slider.js';
 import './features-slider.js';
 import './scroll-to-top.js';
 import './comparison.js';
-import './dropdown-scroll.js';
+import './comparison-dropdown.js';

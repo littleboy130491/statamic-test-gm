@@ -21,6 +21,7 @@ preferences:
         - product_categories
         - industries
         - status
+      after_save: continue_editing
     pages:
       view: list
       per_page: 100

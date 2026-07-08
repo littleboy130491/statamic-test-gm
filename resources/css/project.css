@@ -900,17 +900,9 @@ body:has(dialog[open].site-popup) {
 
 
 
-/* Form Kontak */
+/* Form Kontak (dipakai oleh <input>, <textarea>, dan tombol dropdown manual) */
 .contact-form-input {
-   font-family: var(--font-body);
-}
-
-.contact-form-input::placeholder {
-  opacity: 1;
-  color: var(--color-body);
-}
-
-.contact-form-input {
+  font-family: var(--font-body);
   color: var(--color-body);
   appearance: none;
   -webkit-appearance: none;
@@ -918,189 +910,151 @@ body:has(dialog[open].site-popup) {
   transition: border-color 0.2s ease;
 }
 
+.contact-form-input::placeholder {
+  opacity: 1;
+  color: var(--color-body);
+}
+
 .contact-form-input:focus {
   outline: none;
 }
 
-select.contact-form-input {
+/* Dropdown form kontak sekarang MANUAL (JS), sama seperti comparison —
+   lihat resources/js/comparison-dropdown.js & blok .cmp-dd-* di bawah.
+   <select> asli disembunyikan via .cmp-dd-native. */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Dropdown Comparison — MANUAL (JS), bukan customizable select bawaan.
+   Alasan: customizable select merender panel di top-layer sehingga menembus
+   sticky header dan tak bisa ditutup dari JS. Versi manual pakai z-index normal
+   sehingga tidak menimpa header. Lihat resources/js/comparison-dropdown.js. */
+
+/* <select> asli disembunyikan (tetap sumber data + trigger 'change' AJAX) */
+.cmp-dd-native {
+  display: none;
+}
+
+.cmp-dd {
+  position: relative;
+}
+
+/* Tombol trigger — mewarisi class asli dari <select> (pill/box, bg, padding,
+   font). Jadi comparison tetap pakai font display bold, kontak pakai font body. */
+.cmp-dd-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  cursor: pointer;
+  color: var(--color-body);
+  text-align: left;
+  transition: border-color 0.2s ease;
+}
+
+/* Khusus tombol comparison: font display bold (tombol mewarisi class
+   .comparison-select dari <select> asli). */
+.cmp-dd-button.comparison-select {
+  font-family: var(--font-display);
+  font-weight: bold;
+}
+
+.cmp-dd-button:focus {
+  outline: none;
+}
+
+.cmp-dd-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Teks placeholder (mis. "Pilih subjek") ditampilkan lebih normal/muted */
+.cmp-dd-button.is-placeholder {
+  font-weight: normal;
+  font-family: var(--font-body);
+}
+
+.cmp-dd-caret {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23767676' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 16px;
-  padding-right: 2.75rem;
+  background-position: center;
+  background-size: contain;
+  transition: transform 0.2s ease;
 }
 
-@media (min-width: 1024px) {
-  select.contact-form-input {
-    background-image: none;
-    padding-right: 0.5rem;
-  }
-
-  select.contact-form-input,
-  select.contact-form-input::picker(select) {
-    appearance: base-select;
-  }
-
-  .contact-form-input::picker-icon {
-    content: "";
-    width: 24px;
-    height: 24px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23767676' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-size: contain;
-    transition: rotate 0.2s ease;
-  }
-
-  .contact-form-input::picker(select) {
-    background-color: white;
-    border: 1px solid var(--color-line);
-    border-radius: 0.75rem;
-    padding: 0.5rem;
-    top: anchor(bottom);
-    bottom: auto;
-    left: anchor(left);
-    right: anchor(right);
-    margin-top: 0.3rem;
-    position-try-fallbacks: none;
-    max-height: 45vh;
-    overflow-y: auto;
-  }
-
-  .contact-form-input option {
-    padding: 0.4rem;
-    border-radius: 0.5rem;
-    color: var(--color-body);
-    cursor: pointer;
-  }
-
-  .contact-form-input option:hover {
-    background-color: var(--color-surface);
-  }
-
-  .contact-form-input option::checkmark {
-    display: none;
-  }
+.cmp-dd.is-open .cmp-dd-caret {
+  transform: rotate(180deg);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Dropdown Comparison (Desktop) */
-@media (min-width: 1024px) {
-  .comparison-select {
-    color: var(--color-body);
-    accent-color: var(--color-primary);
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    transition: border-color 0.2s ease;
-    font-family: var(--font-display);
-    font-weight: bold;
-    font-size: 1.1rem !important;
-  }
-
-  .comparison-select:focus {
-    outline: none;
-  }
-
-  .comparison-select,
-  .comparison-select::picker(select) {
-    appearance: base-select;
-  }
-
-  .comparison-select::picker-icon {
-    content: "";
-    width: 18px;
-    height: 18px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23767676' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-size: contain;
-    transition: rotate 0.2s ease;
-    margin-top: 4px;
-  }
-
-  /* Panel dropdown open — paksa ke bawah, tidak flip ke atas */
-  .comparison-select::picker(select) {
-    background-color: white;
-    border: 1px solid var(--color-line);
-    border-radius: 0.75rem;
-    padding: 0.2rem;
-    top: anchor(bottom);
-    bottom: auto;
-    left: anchor(left);
-    right: anchor(right);
-    margin-top: 0.2rem;
-    position-try-fallbacks: none;
-    max-height: 45vh;
-    overflow-y: auto;
-  }
-
-  /* Judul grup */
-  .comparison-select optgroup {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 0.8rem;
-    color: var(--color-body);
-    padding: 0.5rem 0.6rem 0.25rem;
-  }
-
-  /* Tiap option */
-  .comparison-select option {
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    color: var(--color-body);
-    background-color: white;
-    cursor: pointer;
-    font-family: var(--font-body);
-  }
-
-  .comparison-select option:checked {
-    background-color: var(--color-surface);
-  }
-
-  .comparison-select option::checkmark {
-    display: none;
-  }
+/* Panel — z-index normal, di bawah sticky header (header pakai z 9999) */
+.cmp-dd-panel {
+  position: absolute;
+  top: calc(100% + 0.3rem);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: white;
+  border: 1px solid var(--color-line);
+  border-radius: 0.75rem;
+  padding: 0.3rem;
+  max-height: 45vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-/* Dropdown Comparison (Tablet & Mobile) */
-@media (max-width: 1023px) {
-  .comparison-select {
-    color: var(--color-body);
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-color: white;
-    border-radius: 100px;
-    padding: 0.5rem 2.25rem 0.5rem 1rem;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23767676' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 16px;
-    cursor: pointer;
-    transition: border-color 0.2s ease;
-    font-family: var(--font-display);
-    font-weight: bold;
-    font-size: 0.85rem !important;
-  }
+.cmp-dd-panel[hidden] {
+  display: none;
+}
 
-  .comparison-select:focus {
-    outline: none;
-  }
+.cmp-dd-group {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--color-body);
+  padding: 0.5rem 0.6rem 0.25rem;
+}
+
+.cmp-dd-option {
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.5rem;
+  color: var(--color-body);
+  background-color: white;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+}
+
+.cmp-dd-option:hover {
+  background-color: var(--color-surface);
+}
+
+.cmp-dd-option.is-selected {
+  background-color: var(--color-surface);
+}
+
+.cmp-dd-option[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: default;
 }

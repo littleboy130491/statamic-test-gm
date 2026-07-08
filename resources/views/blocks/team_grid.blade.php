@@ -6,10 +6,8 @@
     };
 @endphp
 
-<section
-    @if ($block->anchor) id="{{ $block->anchor }}" @endif
-    class="px-4 py-12 sm:px-6 lg:py-16 {{ $sectionBg }}"
->
+<section @if ($block->anchor) id="{{ $block->anchor }}" @endif
+    class="px-4 py-12 sm:px-6 lg:py-16 {{ $sectionBg }}">
     <div class="mx-auto max-w-6xl">
         @if ($block->heading)
             <h2 class="mb-10 text-center text-2xl font-bold tracking-tight text-zinc-900 sm:text-3xl dark:text-zinc-100">
@@ -22,19 +20,17 @@
                     <figure class="text-center">
                         @if ($member->image)
                             @foreach ($member->image as $image)
-                                <x-asset-figure
-                                    :asset="$image"
-                                    :alt="$member->name"
-                                    :figure="false"
-                                    class="mx-auto aspect-[3/4] w-full max-w-xs rounded-xl object-cover"
-                                />
+                                <x-asset-figure :asset="$image" :alt="$member->name" :figure="false"
+                                    class="mx-auto aspect-3/4 w-full max-w-xs rounded-xl object-cover" />
                             @endforeach
                         @endif
                         @if ($member->name)
-                            <figcaption class="notranslate mt-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">{{ $member->name }}</figcaption>
+                            <figcaption class="notranslate mt-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
+                                {{ $member->name }}</figcaption>
                         @endif
                         @if ($member->role)
-                            <p class="text-sm font-semibold uppercase tracking-wide text-emerald-600">{{ $member->role }}</p>
+                            <p class="text-sm font-semibold uppercase tracking-wide text-emerald-600">{{ $member->role }}
+                            </p>
                         @endif
                     </figure>
                 @endforeach

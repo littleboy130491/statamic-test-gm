@@ -29,6 +29,7 @@ spesification_info:
   - gcw
   - gvw
   - fuel_tank_capacity
+  - add_fields
 image_placeholders: placeholder.jpg
 image_features_benefit_placeholder:
   - placeholder.jpg
