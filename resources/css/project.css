@@ -967,13 +967,15 @@ body:has(dialog[open].site-popup) {
 /* Dropdown Comparison (Desktop) */
 @media (min-width: 1024px) {
   .comparison-select {
-    font-family: var(--font-body);
     color: var(--color-body);
     accent-color: var(--color-primary);
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     transition: border-color 0.2s ease;
+    font-family: var(--font-display);
+    font-weight: bold;
+    font-size: 1.1rem !important;
   }
 
   .comparison-select:focus {
@@ -1035,9 +1037,7 @@ body:has(dialog[open].site-popup) {
 /* Dropdown Comparison (Tablet & Mobile) */
 @media (max-width: 1023px) {
   .comparison-select {
-    font-family: var(--font-body);
     color: var(--color-body);
-    accent-color: var(--color-primary);
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -1050,6 +1050,9 @@ body:has(dialog[open].site-popup) {
     background-size: 16px;
     cursor: pointer;
     transition: border-color 0.2s ease;
+    font-family: var(--font-display);
+    font-weight: bold;
+    font-size: 0.85rem !important;
   }
 
   .comparison-select:focus {
