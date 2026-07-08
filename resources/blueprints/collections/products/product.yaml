@@ -97,10 +97,10 @@ tabs:
               display: GVW
               width: 33
           -
-            handle: gvc
+            handle: gcw
             field:
               type: text
-              display: GVC
+              display: GCW
               width: 33
           -
             handle: transmission
@@ -175,8 +175,6 @@ tabs:
                     remove_empty_nodes: false
                     type: bard
                     display: Description
-                    validate:
-                      - required
                     buttons:
                       - bold
                       - italic
@@ -219,18 +217,6 @@ tabs:
                     type: toggle
                     display: Displayed
                     default: false
-  comparison:
-    display: Comparison
-    sections:
-      -
-        display: Dimention
-        collapsible: true
-      -
-        display: Engine
-      -
-        display: Chassis
-      -
-        display: 'Safety & Security'
   sidebar:
     display: Sidebar
     sections:

@@ -37,7 +37,7 @@ background_pattern_image: pattern-single-product.png
 power: Power
 torque: Torque
 gvw: GVW
-gvc: GVC
+gcw: GCW
 standard_emission: 'Standard Emission'
 fuel_tank_capacity: 'Fuel Tank Capacity'
 dump_dimensions: 'Dump Dimensions'

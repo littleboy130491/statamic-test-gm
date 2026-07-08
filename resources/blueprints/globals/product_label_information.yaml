@@ -191,10 +191,10 @@ tabs:
               validate:
                 - required
           -
-            handle: gvc
+            handle: gcw
             field:
               type: text
-              display: GVC
+              display: GCW
               width: 50
               validate:
                 - required

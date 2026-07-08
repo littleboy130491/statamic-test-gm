@@ -43,7 +43,7 @@
         ['label' => $product['torque'] ?? '', 'value' => $page->torque],
         ['label' => $product['dump_dimensions'] ?? '', 'value' => $page->dump_dimensions],
         ['label' => $product['gvw'] ?? '', 'value' => $page->gvw],
-        ['label' => $product['gvc'] ?? '', 'value' => $page->gvc],
+        ['label' => $product['gcw'] ?? '', 'value' => $page->gcw],
         ['label' => $product['transmission'] ?? '', 'value' => $page->transmission],
         ['label' => $product['standard_emission'] ?? '', 'value' => $page->standard_emission],
         ['label' => $product['brake_system'] ?? '', 'value' => $page->brake_system],
@@ -92,6 +92,7 @@
         }
     }
 @endphp
+
 <x-layouts.main :body-class="$bodyClass">
     @if ($hasHeader)
         <x-layouts.header.header />
@@ -205,19 +206,21 @@
                             <div class="swiper features-swiper">
                                 <div class="swiper-wrapper">
                                     @foreach ($features as $feature)
-                                        <div class="swiper-slide bg-(--color-surface) overflow-hidden rounded-xl">
+                                        <div
+                                            class="swiper-slide h-auto bg-(--color-surface) overflow-hidden rounded-xl">
                                             <div class="features-card flex flex-col h-full">
                                                 @if (!empty($feature['image']))
                                                     <div class="features-card-image">
                                                         <img src="{{ $feature['image']->url() }}"
                                                             alt="{{ $feature['image']->alt ?? ($feature['heading'] ?? '') }}"
-                                                            class="w-full aspect-video object-cover" />
+                                                            class="w-full aspect-square object-cover" />
                                                     </div>
                                                 @endif
                                                 <div class="p-5 flex flex-col gap-2">
                                                     @if (!empty($feature['heading']))
-                                                        <h3 class="tracking-tight">
-                                                            {{ $feature['heading'] }}</h3>
+                                                        <p
+                                                            class="tracking-tight font-(family-name:--font-display) font-semibold text-xl">
+                                                            {{ $feature['heading'] }}</p>
                                                     @endif
                                                     @if (!empty($feature['description']))
                                                         <div class="richtext text-(--color-body)">
@@ -240,7 +243,7 @@
                                             <div class="features-card-image">
                                                 <img src="{{ $feature['image']->url() }}"
                                                     alt="{{ $feature['image']->alt ?? ($feature['heading'] ?? '') }}"
-                                                    class="w-full aspect-video object-cover" />
+                                                    class="w-full aspect-square object-cover" />
                                             </div>
                                         @endif
                                         <div class="p-5 flex flex-col gap-2">
@@ -260,6 +263,18 @@
                     </div>
                 </div>
             </section>
+
+            @pushOnce('styles')
+                <style>
+                    .features-swiper .swiper-wrapper {
+                        align-items: stretch;
+                    }
+
+                    .features-swiper .swiper-slide {
+                        height: auto;
+                    }
+                </style>
+            @endPushOnce
         @endif
 
         {{-- Product Gallery --}}
@@ -351,7 +366,7 @@
                 <div class="absolute inset-0 z-0 pointer-events-none select-none">
                     <img src="{{ $backgroundPattern->url() }}" alt="{{ $backgroundPattern->alt ?? $page->title }}"
                         oncontextmenu="return false" draggable="false"
-                        class="h-full w-[40%] md:w-[50%] lg:w-100 opacity-20 lg:opacity-10 object-cover">
+                        class="h-full w-[40%] md:w-[50%] lg:w-100 opacity-20 lg:opacity-10">
                 </div>
             @endif
 
