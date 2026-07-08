@@ -42,7 +42,7 @@
                     @endif
                     @if ($block->phone)
                         <p class="text-2xl font-bold">
-                            <a href="tel:{{ preg_replace('/\s+/', '', $block->phone) }}" class="hover:underline">{{ $block->phone }}</a>
+                            <a href="tel:{{ preg_replace('/\s+/', '', $block->phone) }}" class="notranslate hover:underline">{{ $block->phone }}</a>
                         </p>
                     @endif
                     @if ($block->whatsapp_link)

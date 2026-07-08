@@ -124,7 +124,7 @@
                                         <div class="flex flex-col gap-1">
                                             @foreach ($phones as $phone)
                                                 <a href="tel:{{ preg_replace('/\s+/', '', $phone) }}"
-                                                    class="text-(--color-body) hover:text-(--color-secondary)">
+                                                    class="notranslate text-(--color-body) hover:text-(--color-secondary)">
                                                     {{ $phone }}
                                                 </a>
                                             @endforeach
@@ -142,7 +142,7 @@
                                         <div class="flex flex-col gap-1">
                                             @foreach ($emails as $email)
                                                 <a href="mailto:{{ $email }}"
-                                                    class="text-(--color-body) hover:text-(--color-secondary)">
+                                                    class="notranslate text-(--color-body) hover:text-(--color-secondary)">
                                                     {{ $email }}
                                                 </a>
                                             @endforeach
