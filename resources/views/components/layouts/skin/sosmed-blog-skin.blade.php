@@ -7,21 +7,34 @@
             ?->in(\Statamic\Facades\Site::current()->handle())
             ?->toAugmentedArray();
 
-    // Prioritas: 1 tag. Kalau tag kosong, fallback ke 1 kategori (aktif diprioritaskan)
-    $tags = collect($entry->tags ?? []);
+    $social = collect($entry->social_media ?? []);
     $cats = collect($entry->categories ?? []);
 
-    if ($tags->isNotEmpty()) {
-        $displayTerm = $tags->first();
+    if ($social->isNotEmpty()) {
+        $displayTerm = $social->first();
     } elseif ($currentCategory) {
         $displayTerm = $cats->firstWhere(fn($c) => (string) $c->slug() === (string) $currentCategory) ?? $cats->first();
     } else {
         $displayTerm = $cats->first();
     }
+
+    // Post kategori sosial-media
+    $isSocial = $cats->contains(fn($c) => (string) $c->slug() === 'sosial-media');
+    $rawLink = $isSocial ? $entry->value('social_media_links') : null;
+    if (is_string($rawLink) && str_starts_with($rawLink, 'entry::')) {
+        $socialLink = \Statamic\Facades\Entry::find(str_replace('entry::', '', $rawLink))?->url() ?? '';
+    } else {
+        $socialLink = is_string($rawLink) ? $rawLink : '';
+    }
+    $cardUrl = $socialLink !== '' ? $socialLink : $entry->url();
+    $cardTarget = $socialLink !== '' ? '_blank' : null;
+    $cardRel = $socialLink !== '' ? 'noopener noreferrer' : null;
 @endphp
 
 <article class="group overflow-hidden rounded-3xl bg-(--color-surface) flex flex-col">
-    <a href="{{ $entry->url() }}" class="flex flex-col">
+    <a href="{{ $cardUrl }}"
+        @if ($cardTarget) target="{{ $cardTarget }}" rel="{{ $cardRel }}" @endif
+        class="flex flex-col">
 
         {{-- Featured Image --}}
         <div class="overflow-hidden">
@@ -54,7 +67,8 @@
             </div>
 
             {{-- Button --}}
-            <a href="{{ $entry->url() }}"
+            <a href="{{ $cardUrl }}"
+                @if ($cardTarget) target="{{ $cardTarget }}" rel="{{ $cardRel }}" @endif
                 class="rounded-full py-2 pr-2 pl-6 flex items-center justify-between bg-white group-hover:bg-(--color-primary)">
                 <p class="uppercase title-display text-(--color-primary) tracking-widest group-hover:text-white -mb-1">
                     {{ $blog['label_button'] ?? 'Selengkapnya' }}

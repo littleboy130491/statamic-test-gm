@@ -90,22 +90,22 @@
         ->filter(fn($d) => $d['lat'] && $d['lng'])
         ->values();
 
-    // Highlight: 1 post terbaru
-    $blogHighlight = \Statamic\Facades\Entry::query()
+    // Blog terbaru
+    $blogLatest = \Statamic\Facades\Entry::query()
         ->where('collection', 'posts')
         ->whereStatus('published')
         ->orderBy('date', 'desc')
-        ->limit(1)
-        ->get();
+        ->get()
+        ->reject(
+            fn($post) => collect($post->categories ?? [])->contains(fn($c) => (string) $c->slug() === 'sosial-media'),
+        )
+        ->values();
+
+    // Highlight: 1 post terbaru
+    $blogHighlight = $blogLatest->take(1);
 
     // List: 3 post
-    $blogList = \Statamic\Facades\Entry::query()
-        ->where('collection', 'posts')
-        ->whereStatus('published')
-        ->orderBy('date', 'desc')
-        ->offset(1)
-        ->limit(3)
-        ->get();
+    $blogList = $blogLatest->slice(1, 3)->values();
 
     // Dealer kategeori
     $dealerCategories = \Statamic\Facades\Term::query()

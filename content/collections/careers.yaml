@@ -4,6 +4,7 @@ template: careers/show
 layout: layout
 taxonomies:
   - locations
+  - tags
 revisions: true
 route: '/karier/{slug}'
 date: true

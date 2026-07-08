@@ -52,7 +52,14 @@
         $relatedQuery->whereTaxonomyIn(collect($currentCategorySlugs)->map(fn($s) => 'categories::' . $s)->all());
     }
 
-    $posts = $relatedQuery->limit(3)->get();
+    // Exclude post kategori sosial-media di berita terkait
+    $posts = $relatedQuery
+        ->get()
+        ->reject(
+            fn($post) => collect($post->categories ?? [])->contains(fn($c) => (string) $c->slug() === 'sosial-media'),
+        )
+        ->take(3)
+        ->values();
 
     // Sidebar 3 post terbaru
     $latestPosts = \Statamic\Facades\Entry::query()
@@ -74,7 +81,6 @@
                 ->count() > 0;
         });
 
-    // Gallery guard — pastikan collection, buang item null/kosong
     $galleryImages = collect($page->gallery ?? [])->filter();
     $hasGallery = $galleryImages->isNotEmpty();
 

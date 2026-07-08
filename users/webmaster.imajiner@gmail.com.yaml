@@ -7,10 +7,9 @@ preferences:
     posts:
       view: list
       columns:
-        - featured_image
         - title
         - categories
-        - tags
+        - social_media
         - status
         - date
       per_page: 100

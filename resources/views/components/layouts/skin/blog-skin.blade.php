@@ -8,12 +8,12 @@
             ?->toAugmentedArray();
 
     $cats = collect($entry->categories ?? []);
-    $tags = collect($entry->tags ?? []);
+    $social = collect($entry->social_media ?? []);
 
-    // Khusus kategori sosial-media: tampil tag, fallback kategori sosial-media
+    // Khusus kategori sosial-media
     if ((string) $currentCategory === 'sosial-media') {
-        if ($tags->isNotEmpty()) {
-            $displayTerms = $tags->take(2);
+        if ($social->isNotEmpty()) {
+            $displayTerms = $social->take(2);
         } else {
             $displayTerms = $cats->filter(fn($c) => (string) $c->slug() === 'sosial-media')->take(1);
         }
@@ -24,10 +24,24 @@
     } else {
         $displayTerms = $cats->take(2);
     }
+
+    // Post kategori sosial-media
+    $isSocial = $cats->contains(fn($c) => (string) $c->slug() === 'sosial-media');
+    $rawLink = $isSocial ? $entry->value('social_media_links') : null;
+    if (is_string($rawLink) && str_starts_with($rawLink, 'entry::')) {
+        $socialLink = \Statamic\Facades\Entry::find(str_replace('entry::', '', $rawLink))?->url() ?? '';
+    } else {
+        $socialLink = is_string($rawLink) ? $rawLink : '';
+    }
+    $cardUrl = $socialLink !== '' ? $socialLink : $entry->url();
+    $cardTarget = $socialLink !== '' ? '_blank' : null;
+    $cardRel = $socialLink !== '' ? 'noopener noreferrer' : null;
 @endphp
 
 <article class="skin-blog-cust group overflow-hidden rounded-3xl bg-white flex flex-col">
-    <a href="{{ $entry->url() }}" class="flex-cust flex flex-col flex-1">
+    <a href="{{ $cardUrl }}"
+        @if ($cardTarget) target="{{ $cardTarget }}" rel="{{ $cardRel }}" @endif
+        class="flex-cust flex flex-col flex-1">
 
         {{-- Featured Image --}}
         <div class="img-high overflow-hidden">

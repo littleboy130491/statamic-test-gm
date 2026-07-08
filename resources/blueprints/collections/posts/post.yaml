@@ -15,6 +15,44 @@ tabs:
               validate:
                 - required
           -
+            handle: featured_image
+            field:
+              type: assets
+              display: 'Featured Image'
+              container: assets
+              max_files: 1
+              localizable: true
+          -
+            handle: categories
+            field:
+              type: terms
+              taxonomies:
+                - categories
+              display: Categories
+              localizable: true
+          -
+            handle: social_media
+            field:
+              taxonomies:
+                - social_media
+              type: terms
+              display: 'Social Media'
+              always_save: false
+              if:
+                categories: 'contains categories::sosial-media'
+              width: 50
+          -
+            handle: social_media_links
+            field:
+              type: link
+              display: 'Social Media Links'
+              width: 50
+              validate:
+                - required
+              always_save: false
+              if:
+                categories: 'contains categories::sosial-media'
+          -
             handle: excerpt
             field:
               type: textarea
@@ -47,6 +85,8 @@ tabs:
               remove_empty_nodes: false
               type: bard
               display: Description
+              unless:
+                categories: 'contains categories::sosial-media'
           -
             handle: gallery
             field:
@@ -57,22 +97,9 @@ tabs:
               localizable: true
               validate:
                 - image
-          -
-            handle: featured_image
-            field:
-              type: assets
-              display: 'Featured Image'
-              container: assets
-              max_files: 1
-              localizable: true
-          -
-            handle: categories
-            field:
-              type: terms
-              taxonomies:
-                - categories
-              display: Categories
-              localizable: true
+              always_save: false
+              unless:
+                categories: 'contains categories::sosial-media'
   sidebar:
     display: Sidebar
     sections:
