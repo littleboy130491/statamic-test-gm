@@ -23,7 +23,7 @@
     </header>
 
     @if ($page->location?->latitude && $page->location?->longitude)
-        <div id="dealer-map" class="mb-8 aspect-[16/9] w-full rounded-xl bg-zinc-100"
+        <div id="dealer-map" class="mb-8 aspect-video w-full rounded-xl bg-zinc-100"
             data-latitude="{{ $page->location->latitude }}" data-longitude="{{ $page->location->longitude }}"
             data-zoom="{{ $page->location->map_zoom ?: 14 }}" data-title="{{ $page->title }}"></div>
     @endif

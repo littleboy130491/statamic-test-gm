@@ -30,21 +30,22 @@ const setupComparison = () => {
 
     const isEmpty = (value) => value === undefined || value === null || String(value).trim() === '';
 
-    // Hide kolom kosong
+    // Sembunyikan baris yang kosong di semua kolom + isi tiap cell.
+    // Dicocokkan berdasarkan handle field (data-field), bukan urutan index.
     const refreshRows = () => {
         grid.querySelectorAll('.comparison-row').forEach((row) => {
-            const rowIndex = Number(row.dataset.row);
+            const field = row.dataset.field;
             let allEmpty = true;
 
-            columnValues.forEach((rows) => {
-                if (!isEmpty(rows[rowIndex])) allEmpty = false;
+            columnValues.forEach((values) => {
+                if (!isEmpty(values[field])) allEmpty = false;
             });
 
             row.classList.toggle('hidden', allEmpty);
 
             row.querySelectorAll('[data-comparison-cell]').forEach((cell) => {
                 const col = cell.dataset.comparisonCell;
-                const value = columnValues.get(col)?.[rowIndex];
+                const value = columnValues.get(col)?.[field];
                 cell.textContent = isEmpty(value) ? placeholder : value;
             });
         });
@@ -56,7 +57,12 @@ const setupComparison = () => {
             setColumnImage(image, data.image, data.title);
         }
 
-        columnValues.set(col, (data.rows || []).map((row) => row.value));
+        // Map handle field -> value untuk pencocokan yang aman.
+        const values = {};
+        (data.rows || []).forEach((row) => {
+            values[row.field] = row.value;
+        });
+        columnValues.set(col, values);
         refreshRows();
     };
 

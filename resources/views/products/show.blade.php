@@ -36,18 +36,44 @@
     $catalogueLabel = $catalogue['label'] ?? '';
     $catalogueUrl = $catalogue['url'] ?? '#';
 
-    // Spesifikasi
-    $specs = collect([
-        ['label' => $product['power'] ?? '', 'value' => $page->power],
-        ['label' => $product['fuel_tank_capacity'] ?? '', 'value' => $page->fuel_tank_capacity],
-        ['label' => $product['torque'] ?? '', 'value' => $page->torque],
-        ['label' => $product['dump_dimensions'] ?? '', 'value' => $page->dump_dimensions],
-        ['label' => $product['gvw'] ?? '', 'value' => $page->gvw],
-        ['label' => $product['gcw'] ?? '', 'value' => $page->gcw],
-        ['label' => $product['transmission'] ?? '', 'value' => $page->transmission],
-        ['label' => $product['standard_emission'] ?? '', 'value' => $page->standard_emission],
-        ['label' => $product['brake_system'] ?? '', 'value' => $page->brake_system],
-    ])
+    $productGlobal = \Statamic\Facades\GlobalSet::findByHandle('product_label_information')?->in(
+        \Statamic\Facades\Site::current()->handle(),
+    );
+
+    // Sumber tunggal untuk Spesifikasi & Comparison: field checkboxes
+    // "spesification_info". Options (key => label) diambil dari blueprint,
+    // key yang dicentang diambil dari value tersimpan. Menghasilkan daftar
+    // baris terurut: [ ['handle' => key, 'label' => label], ... ].
+    $specInfoRows = (function () use ($productGlobal) {
+        if (!$productGlobal) {
+            return collect();
+        }
+
+        // Options (key => label) dari konfigurasi field di blueprint.
+        $options = collect(
+            $productGlobal->blueprint()?->field('spesification_info')?->config()['options'] ?? [],
+        )->mapWithKeys(function ($opt, $k) {
+            // Statamic menyimpan options sbisa sebagai list {key,value} atau map.
+            if (is_array($opt) && array_key_exists('key', $opt)) {
+                return [$opt['key'] => $opt['value'] ?? $opt['key']];
+            }
+            return [$k => $opt];
+        });
+
+        // Key yang dicentang (mempertahankan urutan options).
+        $selected = collect($productGlobal->value('spesification_info') ?? [])->filter(fn($v) => is_string($v));
+
+        return $options
+            ->filter(fn($label, $key) => $selected->contains($key))
+            ->map(fn($label, $key) => ['handle' => $key, 'label' => $label ?: $key])
+            ->values();
+    })();
+
+    // Spesifikasi (section): label dari spesification_info, value dari field
+    // produk dengan handle = key. Baris "Additional" (product_specifications)
+    // TIDAK ikut compare, tapi tetap tampil di section spesifikasi.
+    $specs = $specInfoRows
+        ->map(fn($row) => ['label' => $row['label'], 'value' => $page->{$row['handle']}])
         ->concat(
             collect($page->product_specifications ?? [])->map(
                 fn($s) => ['label' => $s['heading'] ?? '', 'value' => $s['short_description'] ?? ''],
@@ -92,7 +118,7 @@
         }
     }
 
-    // Comparison — daftar produk berdasarkan kategori
+    // Comparison
     $compareProducts = \Statamic\Facades\Entry::query()
         ->where('collection', 'products')
         ->where('site', \Statamic\Facades\Site::current()->handle())
@@ -110,21 +136,17 @@
             ),
         );
 
-    // Label spesifikasi perbandingan
-    $compareRowLabels = [
-        $product['model_labels'] ?? 'Model',
-        $product['power'] ?? 'Power',
-        $product['torque'] ?? 'Torque',
-        $product['standard_emission'] ?? 'Emission',
-        $product['gcw'] ?? 'GCW',
-        $product['gvw'] ?? 'GVW',
-        $product['fuel_tank_capacity'] ?? 'Fuel Tank Capacity',
-    ];
+    // Baris comparison: Model (selalu) + baris dari spesification_info yang
+    // punya field produk (key cocok handle field produk). Key tanpa field
+    // diabaikan. product_specifications (Additional) TIDAK ikut compare.
+    $productFieldHandles = $page->blueprint()?->fields()->all()->keys() ?? collect();
+
+    $compareRows = collect([['handle' => 'model', 'label' => $productGlobal?->value('model_labels') ?: 'Model']])
+        ->concat($specInfoRows->filter(fn($row) => $productFieldHandles->contains($row['handle'])))
+        ->values();
 
     // Kolom perbandingan
     $compareColumns = 3;
-
-    // Produk default
     $compareDefaults = $compareProducts->pluck('id')->prepend($page->id)->unique()->values()->take($compareColumns);
 @endphp
 
@@ -459,13 +481,13 @@
                                 </div>
 
                                 {{-- Baris spesifikasi --}}
-                                @foreach ($compareRowLabels as $rowIndex => $rowLabel)
+                                @foreach ($compareRows as $rowIndex => $row)
                                     <div class="comparison-row grid border-b border-(--color-line) last:border-b-0"
-                                        data-row="{{ $rowIndex }}"
+                                        data-row="{{ $rowIndex }}" data-field="{{ $row['handle'] }}"
                                         style="grid-template-columns: minmax(140px, 1fr) repeat({{ $compareColumns }}, minmax(0, 1fr));">
                                         <div class="flex items-center py-4 pl-5">
                                             <p class="specifi-title md:text-xl lg:text-2xl">
-                                                {{ $rowLabel }}</p>
+                                                {{ $row['label'] }}</p>
                                         </div>
                                         @for ($col = 0; $col < $compareColumns; $col++)
                                             <div

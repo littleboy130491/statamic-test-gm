@@ -61,88 +61,22 @@ tabs:
               validate:
                 - required
       -
-        display: Spesifikasi
-        fields:
-          -
-            handle: power
-            field:
-              type: text
-              display: Power
-              width: 50
-              validate:
-                - required
-          -
-            handle: torque
-            field:
-              type: text
-              display: Torque
-              width: 50
-              validate:
-                - required
-          -
-            handle: gvw
-            field:
-              type: text
-              display: GVW
-              width: 50
-              validate:
-                - required
-          -
-            handle: gcw
-            field:
-              type: text
-              display: GCW
-              width: 50
-              validate:
-                - required
-          -
-            handle: standard_emission
-            field:
-              type: text
-              display: 'Standard Emission'
-              width: 50
-              validate:
-                - required
-          -
-            handle: fuel_tank_capacity
-            field:
-              type: text
-              display: 'Fuel Tank Capacity'
-              width: 50
-              validate:
-                - required
-          -
-            handle: dump_dimensions
-            field:
-              type: text
-              display: 'Dump Dimensions'
-              width: 50
-              validate:
-                - required
-          -
-            handle: transmission
-            field:
-              type: text
-              display: Transmission
-              width: 50
-              validate:
-                - required
-          -
-            handle: brake_system
-            field:
-              type: text
-              display: 'Brake System'
-              width: 50
-              validate:
-                - required
-      -
-        display: Comparison
+        display: 'Comparison & Spesification'
         fields:
           -
             handle: type_labels
             field:
               type: text
               display: 'Type Labels'
+              validate:
+                - required
+              width: 33
+          -
+            handle: model_labels
+            field:
+              type: text
+              display: 'Model Labels'
+              width: 33
               validate:
                 - required
           -
@@ -152,6 +86,47 @@ tabs:
               display: 'Empty Placeholder Data'
               validate:
                 - required
+              width: 33
+          -
+            handle: spesification_info
+            field:
+              type: checkboxes
+              display: 'Spesification Info'
+              options:
+                -
+                  key: power
+                  value: Power
+                -
+                  key: torque
+                  value: Torque
+                -
+                  key: standard_emission
+                  value: 'Standard Emission'
+                -
+                  key: gcw
+                  value: GCW
+                -
+                  key: gvw
+                  value: GVW
+                -
+                  key: fuel_tank_capacity
+                  value: 'Fuel Tank Capacity'
+                -
+                  key: dump_dimensions
+                  value: 'Dump Dimensions'
+                -
+                  key: transmission
+                  value: Transmission
+                -
+                  key: brake_system
+                  value: 'Brake System'
+              default:
+                - power
+                - torque
+                - standard_emission
+                - gcw
+                - gvw
+                - fuel_tank_capacity
       -
         display: 'Skin Product'
         fields:

@@ -25,23 +25,41 @@ Route::get('/api/products/{id}/comparison', function (string $id) {
         return response()->json(['message' => 'Product not found'], 404);
     }
 
-    $labels = GlobalSet::findByHandle('product_label_information')
-        ?->in($site)
-        ?->toAugmentedArray() ?? [];
+    $global = GlobalSet::findByHandle('product_label_information')?->in($site);
 
     $image = $entry->augmentedValue('featured_image')->value();
 
+    // Sumber tunggal: checkboxes "spesification_info".
+    // Options (key => label) dari blueprint, key tercentang dari value.
+    $options = collect($global?->blueprint()?->field('spesification_info')?->config()['options'] ?? [])
+        ->mapWithKeys(function ($opt, $k) {
+            if (is_array($opt) && array_key_exists('key', $opt)) {
+                return [$opt['key'] => $opt['value'] ?? $opt['key']];
+            }
+            return [$k => $opt];
+        });
+
+    $selected = collect($global?->value('spesification_info') ?? [])->filter(fn ($v) => is_string($v));
+
+    // Handle field yang benar-benar ada di produk (key tanpa field diabaikan).
+    $productFieldHandles = $entry->blueprint()?->fields()->all()->keys() ?? collect();
+
+    $specRows = $options
+        ->filter(fn ($label, $key) => $selected->contains($key) && $productFieldHandles->contains($key))
+        ->map(fn ($label, $key) => [
+            'field' => $key,
+            'label' => $label ?: $key,
+            'value' => $entry->value($key),
+        ])
+        ->values();
+
+    // Baris Model selalu paling atas, lalu baris dari spesification_info.
     $rows = collect([
-        ['label' => $labels['model_labels'] ?? 'Model', 'value' => $entry->value('sku') ?: $entry->value('title')],
-        ['label' => $labels['power'] ?? 'Power', 'value' => $entry->value('power')],
-        ['label' => $labels['torque'] ?? 'Torque', 'value' => $entry->value('torque')],
-        ['label' => $labels['standard_emission'] ?? 'Emission', 'value' => $entry->value('standard_emission')],
-        ['label' => $labels['gcw'] ?? 'GCW', 'value' => $entry->value('gcw')],
-        ['label' => $labels['gvw'] ?? 'GVW', 'value' => $entry->value('gvw')],
-        ['label' => $labels['fuel_tank_capacity'] ?? 'Fuel Tank Capacity', 'value' => $entry->value('fuel_tank_capacity')],
-    ])->map(fn ($row) => [
+        ['field' => 'model', 'label' => $global?->value('model_labels') ?: 'Model', 'value' => $entry->value('sku') ?: $entry->value('title')],
+    ])->concat($specRows)->map(fn ($row) => [
+        'field' => $row['field'],
         'label' => $row['label'],
-        // Nilai kosong (placeholder / hide baris).
+        // Nilai kosong ditangani klien (placeholder / hide baris).
         'value' => (string) ($row['value'] ?? ''),
     ])->values();
 
