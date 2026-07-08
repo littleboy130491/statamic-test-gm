@@ -3,7 +3,7 @@ site_defaults:
   description: '@seo:description'
   site_name: '{{ config:app:name }}'
   site_name_position: after
-  site_name_separator: '|'
+  site_name_separator: '-'
   canonical_url: '@seo:permalink'
   json_ld_entity: organization
   robots_indexing: index

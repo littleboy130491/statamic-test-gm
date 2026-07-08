@@ -5,6 +5,7 @@ layout: layout
 taxonomies:
   - categories
   - tags
+  - social_media
 revisions: true
 route: '/berita-dan-artikel/{slug}'
 date: true

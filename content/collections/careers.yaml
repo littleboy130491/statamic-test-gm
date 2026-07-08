@@ -3,7 +3,6 @@ icon: collections
 template: careers/show
 layout: layout
 taxonomies:
-  - tags
   - locations
 revisions: true
 route: '/karier/{slug}'
