@@ -932,7 +932,7 @@ body:has(dialog[open].site-popup) {
 
 
 
-/* Comparison image loading skeleton (shimmer saat gambar preload via AJAX) */
+/* Comparison image loading skeleton */
 .comparison-image-wrap {
     position: relative;
 }
@@ -964,3 +964,96 @@ body:has(dialog[open].site-popup) {
 
 
 
+/* Dropdown Comparison (Desktop) */
+@media (min-width: 1024px) {
+  .comparison-select {
+    font-family: var(--font-body);
+    color: var(--color-body);
+    accent-color: var(--color-primary);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .comparison-select:focus {
+    outline: none;
+  }
+
+  .comparison-select,
+  .comparison-select::picker(select) {
+    appearance: base-select;
+  }
+
+  .comparison-select::picker-icon {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23767676' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: rotate 0.2s ease;
+  }
+
+  /* Panel dropdown open */
+  .comparison-select::picker(select) {
+    background-color: white;
+    border: 1px solid var(--color-line);
+    border-radius: 0.75rem;
+    padding: 0.2rem;
+    margin-top: 0.2rem;
+  }
+
+  /* Judul grup */
+  .comparison-select optgroup {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--color-body);
+    padding: 0.5rem 0.6rem 0.25rem;
+  }
+
+  /* Tiap option */
+  .comparison-select option {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--color-body);
+    background-color: white;
+    cursor: pointer;
+    font-family: var(--font-body);
+  }
+
+  .comparison-select option:checked {
+    background-color: var(--color-surface);
+  }
+
+  .comparison-select option::checkmark {
+    display: none;
+  }
+}
+
+/* Dropdown Comparison (Tablet & Mobile) */
+@media (max-width: 1023px) {
+  .comparison-select {
+    font-family: var(--font-body);
+    color: var(--color-body);
+    accent-color: var(--color-primary);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    border-radius: 100px;
+    padding: 0.5rem 2.25rem 0.5rem 1rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23767676' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+  }
+
+  .comparison-select:focus {
+    outline: none;
+    border-color: none;
+  }
+}

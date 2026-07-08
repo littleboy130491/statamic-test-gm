@@ -401,7 +401,7 @@
                 <div class="absolute inset-0 z-0 pointer-events-none select-none">
                     <img src="{{ $backgroundPattern->url() }}" alt="{{ $backgroundPattern->alt ?? $page->title }}"
                         oncontextmenu="return false" draggable="false"
-                        class="h-full w-[40%] md:w-[50%] lg:w-100 opacity-20 lg:opacity-10 object-cover">
+                        class="h-full w-[40%] md:w-[50%] lg:w-100 opacity-10 object-cover">
                 </div>
             @endif
 
@@ -426,28 +426,20 @@
 
                                     @for ($col = 0; $col < $compareColumns; $col++)
                                         <div class="px-2">
-                                            <div class="relative">
-                                                <select
-                                                    class="comparison-select w-full appearance-none rounded-full bg-white py-2.5 pl-4 pr-9 text-xs lg:text-sm text-(--color-body) focus:border-(--color-primary) focus:outline-none"
-                                                    data-column="{{ $col }}">
-                                                    @foreach ($compareGroups as $groupName => $items)
-                                                        <optgroup label="{{ strtoupper($groupName) }}">
-                                                            @foreach ($items as $item)
-                                                                <option value="{{ $item['id'] }}"
-                                                                    @selected(($compareDefaults[$col] ?? null) === $item['id'])>
-                                                                    {{ $item['label'] }}
-                                                                </option>
-                                                            @endforeach
-                                                        </optgroup>
-                                                    @endforeach
-                                                </select>
-                                                <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-(--color-body)"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                                    stroke-width="2">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M19 9l-7 7-7-7" />
-                                                </svg>
-                                            </div>
+                                            <select
+                                                class="comparison-select w-full rounded-full bg-white py-2.5 pl-4 pr-4 text-xs lg:text-sm text-(--color-body) focus:outline-none"
+                                                data-column="{{ $col }}">
+                                                @foreach ($compareGroups as $groupName => $items)
+                                                    <optgroup label="{{ strtoupper($groupName) }}">
+                                                        @foreach ($items as $item)
+                                                            <option value="{{ $item['id'] }}"
+                                                                @selected(($compareDefaults[$col] ?? null) === $item['id'])>
+                                                                {{ $item['label'] }}
+                                                            </option>
+                                                        @endforeach
+                                                    </optgroup>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     @endfor
                                 </div>
@@ -459,7 +451,8 @@
                                     @for ($col = 0; $col < $compareColumns; $col++)
                                         <div
                                             class="comparison-image-wrap px-2 md:px-3 lg:px-4 flex items-center justify-center h-32 md:h-36 lg:h-44">
-                                            <img data-comparison-image="{{ $col }}" src="" alt=""
+                                            <img data-comparison-image="{{ $col }}" src=""
+                                                alt=""
                                                 class="comparison-image w-full h-full object-contain opacity-0 transition-opacity duration-300" />
                                         </div>
                                     @endfor
@@ -467,16 +460,17 @@
 
                                 {{-- Baris spesifikasi --}}
                                 @foreach ($compareRowLabels as $rowIndex => $rowLabel)
-                                    <div class="comparison-row grid border-b border-[#CECECE] last:border-b-0"
+                                    <div class="comparison-row grid border-b border-(--color-line) last:border-b-0"
                                         data-row="{{ $rowIndex }}"
                                         style="grid-template-columns: minmax(140px, 1fr) repeat({{ $compareColumns }}, minmax(0, 1fr));">
-                                        <div class="flex items-center py-4">
-                                            <p class="specifi-title text-xl lg:text-2xl">{{ $rowLabel }}</p>
+                                        <div class="flex items-center py-4 pl-5">
+                                            <p class="specifi-title md:text-xl lg:text-2xl">
+                                                {{ $rowLabel }}</p>
                                         </div>
                                         @for ($col = 0; $col < $compareColumns; $col++)
                                             <div
                                                 class="px-2 md:px-3 lg:px-4 flex items-center justify-center py-4 text-center">
-                                                <p class="text-(--color-body) {{ $rowIndex === 0 ? 'text-xl lg:text-2xl font-(family-name:--font-display) font-semibold' : 'text-base' }}"
+                                                <p class="text-(--color-body) {{ $rowIndex === 0 ? 'md:text-xl lg:text-xl font-(family-name:--font-display) font-semibold' : 'text-base' }}"
                                                     data-comparison-cell="{{ $col }}"
                                                     data-row="{{ $rowIndex }}"></p>
                                             </div>
