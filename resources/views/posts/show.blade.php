@@ -8,13 +8,6 @@
         ->filter()
         ->implode(' ');
 
-    // Cek component
-    $hasHeader = view()->exists('components.layouts.header.header');
-    $hasHeroPage = view()->exists('components.layouts.hero.heropage');
-    $hasBlogSkin = view()->exists('components.layouts.skin.blog-skin');
-    $hasBlogNewSkin = view()->exists('components.layouts.skin.blog-new-skin');
-    $hasFooter = view()->exists('components.layouts.footer.footer');
-
     // Global label blog
     $blog = \Statamic\Facades\GlobalSet::findByHandle('blog_label_information')
         ?->in(\Statamic\Facades\Site::current()->handle())
@@ -52,7 +45,7 @@
         $relatedQuery->whereTaxonomyIn(collect($currentCategorySlugs)->map(fn($s) => 'categories::' . $s)->all());
     }
 
-    // Exclude post kategori sosial-media di berita terkait
+    // Exclude post sosial-media (berita terkait)
     $posts = $relatedQuery
         ->get()
         ->reject(
@@ -96,6 +89,13 @@
         'share-x' => 'https://twitter.com/intent/tweet?text=' . $currentTitle . '&url=' . $currentUrl,
         'share-link' => $page->absoluteUrl(),
     ];
+
+    // Cek component
+    $hasHeader = view()->exists('components.layouts.header.single-header');
+    $hasHeroPage = view()->exists('components.layouts.hero.heropage');
+    $hasBlogSkin = view()->exists('components.layouts.skin.blog-skin');
+    $hasBlogNewSkin = view()->exists('components.layouts.skin.blog-new-skin');
+    $hasFooter = view()->exists('components.layouts.footer.footer');
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
@@ -105,46 +105,36 @@
 
     <main>
         <section id="single-blog">
-            <div class="container my-18 md:my-18 lg:my-30">
-                <article class="flex flex-col gap-10">
+            <div class="container mt-14 mb-18 md:mt-10 md:mb-18 lg:mt-20 lg:mb-30">
+                <article class="flex flex-col gap-8 lg:gap-10">
 
                     {{-- Heading + Meta data --}}
-                    <div id="header-article" class="flex flex-col gap-6">
+                    <div id="header-article" class="flex flex-col gap-4">
                         @php
                             $postCats = collect($page->categories ?? []);
-                            $postTags = collect($page->tags ?? []);
-                            $isSosmed = $postCats->contains(fn($c) => (string) $c->slug() === 'sosial-media');
                         @endphp
 
                         <div class="flex items-center gap-5">
+
+                            {{-- Tanggal --}}
                             @if ($page->date)
-                                <a
-                                    class="uppercase text-(--color-primary) tracking-wider">{{ $page->date->format('d.m.Y') }}</a>
+                                <p class="uppercase text-(--color-primary) tracking-wider font-medium">
+                                    {{ $page->date->format('d.m.Y') }}</p>
                             @endif
 
-                            @if ($isSosmed)
-                                {{-- Sosial media: kategori + 1 tag, tanpa link --}}
-                                <p class="flex items-center gap-4 uppercase text-(--color-primary) tracking-wider">
-                                    @php $sosmedCat = $postCats->first(fn($c) => (string) $c->slug() === 'sosial-media'); @endphp
-                                    @if ($sosmedCat)
-                                        <span>{{ $sosmedCat->title }}</span>
-                                    @endif
-                                    @if ($postTags->isNotEmpty())
-                                        <span>{{ $postTags->first()->title }}</span>
-                                    @endif
-                                </p>
-                            @elseif ($postCats->isNotEmpty())
-                                <p class="flex items-center gap-2">
+                            {{-- Kategori --}}
+                            @if ($postCats->isNotEmpty())
+                                <div class="flex items-center gap-2">
                                     @foreach ($postCats as $category)
-                                        <span href="{{ $category->url() }}"
-                                            class="uppercase text-(--color-primary) tracking-wider">
+                                        <p
+                                            class="uppercase text-(--color-primary) font-(family-name:--font-body) font-medium tracking-wider">
                                             {{ $category->title }}
-                                        </span>
+                                        </p>
                                         @unless ($loop->last)
-                                            <span class="text-(--color-primary)">,</span>
+                                            <p class="text-(--color-primary) font-medium">,</p>
                                         @endunless
                                     @endforeach
-                                </p>
+                                </div>
                             @endif
                         </div>
 
@@ -154,7 +144,7 @@
 
                     {{-- Content blog --}}
                     <div id="content-article"
-                        class="richtext flex flex-col md:flex-row lg:flex-row gap-18 md:gap-6 lg:gap-6">
+                        class="content-custom richtext flex flex-col md:flex-row lg:flex-row gap-18 md:gap-6 lg:gap-6">
 
                         {{-- Kolom konten utama --}}
                         <div class="w-full md:w-[60%] lg:w-[70%] flex flex-col gap-10">
@@ -231,7 +221,7 @@
                             {{-- Kategori --}}
                             @if ($categories->isNotEmpty())
                                 <div id="sidebar-categories"
-                                    class="bg-(--color-surface) rounded-3xl p-6 flex flex-col gap-8">
+                                    class="bg-(--color-surface) p-4 lg:p-6 flex flex-col gap-6 lg:gap-8 rounded-2xl lg:rounded-3xl">
                                     <p class="uppercase text-black font-medium">
                                         {{ $blog['category_labels'] ?? 'Kategori' }}</p>
                                     <ul class="flex flex-col list-none pl-0 mb-0">
@@ -249,7 +239,8 @@
                             @endif
 
                             {{-- Terbaru --}}
-                            <div id="sidebar-latest" class="bg-(--color-surface) rounded-3xl p-6 flex flex-col gap-8">
+                            <div id="sidebar-latest"
+                                class="bg-(--color-surface) p-4 lg:p-6 flex flex-col gap-6 lg:gap-8 rounded-2xl lg:rounded-3xl">
                                 <p class="uppercase text-black font-medium">
                                     {{ $blog['latest_blog_label'] ?? 'Terbaru' }}</p>
                                 @if ($hasBlogNewSkin && $latestPosts->isNotEmpty())
@@ -267,10 +258,10 @@
                             {{-- Share --}}
                             @if ($shareIcons->isNotEmpty())
                                 <div id="share-icon"
-                                    class="bg-(--color-surface) rounded-3xl p-6 flex flex-row gap-4 items-center justify-between">
+                                    class="bg-(--color-surface) p-4 lg:p-6 flex gap-6 lg:gap-8 rounded-2xl lg:rounded-3xl items-center justify-between">
                                     <p class="uppercase text-black font-medium">{{ $blog['label_share'] ?? 'Bagikan' }}
                                     </p>
-                                    <div class="flex items-center gap-5">
+                                    <div class="flex items-center gap-3 lg:gap-4">
                                         @foreach ($shareIcons as $share)
                                             @php
                                                 $iconUrl = $share['icon']?->url() ?? null;
@@ -284,14 +275,16 @@
                                                     <a href="#"
                                                         class="share-link shrink-0 relative transition-opacity hover:opacity-70">
                                                         <img src="{{ $iconUrl }}"
-                                                            alt="{{ $share['icon']?->alt ?? '' }}" class="w-5 h-5" />
+                                                            alt="{{ $share['icon']?->alt ?? '' }}"
+                                                            class="w-4 h-4 lg:w-5 lg:h-5" />
                                                     </a>
                                                 @else
                                                     <a href="{{ $link }}" target="_blank"
                                                         rel="noopener noreferrer"
                                                         class="shrink-0 transition-opacity hover:opacity-70">
                                                         <img src="{{ $iconUrl }}"
-                                                            alt="{{ $share['icon']?->alt ?? '' }}" class="w-5 h-5" />
+                                                            alt="{{ $share['icon']?->alt ?? '' }}"
+                                                            class="w-4 h-4 lg:w-5 lg:h-5" />
                                                     </a>
                                                 @endif
                                             @endif

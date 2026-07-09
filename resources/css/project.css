@@ -560,18 +560,21 @@ blockquote {
 /* Heading Single Produk dan Blog */
 .heading-single {
    font-size: 3rem !important;
+   line-height: 3.5rem !important;
 }
 
 
 @media (max-width: 768px) {
    .heading-single  {
-      font-size: 2.2rem !important;
+      font-size: 2rem !important;
+      line-height: 2.3rem !important;
    }
 }
 
 @media (max-width: 640px) {
    .heading-single  {
-      font-size: 2rem !important;
+      font-size: 1.8rem !important;
+      line-height: 2.1rem !important;
    }
 }
 
@@ -1038,4 +1041,104 @@ body:has(dialog[open].site-popup) {
 #flyout-menu li,
 #flyout-menu li a {
    font-size: 0.9rem;
+}
+
+
+
+
+/* Konten single posts custom */
+.content-custom h2 {
+   font-size: 1.8rem;
+   letter-spacing: -1px;
+   text-transform: none;
+}
+
+.content-custom h3 {
+   font-size: 1.6rem;
+   letter-spacing: -1px;
+   text-transform: none;
+}
+
+.content-custom h4 {
+   font-size: 1.4rem;
+   letter-spacing: -1px;
+   text-transform: none;
+}
+
+.content-custom h5 {
+   font-size: 1.3rem;
+   letter-spacing: -1px;
+   text-transform: none;
+}
+
+.content-custom h6 {
+   font-size: 1.2rem;
+   letter-spacing: -1px;
+   text-transform: none;
+}
+
+/* Konten single posts custom (Tablet) */
+@media (max-width: 768px) {
+   .content-custom h2 {
+      font-size: 1.6rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+
+   .content-custom h3 {
+      font-size: 1.5rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+
+   .content-custom h4 {
+      font-size: 1.4rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+
+   .content-custom h5 {
+      font-size: 1.3rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+
+   .content-custom h6 {
+      font-size: 1.2rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+}
+
+/* Konten single posts custom (Mobile) */
+@media (max-width: 640px) {
+   .content-custom h2 {
+      font-size: 1.5rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+
+   .content-custom h3 {
+      font-size: 1.4rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+
+   .content-custom h4 {
+      font-size: 1.3rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+
+   .content-custom h5 {
+      font-size: 1.25rem;
+      letter-spacing: -0.5px;
+      text-transform: none;
+   }
+
+   .content-custom h6 {
+      font-size: 1.15rem;
+      letter-spacing: --0.5px;
+      text-transform: none;
+   }
 }

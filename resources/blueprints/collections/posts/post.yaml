@@ -47,8 +47,6 @@ tabs:
               type: link
               display: 'Social Media Links'
               width: 50
-              validate:
-                - required
               always_save: false
               if:
                 categories: 'contains categories::sosial-media'
