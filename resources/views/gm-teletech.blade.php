@@ -44,7 +44,7 @@
     ];
     $featureColumns = $columnClassMap[(string) ($fiturBenefit['columns'] ?? '3')] ?? 'md:grid-cols-2 lg:grid-cols-3';
 
-    // URL kontak (WhatsApp & Email)
+    // URL kontak
     $buildContactUrl = function ($kontak) {
         $kontak = trim((string) $kontak);
 
@@ -58,7 +58,7 @@
         return 'https://wa.me/' . $number;
     };
 
-    // Cek keberadaan komponen (biar page tetap jalan kalau filenya kehapus)
+    // Cek component
     $hasHeader = view()->exists('components.layouts.header.header');
     $hasHeroPage = view()->exists('components.layouts.hero.heropage');
     $hasFooter = view()->exists('components.layouts.footer.footer');
@@ -102,7 +102,7 @@
         @if ($fiturBenefit && ($fiturBenefit['show'] ?? false) && !empty($fiturBenefit['features']))
             <section id="{{ $fiturBenefit['anchor'] ?? 'fitur-benefit' }}">
                 <div class="container">
-                    <div class="flex flex-col gap-6 my-18 md:gap-10 md:my-18 lg:gap-10 lg:my-30">
+                    <div class="flex flex-col gap-8 my-18 md:gap-8 md:my-18 lg:gap-10 lg:my-30">
 
                         <h2 id="title-fitur-benefit">{{ $fiturBenefit['heading'] ?? '' }}</h2>
 
@@ -110,9 +110,9 @@
                         <div id="fitur-benefit-content" data-equal-height class="grid gap-5 {{ $featureColumns }}">
                             @foreach ($fiturBenefit['features'] as $item)
                                 <div
-                                    class="flex flex-col gap-14 p-6 bg-(--color-surface) rounded-3xl md:p-6 md:gap-14 lg:p-6 lg:gap-20">
+                                    class="flex flex-col gap-10 p-4 bg-(--color-surface) rounded-xl lg:rounded-3xl md:p-4 md:gap-10 lg:p-6 lg:gap-20">
                                     <img src="{{ $item['icon'] ?: $iconBenefitPlaceholder }}"
-                                        alt="{{ $item['icon']?->alt ?? 'Icon' }}" class="w-10 h-10">
+                                        alt="{{ $item['icon']?->alt ?? 'Icon' }}" class="w-8 h-8 lg:w-10 lg:h-10">
                                     <div class="flow">
                                         <h4 class="text-(--color-heading) tracking-tight">{{ $item['title'] ?? '' }}
                                         </h4>
@@ -133,7 +133,7 @@
                     <div class="flex flex-col items-center gap-6 my-18 md:flex-row md:my-18 lg:flex-row lg:my-30">
                         <img src="{{ $ctaGrid['image_call_to_action'] ?? '' }}"
                             alt="{{ $ctaGrid['image_call_to_action']?->alt ?? ($ctaGrid['heading'] ?? '') }}"
-                            class="md:w-[40%] lg:w-[40%]">
+                            class="md:w-[40%] lg:w-[40%] object-cover">
 
                         {{-- Konten CTA --}}
                         <div class="flex flex-col gap-4">
