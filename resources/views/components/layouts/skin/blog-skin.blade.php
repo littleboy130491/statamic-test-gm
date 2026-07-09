@@ -8,9 +8,10 @@
             ?->toAugmentedArray();
 
     $cats = collect($entry->categories ?? []);
+
     $social = collect($entry->social_media ?? []);
 
-    // Khusus kategori sosial-media
+    // Kategori sosial-media
     if ((string) $currentCategory === 'sosial-media') {
         if ($social->isNotEmpty()) {
             $displayTerms = $social->take(2);
@@ -27,14 +28,18 @@
 
     // Post kategori sosial-media
     $isSocial = $cats->contains(fn($c) => (string) $c->slug() === 'sosial-media');
+
     $rawLink = $isSocial ? $entry->value('social_media_links') : null;
     if (is_string($rawLink) && str_starts_with($rawLink, 'entry::')) {
         $socialLink = \Statamic\Facades\Entry::find(str_replace('entry::', '', $rawLink))?->url() ?? '';
     } else {
         $socialLink = is_string($rawLink) ? $rawLink : '';
     }
+
     $cardUrl = $socialLink !== '' ? $socialLink : $entry->url();
+
     $cardTarget = $socialLink !== '' ? '_blank' : null;
+
     $cardRel = $socialLink !== '' ? 'noopener noreferrer' : null;
 @endphp
 
@@ -53,8 +58,10 @@
         <div class="p-5 flex flex-col gap-10 justify-between flex-1">
 
             {{-- Heading --}}
-            <div class="richtext custom-heading-blog">
-                <h2 class="text-(--color-heading) title-display">{{ $entry->title }}</h2>
+            <div class="flex flex-col gap-2 md:gap-2 lg:gap-3">
+                <p
+                    class="font-(family-name:--font-display) font-semibold text-(--color-heading) text-2xl tracking-tight">
+                    {{ $entry->title }}</p>
 
                 @if ($entry->excerpt)
                     <p>{{ \Illuminate\Support\Str::words($entry->excerpt, 18, '...') }}</p>

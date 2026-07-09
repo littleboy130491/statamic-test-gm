@@ -5,9 +5,9 @@
         {{-- Page numbers --}}
         <div class="flex flex-wrap lg:justify-center items-center gap-2">
 
-            {{-- Pagination Elements --}}
+            {{-- Pagination --}}
             @foreach ($elements as $element)
-                {{-- Array Of Links --}}
+                {{-- Array --}}
                 @if (is_array($element))
                     @foreach ($element as $page => $url)
                         @if ($page == $paginator->currentPage())
@@ -16,7 +16,7 @@
                                 {{ $page }}</p>
                         @else
                             <a href="{{ $url }}" aria-label="{{ __('Go to page :page', ['page' => $page]) }}"
-                                class="w-11 h-11 bg-white flex justify-center items-center text-black rounded-full hover:bg-(--color-primary) hover:text-white transition">{{ $page }}</a>
+                                class="w-11 h-11 bg-white flex justify-center items-center text-(--color-primary) rounded-full hover:bg-(--color-primary) hover:text-white transition">{{ $page }}</a>
                         @endif
                     @endforeach
                 @endif

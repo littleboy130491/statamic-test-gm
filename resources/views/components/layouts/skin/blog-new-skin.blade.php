@@ -36,9 +36,10 @@
 
             {{-- Heading --}}
             <div class="richtext custom-heading-blog">
-                <h2 class="text-(--color-heading) text-2xl title-display group-hover:text-(--color-primary)">
+                <p
+                    class="font-(family-name:--font-display) text-xl md:text-lg lg:text-2xl font-semibold tracking-tight text-(--color-heading) title-display group-hover:text-(--color-primary)">
                     {{ $entry->title }}
-                </h2>
+                </p>
             </div>
         </div>
     </a>

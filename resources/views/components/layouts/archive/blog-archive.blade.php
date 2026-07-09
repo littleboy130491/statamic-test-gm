@@ -9,13 +9,6 @@
         ->filter()
         ->implode(' ');
 
-    // Cek component
-    $hasHeader = view()->exists('components.layouts.header.header');
-    $hasHeroPage = view()->exists('components.layouts.hero.heropage');
-    $hasBlogSkin = view()->exists('components.layouts.skin.blog-skin');
-    $hasBlogNewSkin = view()->exists('components.layouts.skin.blog-new-skin');
-    $hasFooter = view()->exists('components.layouts.footer.footer');
-
     // Global label blog
     $blog = \Statamic\Facades\GlobalSet::findByHandle('blog_label_information')
         ?->in(\Statamic\Facades\Site::current()->handle())
@@ -49,14 +42,6 @@
 
     $posts = $postsQuery->paginate(8);
 
-    // Sidebar 3 post terbaru
-    $latestPosts = \Statamic\Facades\Entry::query()
-        ->where('collection', 'posts')
-        ->whereStatus('published')
-        ->orderBy('date', 'desc')
-        ->limit(3)
-        ->get();
-
     // Sidebar kategori
     $categories = \Statamic\Facades\Term::query()
         ->where('taxonomy', 'categories')
@@ -68,6 +53,21 @@
                 ->whereTaxonomy('categories::' . $term->slug())
                 ->count() > 0;
         });
+
+    // Sidebar 3 post terbaru
+    $latestPosts = \Statamic\Facades\Entry::query()
+        ->where('collection', 'posts')
+        ->whereStatus('published')
+        ->orderBy('date', 'desc')
+        ->limit(3)
+        ->get();
+
+    // Cek component
+    $hasHeader = view()->exists('components.layouts.header.header');
+    $hasHeroPage = view()->exists('components.layouts.hero.heropage');
+    $hasBlogSkin = view()->exists('components.layouts.skin.blog-skin');
+    $hasBlogNewSkin = view()->exists('components.layouts.skin.blog-new-skin');
+    $hasFooter = view()->exists('components.layouts.footer.footer');
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
@@ -99,7 +99,7 @@
             <div class="container my-18 md:my-18 lg:my-30">
                 <div class="flex flex-col md:flex-row lg:flex-row gap-18 md:gap-6 lg:gap-6">
 
-                    {{-- Grid card blog --}}
+                    {{-- Grid blog --}}
                     <div class="w-full md:w-[60%] lg:w-[70%] flex flex-col gap-20">
                         <div id="article-grid"
                             class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 md:gap-x-4 md:gap-y-10 lg:gap-x-6 lg:gap-y-16">
@@ -142,7 +142,7 @@
                             </div>
                         @endif
 
-                        {{-- Terbaru --}}
+                        {{-- Blog terbaru --}}
                         <div id="sidebar-latest"
                             class="bg-white p-4 lg:p-6 flex flex-col gap-6 lg:gap-8 rounded-2xl lg:rounded-3xl">
                             <p class="uppercase text-black font-medium">{{ $blog['latest_blog_label'] ?? 'Terbaru' }}
