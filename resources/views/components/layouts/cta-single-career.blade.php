@@ -28,13 +28,14 @@
 
                 {{-- Konten --}}
                 <div
-                    class="absolute inset-0 top-0 flex flex-col-reverse gap-8 md:gap-8 lg:gap-20 px-4 md:flex-row lg:flex-row">
+                    class="absolute mt-8 md:mt-0 inset-0 top-0 flex flex-col-reverse gap-10 md:gap-8 lg:gap-20 px-4 md:flex-row lg:flex-row justify-between md:justify-start">
 
                     {{-- Gambar CTA --}}
                     @if (!empty($cta['image_call_to_action']))
                         <div class="flex items-end lg:justify-center md:w-[40%] lg:w-[45%]">
                             <img src="{{ $cta['image_call_to_action'] }}"
-                                alt="{{ $cta['image_call_to_action']?->alt ?? $cta['heading'] ?? '' }}" class="w-full lg:w-[83%] object-contain">
+                                alt="{{ $cta['image_call_to_action']?->alt ?? ($cta['heading'] ?? '') }}"
+                                class="w-full lg:w-[83%] object-contain">
                         </div>
                     @endif
 
@@ -73,8 +74,8 @@
                                         @if ($contactIcon)
                                             <div
                                                 class="bg-(--color-primary) group-hover:bg-black flex items-center justify-center rounded-full transition-colors w-12 h-12 md:w-12 md:h-12 lg:w-12 lg:h-12">
-                                                <img src="{{ $contactIcon }}" alt="{{ $contactIcon?->alt ?? $contact['label'] }}"
-                                                    class="w-5 h-5">
+                                                <img src="{{ $contactIcon }}"
+                                                    alt="{{ $contactIcon?->alt ?? $contact['label'] }}" class="w-5 h-5">
                                             </div>
                                         @endif
                                     </a>

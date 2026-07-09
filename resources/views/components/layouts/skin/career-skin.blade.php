@@ -8,7 +8,7 @@
             ?->toAugmentedArray();
 @endphp
 
-<div
+<a href="{{ $entry->url() }}"
     class="group hover:bg-[#E8F1E8] flex flex-col gap-6 md:gap-3 lg:gap-8 rounded-2xl lg:rounded-3xl bg-white p-5 md:p-4 lg:p-6 justify-between">
 
     <header class="flex flex-col gap-3">
@@ -18,7 +18,8 @@
             @if ($entry->employment_status && $entry->employment_status->label())
                 <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium group-hover:text-black">
                     @if (!empty($career['icon_employment_status']))
-                        <img src="{{ $career['icon_employment_status'] }}" alt="{{ $career['icon_employment_status']?->alt }}"
+                        <img src="{{ $career['icon_employment_status'] }}"
+                            alt="{{ $career['icon_employment_status']?->alt }}"
                             class="w-4 h-4 shrink-0 -mt-1 group-hover:brightness-0" />
                     @endif
                     {{ $entry->employment_status->label() }}
@@ -42,9 +43,7 @@
         </div>
 
         {{-- Heading --}}
-        <h4>
-            <a href="{{ $entry->url() }}" class="text-(--color-heading) title-display">{{ $entry->title }}</a>
-        </h4>
+        <p class="text-(--color-heading) tracking-tight title-display text-2xl">{{ $entry->title }}</p>
     </header>
 
     <div class="flex flex-col gap-4">
@@ -66,7 +65,7 @@
         @endif
 
         {{-- Button Selengkapnya --}}
-        <a href="{{ $entry->url() }}"
+        <div
             class="mt-4 bg-(--color-surface) rounded-full flex justify-between items-center py-2 pl-6 pr-2 group-hover:bg-(--color-primary)">
             <p class="uppercase title-display text-(--color-primary) tracking-widest group-hover:text-white">
                 {{ $career['button_label'] ?? 'Selengkapnya' }}
@@ -78,7 +77,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
             </p>
-        </a>
+        </div>
     </div>
 
-</div>
+</a>

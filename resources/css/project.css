@@ -466,16 +466,24 @@ body:has(dialog[open].career-popup) {
     overflow: hidden;
 }
 
+.career-form-input {
+    font-family: var(--font-body);
+    color: var(--color-body);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: border-color 0.2s ease;
+}
+
+.career-form-input::placeholder {
+    opacity: 1;
+    color: var(--color-body);
+}
+
 .career-form-input:focus,
 .career-form-file input:focus {
     outline: none;
     box-shadow: none;
-}
-
-.career-form-input:focus,
--form-input::placeholder {
-  opacity: 1;
-  color: black;
 }
 
 

@@ -68,12 +68,12 @@
                             </label>
                         @elseif (($field['type'] ?? 'text') === 'textarea')
                             <textarea name="{{ $field['handle'] }}" rows="4" placeholder="{{ $str($field['display'] ?? '') }}"
-                                class="career-form-input rounded-xl= bg-white px-5 py-4 w-full">{{ $oldVal($field['handle']) }}</textarea>
+                                class="career-form-input rounded-xl bg-white px-5 py-4 w-full border border-[#CECECE]">{{ $oldVal($field['handle']) }}</textarea>
                         @else
                             <input type="{{ $field['input_type'] ?? 'text' }}" name="{{ $field['handle'] }}"
                                 value="{{ $oldVal($field['handle']) }}"
                                 placeholder="{{ $str($form['placeholder_' . $field['handle']] ?? ($field['display'] ?? '')) }}"
-                                class="career-form-input rounded-lg bg-white px-5 py-4 w-full font-(family-name:--font-body)" />
+                                class="career-form-input rounded-xl bg-white px-5 py-4 w-full border border-[#CECECE] font-(family-name:--font-body)" />
                         @endif
 
                         @if (!empty($field['error']))

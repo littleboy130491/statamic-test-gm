@@ -39,7 +39,7 @@
     {{-- Singel career --}}
     <main>
         <section id="single-career">
-            <div class="container mt-10 mb-18 md:mt-10 md:mb-18 lg:mt-20 lg:mb-30">
+            <div class="container mt-14 mb-18 md:mt-10 md:mb-18 lg:mt-20 lg:mb-30">
                 <div class="flex flex-col md:flex-row lg:flex-row gap-18 md:gap-6 lg:gap-30">
                     <article class="w-full md:w-[70%] lg:w-[70%]">
 
@@ -51,7 +51,8 @@
                                 @if ($page->employment_status)
                                     <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium">
                                         @if (!empty($career['icon_employment_status']))
-                                            <img src="{{ $career['icon_employment_status'] }}" alt="{{ $career['icon_employment_status']?->alt }}"
+                                            <img src="{{ $career['icon_employment_status'] }}"
+                                                alt="{{ $career['icon_employment_status']?->alt }}"
                                                 class="w-5 h-5 shrink-0" />
                                         @endif
                                         {{ $page->employment_status->label() }}
@@ -62,8 +63,8 @@
                                 @if ($page->locations)
                                     <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium">
                                         @if (!empty($career['icon_location']))
-                                            <img src="{{ $career['icon_location'] }}" alt="{{ $career['icon_location']?->alt }}"
-                                                class="w-5 h-5 shrink-0" />
+                                            <img src="{{ $career['icon_location'] }}"
+                                                alt="{{ $career['icon_location']?->alt }}" class="w-5 h-5 shrink-0" />
                                         @endif
                                         @foreach ($page->locations as $location)
                                             {{ $location->title }}@unless ($loop->last)
@@ -79,7 +80,7 @@
                     </header>
 
                     {{-- Body --}}
-                    <section class="flex flex-col gap-10">
+                    <section class="flex flex-col gap-8 lg:gap-10">
 
                         {{-- Deskripsi --}}
                         @if ($page->description)
@@ -89,16 +90,18 @@
 
                         {{-- Persyaratan --}}
                         @if ($page->qualifications)
-                            <div id="qualifications" class="richtext">
-                                <h3 class="mb-2">{{ $career['requirements_label'] ?? 'Persyaratan' }}</h3>
+                            <div id="qualifications" class="richtext custom-heading-blog">
+                                <h2 class="mb-2">
+                                    {{ $career['requirements_label'] ?? 'Persyaratan' }}</h2>
                                 {!! $page->qualifications !!}
                             </div>
                         @endif
 
                         {{-- Jobdesc --}}
                         @if ($page->jobdesc)
-                            <div id="jobdesc" class="richtext">
-                                <h3 class="mb-2">{{ $career['label_jobdesc'] ?? 'Jobdesc' }}</h3>
+                            <div id="jobdesc" class="richtext custom-heading-blog">
+                                <h2 class=" mb-2">{{ $career['label_jobdesc'] ?? 'Jobdesc' }}
+                                </h2>
                                 {!! $page->jobdesc !!}
                             </div>
                         @endif
