@@ -13,7 +13,7 @@ body.background-grey {
 
 
 
-/* Social Media Icons */
+/* Social Media Icon */
 .social-icon {
     background-color: var(--color-primary);
     -webkit-mask: var(--icon-url) no-repeat center / contain;
@@ -506,7 +506,6 @@ blockquote {
 
 
 
-
 /* Swiper base */
 .swiper {
     width: 100%;
@@ -529,19 +528,18 @@ blockquote {
     position: relative;
 }
 
+
+
+/* Gallery Thumbnail Single Blog & Single Product */
 .gallery-thumbs .swiper-slide {
     width: auto;
 }
 
-/* Sembunyikan arrow features saat semua slide muat (watchOverflow).
-   Swiper menambah .swiper-button-lock ke nav element yang direferensikan. */
 .features-prev.swiper-button-lock,
 .features-next.swiper-button-lock {
     display: none;
 }
 
-/* Saat sudah di ujung (awal/akhir), arrow tidak bisa diklik lagi.
-   Swiper menambah .swiper-button-disabled ke nav element. */
 .features-prev.swiper-button-disabled,
 .features-next.swiper-button-disabled {
     opacity: 0.35;
@@ -640,7 +638,7 @@ blockquote {
 
 
 
-/* Popup Situs */
+/* Popup Website */
 .site-popup {
     width: min(90%, 600px);
     max-height: 90vh;
@@ -900,7 +898,7 @@ body:has(dialog[open].site-popup) {
 
 
 
-/* Form Kontak (dipakai oleh <input>, <textarea>, dan tombol dropdown manual) */
+/* Form Kontak */
 .contact-form-input {
   font-family: var(--font-body);
   color: var(--color-body);
@@ -919,35 +917,7 @@ body:has(dialog[open].site-popup) {
   outline: none;
 }
 
-/* Dropdown form kontak sekarang MANUAL (JS), sama seperti comparison —
-   lihat resources/js/comparison-dropdown.js & blok .cmp-dd-* di bawah.
-   <select> asli disembunyikan via .cmp-dd-native. */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Dropdown Comparison — MANUAL (JS), bukan customizable select bawaan.
-   Alasan: customizable select merender panel di top-layer sehingga menembus
-   sticky header dan tak bisa ditutup dari JS. Versi manual pakai z-index normal
-   sehingga tidak menimpa header. Lihat resources/js/comparison-dropdown.js. */
-
-/* <select> asli disembunyikan (tetap sumber data + trigger 'change' AJAX) */
 .cmp-dd-native {
   display: none;
 }
@@ -956,8 +926,6 @@ body:has(dialog[open].site-popup) {
   position: relative;
 }
 
-/* Tombol trigger — mewarisi class asli dari <select> (pill/box, bg, padding,
-   font). Jadi comparison tetap pakai font display bold, kontak pakai font body. */
 .cmp-dd-button {
   display: flex;
   align-items: center;
@@ -970,8 +938,6 @@ body:has(dialog[open].site-popup) {
   transition: border-color 0.2s ease;
 }
 
-/* Khusus tombol comparison: font display bold (tombol mewarisi class
-   .comparison-select dari <select> asli). */
 .cmp-dd-button.comparison-select {
   font-family: var(--font-display);
   font-weight: bold;
@@ -987,7 +953,6 @@ body:has(dialog[open].site-popup) {
   white-space: nowrap;
 }
 
-/* Teks placeholder (mis. "Pilih subjek") ditampilkan lebih normal/muted */
 .cmp-dd-button.is-placeholder {
   font-weight: normal;
   font-family: var(--font-body);
@@ -995,20 +960,20 @@ body:has(dialog[open].site-popup) {
 
 .cmp-dd-caret {
   flex-shrink: 0;
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23767676' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   transition: transform 0.2s ease;
+  margin-top: 2px
 }
 
 .cmp-dd.is-open .cmp-dd-caret {
   transform: rotate(180deg);
 }
 
-/* Panel — z-index normal, di bawah sticky header (header pakai z 9999) */
 .cmp-dd-panel {
   position: absolute;
   top: calc(100% + 0.3rem);

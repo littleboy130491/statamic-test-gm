@@ -10,11 +10,11 @@
 
 <statamic:form:contact class="contact-form flex flex-col gap-4">
 
-    {{-- Fields --}}
+    {{-- Fields Form --}}
     <div class="flex flex-wrap gap-4">
         @foreach ($fields as $field)
             <div
-                class="contact-form-field flex flex-col gap-1 {{ ($field['width'] ?? 100) <= 50 ? 'w-full md:w-[calc(50%-0.5rem)]' : 'w-full' }}">
+                class="contact-form-field text-sm flex flex-col gap-1 {{ ($field['width'] ?? 100) <= 50 ? 'w-full md:w-[calc(50%-0.5rem)]' : 'w-full' }}">
                 @if (($field['type'] ?? 'text') === 'select')
                     <select name="{{ $field['handle'] }}"
                         {{ in_array('required', (array) ($field['validate'] ?? [])) || str_contains($field['validate'] ?? '', 'required') ? 'required' : '' }}
@@ -28,7 +28,7 @@
                 @elseif (($field['type'] ?? 'text') === 'textarea')
                     <textarea name="{{ $field['handle'] }}" rows="5"
                         placeholder="{{ $field['placeholder'] ?? ($field['display'] ?? '') }}"
-                        class="contact-form-input rounded-xl px-5 py-4 w-full border border-[#CECECE] lg:h-73"></textarea>
+                        class="contact-form-input rounded-xl px-5 py-4 w-full border border-[#CECECE] h-50 lg:h-76"></textarea>
                 @else
                     <input type="{{ $field['input_type'] ?? 'text' }}" name="{{ $field['handle'] }}"
                         placeholder="{{ $field['placeholder'] ?? ($field['display'] ?? '') }}"
@@ -42,14 +42,14 @@
         @endforeach
     </div>
 
-    {{-- Submit --}}
+    {{-- Button Submit --}}
     <div>
         <button type="submit" class="button button--primary">
             {{ $contactLabel['submit_button_label'] ?? 'Kirim' }}
         </button>
     </div>
 
-    {{-- Success --}}
+    {{-- Success Summary --}}
     @if ($success)
         <div class="rounded-xl bg-green-50 px-5 py-4 text-(--color-primary)/50 border border-(--color-primary)/30">
             {!! $successHtml ?: $success !!}

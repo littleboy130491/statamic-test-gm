@@ -31,10 +31,8 @@
     $address = $globals['address'] ?? null;
     $addressUrl = $globals['google_map_link'] ?? null;
 
-    // Preview maps dari link Google Maps (tanpa API key)
     $mapEmbedUrl = null;
     if ($addressUrl) {
-        // Koordinat: prioritas titik presisi (!3d!4d), lalu viewport (@)
         $coord = null;
         if (preg_match('/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/', $addressUrl, $m)) {
             $coord = $m[1] . ',' . $m[2];
@@ -42,13 +40,11 @@
             $coord = $m[1] . ',' . $m[2];
         }
 
-        // Nama tempat dari /place/<nama>
         $placeName = null;
         if (preg_match('#/place/([^/@]+)#', $addressUrl, $m)) {
             $placeName = str_replace('+', ' ', urldecode($m[1]));
         }
 
-        // Bangun query: koordinat + label nama -> pin DI titik dengan nama
         $query = null;
         if ($coord && $placeName) {
             $query = $coord . ' (' . $placeName . ')';
@@ -63,7 +59,7 @@
         }
     }
 
-    // Sosmed
+    // Social media
     $socials = collect($globals['social_media'] ?? [])
         ->map(function ($item, $key) {
             $url = $item['url'] ?? null;
@@ -113,14 +109,14 @@
                 <div class="container">
                     <div class="mt-18 flex flex-col-reverse gap-18 lg:my-0 lg:mt-30 lg:flex-row lg:gap-8">
 
-                        {{-- Kontak form --}}
+                        {{-- Container left --}}
                         <div id="form-contact" class="lg:w-[70%]">
 
                             <div id="header-form"
-                                class="px-4 py-6 bg-(--color-surface) rounded-2xl flow lg:p-6 lg:rounded-3xl flex flex-col gap-10">
+                                class="px-4 py-6 bg-(--color-surface) rounded-2xl flow lg:p-6 lg:rounded-3xl flex flex-col gap-8 lg:gap-10">
                                 <div id="text-form">
                                     @if ($formText && ($formText['show'] ?? false))
-                                        <h2 class="lg:w-180 mb-4">{{ $formText['heading'] ?? '' }}</h2>
+                                        <h2 class="lg:w-180 mb-2 lg:mb-4">{{ $formText['heading'] ?? '' }}</h2>
                                         <div class="richtext lg:w-150">{!! $formText['description'] ?? '' !!}</div>
                                     @endif
                                 </div>
@@ -135,7 +131,7 @@
 
                         </div>
 
-                        {{-- Informasi kontak --}}
+                        {{-- Container right --}}
                         <div id="contact-information" class="lg:w-[40%]">
 
                             {{-- Konten kontak --}}
@@ -209,12 +205,12 @@
                                 {{-- Media sosial --}}
                                 @if (count($socials) > 0)
                                     <div id="social-media"
-                                        class="flex flex-col gap-4 border-t border-(--color-line) pt-6">
+                                        class="flex flex-row justify-between items-center lg:items-start lg:flex-col gap-4 border-t border-(--color-line) pt-6">
                                         @if (!empty($contactLabel['social_media_labels']))
                                             <span
                                                 class="title-display text-xl text-(--color-primary)">{{ $contactLabel['social_media_labels'] }}</span>
                                         @endif
-                                        <div class="flex gap-6">
+                                        <div class="flex gap-4 lg:gap-6">
                                             @foreach ($socials as $social)
                                                 <a href="{{ $social['link'] }}" target="_blank"
                                                     rel="noopener noreferrer" title="{{ $social['name'] }}"
@@ -232,7 +228,7 @@
                             {{-- Maps --}}
                             @if ($mapEmbedUrl)
                                 <div
-                                    class="mt-10 h-75 overflow-hidden rounded-2xl lg:rounded-3xl [&_iframe]:w-full [&_iframe]:h-full">
+                                    class="mt-16 lg:mt-10 h-75 overflow-hidden rounded-2xl lg:rounded-3xl [&_iframe]:w-full [&_iframe]:h-full">
                                     <iframe src="{{ $mapEmbedUrl }}" title="Google Maps" width="600" height="450"
                                         style="border:0;" allowfullscreen loading="lazy"
                                         referrerpolicy="no-referrer-when-downgrade"></iframe>

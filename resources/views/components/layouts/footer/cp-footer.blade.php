@@ -1,10 +1,11 @@
 @php
-    $company_name = 'PT Gaya Makmur Mobil';
+    $globals = \Statamic\Facades\GlobalSet::findByHandle('settings')?->inCurrentSite()?->data();
+    $company_name = $globals['site_title'] ?? '';
 @endphp
 
 <footer id="copyright-footer">
     <div class="container pt-8 pb-6">
-        <p class="text-(--color-text) text-center md:text-right ld:text-right">© {{ date('Y') }} {{ $company_name }}
+        <p class="text-(--color-text) text-center md:text-center lg:text-right">© {{ date('Y') }} {{ $company_name }}
         </p>
     </div>
 </footer>
