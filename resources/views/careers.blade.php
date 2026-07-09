@@ -13,7 +13,7 @@
         ?->in(\Statamic\Facades\Site::current()->handle())
         ?->toAugmentedArray();
 
-    // Query career published
+    // Query karier
     $careers = \Statamic\Facades\Entry::query()
         ->where('collection', 'careers')
         ->where('published', true)
