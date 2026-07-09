@@ -39,7 +39,7 @@
     {{-- Singel career --}}
     <main>
         <section id="single-career">
-            <div class="container mt-14 mb-18 md:mt-10 md:mb-18 lg:mt-20 lg:mb-30">
+            <div class="container mt-14 mb-18 md:mt-10 md:mb-18 lg:mt-20 lg:mb-40">
                 <div class="flex flex-col md:flex-row lg:flex-row gap-18 md:gap-6 lg:gap-30">
                     <article class="w-full md:w-[70%] lg:w-[70%]">
 
