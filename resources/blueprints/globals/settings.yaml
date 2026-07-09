@@ -113,11 +113,6 @@ tabs:
               input_type: url
               localizable: true
               validate: nullable|url
-          -
-            handle: google_maps_embed
-            field:
-              type: text
-              display: 'Google Maps Embed'
   general_settings:
     display: 'General Settings'
     sections:

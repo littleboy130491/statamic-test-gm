@@ -31,8 +31,37 @@
     $address = $globals['address'] ?? null;
     $addressUrl = $globals['google_map_link'] ?? null;
 
-    // Embed maps
-    $mapEmbed = $globals['google_maps_embed'] ?? null;
+    // Preview maps dari link Google Maps (tanpa API key)
+    $mapEmbedUrl = null;
+    if ($addressUrl) {
+        // Koordinat: prioritas titik presisi (!3d!4d), lalu viewport (@)
+        $coord = null;
+        if (preg_match('/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/', $addressUrl, $m)) {
+            $coord = $m[1] . ',' . $m[2];
+        } elseif (preg_match('/@(-?\d+\.\d+),(-?\d+\.\d+)/', $addressUrl, $m)) {
+            $coord = $m[1] . ',' . $m[2];
+        }
+
+        // Nama tempat dari /place/<nama>
+        $placeName = null;
+        if (preg_match('#/place/([^/@]+)#', $addressUrl, $m)) {
+            $placeName = str_replace('+', ' ', urldecode($m[1]));
+        }
+
+        // Bangun query: koordinat + label nama -> pin DI titik dengan nama
+        $query = null;
+        if ($coord && $placeName) {
+            $query = $coord . ' (' . $placeName . ')';
+        } elseif ($coord) {
+            $query = $coord;
+        } elseif ($placeName) {
+            $query = $placeName;
+        }
+
+        if ($query) {
+            $mapEmbedUrl = 'https://maps.google.com/maps?q=' . rawurlencode($query) . '&z=17&hl=id&output=embed';
+        }
+    }
 
     // Sosmed
     $socials = collect($globals['social_media'] ?? [])
@@ -201,10 +230,12 @@
                             </div>
 
                             {{-- Maps --}}
-                            @if ($mapEmbed)
+                            @if ($mapEmbedUrl)
                                 <div
                                     class="mt-10 h-75 overflow-hidden rounded-2xl lg:rounded-3xl [&_iframe]:w-full [&_iframe]:h-full">
-                                    {!! $mapEmbed !!}
+                                    <iframe src="{{ $mapEmbedUrl }}" title="Google Maps" width="600" height="450"
+                                        style="border:0;" allowfullscreen loading="lazy"
+                                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 </div>
                             @endif
                         </div>

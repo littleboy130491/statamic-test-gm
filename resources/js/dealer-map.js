@@ -1,6 +1,17 @@
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+
 document.addEventListener('DOMContentLoaded', function () {
     const mapEl = document.getElementById('dealer-map');
     if (!mapEl) return;
+
+    // Perbaiki path icon marker default Leaflet (broken saat di-bundle Vite)
+    L.Icon.Default.mergeOptions({
+        iconRetinaUrl: markerIcon2x,
+        iconUrl: markerIcon,
+        shadowUrl: markerShadow,
+    });
 
     const locations = window.dealerLocations || [];
     const categoryLabel = window.dealerCategoryLabels || {};
