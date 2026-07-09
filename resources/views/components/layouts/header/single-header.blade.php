@@ -67,14 +67,6 @@
             {{-- Language Desktop --}}
             <div class="hidden lg:flex items-center shrink-0">
                 <div class="gtranslate_wrapper"></div>
-                <script>
-                    window.gtranslateSettings = {
-                        "default_language": "id",
-                        "languages": ["id", "en"],
-                        "wrapper_selector": ".gtranslate_wrapper",
-                    }
-                </script>
-                <script src="https://cdn.gtranslate.net/widgets/latest/lc.js" defer></script>
             </div>
 
             {{-- Hamburger Button --}}

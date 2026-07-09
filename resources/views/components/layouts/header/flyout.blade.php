@@ -7,8 +7,24 @@
     $logo_asset = $site_logo ? \Statamic\Facades\Asset::find('assets::' . $site_logo) : null;
     $logo_url = $logo_asset?->url();
 
-    $phone = collect($globals['phone_numbers'] ?? [])->first(fn($item) => $item['enabled'] ?? false)['number'] ?? null;
-    $email = collect($globals['emails'] ?? [])->first(fn($item) => $item['enabled'] ?? false)['email'] ?? null;
+    $phones = collect($globals['phone_numbers'] ?? [])
+        ->filter(fn($item) => ($item['enabled'] ?? false) && !empty($item['number']))
+        ->map(fn($item) => ['label' => $item['label'] ?? null, 'number' => $item['number']])
+        ->values()
+        ->all();
+
+    $emails = collect($globals['emails'] ?? [])
+        ->filter(fn($item) => ($item['enabled'] ?? false) && !empty($item['email']))
+        ->map(fn($item) => ['label' => $item['label'] ?? null, 'email' => $item['email']])
+        ->values()
+        ->all();
+
+    $translate_label = $globals['translate_label'] ?? null;
+    $has_translate = !empty($globals['embed_translate'] ?? null);
+
+    $contactLabel = \Statamic\Facades\GlobalSet::findByHandle('contact_label_information')?->inCurrentSite()?->data();
+    $phone_label = $contactLabel['phone_number_heading'] ?? 'Telepon';
+    $email_label = $contactLabel['email_heading'] ?? 'Email';
 @endphp
 
 <nav>
@@ -19,7 +35,7 @@
             class="absolute inset-0 bg-black/45 opacity-0 transition-opacity duration-300 ease-out"></button>
 
         <div id="mobile-menu-panel"
-            class="-translate-x-full flex h-full w-full max-w-[90%] md:max-w-[40%] flex-col bg-white px-4 py-6 transition-transform duration-300 ease-out">
+            class="-translate-x-full flex h-full w-full max-w-[90%] md:max-w-[40%] flex-col overflow-y-auto overscroll-contain bg-white px-4 py-6 transition-transform duration-300 ease-out">
 
             {{-- Flyout Header --}}
             <div id="logo-flyout" class="flex items-start {{ $logo_url ? 'justify-between' : 'justify-end' }}">
@@ -36,7 +52,7 @@
 
             {{-- Flyout Menu --}}
             @if (\Statamic\Facades\Nav::findByHandle('nav_header'))
-                <div id="flyout-menu" class="border-t border-(--color-line) my-6 py-6">
+                <div id="flyout-menu" class="border-t border-(--color-line) my-6 pt-6">
                     <ul class="flex flex-col gap-4 font-(family-name:--font-body)">
                         <s:nav handle="nav_header">
                             <li>
@@ -82,27 +98,55 @@
             <div class="border-t border-(--color-line) py-6 font-(family-name:--font-body) text-black">
 
                 {{-- Language Mobile --}}
-                <div class="gtranslate_wrapper mb-6"></div>
+                @if ($has_translate)
+                    <div class="mb-5 flex items-center justify-between gap-4">
+                        @if ($translate_label)
+                            <p class="uppercase text-(--color-heading)">{{ $translate_label }}</p>
+                        @endif
+                        <div class="gtranslate_wrapper"></div>
+                    </div>
+                @endif
 
                 <!-- Contact Info -->
-                @if ($phone || $email)
-                    <div id="contact-flyout" class="border-t border-(--color-line) pt-6 flex flex-col gap-6">
-                        @if ($phone)
+                @if (count($phones) > 0 || count($emails) > 0)
+                    <div id="contact-flyout"
+                        class="{{ $has_translate ? 'border-t border-(--color-line) pt-6' : '' }} flex flex-col gap-6">
+                        @if (count($phones) > 0)
                             <div>
-                                <p class="uppercase text-(--color-primary) mb-2">Telepon</p>
-                                <a href="tel:{{ preg_replace('/\s+/', '', $phone) }}"
-                                    class="text-[1.2em] text-black hover:text-(--color-primary)">
-                                    {{ $phone }}
-                                </a>
+                                <p class="uppercase text-(--color-primary) mb-2">{{ $phone_label }}</p>
+                                <div class="flex flex-col gap-2">
+                                    @foreach ($phones as $phone)
+                                        <div class="flex flex-col gap-1">
+                                            @if (!empty($phone['label']))
+                                                <p class="block text-(--color-text)">{{ $phone['label'] }}
+                                                </p>
+                                            @endif
+                                            <a href="tel:{{ preg_replace('/\s+/', '', $phone['number']) }}"
+                                                class="text-black hover:text-(--color-primary)">
+                                                {{ $phone['number'] }}
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                         @endif
-                        @if ($email)
+                        @if (count($emails) > 0)
                             <div>
-                                <p class="uppercase text-(--color-primary) mb-2">Email</p>
-                                <a href="mailto:{{ $email }}"
-                                    class="text-[1.2em] text-black hover:text-(--color-primary)">
-                                    {{ $email }}
-                                </a>
+                                <p class="uppercase text-(--color-primary) mb-2">{{ $email_label }}</p>
+                                <div class="flex flex-col gap-2">
+                                    @foreach ($emails as $email)
+                                        <div class="flex flex-col gap-1">
+                                            @if (!empty($email['label']))
+                                                <p class="block text-(--color-text)">{{ $email['label'] }}
+                                                </p>
+                                            @endif
+                                            <a href="mailto:{{ $email['email'] }}"
+                                                class="text-black hover:text-(--color-primary)">
+                                                {{ $email['email'] }}
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                         @endif
                     </div>

@@ -15,17 +15,15 @@
 
     // Telepon
     $phones = collect($globals['phone_numbers'] ?? [])
-        ->filter(fn($item) => $item['enabled'] ?? false)
-        ->pluck('number')
-        ->filter()
+        ->filter(fn($item) => ($item['enabled'] ?? false) && !empty($item['number']))
+        ->map(fn($item) => ['label' => $item['label'] ?? null, 'number' => $item['number']])
         ->values()
         ->all();
 
     // Email
     $emails = collect($globals['emails'] ?? [])
-        ->filter(fn($item) => $item['enabled'] ?? false)
-        ->pluck('email')
-        ->filter()
+        ->filter(fn($item) => ($item['enabled'] ?? false) && !empty($item['email']))
+        ->map(fn($item) => ['label' => $item['label'] ?? null, 'email' => $item['email']])
         ->values()
         ->all();
 
@@ -121,12 +119,17 @@
                                             <span
                                                 class="title-display text-xl text-(--color-primary)">{{ $contactLabel['phone_number_heading'] }}</span>
                                         @endif
-                                        <div class="flex flex-col gap-1">
+                                        <div class="flex flex-col gap-2">
                                             @foreach ($phones as $phone)
-                                                <a href="tel:{{ preg_replace('/\s+/', '', $phone) }}"
-                                                    class="notranslate text-(--color-body) hover:text-(--color-secondary)">
-                                                    {{ $phone }}
-                                                </a>
+                                                <div class="flex flex-col gap-1">
+                                                    @if (!empty($phone['label']))
+                                                        <p class="block text-(--color-body)">{{ $phone['label'] }}</p>
+                                                    @endif
+                                                    <a href="tel:{{ preg_replace('/\s+/', '', $phone['number']) }}"
+                                                        class="notranslate text-(--color-body) hover:text-(--color-secondary)">
+                                                        {{ $phone['number'] }}
+                                                    </a>
+                                                </div>
                                             @endforeach
                                         </div>
                                     </div>
@@ -139,12 +142,17 @@
                                             <span
                                                 class="title-display text-xl text-(--color-primary)">{{ $contactLabel['email_heading'] }}</span>
                                         @endif
-                                        <div class="flex flex-col gap-1">
+                                        <div class="flex flex-col gap-2">
                                             @foreach ($emails as $email)
-                                                <a href="mailto:{{ $email }}"
-                                                    class="notranslate text-(--color-body) hover:text-(--color-secondary)">
-                                                    {{ $email }}
-                                                </a>
+                                                <div class="flex flex-col gap-1">
+                                                    @if (!empty($email['label']))
+                                                        <p class="block text-(--color-body)">{{ $email['label'] }}</p>
+                                                    @endif
+                                                    <a href="mailto:{{ $email['email'] }}"
+                                                        class="notranslate text-(--color-body) hover:text-(--color-secondary)">
+                                                        {{ $email['email'] }}
+                                                    </a>
+                                                </div>
                                             @endforeach
                                         </div>
                                     </div>

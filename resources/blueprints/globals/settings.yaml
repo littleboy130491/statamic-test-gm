@@ -157,3 +157,19 @@ tabs:
             field:
               type: toggle
               display: 'Header Mobile'
+      -
+        display: Translate
+        fields:
+          -
+            handle: translate_label
+            field:
+              type: text
+              display: 'Translate Label'
+          -
+            handle: embed_translate
+            field:
+              mode: javascript
+              mode_selectable: false
+              show_mode_label: false
+              type: code
+              display: 'Embed Translate'

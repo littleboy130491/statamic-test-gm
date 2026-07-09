@@ -46,6 +46,12 @@
     @endpush
 @endif
 
+@if ($settings?->embed_translate)
+    @push('body_end')
+        {!! $settings->embed_translate !!}
+    @endpush
+@endif
+
 <!doctype html>
 <html lang="{{ $locale }}">
 

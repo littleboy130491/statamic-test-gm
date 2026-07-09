@@ -1058,3 +1058,11 @@ body:has(dialog[open].site-popup) {
   opacity: 0.5;
   cursor: default;
 }
+
+
+
+/* Flyout Menu */
+#flyout-menu li,
+#flyout-menu li a {
+   font-size: 0.9rem;
+}
