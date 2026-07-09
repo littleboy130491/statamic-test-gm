@@ -13,6 +13,8 @@
 @import "swiper/css";
 @import "swiper/css/navigation";
 
+@custom-variant hover (&:hover);
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
