@@ -75,7 +75,7 @@
                             ($direkturUtama['name'] ?? '');
                     @endphp
                     <div id="{{ $direkturUtama['anchor'] ?? 'highlight-management' }}"
-                        class="flex flex-col-reverse gap-6 bg-white rounded-3xl p-5 md:p-6 lg:p-10 md:flex-row lg:flex-row my-18 md:my-18 lg:my-30">
+                        class="flex flex-col-reverse gap-6 bg-white rounded-xl lg:rounded-3xl p-5 md:p-6 lg:p-10 md:flex-row lg:flex-row my-18 md:my-18 lg:my-30">
                         <div class="flex flex-col justify-between gap-8 md:gap-10 lg:gap-2 w-full md:w-[60%] lg:w-[60%]">
 
                             {{-- Sambutan --}}
@@ -84,10 +84,11 @@
                             </div>
 
                             {{-- Profil --}}
-                            <div class="flex flex-col gap-1">
-                                <p class="notranslate title-display text-xl md:text-xl lg:text-2xl tracking-tight">
+                            <div class="flex flex-col">
+                                <p
+                                    class="notranslate text-(--color-heading) title-display text-base tracking-tight lg:text-2xl">
                                     {{ $direkturUtama['name'] ?? '' }}</p>
-                                <p class="uppercase text-(--color-primary) font-medium">
+                                <p class="uppercase text-(--color-primary) font-medium text-xs lg:text-base lg:mt-1">
                                     {{ $direkturUtama['role'] ?? '' }}</p>
                             </div>
                         </div>
@@ -114,7 +115,7 @@
                                     class="flex flex-col gap-6 md:gap-6 lg:gap-10">
                                     <h2>{{ $grid['heading'] ?? '' }}</h2>
                                     <div
-                                        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-8 gap-x-4 md:gap-y-10 md:gap-x-6 lg:gap-y-14 lg:gap-x-6">
+                                        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-8 gap-x-4 md:gap-y-10 md:gap-x-4 lg:gap-y-14 lg:gap-x-6">
                                         @foreach ($grid['members'] as $member)
                                             @php
                                                 $memberImage = $member['image'] ?: $placeholderTim;
@@ -140,9 +141,11 @@
 
                                                 {{-- Profil member --}}
                                                 <div class="flex flex-col gap-1">
-                                                    <p class="notranslate title-display text-xl md:text-xl lg:text-2xl">
+                                                    <p
+                                                        class="notranslate text-(--color-heading) title-display text-base tracking-tight lg:text-2xl">
                                                         {{ $member['name'] ?? '' }}</p>
-                                                    <p class="text-(--color-primary) uppercase font-medium">
+                                                    <p
+                                                        class="uppercase text-(--color-primary) font-medium text-xs lg:text-base lg:mt-1">
                                                         {{ $member['role'] ?? '' }}</p>
                                                 </div>
                                             </div>
