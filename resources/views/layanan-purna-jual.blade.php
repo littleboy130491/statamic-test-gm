@@ -51,19 +51,19 @@
             @if (!empty($purnaJual['rows']))
                 <section id="items-pruna-jual">
                     <div class="container my-18 md:my-18 lg:my-30">
-                        <div id="purna-jual-content" class="reverse-div flex flex-col gap-20 w-full">
+                        <div id="purna-jual-content" class="reverse-div flex flex-col gap-18 lg:gap-20 w-full">
                             @foreach ($purnaJual['rows'] as $item)
-                                <div class="flex flex-col gap-4 md:gap-4 lg:gap-6 lg:flex-row">
+                                <div class="flex flex-col gap-4 md:gap-4 lg:gap-6 lg:flex-row lg:items-stretch">
                                     <img src="{{ $item['image'] ?? '' }}"
                                         alt="{{ $item['image']?->alt ?? ($item['title'] ?? '') }}"
-                                        class="w-full object-cover rounded-3xl h-50 md:h-60 lg:h-112 lg:w-[50%]">
+                                        class="w-full object-cover rounded-xl lg:rounded-3xl h-50 md:h-60 lg:h-auto lg:basis-1/2 lg:min-w-0">
                                     <div
-                                        class="flex flex-col justify-center flow bg-white rounded-3xl py-8 px-5 md:px-6 lg:p-10 lg:w-[50%]">
+                                        class="flex flex-col justify-center flow bg-white rounded-xl lg:rounded-3xl p-4 md:p-5 lg:p-8 lg:basis-1/2 lg:min-w-0">
                                         @if (!empty($item['icon']))
                                             <img src="{{ $item['icon'] }}" alt="{{ $item['icon']?->alt ?? 'Icon' }}"
-                                                class="w-10 h-10 mb-8 md:mb-8 lg:mb-10 lg:w-12 lg:h-12">
+                                                class="w-8 h-8 lg:w-10 lg:h-10 mb-8 md:mb-8 lg:mb-10">
                                         @endif
-                                        <h3>{{ $item['title'] ?? '' }}</h3>
+                                        <h2 class="text-2xl lg:text-3xl normal-case">{{ $item['title'] ?? '' }}</h2>
                                         <p>{{ $item['text'] ?? '' }}</p>
                                     </div>
                                 </div>
