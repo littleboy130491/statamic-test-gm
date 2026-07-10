@@ -9,12 +9,6 @@
         ->filter()
         ->implode(' ');
 
-    // Cek component
-    $hasHeader = view()->exists('components.layouts.header.header');
-    $hasHeroPage = view()->exists('components.layouts.hero.heropage');
-    $hasProductSkin = view()->exists('components.layouts.skin.product-skin');
-    $hasFooter = view()->exists('components.layouts.footer.footer');
-
     // Global label product
     $product = \Statamic\Facades\GlobalSet::findByHandle('product_label_information')
         ?->in(\Statamic\Facades\Site::current()->handle())
@@ -55,6 +49,12 @@
         ->where('taxonomy', 'industries')
         ->get()
         ->filter(fn($term) => $term->queryEntries()->where('collection', 'products')->count() > 0);
+
+    // Cek component
+    $hasHeader = view()->exists('components.layouts.header.header');
+    $hasHeroPage = view()->exists('components.layouts.hero.heropage');
+    $hasProductSkin = view()->exists('components.layouts.skin.product-skin');
+    $hasFooter = view()->exists('components.layouts.footer.footer');
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
@@ -92,7 +92,7 @@
                         {{-- Kategori produk --}}
                         @if ($product_categories->isNotEmpty())
                             <div id="sidebar-categories"
-                                class="bg-white p-4 lg:p-6 flex flex-col gap-6 lg:gap-8 rounded-2xl lg:rounded-3xl">
+                                class="bg-white p-4 lg:p-6 flex flex-col gap-6 lg:gap-8 rounded-xl lg:rounded-3xl">
                                 <p class="uppercase text-black font-medium">
                                     {{ $product['category_labels'] ?? 'Kategori' }}
                                 </p>
@@ -100,7 +100,7 @@
                                     @foreach ($product_categories as $category)
                                         @php $isActive = ($page->slug ?? null) === $category->slug(); @endphp
                                         <li
-                                            class="md:text-sm py-4 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
+                                            class="text-sm py-4 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
                                             <a href="{{ $category->url() }}"
                                                 class="transition-colors hover:text-(--color-primary) {{ $isActive ? 'text-(--color-primary)' : 'text-(--color-body)' }}">
                                                 {{ $category->title }}
@@ -114,7 +114,7 @@
                         {{-- Industri --}}
                         @if ($industries->isNotEmpty())
                             <div id="sidebar-industries"
-                                class="bg-white p-4 lg:p-6 flex flex-col gap-6 lg:gap-8 rounded-2xl lg:rounded-3xl">
+                                class="bg-white p-4 lg:p-6 flex flex-col gap-6 lg:gap-8 rounded-xl lg:rounded-3xl">
                                 <p class="uppercase text-black font-medium">
                                     {{ $product['industry_labels'] ?? 'Industri' }}
                                 </p>
@@ -122,7 +122,7 @@
                                     @foreach ($industries as $industry)
                                         @php $isActive = ($page->slug ?? null) === $industry->slug(); @endphp
                                         <li
-                                            class="md:text-sm py-4 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
+                                            class="text-sm py-4 border-b border-(--color-line) last:border-b-0 first:pt-0 last:pb-0">
                                             <a href="{{ $industry->url() }}"
                                                 class="transition-colors hover:text-(--color-primary) {{ $isActive ? 'text-(--color-primary)' : 'text-(--color-body)' }}">
                                                 {{ $industry->title }}
