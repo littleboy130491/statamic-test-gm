@@ -32,7 +32,7 @@
             <x-layouts.hero.heropage :title="$page->title" :image="$page->featured_image" />
         @endif
 
-        {{-- Halaman REMAN Center --}}
+        {{-- Halaman Reman Center --}}
         <section id="reman-center">
             <div class="container">
                 <div class="flex flex-col items-center my-18 gap-18 lg:my-30 lg:gap-30">
