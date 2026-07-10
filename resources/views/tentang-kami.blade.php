@@ -125,9 +125,10 @@
                         {{-- Faw image --}}
                         @if (!empty($fawText['gallery_grid']))
                             <div id="certificate"
-                                class="w-full md:w-[60%] lg:w-[23%] flex flex-row md:flex-row lg:flex-col gap-4">
+                                class="w-full md:w-[60%] lg:w-[23%] flex flex-row md:flex-row lg:flex-col gap-2 lg:gap-4">
                                 @foreach ($fawText['gallery_grid'] as $cert)
-                                    <div class="bg-white rounded-2xl p-4 md:p-4 lg:p-6 flex flex-col gap-2">
+                                    <div
+                                        class="bg-white rounded-lg lg:rounded-2xl p-4 md:p-4 lg:p-6 flex flex-col gap-2">
                                         @if (!empty($cert['label']))
                                             <p>{{ $cert['label'] }}</p>
                                         @endif
