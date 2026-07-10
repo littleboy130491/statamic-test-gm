@@ -20,6 +20,38 @@
     $hasProductSkin = view()->exists('components.layouts.skin.product-skin');
     $hasFooter = view()->exists('components.layouts.footer.footer');
 
+    // Label global
+    $relatedProductLabel = $acc['related_product_label'] ?? 'Produk Terkait';
+    $buttonLabel = $acc['button_label'] ?? 'Semua Produk';
+    $iconAccordion = $acc['icon_accordion'] ?? null;
+    $iconAccordionActive = $acc['icon_accordion_active'] ?? null;
+    $iconAccordionAlt = $iconAccordion?->alt;
+    $iconAccordionActiveAlt = $iconAccordionActive?->alt;
+
+    // Data industri
+    $industryCollection = collect($industries)->values();
+    $lastIndex = $industryCollection->count() - 1;
+
+    $industryItems = $industryCollection->map(function ($industry, $index) use ($hasProductSkin, $lastIndex) {
+        $relatedProducts = $hasProductSkin
+            ? \Statamic\Facades\Entry::query()
+                ->where('collection', 'products')
+                ->whereStatus('published')
+                ->whereTaxonomyIn(['industries::' . $industry->slug()])
+                ->limit(6)
+                ->get()
+            : collect();
+
+        return [
+            'industry' => $industry,
+            'number' => $index + 1,
+            'related_products' => $relatedProducts,
+            'is_first' => $index === 0,
+            'is_last' => $index === $lastIndex,
+            'featured_image_url' => $industry->featured_image?->url(),
+            'featured_image_alt' => $industry->featured_image?->alt ?? $industry->title,
+        ];
+    });
 @endphp
 
 <x-layouts.main :body-class="$bodyClass">
@@ -37,87 +69,76 @@
                 <div class="flex flex-col gap-8 md:gap-10 lg:gap-16">
 
                     {{-- Accordion industri --}}
-                    @foreach ($industries as $industry)
-                        @php
-                            // Produk yang punya industri ini (maksimal 6)
-                            $relatedProducts = $hasProductSkin
-                                ? \Statamic\Facades\Entry::query()
-                                    ->where('collection', 'products')
-                                    ->whereStatus('published')
-                                    ->whereTaxonomyIn(['industries::' . $industry->slug()])
-                                    ->limit(6)
-                                    ->get()
-                                : collect();
-                        @endphp
-
+                    @foreach ($industryItems as $item)
                         <details class="industry-item group overflow-hidden" name="industry-accordion"
-                            {{ $loop->first ? 'open' : '' }}>
+                            {{ $item['is_first'] ? 'open' : '' }}>
 
                             {{-- Header --}}
                             <summary class="flex items-center justify-between gap-4 cursor-pointer">
-                                <div id="accordion-heading" class="flex items-center gap-4 md:gap-4 lg:gap-8">
+                                <div id="accordion-heading" class="flex items-center gap-3 md:gap-4 lg:gap-8">
                                     <p
-                                        class="title-display text-xl bg-white border border-white w-14 h-14 md:w-14 md:h-14 lg:w-18 lg:h-18 flex justify-center items-center rounded-full transition-colors group-open:text-(--color-primary) group-open:border-(--color-primary) group-open:bg-white/0">
-                                        {{ $loop->iteration . '.' }}
+                                        class="title-display lg:text-xl bg-white border border-white w-10 h-10 md:w-12 md:h-12 lg:w-18 lg:h-18 flex justify-center items-center rounded-full transition-colors group-open:text-(--color-primary) group-open:border-(--color-primary) group-open:bg-white/0">
+                                        {{ $item['number'] . '.' }}
                                     </p>
 
-                                    <h3>{{ $industry->title }}</h3>
+                                    <h2 class="text-xl lg:text-3xl normal-case">{{ $item['industry']->title }}</h2>
                                 </div>
 
-                                @if (!empty($acc['icon_accordion']))
-                                    <img src="{{ $acc['icon_accordion'] }}" alt="{{ $acc['icon_accordion']?->alt }}"
-                                        class="w-6 h-6 md:w-6 md:h-6 lg:w-8 lg:h-8 shrink-0 group-open:hidden" />
+                                @if (!empty($iconAccordion))
+                                    <img src="{{ $iconAccordion }}" alt="{{ $iconAccordionAlt }}"
+                                        class="w-5 h-5 lg:w-8 lg:h-8 shrink-0 group-open:hidden" />
                                 @endif
 
-                                @if (!empty($acc['icon_accordion_active']))
-                                    <img src="{{ $acc['icon_accordion_active'] }}" alt="{{ $acc['icon_accordion_active']?->alt }}"
-                                        class="w-6 h-6 md:w-6 md:h-6 lg:w-8 lg:h-8 shrink-0 hidden group-open:block" />
+                                @if (!empty($iconAccordionActive))
+                                    <img src="{{ $iconAccordionActive }}" alt="{{ $iconAccordionActiveAlt }}"
+                                        class="w-5 h-5 lg:w-8 lg:h-8 shrink-0 hidden group-open:block" />
                                 @endif
                             </summary>
 
                             {{-- Body --}}
                             <div
-                                class="flex flex-col gap-10 md:gap-10 lg:gap-15 pt-6 md:pt-4 lg:pt-6 md:pl-18 lg:pl-26">
+                                class="flex flex-col gap-10 md:gap-10 lg:gap-15 pt-6 md:pt-4 lg:pt-6 md:pl-16 lg:pl-26">
 
                                 {{-- Content --}}
                                 <div class="flex flex-col lg:flex-row lg:items-end gap-6">
-                                    @if ($industry->featured_image)
+                                    @if ($item['featured_image_url'])
                                         <div class="w-full">
-                                            <img src="{{ $industry->featured_image->url() }}"
-                                                alt="{{ $industry->featured_image->alt ?? $industry->title }}"
-                                                class="w-full rounded-2xl md:rounded-3xl lg:rounded-3xl" />
+                                            <img src="{{ $item['featured_image_url'] }}"
+                                                alt="{{ $item['featured_image_alt'] }}"
+                                                class="w-full rounded-xl lg:rounded-3xl" />
                                         </div>
                                     @endif
 
-                                    @if ($industry->content)
+                                    @if ($item['industry']->content)
                                         <div class="w-full richtext">
-                                            {!! $industry->content !!}
+                                            {!! $item['industry']->content !!}
                                         </div>
                                     @endif
                                 </div>
 
                                 {{-- Label produk terkait --}}
-                                @if ($relatedProducts->isNotEmpty())
-                                    <div class="flex items-center gap-5">
+                                @if ($item['related_products']->isNotEmpty())
+                                    <div class="flex items-center gap-4">
                                         <p class="uppercase text-(--color-primary) font-medium">
-                                            {{ $acc['related_product_label'] ?? 'Produk Terkait' }}
+                                            {{ $relatedProductLabel }}
                                         </p>
-                                        <span class="flex-1 border-t border-[#E8E8E8] hidden md:flex lg:flex"></span>
+                                        <span class="flex-1 border-t border-(--color-line)"></span>
                                     </div>
 
                                     {{-- Slot produk terkait --}}
                                     <div
-                                        class="flex flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between">
+                                        class="flex flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between -mt-4 lg:-mt-8">
                                         <div
-                                            class="industry-products grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-                                            @foreach ($relatedProducts as $entry)
+                                            class="industry-products grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-4 md:gap-y-10 md:gap-x-6 lg:gap-y-12 lg:gap-x-6 w-full">
+                                            @foreach ($item['related_products'] as $entry)
                                                 <x-layouts.skin.product-skin :entry="$entry" />
                                             @endforeach
                                         </div>
 
                                         {{-- Button --}}
-                                        <a href="{{ $industry->url() }}" class="button button--primary shrink-0">
-                                            {{ $acc['button_label'] ?? 'Semua Produk' }}
+                                        <a href="{{ $item['industry']->url() }}"
+                                            class="button button--primary shrink-0">
+                                            {{ $buttonLabel }}
                                         </a>
                                     </div>
                                 @endif
@@ -126,7 +147,7 @@
 
                         </details>
 
-                        @unless ($loop->last)
+                        @unless ($item['is_last'])
                             <hr class="border-0 border-t border-[#CECECE]">
                         @endunless
                     @endforeach

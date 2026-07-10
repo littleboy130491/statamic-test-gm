@@ -31,7 +31,7 @@
 
         <div class="heropage-overlay absolute inset-0"></div>
 
-        <div class="absolute inset-x-0 bottom-8 ld:bottom-10 z-10">
+        <div class="absolute inset-x-0 bottom-6 ld:bottom-10 z-10">
             <div class="container">
                 <h1 class="text-left text-white md:text-center lg:text-center">
                     {{ $title }}
