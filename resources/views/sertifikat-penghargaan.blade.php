@@ -71,12 +71,12 @@
                                 <a data-fslightbox="certificates" href="{{ $img }}">
                                     <img src="{{ $img }}"
                                         alt="{{ $certificate->featured_image?->alt ?? $certificate->title }}"
-                                        class="w-full h-auto object-cover rounded-md mb-4">
+                                        class="w-full h-auto object-cover rounded-md mb-3 lg:mb-4">
                                 </a>
                                 <p class="text-(--color-heading) title-display text-base tracking-tight lg:text-2xl">
                                     {{ $certificate->title }}</p>
                                 <p
-                                    class="uppercase text-(--color-primary) font-medium group-hover/card:text-(--color-secondary) text-xs lg:text-base mt-1">
+                                    class="uppercase text-(--color-primary) font-medium group-hover/card:text-(--color-secondary) text-xs lg:text-base lg:mt-1">
                                     @foreach ($certificate->years ?? [] as $year)
                                         {{ $year->title }}
                                         @unless ($loop->last)
