@@ -115,7 +115,7 @@
                                     class="flex flex-col gap-6 md:gap-6 lg:gap-10">
                                     <h2>{{ $grid['heading'] ?? '' }}</h2>
                                     <div
-                                        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-8 gap-x-4 md:gap-y-10 md:gap-x-4 lg:gap-y-14 lg:gap-x-6">
+                                        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-8 gap-x-2 md:gap-y-10 md:gap-x-4 lg:gap-y-14 lg:gap-x-6">
                                         @foreach ($grid['members'] as $member)
                                             @php
                                                 $memberImage = $member['image'] ?: $placeholderTim;
@@ -131,7 +131,7 @@
                                                 {{-- Background & Image --}}
                                                 <div class="relative w-full overflow-hidden rounded-xl">
                                                     <img src="{{ $bgDireksiUrl }}" alt="{{ $bgDireksiAlt }}"
-                                                        class="image-grayscale pointer-events-none w-full h-60 md:h-70 lg:h-110 object-cover">
+                                                        class="image-grayscale pointer-events-none w-full h-55 md:h-70 lg:h-110 object-cover">
 
                                                     <div class="overlay-bg-management"></div>
 
