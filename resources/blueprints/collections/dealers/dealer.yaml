@@ -87,19 +87,6 @@ tabs:
                     type: float
                     display: Longitude
                     width: 50
-                -
-                  handle: google_place_id
-                  field:
-                    type: text
-                    display: 'Google Place ID'
-                    instructions: 'Optional. Useful for geocoding lookups and place details.'
-                -
-                  handle: map_zoom
-                  field:
-                    type: integer
-                    display: 'Map Zoom'
-                    default: 14
-                    instructions: 'Default zoom level when this dealer is focused on the map.'
   sidebar:
     display: Sidebar
     sections:

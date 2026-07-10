@@ -5,16 +5,14 @@ title: 'PT Gaya Makmur Mobil'
 city: 'Tes city'
 address: |-
   Kawasan Pergudangan Diamond Cipta Niaga,
-  Jl. Arteri Jl. Yos Sudarso No.A15, Bandarharjo,
-  Kec. Semarang Utara, Kota Semarang,
-  Jawa Tengah 50175
+  Jl. Arteri Jl. Yos Sudarso No.A15, Bandarharjo
 location:
-  latitude: -6.40353
-  longitude: 106.850617
+  google_place_id: ChIJS4IPrbfFaS4RbeeKCxv9cUw
   map_zoom: 14
 is_active: true
-updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1783066512
 dealer_categories:
   - service-center
+google_maps_url: 'https://www.google.com/maps/place/Bandung,+Bandung+City,+West+Java/@-6.9034477,107.6019579,13z/data=!3m1!4b1!4m6!3m5!1s0x2e68e6398252477f:0x146a1f93d3e815b2!8m2!3d-6.9174639!4d107.6191228!16zL20vMDF6bGw4!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDcwNy4wIKXMDSoASAFQAw%3D%3D'
+updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
+updated_at: 1783672807
 ---

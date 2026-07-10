@@ -12,13 +12,31 @@
         fn($section) => (string) ($section['identifier'] ?? '') === 'opening-dealer',
     );
 
+    $parseMapsCoords = function ($url) {
+        if (!$url) {
+            return [null, null];
+        }
+        if (preg_match('/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/', $url, $m)) {
+            return [(float) $m[1], (float) $m[2]];
+        }
+        if (preg_match('/@(-?\d+\.\d+),(-?\d+\.\d+)/', $url, $m)) {
+            return [(float) $m[1], (float) $m[2]];
+        }
+        return [null, null];
+    };
+
     // Query dealer aktif
     $dealers = \Statamic\Facades\Entry::query()
         ->where('collection', 'dealers')
         ->where('is_active', true)
         ->get()
-        ->map(function ($dealer) {
+        ->map(function ($dealer) use ($parseMapsCoords) {
             $cat = $dealer->dealer_categories?->first();
+
+            [$urlLat, $urlLng] = $parseMapsCoords($dealer->google_maps_url);
+            $lat = $urlLat ?? ($dealer->location['latitude'] ?? null);
+            $lng = $urlLng ?? ($dealer->location['longitude'] ?? null);
+
             return [
                 'company' => $dealer->title,
                 'address' => $dealer->address,
@@ -28,8 +46,8 @@
                 'whatsapp' => $dealer->whatsapp_number,
                 'whatsapp_link' => $dealer->whatsapp_link,
                 'maps_url' => $dealer->google_maps_url,
-                'lat' => $dealer->location['latitude'] ?? null,
-                'lng' => $dealer->location['longitude'] ?? null,
+                'lat' => $lat,
+                'lng' => $lng,
                 'dealer-category' => $cat?->slug() ?? '',
             ];
         })
@@ -41,6 +59,10 @@
         ->where('taxonomy', 'dealer_categories')
         ->get()
         ->mapWithKeys(fn($term) => [$term->slug() => $term->title]);
+
+    // Label informasi dealer
+    $dealerLabels =
+        \Statamic\Facades\GlobalSet::findByHandle('dealer_label_information')?->inCurrentSite()?->data() ?? collect();
 
     // Cek component
     $hasHeader = view()->exists('components.layouts.header.header');
@@ -78,7 +100,7 @@
             <section id="dealer">
                 <div class="container">
                     <div class="my-18 md:my-18 lg:my-30">
-                        <x-layouts.dealer-map :dealers="$dealers" :categories="$dealerCategories" />
+                        <x-layouts.dealer-map :dealers="$dealers" :categories="$dealerCategories" :labels="$dealerLabels" />
                     </div>
                 </div>
             </section>

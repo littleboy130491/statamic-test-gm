@@ -1,0 +1,41 @@
+title: 'Dealer Label Information'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: peta_label
+            field:
+              default: Peta
+              type: text
+              display: 'Peta Label'
+              width: 33
+              validate:
+                - required
+          -
+            handle: satelit_label
+            field:
+              default: Satelit
+              type: text
+              display: 'Satelit Label'
+              width: 33
+              validate:
+                - required
+          -
+            handle: placeholder_search
+            field:
+              default: 'Ketik Kota'
+              type: text
+              display: 'Placeholder Search'
+              width: 33
+          -
+            handle: icon_maps_dealer
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Icon Maps Dealer'
+              validate:
+                - required

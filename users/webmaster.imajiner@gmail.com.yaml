@@ -32,6 +32,7 @@ preferences:
         - city
         - dealer_categories
         - status
+      after_save: continue_editing
     careers:
       view: list
       columns:
