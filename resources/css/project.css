@@ -978,7 +978,13 @@ body:has(dialog[open].site-popup) {
   background-position: center;
   background-size: contain;
   transition: transform 0.2s ease;
-  margin-top: 2px
+}
+
+@media(max-width: 768px) {
+   .cmp-dd-caret {
+      width: 20px;
+      height: 20px;
+   }
 }
 
 .cmp-dd.is-open .cmp-dd-caret {

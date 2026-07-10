@@ -147,11 +147,11 @@
                         <div class="heropage-product-overlay absolute inset-0"></div>
                         <img src="{{ $backgroundImage->url() }}" alt="{{ $backgroundImage->alt ?? $page->title }}"
                             oncontextmenu="return false" draggable="false"
-                            class="object-cover w-full h-[90vh] md:h-180 lg:h-185">
+                            class="object-cover w-full h-200 md:h-180 lg:h-185">
                     </div>
                 @endif
 
-                <article class="container absolute inset-0 z-10 flex items-start md:items-end lg:items-end">
+                <article class="container absolute inset-0 z-10 flex items-stretch md:items-end lg:items-end">
                     <div class="flex flex-col lg:flex-row gap-15 md:gap-6 lg:gap-10 w-full">
 
                         {{-- Konten --}}
@@ -211,7 +211,7 @@
         @if ($features->isNotEmpty())
             <section id="features-benefit">
                 <div class="container">
-                    <div class="mb-18 mt-24 md:mb-18 lg:my-30 flex flex-col gap-8 lg:gap-10">
+                    <div class="mb-18 mt-30 md:mb-18 lg:my-30 flex flex-col gap-8 lg:gap-10">
                         <div class="flex items-center justify-between gap-4">
                             <h2>{{ $product['benefit_label'] ?? '' }}</h2>
 
@@ -467,13 +467,14 @@
                                         data-row="{{ $rowIndex }}" data-field="{{ $row['handle'] }}"
                                         style="grid-template-columns: minmax(140px, 1fr) repeat({{ $compareColumns }}, minmax(0, 1fr));">
                                         <div class="flex items-center py-4 pl-5">
-                                            <p class="specifi-title md:text-xl lg:text-2xl">
+                                            <p
+                                                class="font-(family-name:--font-display) text-sm lg:text-2xl font-semibold tracking-tight">
                                                 {{ $row['label'] }}</p>
                                         </div>
                                         @for ($col = 0; $col < $compareColumns; $col++)
                                             <div
                                                 class="px-2 md:px-3 lg:px-4 flex items-center justify-center py-4 text-center">
-                                                <p class="text-(--color-body) {{ $rowIndex === 0 ? 'md:text-xl lg:text-xl font-(family-name:--font-display) font-semibold' : 'text-base' }}"
+                                                <p class="text-(--color-body) {{ $rowIndex === 0 ? 'md:text-sm lg:text-xl font-(family-name:--font-display) font-semibold' : 'text-sm lg:text-base' }}"
                                                     data-comparison-cell="{{ $col }}"
                                                     data-row="{{ $rowIndex }}"></p>
                                             </div>
