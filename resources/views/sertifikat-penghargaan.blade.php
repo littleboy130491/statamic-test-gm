@@ -17,12 +17,11 @@
         fn($section) => (string) ($section['identifier'] ?? '') === 'certificate',
     );
 
-    // Global: placeholder image
+    // Global label
     $achievements = \Statamic\Facades\GlobalSet::findByHandle('achievements_label_information')
         ?->in(\Statamic\Facades\Site::current()->handle())
         ?->toAugmentedArray();
 
-    // Entries dari collection achievements
     $certificates = \Statamic\Facades\Entry::query()
         ->where('collection', 'achievements')
         ->whereStatus('published')
@@ -74,9 +73,10 @@
                                         alt="{{ $certificate->featured_image?->alt ?? $certificate->title }}"
                                         class="w-full h-auto object-cover rounded-md mb-4">
                                 </a>
-                                <span
-                                    class="title-display font-semibold tracking-tighter text-xl lg:text-2xl">{{ $certificate->title }}</span>
-                                <p class="text-(--color-primary) font-medium">
+                                <p class="text-(--color-heading) title-display text-base tracking-tight lg:text-2xl">
+                                    {{ $certificate->title }}</p>
+                                <p
+                                    class="uppercase text-(--color-primary) font-medium group-hover/card:text-(--color-secondary) text-xs lg:text-base mt-1">
                                     @foreach ($certificate->years ?? [] as $year)
                                         {{ $year->title }}
                                         @unless ($loop->last)
