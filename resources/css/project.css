@@ -997,6 +997,11 @@ body:has(dialog[open].site-popup) {
       width: 20px;
       height: 20px;
    }
+
+   .cmp-dd-button {
+      padding: 14px !important;
+      border-radius: 8px;
+   }
 }
 
 .cmp-dd.is-open .cmp-dd-caret {
@@ -1060,7 +1065,6 @@ body:has(dialog[open].site-popup) {
 #flyout-menu li a {
    font-size: 0.9rem;
 }
-
 
 
 
