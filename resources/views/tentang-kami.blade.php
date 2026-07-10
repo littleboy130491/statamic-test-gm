@@ -95,7 +95,7 @@
                                 class="flex flex-col md:flex-row inset-0 lg:flex-col gap-4 md:gap-4 lg:gap-8 md:w-full lg:w-[60%]">
                                 @if ($vision)
                                     <div id="vision"
-                                        class="glass rounded-2xl p-5 w-full md:w-[40%] lg:w-full md:p-5 lg:p-8 flex flex-col gap-6">
+                                        class="glass rounded-xl p-4 w-full md:w-[40%] lg:w-full md:p-5 lg:p-8 flex flex-col gap-4 lg:gap-6">
                                         <h3>{{ $vision['title'] ?? '' }}</h3>
                                         <div>{!! $vision['description'] ?? '' !!}</div>
                                     </div>
@@ -103,7 +103,7 @@
 
                                 @if ($mission)
                                     <div id="mission"
-                                        class="glass rounded-2xl p-5 w-full md:w-[60%] lg:w-full md:p-5 lg:p-8 flex flex-col md:gap-0 lg:gap-6">
+                                        class="glass rounded-xl p-4 w-full md:w-[60%] lg:w-full md:p-5 lg:p-8 flex flex-col md:gap-0 lg:gap-6">
                                         <h3>{{ $mission['title'] ?? '' }}</h3>
                                         <div class="mission-list-content">{!! $mission['description'] ?? '' !!}</div>
                                     </div>
@@ -139,8 +139,8 @@
                         @endif
 
                         {{-- Faw konten --}}
-                        <div id="faw-content" class="w-full md:w-full lg:w-[70%] flex flex-col gap-5">
-                            <h3 class="h3-cust-about">{{ $fawText['heading'] ?? '' }}</h3>
+                        <div id="faw-content" class="w-full md:w-full lg:w-[70%] flex flex-col gap-4 lg:gap-5">
+                            <h3 class="text-base md:text-xl lg:text-2xl">{{ $fawText['heading'] ?? '' }}</h3>
                             <div class="w-full lg:w-170">{!! $fawText['description'] ?? '' !!}</div>
                         </div>
                     </div>
@@ -164,12 +164,13 @@
                         <div data-equal-height class="grid gap-5 {{ $fawColumns }}">
                             @foreach ($fawValue['features'] as $item)
                                 <div
-                                    class="flex flex-col gap-14 p-6 bg-white rounded-3xl md:p-6 md:gap-14 lg:p-6 lg:gap-10">
+                                    class="flex flex-col gap-8 p-4 bg-white rounded-xl lg:rounded-3xl md:p-4 md:gap-8 lg:p-6 lg:gap-12">
                                     <img src="{{ $item['icon'] ?: $iconPlaceholder }}"
-                                        alt="{{ $item['icon']?->alt ?? 'Icon' }}" class="w-10 h-10">
-                                    <div class="flow">
-                                        <h4 class="text-black w-full lg:w-70 tracking-tight">
-                                            {{ $item['title'] ?? '' }}</h4>
+                                        alt="{{ $item['icon']?->alt ?? 'Icon' }}" class="w-8 h-8 lg:w-10 lg:h-10">
+                                    <div class="flex flex-col gap-2 lg:gap-4">
+                                        <p
+                                            class="w-full lg:w-70 text-(--color-heading) title-display text-xl tracking-tight lg:text-2xl">
+                                            {{ $item['title'] ?? '' }}</p>
                                         <p>{{ $item['text'] ?? '' }}</p>
                                     </div>
                                 </div>

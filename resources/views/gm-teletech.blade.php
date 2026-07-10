@@ -113,9 +113,11 @@
                                     class="flex flex-col gap-10 p-4 bg-(--color-surface) rounded-xl lg:rounded-3xl md:p-4 md:gap-10 lg:p-6 lg:gap-20">
                                     <img src="{{ $item['icon'] ?: $iconBenefitPlaceholder }}"
                                         alt="{{ $item['icon']?->alt ?? 'Icon' }}" class="w-8 h-8 lg:w-10 lg:h-10">
-                                    <div class="flow">
-                                        <h4 class="text-(--color-heading) tracking-tight">{{ $item['title'] ?? '' }}
-                                        </h4>
+                                    <div class="flex flex-col gap-2">
+                                        <p
+                                            class="text-(--color-heading) title-display text-xl tracking-tight lg:text-2xl">
+                                            {{ $item['title'] ?? '' }}
+                                        </p>
                                         <p>{{ $item['text'] ?? '' }}</p>
                                     </div>
                                 </div>
