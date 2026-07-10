@@ -126,7 +126,7 @@
                                                     (is_string($memberImage) ? null : $memberImage?->get('alt')) ??
                                                     ($member['name'] ?? '');
                                             @endphp
-                                            <div class="flex flex-col gap-4 md:gap-4 lg:gap-6 w-full">
+                                            <div class="flex flex-col gap-3 md:gap-4 lg:gap-6 w-full">
 
                                                 {{-- Background & Image --}}
                                                 <div class="relative w-full overflow-hidden rounded-xl">
