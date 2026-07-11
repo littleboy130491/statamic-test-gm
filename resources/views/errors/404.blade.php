@@ -31,11 +31,11 @@
     @endif
 
     <section id="error-404">
-        <div class="container">
+        <div class="container overflow-hidden">
             <div class="my-18 md:my-18 lg:my-30 flex flex-col items-center relative">
                 <div class="relative w-fit">
                     <p
-                        class="font-(family-name:--font-display) text-center text-[14rem] md:text-[16rem] lg:text-[25rem] leading-none font-semibold text-(--color-surface)/80">
+                        class="font-(family-name:--font-display) text-center text-[12rem] md:text-[16rem] lg:text-[25rem] leading-none font-semibold text-(--color-surface)/80">
                         {{ $notFound }}</p>
                     <h2 class="font-(family-name:--font-display) absolute inset-0 m-auto w-fit h-fit text-center">
                         {{ $heading }}</h2>
