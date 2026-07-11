@@ -12,7 +12,7 @@
 
 <article class="group">
     <a href="{{ $entry->url() }}">
-        <div class="flex flex-col gap-3 uppercase text-(--color-primary) font-medium">
+        <div class="flex flex-col gap-3 uppercase text-(--color-primary) font-medium text-sm lg:text-base">
 
             {{-- Kategori - Tanggal --}}
             <div class="flex gap-5">

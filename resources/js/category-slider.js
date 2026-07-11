@@ -7,7 +7,7 @@ const setupCategorySlider = () => {
     new Swiper('.category-swiper', {
         modules: [Navigation],
         slidesPerView: 2,
-        spaceBetween: 16,
+        spaceBetween: 10,
         loop: true,
         navigation: {
             nextEl: '.category-next',

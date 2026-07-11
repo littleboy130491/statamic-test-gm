@@ -202,7 +202,7 @@
                                                         class="counter-number"
                                                         data-target="{{ $counter['number'] ?? 0 }}">0</span><span>{{ $counter['suffix'] ?? '' }}</span>
                                                 </p>
-                                                <p class="text-(--color-body) text-xs md:text-xs lg:text-base">
+                                                <p class="text-(--color-body) text-[11px] md:text-xs lg:text-base">
                                                     {{ $counter['caption'] ?? '' }}</p>
                                             </div>
                                         @endforeach

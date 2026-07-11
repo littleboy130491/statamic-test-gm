@@ -70,7 +70,7 @@
 
             {{-- Kategori - Tanggal --}}
             <div class="flex items-end justify-between">
-                <div class="flex items-center gap-5 uppercase text-(--color-primary) font-medium">
+                <div class="flex items-center gap-5 uppercase text-(--color-primary) font-medium text-sm lg:text-base">
                     @if ($displayTerms->isNotEmpty())
                         <span>
                             @foreach ($displayTerms as $term)

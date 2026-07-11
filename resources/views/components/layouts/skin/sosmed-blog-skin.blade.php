@@ -45,9 +45,10 @@
 
         <div class="p-5 flex flex-col gap-10">
 
-            {{-- Heading --}}
+            {{-- Kategori, tanggal --}}
             <div class="richtext flex flex-col gap-4">
-                <div class="flex items-center gap-5 uppercase text-(--color-primary) font-medium justify-between">
+                <div
+                    class="flex items-center gap-5 uppercase text-(--color-primary) font-medium text-sm lg:text-base justify-between">
                     @if ($displayTerm)
                         <span>{{ $displayTerm->title }}</span>
                     @endif
@@ -57,6 +58,7 @@
                     @endif
                 </div>
 
+                {{-- Heading --}}
                 <div class="custom-heading-blog">
                     <p class="text-(--color-heading) title-display text-xl tracking-tight lg:text-2xl">
                         {{ $entry->title }}</p>
