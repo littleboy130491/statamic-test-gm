@@ -842,7 +842,7 @@ body:has(dialog[open].site-popup) {
    position: fixed;
    right: 24px;
    bottom: 24px;
-   z-index: 9999;
+   z-index: 1000;
    display: flex;
    align-items: center;
    justify-content: center;
@@ -850,7 +850,7 @@ body:has(dialog[open].site-popup) {
    height: 40px;
    border: none;
    border-radius: 100px;
-   background: var(--color-primary);
+   background: var(--color-heading);
    color: white;
    cursor: pointer;
    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);

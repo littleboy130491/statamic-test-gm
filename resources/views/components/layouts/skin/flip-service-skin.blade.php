@@ -20,19 +20,21 @@
     <div class="absolute inset-0 flex flex-col">
         @if (!empty($flip['image']))
             <div class="h-80 overflow-hidden">
-                <img src="{{ $flip['image']?->url() }}" alt="{{ $flip['image']?->alt ?? $flip['heading_flip'] ?? '' }}"
+                <img src="{{ $flip['image']?->url() }}" alt="{{ $flip['image']?->alt ?? ($flip['heading_flip'] ?? '') }}"
                     class="w-full h-full object-cover">
             </div>
         @endif
-        <h3 class="p-4 text-xl text-center">{{ $flip['heading_flip'] ?? '' }}</h3>
+        <p class="p-4 text-(--color-heading) title-display text-xl tracking-tight lg:text-2xl text-center">
+            {{ $flip['heading_flip'] ?? '' }}</p>
     </div>
 
     {{-- Back --}}
     <div
         class="absolute inset-0 bg-white rounded-2xl p-4 flex flex-col justify-between text-center gap-2 translate-y-full group-hover/flip:translate-y-0 transition-transform duration-500 ease-out">
         <div id="head-flip" class="flex flex-col gap-2 md:mt-4 lg:mt-8 lg:p-4">
-            <h3 class="text-(--color-heading) text-xl text-start md:text-center lg:text-center">
-                {{ $flip['heading_flip'] ?? '' }}</h3>
+            <p
+                class="text-(--color-heading) title-display text-xl tracking-tight lg:text-2xl text-start md:text-center lg:text-center">
+                {{ $flip['heading_flip'] ?? '' }}</p>
 
             @if (!empty($flip['short_description']))
                 <p class="richtext text-(--color-body) text-start md:text-center lg:text-center">{!! $flip['short_description'] !!}

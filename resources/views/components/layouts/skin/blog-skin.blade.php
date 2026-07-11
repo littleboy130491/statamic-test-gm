@@ -60,7 +60,7 @@
             {{-- Heading --}}
             <div class="flex flex-col gap-2 md:gap-2 lg:gap-3">
                 <p
-                    class="font-(family-name:--font-display) font-semibold text-(--color-heading) text-2xl tracking-tight">
+                    class="font-(family-name:--font-display) font-semibold text-(--color-heading) text-xl lg:text-2xl tracking-tight">
                     {{ $entry->title }}</p>
 
                 @if ($entry->excerpt)

@@ -173,7 +173,7 @@
                     </div>
 
                     {{-- Konten --}}
-                    <div class="absolute inset-0 z-10 flex items-center lg:-mt-30">
+                    <div class="absolute inset-0 z-10 flex items-start py-18 lg:py-0 lg:items-center lg:-mt-30">
                         <div id="content-about"
                             class="container flex flex-col md:flex-col lg:flex-row gap-15 md:gap-0 lg:gap-0">
 
@@ -197,12 +197,13 @@
                                         @foreach ($about['counter_grid'] as $counter)
                                             <div
                                                 class="flex flex-col gap-1 items-start lg:items-center p-4 rounded-xl blur-cus bg-(--color-surface)/50 lg:bg-(--color-surface)/0">
-                                                <p class="text-4xl font-medium text-(--color-primary)">
+                                                <p class="text-3xl lg:text-4xl font-medium text-(--color-primary)">
                                                     <span>{{ $counter['prefix'] ?? '' }}</span><span
                                                         class="counter-number"
                                                         data-target="{{ $counter['number'] ?? 0 }}">0</span><span>{{ $counter['suffix'] ?? '' }}</span>
                                                 </p>
-                                                <p class="text-(--color-body)">{{ $counter['caption'] ?? '' }}</p>
+                                                <p class="text-(--color-body) text-xs md:text-xs lg:text-base">
+                                                    {{ $counter['caption'] ?? '' }}</p>
                                             </div>
                                         @endforeach
                                     </div>
@@ -229,7 +230,8 @@
                                 @if (!empty($about['images']))
                                     <div class="flex justify-end items-center gap-2 lg:gap-6 md:-mt-18 lg:mt-0">
                                         @foreach ($about['images'] as $img)
-                                            <div class="flex flex-col gap-1 bg-white p-3 rounded-xl">
+                                            <div
+                                                class="bg-white rounded-lg lg:rounded-2xl p-4 md:p-4 lg:p-6 flex flex-col gap-2">
                                                 @if ($img->caption)
                                                     <p>{{ $img->caption }}</p>
                                                 @endif
@@ -356,7 +358,7 @@
                                 {{-- Text --}}
                                 @if (!empty($services['description']))
                                     <div
-                                        class="richtext text-start md:text-center lg:text-center w-full md:w-[60%] lg:w-[55%]">
+                                        class="richtext text-start md:text-center lg:text-center w-full md:w-[70%] lg:w-[55%]">
                                         {!! $services['description'] !!}</div>
                                 @endif
                             </div>
@@ -475,15 +477,16 @@
                             </div>
 
                             {{-- Counter --}}
-                            <div class="w-full lg:w-[45%] grid grid-cols-3 gap-4">
+                            <div class="w-full lg:w-[45%] grid grid-cols-3 gap-2 md:gap-4 lg:gap-4">
                                 @foreach ($dealerCategories as $slug => $label)
                                     <div
-                                        class="flex flex-col items-start lg:items-center gap-4 bg-(--color-surface) px-4 py-8 rounded-xl">
+                                        class="flex flex-col items-start lg:items-center gap-2 lg:gap-4 bg-(--color-surface) p-4 lg:px-4 lg:py-8 rounded-xl">
                                         <p
-                                            class="text-4xl text-(--color-primary) font-(family-name:--font-display) font-semibold">
+                                            class="text-3xl lg:text-4xl text-(--color-primary) font-(family-name:--font-display) font-semibold">
                                             {{ $dealerCounts[$slug] ?? 0 }}
                                         </p>
-                                        <p class="text-(--color-primary) leading-[1.2rem]">{{ $label }}</p>
+                                        <p class="text-(--color-primary) text-xs lg:leading-[1.2rem]">
+                                            {{ $label }}</p>
                                     </div>
                                 @endforeach
                             </div>
@@ -516,35 +519,35 @@
 
                         {{-- Gallery --}}
                         @if (!empty($groupGm['gallery_images']))
-                            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
+                            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6">
                                 @foreach ($groupGm['gallery_images'] as $item)
                                     @php $itemUrl = trim($item['url_button'] ?? ''); @endphp
 
                                     @if ($itemUrl)
                                         <a href="{{ $itemUrl }}" target="_blank" rel="noopener noreferrer"
-                                            class="flex flex-col gap-4 items-center lg:justify-center p-4 lg:py-5 lg:px-15 border border-(--color-line) rounded-xl">
+                                            class="flex flex-col gap-4 items-center lg:justify-center p-3.5 lg:py-5 lg:px-15 border border-(--color-line) rounded-xl">
                                             @if (!empty($item['images']))
                                                 <img src="{{ $item['images']?->url() }}"
                                                     alt="{{ $item['label'] ?? '' }}"
-                                                    class="w-full h-6 md:h-8 lg:h-8 object-contain">
+                                                    class="w-full h-5 md:h-8 lg:h-8 object-contain">
                                             @endif
                                             @if (!empty($item['label']))
                                                 <p
-                                                    class="text-center text-(--color-heading) lg:text-xl font-(family-name:--font-display) font-semibold tracking-tighter">
+                                                    class="text-center text-(--color-heading) lg:text-xl font-(family-name:--font-display) font-semibold tracking-tight">
                                                     {{ $item['label'] }}</p>
                                             @endif
                                         </a>
                                     @else
                                         <div
-                                            class="flex flex-col gap-4 items-center lg:justify-center p-4 lg:py-5 lg:px-15 border border-(--color-line) rounded-xl">
+                                            class="flex flex-col gap-4 items-center lg:justify-center p-3.5 lg:py-5 lg:px-15 border border-(--color-line) rounded-xl">
                                             @if (!empty($item['images']))
                                                 <img src="{{ $item['images']?->url() }}"
                                                     alt="{{ $item['label'] ?? '' }}"
-                                                    class="w-full h-6 md:h-8 lg:h-8 object-contain">
+                                                    class="w-full h-5 md:h-8 lg:h-8 object-contain">
                                             @endif
                                             @if (!empty($item['label']))
                                                 <p
-                                                    class="text-center text-(--color-heading) lg:text-xl font-(family-name:--font-display) font-semibold tracking-tighter">
+                                                    class="text-center text-(--color-heading) lg:text-xl font-(family-name:--font-display) font-semibold tracking-tight">
                                                     {{ $item['label'] }}</p>
                                             @endif
                                         </div>

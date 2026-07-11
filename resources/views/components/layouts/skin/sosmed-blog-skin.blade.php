@@ -58,7 +58,8 @@
                 </div>
 
                 <div class="custom-heading-blog">
-                    <h2 class="text-(--color-heading) title-display">{{ $entry->title }}</h2>
+                    <p class="text-(--color-heading) title-display text-xl tracking-tight lg:text-2xl">
+                        {{ $entry->title }}</p>
                 </div>
 
                 @if ($entry->excerpt)

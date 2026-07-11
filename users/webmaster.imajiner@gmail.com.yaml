@@ -25,6 +25,7 @@ preferences:
     pages:
       view: list
       per_page: 100
+      after_save: continue_editing
     dealers:
       view: list
       columns:
