@@ -1,4 +1,4 @@
-// Flyout untuk perangkat mobile dan tablet
+// Flyout (Mobile dan Tablet)
 
 const setupFlyoutMenu = () => {
     const toggleButton = document.getElementById('menu-toggle');
@@ -12,6 +12,7 @@ const setupFlyoutMenu = () => {
         return;
     }
 
+    // Buka/tutup menu
     const setMenuState = (isOpen) => {
         toggleButton.setAttribute('aria-expanded', String(isOpen));
 

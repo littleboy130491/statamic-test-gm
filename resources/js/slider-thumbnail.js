@@ -1,4 +1,4 @@
-// Galeri single post - vanilla, tanpa library
+// Galeri slider (single Artikel & Produk)
 
 const setupGallery = () => {
     const main = document.querySelector('.gallery-main');
@@ -14,6 +14,7 @@ const setupGallery = () => {
 
     let current = 0;
 
+    // Slide tampil
     const show = (index) => {
         current = (index + slides.length) % slides.length;
 

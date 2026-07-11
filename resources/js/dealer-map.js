@@ -1,3 +1,5 @@
+// Maps dealer
+
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
@@ -28,9 +30,11 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         : null;
 
+    // Inisialisasi peta (default: Indonesia
     const map = L.map('dealer-map', { zoomControl: false }).setView([-6.2088, 106.8456], 6);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
 
+    // Layer peta: jalan dan satelit
     const layerStreet = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
         subdomains: 'abcd',
@@ -45,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const isTabletDown = () => window.matchMedia('(max-width: 1023px)').matches;
 
+    // Button layer Peta/Satelit
     const LayerToggle = L.Control.extend({
         options: { position: isTabletDown() ? 'bottomleft' : 'topleft' },
         onAdd: function () {
@@ -87,12 +92,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const markers = [];
 
+    // Marker + popup
     locations.forEach(function (loc) {
         if (!loc.lat || !loc.lng) return;
 
         const label = categoryLabel[loc['dealer-category']] || loc['dealer-category'] || '';
 
-        // WA link
+        // WhatsApp
         let waHref = '';
         if (loc.whatsapp_link) {
             waHref = loc.whatsapp_link;
@@ -168,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Hide/unhide marker > kategori aktif & search
     function applyFilters() {
         const isMobile = window.matchMedia('(max-width: 1023px)').matches;
         const activeCategory = isMobile

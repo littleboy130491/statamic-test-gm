@@ -1,3 +1,6 @@
+// Dropdown select custom
+
+// Create dropdown custom elemen <select> > select asli hide
 function buildDropdown(select) {
   const wrap = document.createElement('div');
   wrap.className = 'cmp-dd';
@@ -64,6 +67,7 @@ function buildDropdown(select) {
     return el;
   }
 
+  // Tampilan dropdown
   function syncFromSelect() {
     const current = select.options[select.selectedIndex];
     label.textContent = current ? current.textContent.trim() : '';

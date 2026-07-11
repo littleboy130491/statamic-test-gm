@@ -1,18 +1,16 @@
-// Javascript untuk popup form single career.
-// - Klik overlay untuk menutup popup.
-// - Submit form via AJAX supaya popup TIDAK menutup setelah submit/success/error.
+// Popup form career
 
 document.addEventListener('DOMContentLoaded', function () {
     const popup = document.getElementById('career-popup');
     if (!popup) return;
 
-    // Kunci scroll body saat popup terbuka.
+    // Lock scroll > popup terbuka
     const observer = new MutationObserver(function () {
         document.body.style.overflow = popup.open ? 'hidden' : '';
     });
     observer.observe(popup, { attributes: true, attributeFilter: ['open'] });
 
-    // Klik di luar box menutup popup.
+    // Klik di luar box > menutup
     popup.addEventListener('click', function (e) {
         const box = popup.querySelector('.career-popup-inner');
         if (box && !box.contains(e.target)) {
@@ -20,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Buka otomatis jika ada success/error dari render server (fallback non-JS).
     if (popup.dataset.autoOpen === 'true') {
         popup.showModal();
     }
@@ -43,12 +40,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (el) el.classList.remove('hidden');
     }
 
+    // Daftar pesan error validasi di popup
     function showErrors(messages) {
         if (!errorBox) return;
         const failedMsg = errorBox.dataset.messageFailed || '';
         if (errorHeading) {
             if (failedMsg) {
-                // Pesan dari Bard berupa HTML.
                 errorHeading.innerHTML = failedMsg;
                 show(errorHeading);
             } else {
@@ -68,10 +65,10 @@ document.addEventListener('DOMContentLoaded', function () {
         errorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
+    // Pesan sukses > form terkirim
     function showSuccess(message) {
         hide(errorBox);
         if (successBox) {
-            // Utamakan pesan dari Bard (HTML). Pesan dari server (plain) di-escape.
             const bardMsg = successBox.dataset.successMessage || '';
             if (bardMsg) {
                 successBox.innerHTML = bardMsg;
@@ -83,10 +80,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Submit form
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        // Reset state pesan sebelumnya.
         hide(errorBox);
         hide(successBox);
 
@@ -113,7 +110,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const data = result.data || {};
                 if (result.ok && (data.success || !data.errors)) {
                     form.reset();
-                    // Reset nama file yang dipilih ke placeholder.
                     form.querySelectorAll('.career-form-file-name').forEach(function (el) {
                         if (el.dataset.placeholder) el.textContent = el.dataset.placeholder;
                     });

@@ -1,3 +1,5 @@
+// Countdown halaman coming soon
+
 const setupCountdown = () => {
     const el = document.getElementById('countdown');
     if (!el) return;
@@ -11,6 +13,7 @@ const setupCountdown = () => {
         if (node) node.textContent = String(v).padStart(2, '0');
     };
 
+    // Hitung waktu (hari/jam/menit/detik)
     const tick = () => {
         const diff = target - Date.now();
         if (diff <= 0) {

@@ -1,3 +1,6 @@
+// Share link (Single Artikel)
+
+// Salin teks > clipboard
 const copyText = async (text) => {
     if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(text);
@@ -15,6 +18,7 @@ const copyText = async (text) => {
     textarea.remove();
 };
 
+// Button share
 const setupShareCopy = () => {
     const links = document.querySelectorAll('.share-link');
     if (!links.length) return;

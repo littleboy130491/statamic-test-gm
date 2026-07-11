@@ -1,7 +1,9 @@
+// Fitur scroll top
+
 const button = document.querySelector('#scroll-to-top');
 
 if (button) {
-    const SCROLL_THRESHOLD = 400; // px scrolled before the button appears
+    const SCROLL_THRESHOLD = 400;
 
     const updateVisibility = () => {
         button.classList.toggle('is-visible', window.scrollY > SCROLL_THRESHOLD);

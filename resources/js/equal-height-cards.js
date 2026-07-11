@@ -1,7 +1,6 @@
-// Menyamakan tinggi card dalam satu container secara otomatis.
-// Digunakan pada halaman yang menampilkan grid card (contoh: fitur & benefit - GM Teletech).
-// Cara: Tambah atribut data-equal-height di elemen container card.
+// Tinggi card sama dalam satu container (GM Teletech).
 
+// Samakan tinggi semua card > card tertinggi
 function equalizeHeights(container) {
     const cards = Array.from(container.children);
     cards.forEach((c) => (c.style.height = ''));
@@ -9,6 +8,7 @@ function equalizeHeights(container) {
     cards.forEach((c) => (c.style.height = maxHeight + 'px'));
 }
 
+// Khusus Tablet + Desktop
 function initEqualHeightCards() {
     const containers = document.querySelectorAll('[data-equal-height]');
     if (window.innerWidth <= 640) {

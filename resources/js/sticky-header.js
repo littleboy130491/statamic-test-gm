@@ -1,9 +1,12 @@
+// Sticky Header
+
 const headers = document.querySelectorAll('#header, #single-header');
 
 if (headers.length) {
-    const SCROLL_THRESHOLD = 10; // px scrolled before sticky state kicks in
-    const desktopQuery = window.matchMedia('(min-width: 1024px)'); // Tailwind lg
+    const SCROLL_THRESHOLD = 10;
+    const desktopQuery = window.matchMedia('(min-width: 1024px)');
 
+    // Status sticky
     const updateHeaders = () => {
         const scrolled = window.scrollY > SCROLL_THRESHOLD;
 

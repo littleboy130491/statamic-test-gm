@@ -1,4 +1,4 @@
-// Slider hero banner halaman Beranda
+// Slider hero banner (Beranda)
 
 const setupHeroSlider = () => {
     const SLIDE_TRANSITION_MS = 500;
@@ -13,6 +13,7 @@ const setupHeroSlider = () => {
 
     if (!track || originalSlides.length <= 1 || dots.length !== originalSlides.length) return;
 
+    // Infinite slide
     const firstClone = originalSlides[0].cloneNode(true);
     const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
 
@@ -81,6 +82,7 @@ const setupHeroSlider = () => {
         setTrackPosition(currentTranslate, false);
     };
 
+    // Pindah ke slide: geser, klik dot
     const renderTrackIndex = (nextTrackIndex, { animate = true } = {}) => {
         currentIndex = nextTrackIndex;
 
@@ -115,6 +117,7 @@ const setupHeroSlider = () => {
         slider.classList.add('is-autoplay-paused');
     };
 
+    // Autoplay
     const startAutoplay = () => {
         stopAutoplay();
         slider.classList.remove('is-autoplay-paused');
@@ -234,6 +237,7 @@ const setupHeroSlider = () => {
         event.preventDefault();
     });
 
+    // Animasi selesai > slide kloning
     track.addEventListener('transitionend', (event) => {
         if (event.target !== track || event.propertyName !== 'transform' || !isAnimating) return;
 

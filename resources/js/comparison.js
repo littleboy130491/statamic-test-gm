@@ -1,4 +1,5 @@
-// Product comparison (AJAX)
+// Produk comparison (AJAX)
+
 const setupComparison = () => {
     const grid = document.querySelector('#comparison-grid');
     if (!grid) return;
@@ -6,7 +7,7 @@ const setupComparison = () => {
     const endpoint = grid.dataset.endpoint;
     const selects = grid.querySelectorAll('.comparison-select');
 
-    // Cache respons per id produk (tidak fetch ulang)
+    // Cache respons (id produk)
     const cache = new Map();
 
     const fetchProduct = async (id) => {
@@ -24,14 +25,10 @@ const setupComparison = () => {
     };
 
     const placeholder = grid.dataset.emptyPlaceholder || '';
-
-    // Nilai mentah per kolom (baris kosong)
     const columnValues = new Map();
-
     const isEmpty = (value) => value === undefined || value === null || String(value).trim() === '';
 
-    // Sembunyikan baris yang kosong di semua kolom + isi tiap cell.
-    // Dicocokkan berdasarkan handle field (data-field), bukan urutan index.
+    // Hide kolom kosong dari data-field
     const refreshRows = () => {
         grid.querySelectorAll('.comparison-row').forEach((row) => {
             const field = row.dataset.field;
@@ -51,13 +48,13 @@ const setupComparison = () => {
         });
     };
 
+    // Render kolom produk
     const renderColumn = (col, data) => {
         const image = grid.querySelector(`[data-comparison-image="${col}"]`);
         if (image) {
             setColumnImage(image, data.image, data.title);
         }
 
-        // Map handle field -> value untuk pencocokan yang aman.
         const values = {};
         (data.rows || []).forEach((row) => {
             values[row.field] = row.value;
@@ -66,6 +63,7 @@ const setupComparison = () => {
         refreshRows();
     };
 
+    // Gambar kolom > efek fade
     const setColumnImage = (image, url, alt) => {
         const wrap = image.closest('.comparison-image-wrap');
 
@@ -98,6 +96,7 @@ const setupComparison = () => {
         preload.src = url;
     };
 
+    // Data produk dropdown > render kolom
     const loadColumn = async (select) => {
         const col = select.dataset.column;
         const id = select.value;

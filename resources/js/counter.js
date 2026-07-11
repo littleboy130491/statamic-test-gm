@@ -1,9 +1,12 @@
+// Counter animation
+
 const setupCounters = () => {
     const counters = document.querySelectorAll('.counter-number');
     if (!counters.length) return;
 
     const formatNumber = (num) => num.toLocaleString('id-ID');
 
+    // Animasi dari 0
     const animate = (el) => {
         const target = parseInt(el.dataset.target, 10) || 0;
         const duration = 1500;

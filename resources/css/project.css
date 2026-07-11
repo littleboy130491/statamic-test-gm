@@ -43,7 +43,7 @@ body.background-grey {
 
 
 
-/* Hero Banner Overlay Home */
+/* Hero Banner Overlay - HOME */
 .hero-banner-overlay {
     background: radial-gradient(
         72.36% 100% at 50% 0%,
@@ -55,7 +55,7 @@ body.background-grey {
 
 
 
-/* Hero Banner Overlay Page */
+/* Hero Banner Overlay - ALL PAGE */
 .heropage-overlay {
    background:
       linear-gradient(0deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%), linear-gradient(180deg, rgba(0, 0, 0, 0.66) 2.88%, rgba(0, 0, 0, 0.00) 57.69%);
@@ -63,7 +63,7 @@ body.background-grey {
 
 
 
-/* Dot Slider Hero Banner */
+/* Dot Slider Hero Banner - HOME */
 .hero-slider-dot {
     position: relative;
     overflow: hidden;
@@ -107,14 +107,14 @@ body.background-grey {
 
 
 
-/* Hero banner single produk */
+/* Hero banner - SINGLE PRODUK */
 .heropage-product-overlay {
    background: linear-gradient(180deg, #000 3.04%, rgba(0, 0, 0, 0.50) 59.98%, rgba(0, 0, 0, 0.00) 105.31%);
 }
 
 
 
-/* Judul informasi - KONTAK PAGE */
+/* Judul informasi - KONTAK */
 .title-display {
    font-family: var(--font-display);
    font-weight: 600;
@@ -122,7 +122,7 @@ body.background-grey {
 
 
 
-/* Reverse layout - PURNA JUAL PAGE */
+/* Reverse layout - PURNA JUAL */
 @media (min-width: 1024px) {
     .reverse-div > div:nth-child(2n+1) {
         flex-direction: row-reverse !important;
@@ -143,6 +143,8 @@ body.background-grey {
 .leaflet-control-attribution {
    display: none !important;
 }
+
+
 
 /* Marker icon - DEALER MAPS */
 .dealer-map-marker {
@@ -276,7 +278,6 @@ body.background-grey {
 
 
 
-
 /* Background Grayscale */
 .image-grayscale {
    filter: grayscale(100%);
@@ -284,7 +285,7 @@ body.background-grey {
 
 
 
-/* Overlay Background Direksi - MANAGEMENT */
+/* Overlay Background Direksi - MANAJEMEN */
 .overlay-bg-management {
     position: absolute;
     inset: 0;
@@ -354,6 +355,8 @@ body.background-grey {
     font-family: var(--font-display);
 }
 
+
+
 /* Misson Number - TENTANG KAMI (Tablet) */
 @media (max-width: 768px) {
    .mission-list-content ol li {
@@ -364,6 +367,8 @@ body.background-grey {
       font-size: 1rem;
    }
 }
+
+
 
 /* Misson Number - TENTANG KAMI (Mobile) */
 @media (max-width: 640px) {
@@ -429,6 +434,7 @@ body.background-grey {
     background: var(--color-surface);
     color: black;
 }
+
 
 
 /* Languange Header Flyout */
@@ -589,7 +595,6 @@ blockquote {
       line-height: 2.1rem !important;
    }
 }
-
 
 
 
@@ -941,6 +946,8 @@ body:has(dialog[open].site-popup) {
 }
 
 
+
+/* Dropdown Select */
 .cmp-dd-native {
   display: none;
 }
@@ -1099,6 +1106,8 @@ body:has(dialog[open].site-popup) {
    text-transform: none;
 }
 
+
+
 /* Konten single posts custom (Tablet) */
 @media (max-width: 768px) {
    .content-custom h2 {
@@ -1131,6 +1140,8 @@ body:has(dialog[open].site-popup) {
       text-transform: none;
    }
 }
+
+
 
 /* Konten single posts custom (Mobile) */
 @media (max-width: 640px) {

@@ -1,6 +1,9 @@
+// Slider Fitur & benefit (Single produk)
+
 import Swiper from 'swiper';
 import { Navigation } from 'swiper/modules';
 
+// Inisialisasi Swiper
 const setupFeaturesSlider = () => {
     if (!document.querySelector('.features-swiper')) return;
 
@@ -8,9 +11,6 @@ const setupFeaturesSlider = () => {
         modules: [Navigation],
         slidesPerView: 1,
         spaceBetween: 20,
-        // Berhenti scroll otomatis saat semua slide muat di breakpoint aktif
-        // (desktop 3, tablet 2, mobile 1). Ini juga yang memicu Swiper menambah
-        // class .swiper-button-lock ke arrow sehingga arrow ikut tersembunyi.
         watchOverflow: true,
         navigation: {
             nextEl: '.features-next',
