@@ -128,7 +128,7 @@
 
             {{-- Heading --}}
             <h1
-                class="mb-4 font-(family-name:--font-display) text-4xl tracking-tight md:text-5xl lg:text-6xl text-white">
+                class="mb-4 font-(family-name:--font-display) text-4xl tracking-tight md:text-5xl lg:tex t-6xl text-white">
                 {{ $heading }}
             </h1>
 
