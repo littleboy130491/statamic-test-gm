@@ -18,11 +18,11 @@
 
     $heading = $global?->get('heading') ?? 'Segera Hadir';
 
-    // Bard description
+    // Description
     $descField = $global?->augmentedValue('description');
     $descHtml = $descField ? (string) $descField : '';
 
-    // Target countdown
+    // Countdown
     $duration = $global?->get('duration');
     $target = null;
     if ($duration) {
@@ -128,7 +128,7 @@
 
             {{-- Heading --}}
             <h1
-                class="mb-5 font-(family-name:--font-display) text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl text-white">
+                class="mb-4 font-(family-name:--font-display) text-4xl tracking-tight md:text-5xl lg:text-6xl text-white">
                 {{ $heading }}
             </h1>
 
@@ -142,7 +142,7 @@
             {{-- Countdown --}}
             @if ($target)
                 <div id="countdown" data-target="{{ $target }}"
-                    class="mt-11 flex flex-wrap justify-center gap-3">
+                    class="mt-11 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3">
                     @foreach (['days' => 'Hari', 'hours' => 'Jam', 'minutes' => 'Menit', 'seconds' => 'Detik'] as $unit => $label)
                         <div class="rounded-xl border border-white/10 bg-white/5 px-3 py-4 backdrop-blur-sm">
                             <div class="font-(family-name:--font-display) text-3xl tabular-nums md:text-5xl text-(--color-secondary)"
