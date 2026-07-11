@@ -20,7 +20,7 @@
 
     {{-- Title --}}
     <p
-        class="text-center title-display text-(--color-heading) text-xs md:text-sm lg:text-xl tracking-tight group-hover/card:text-(--color-primary) transition-colors">
+        class="text-center title-display text-(--color-heading) text-[11px] md:text-sm lg:text-xl tracking-tight group-hover/card:text-(--color-primary) transition-colors">
         {{ $term->title }}
     </p>
 
