@@ -148,7 +148,6 @@ sections:
         id: MhmaoZri48h-DjSaTiMFO
         images: logo-dummy-2.png
         label: 'PT Gaya Makmur Tractors (GMT)'
-        url_button: 'https://tailwindcss.com/'
       -
         id: GxHm7BEWH9yMDStrIF-pf
         images: logo-dummy-2.png
@@ -176,5 +175,5 @@ sections:
     type: text_button
     enabled: true
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1783753366
+updated_at: 1783912496
 ---

@@ -1,14 +1,11 @@
 ---
-id: 6b6e8d38-3679-4890-b0e8-8b055f4a9b1d
+id: 96d95b1b-fb7f-46b9-8680-6be472c972a8
 blueprint: product
-title: 'HD430DT 8x4'
-sku: 'HD430DT 8x4'
+title: 'FAW FD290SL 6x4 (Euro 5)'
 product_categories:
-  - dump-truck
+  - chasis-cargo
 industries:
-  - konstruksi
-  - logistik
-  - perkebunan
+  - pertambangan
 description:
   -
     type: paragraph
@@ -60,15 +57,14 @@ engine: '3'
 chassis: '3'
 safety_security: '3'
 cta_link: 'entry::02bd16ee-6482-47b6-bdd1-28440329ffad'
-power: '300 HP'
-fuel_tank_capacity: '200 L'
-torque: '1.000 Nm'
-dump_dimensions: '7.000 x 2.400 x x2.000'
+power: '400 HP'
+fuel_tank_capacity: '300 L'
+torque: '2.000 Nm'
+dump_dimensions: '7.000 x 2.000 x x1.000'
 transmission: '10 Speed Forward, 1 Speed Reverse'
-standard_emission: 'Euro 5'
+standard_emission: 'Euro 4'
 brake_system: 'Full Air Brake & Double Circuit Air Brake'
 heading_dimension_1: heading_1
-gvw: '30.000 Kg'
 features_and_benefits:
   -
     id: BfI1Sg0GHPv5_r7niZ7NA
@@ -95,7 +91,10 @@ product_gallery:
   - footer-image-2.png
   - truck-about.png
   - truk-vm.png
-duplicated_from: product-fd375dt
+duplicated_from: 346d650a-1775-454f-9ef1-533b44731658
+gcw: '40.000 Kg'
+tes: tes
+add_fields: add_fields
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1783912850
+updated_at: 1783913384
 ---
