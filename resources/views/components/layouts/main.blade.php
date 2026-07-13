@@ -41,7 +41,7 @@
 @endif
 
 @if ($settings?->custom_code_body)
-    @push('body_start')
+    @push('body_end')
         {!! $settings->custom_code_body !!}
     @endpush
 @endif
