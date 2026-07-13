@@ -52,7 +52,7 @@
 
             {{-- Flyout Menu --}}
             @if (\Statamic\Facades\Nav::findByHandle('nav_header'))
-                <div id="flyout-menu" class="border-t border-(--color-line) my-6 pt-6">
+                <div id="flyout-menu" class="border-t border-(--color-line) my-5 pt-5">
                     <ul class="flex flex-col gap-4 font-(family-name:--font-body)">
                         <s:nav handle="nav_header">
                             <li>
@@ -95,7 +95,7 @@
                 </div>
             @endif
 
-            <div class="border-t border-(--color-line) py-6 font-(family-name:--font-body) text-black">
+            <div class="border-t border-(--color-line) py-5 font-(family-name:--font-body) text-black">
 
                 {{-- Language Mobile --}}
                 @if ($has_translate)
@@ -110,7 +110,7 @@
                 <!-- Contact Info -->
                 @if (count($phones) > 0 || count($emails) > 0)
                     <div id="contact-flyout"
-                        class="{{ $has_translate ? 'border-t border-(--color-line) pt-6' : '' }} flex flex-col gap-6">
+                        class="{{ $has_translate ? 'border-t border-(--color-line) pt-5' : '' }} flex flex-col gap-5">
                         @if (count($phones) > 0)
                             <div>
                                 <p class="uppercase text-(--color-primary) mb-2">{{ $phone_label }}</p>
@@ -122,7 +122,7 @@
                                                 </p>
                                             @endif
                                             <a href="tel:{{ preg_replace('/\s+/', '', $phone['number']) }}"
-                                                class="text-black hover:text-(--color-primary)">
+                                                class="text-black hover:text-(--color-primary) text-sm">
                                                 {{ $phone['number'] }}
                                             </a>
                                         </div>
@@ -141,7 +141,7 @@
                                                 </p>
                                             @endif
                                             <a href="mailto:{{ $email['email'] }}"
-                                                class="text-black hover:text-(--color-primary)">
+                                                class="text-black hover:text-(--color-primary) text-sm">
                                                 {{ $email['email'] }}
                                             </a>
                                         </div>

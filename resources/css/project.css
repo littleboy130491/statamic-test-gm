@@ -441,6 +441,7 @@ body.background-grey {
 #mobile-menu .glink {
     color: black;
     background: transparent;
+    font-size: 0.8rem;
 }
 
 #mobile-menu .glink:hover,
