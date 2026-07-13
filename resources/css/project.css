@@ -498,6 +498,12 @@ body:has(dialog[open].career-popup) {
     color: var(--color-body);
 }
 
+@media(max-width: 768px) {
+   .career-form-input::placeholder {
+      font-size: 0.85rem;
+   }
+}
+
 .career-form-input:focus,
 .career-form-file input:focus {
     outline: none;

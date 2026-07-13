@@ -42,7 +42,7 @@ const setupShareCopy = () => {
             });
 
             label.style.cssText =
-                'position:absolute; top:-40px; left:50%; transform:translateX(-50%); white-space:nowrap; padding:6px 10px; background:#000; color:#fff; border-radius:6px; font-size:12px; z-index:100;';
+                'position:absolute; top:-40px; left:50%; transform:translateX(-72%); white-space:nowrap; padding:6px 10px; background:#000; color:#fff; border-radius:6px; font-size:12px; z-index:100;';
 
             el.style.position = 'relative';
             el.appendChild(label);

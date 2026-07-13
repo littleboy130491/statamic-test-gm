@@ -228,7 +228,8 @@
 
                                 {{-- Sertifikat --}}
                                 @if (!empty($about['images']))
-                                    <div class="flex justify-end items-center gap-2 lg:gap-6 md:-mt-18 lg:mt-0">
+                                    <div
+                                        class="flex justify-end lg:items-center gap-2 lg:gap-6 md:-mt-18 lg:mt-0 w-full flex-row">
                                         @foreach ($about['images'] as $img)
                                             <div
                                                 class="bg-white rounded-lg lg:rounded-2xl p-4 md:p-4 lg:p-6 flex flex-col gap-2">
