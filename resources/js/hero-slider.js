@@ -191,7 +191,7 @@ const setupHeroSlider = () => {
     });
 
     slider.addEventListener('pointerdown', (event) => {
-        if (event.button !== 0 || isAnimating || event.target.closest('[data-hero-dot]')) return;
+        if (event.button !== 0 || isAnimating || event.target.closest('[data-hero-dot], a, button')) return;
 
         syncDimensions();
         isDragging = true;
