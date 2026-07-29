@@ -150,7 +150,7 @@
                             {{-- Pagination --}}
                             @if ($products->hasPages())
                                 <div class="blog-pagination">
-                                    {{ $products->links() }}
+                                    {{ $products->onEachSide(1)->links() }}
                                 </div>
                             @endif
                         @else

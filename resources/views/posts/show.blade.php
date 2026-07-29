@@ -144,7 +144,7 @@
 
                     {{-- Content blog --}}
                     <div id="content-article"
-                        class="content-custom richtext flex flex-col md:flex-row lg:flex-row gap-18 md:gap-6 lg:gap-6">
+                        class="richtext flex flex-col md:flex-row lg:flex-row gap-18 md:gap-6 lg:gap-6">
 
                         {{-- Kolom konten utama --}}
                         <div class="w-full md:w-[60%] lg:w-[70%] flex flex-col gap-10">
@@ -157,8 +157,17 @@
                                     <div class="gallery-main rounded-2xl overflow-hidden">
                                         @foreach ($galleryImages as $image)
                                             <div class="gallery-slide {{ $loop->first ? '' : 'hidden' }}">
-                                                <img src="{{ $image->url() }}" alt="{{ $image->alt ?? $page->title }}"
-                                                    class="w-full aspect-video object-cover" />
+                                                <figure>
+                                                    <img src="{{ $image->url() }}"
+                                                        alt="{{ $image->alt ?? $page->title }}"
+                                                        class="w-full aspect-video object-cover" />
+                                                    @if ($image->caption)
+                                                        <figcaption
+                                                            class="px-4 py-3 text-sm text-(--color-body)">
+                                                            {{ $image->caption }}
+                                                        </figcaption>
+                                                    @endif
+                                                </figure>
                                             </div>
                                         @endforeach
                                     </div>
@@ -201,13 +210,13 @@
 
                                 </div>
                             @elseif ($page->featured_image)
-                                <img src="{{ $page->featured_image->url() }}"
-                                    alt="{{ $page->featured_image->alt ?? $page->title }}"
-                                    class="w-full aspect-video object-cover rounded-2xl" />
+                                <x-asset-figure :asset="$page->featured_image"
+                                    :alt="$page->featured_image->alt ?? $page->title"
+                                    class="w-full h-auto rounded-2xl" />
                             @endif
 
                             {{-- Content --}}
-                            <div class="richtext">
+                            <div class="content-custom richtext">
                                 @if ($page->description)
                                     {!! Statamic::modify($page->description)->widont() !!}
                                 @endif

@@ -11,7 +11,7 @@ date: true
 sort_dir: desc
 date_behavior:
   past: public
-  future: private
+  future: public
 preview_targets:
   -
     label: Entry

@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Bard\CaptionedImageNode;
 use Illuminate\Support\ServiceProvider;
+use Statamic\Fieldtypes\Bard\Augmentor;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Gambar di dalam Bard dirender jadi <figure>+<figcaption> kalau
+        // asset-nya punya caption di .meta.
+        Augmentor::replaceExtension('image', new CaptionedImageNode);
     }
 }

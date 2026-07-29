@@ -1113,6 +1113,55 @@ body:has(dialog[open].site-popup) {
    text-transform: none;
 }
 
+.content-custom ul,
+.content-custom ol {
+   margin-block: 0;
+   margin-inline-start: 1.3rem;
+}
+
+.content-custom.content-custom > * {
+   margin-top: 1.5rem;
+   margin-bottom: 0;
+}
+
+.content-custom.content-custom > *:first-child {
+   margin-top: 0;
+}
+
+.content-custom.content-custom > :is(h1, h2, h3, h4, h5, h6) {
+   margin-top: 2.5rem;
+}
+
+.content-custom.content-custom > :is(h1, h2, h3, h4, h5, h6):first-child {
+   margin-top: 0;
+}
+
+.content-custom.content-custom > :is(h1, h2, h3, h4, h5, h6) + * {
+   margin-top: 0.75rem;
+}
+
+.content-custom img {
+   border-radius: 1rem;
+   margin: 0;
+}
+
+.content-custom figure {
+   margin: 0;
+}
+
+.content-custom figure img {
+   margin: 0;
+}
+
+.content-custom figcaption {
+   margin-top: 0.75rem;
+   font-family: var(--font-body);
+}
+
+.content-custom li :is(h2, h3, h4, h5, h6) {
+   margin-top: 0;
+   margin-bottom: 0;
+}
 
 
 /* Konten single posts custom (Tablet) */
@@ -1178,7 +1227,7 @@ body:has(dialog[open].site-popup) {
 
    .content-custom h6 {
       font-size: 1.15rem;
-      letter-spacing: --0.5px;
+      letter-spacing: -0.5px;
       text-transform: none;
    }
 }
