@@ -43,10 +43,10 @@
         class="flex flex-col md:flex-row lg:flex-row">
 
         {{-- Featured Image --}}
-        <div class="overflow-hidden w-full md:w-[50%] lg:w-[50%] shrink-0">
+        <div class="overflow-hidden w-full md:w-[50%] lg:w-[50%] shrink-0 md:self-stretch md:min-h-56 lg:min-h-52">
             <img src="{{ $entry->featured_image?->url() ?? ($blog['image_placeholders'] ?? '') }}"
                 alt="{{ $entry->featured_image?->alt ?? $entry->title }}"
-                class="w-full h-65 md:h-56 lg:h-52 object-cover group-hover:scale-110 transition-transform duration-500" />
+                class="w-full h-65 md:h-full object-cover group-hover:scale-110 transition-transform duration-500" />
         </div>
 
         <div class="p-5 flex flex-col gap-10 md:gap-6 lg:gap-6 justify-between flex-1">
