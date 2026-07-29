@@ -28,5 +28,6 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 
-# Migrasi WordPress -> Statamic (tidak perlu masuk repo)
+# Migrasi WordPress -> Statamic
 /migrasi-posts/
+/migrasi-products/
