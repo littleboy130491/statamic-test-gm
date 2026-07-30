@@ -16,7 +16,13 @@
         fn($section) => (string) ($section['identifier'] ?? '') === 'section-product-category',
     );
 
-    $productCategories = \Statamic\Facades\Term::query()->where('taxonomy', 'product_categories')->get();
+    // Kategori produk — hanya yang punya produk (jumlah 0 tidak ditampilkan di slider)
+    $productCategories = \Statamic\Facades\Term::query()
+        ->where('taxonomy', 'product_categories')
+        ->get()
+        ->filter(
+            fn($term) => $term->queryEntries()->where('collection', 'products')->whereStatus('published')->count() > 0,
+        );
 
     $services = collect($page->sections)->first(
         fn($section) => (string) ($section['identifier'] ?? '') === 'section-services',
