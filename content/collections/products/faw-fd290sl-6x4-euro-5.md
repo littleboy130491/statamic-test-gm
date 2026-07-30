@@ -1,0 +1,64 @@
+---
+id: fb20e818-faef-4883-b7c0-a4f084ed4c80
+blueprint: product
+title: FAW FD290SL 6x4 (Euro 5)
+sku: Self Loader FD290SL (6x4)
+product_categories:
+  - chasis-cargo
+description:
+  -
+    type: paragraph
+    content:
+      -
+        type: text
+        text: FD290SL memiliki jack remote control yang jauh lebih mudah dioperasikan dibandingkan dengan tuas dan Hdyraulic ladder yang memudahkan pengoprasian menaikkan dan menurunkan tangga (ladder).
+cta_label: Kontak Kami
+cta_link: 'entry::02bd16ee-6482-47b6-bdd1-28440329ffad'
+catalogue_link:
+  label: Download Brosur
+  url: /
+  displayed: false
+specifications:
+  -
+    id: 0b6mnNCf
+    label: Power
+    value: 290Hp
+  -
+    id: d7qVn91S
+    label: Torque
+    value: 1.150Nm
+  -
+    id: K1nYP8RJ
+    label: Engine
+    value: CA6DL1.29E5
+  -
+    id: Tcg0QO9X
+    label: Standard Emission
+    value: Euro 5
+  -
+    id: ED9dPuxq
+    label: Transmission
+    value: 'CA9TB160M- 9 Speed Forward, 1 Speed Reverse'
+  -
+    id: E0X6tYRz
+    label: Overall Dimension
+    value: '11, 945 x 2.485 x 3.030'
+  -
+    id: whaHjk6A
+    label: GVW
+    value: 26.500Kg
+  -
+    id: bUeUHRSh
+    label: Fuel Tank Capacity
+    value: 300L
+featured_image: FD290SL-Mask.png
+power: 290Hp
+torque: 1.150Nm
+standard_emission: Euro 5
+transmission: 'CA9TB160M- 9 Speed Forward, 1 Speed Reverse'
+gvw: 26.500Kg
+fuel_tank_capacity: 300L
+wp_slug: mobil-truk-faw-self-loader-fd290sl-6x4
+updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
+updated_at: 1785381579
+---

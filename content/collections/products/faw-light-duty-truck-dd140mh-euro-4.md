@@ -1,0 +1,65 @@
+---
+id: 1450dd7c-573c-4b04-b259-dd10a63727f1
+blueprint: product
+title: FAW Light Duty Truck DD140MH (Euro 4)
+sku: DD140CG 4x4 (Euro 4)
+description:
+  -
+    type: paragraph
+    content:
+      -
+        type: text
+        text: 'Beragam variasi seperti Dump Truck, Cargo Truck & Manhaul. Cocok untuk kebutuhan bisnis kalian semua!'
+cta_label: Kontak Kami
+cta_link: 'entry::02bd16ee-6482-47b6-bdd1-28440329ffad'
+catalogue_link:
+  label: Download Brosur
+  url: /
+  displayed: false
+specifications:
+  -
+    id: f0ADo3cI
+    label: Power
+    value: 140HP
+  -
+    id: YoHTgSFj
+    label: Torque
+    value: 450Nm
+  -
+    id: VDlsU9q4
+    label: Engine
+    value: YC4D140-48
+  -
+    id: AIJZKlhS
+    label: Standard Emission
+    value: Euro 4
+  -
+    id: kvBHRHvZ
+    label: Overall Dimension (Long Cargo)
+    value: 7.270 x 2.080 x 2.590 x 3.880
+  -
+    id: t3QgBckd
+    label: Overall Dimension (Short Cargo)
+    value: 5.970 x 2.070 x 2.610 x 3.280
+  -
+    id: LKjCpw52
+    label: GVW
+    value: 8.000kg
+  -
+    id: w1y5QM4v
+    label: Fuel Tank Capacity
+    value: 180L
+featured_image: Desain-tanpa-judul-35.png
+product_gallery:
+  - Tanpa-judul-1040-x-720-piksel-28.png
+power: 140HP
+torque: 450Nm
+standard_emission: Euro 4
+gvw: 8.000kg
+fuel_tank_capacity: 180L
+wp_slug: dd140cg-4x4-manhauler
+updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
+updated_at: 1785381579
+product_categories:
+  - chasis-cargo
+---

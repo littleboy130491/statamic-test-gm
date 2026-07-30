@@ -73,16 +73,13 @@
         ->filter()
         ->values();
 
-    // Background image + fallback placeholder
-    $backgroundImage = $page->background_image;
-
-    if (!$backgroundImage) {
-        $placeholder = $product['background_image_placeholder'] ?? null;
-        if ($placeholder) {
-            $backgroundImage = is_object($placeholder)
-                ? $placeholder
-                : \Statamic\Facades\Asset::find('assets::' . ltrim($placeholder, '/'));
-        }
+    // Hero banner: placeholder global saja (foto hero per-produk ada di gallery)
+    $heroBackground = null;
+    $placeholder = $product['background_image_placeholder'] ?? null;
+    if ($placeholder) {
+        $heroBackground = is_object($placeholder)
+            ? $placeholder
+            : \Statamic\Facades\Asset::find('assets::' . ltrim($placeholder, '/'));
     }
 
     //  Background pattern
@@ -139,71 +136,70 @@
     <main>
 
         {{-- Produk informasi --}}
-        <section id="product-information">
-            <div class="relative">
-                {{-- Background Hero Banner --}}
-                @if ($backgroundImage)
-                    <div id="background-hero-product" class="relative pointer-events-none select-none">
-                        <div class="heropage-product-overlay absolute inset-0"></div>
-                        <img src="{{ $backgroundImage->url() }}" alt="{{ $backgroundImage->alt ?? $page->title }}"
-                            oncontextmenu="return false" draggable="false"
-                            class="object-cover w-full h-200 md:h-180 lg:h-185">
-                    </div>
-                @endif
+        <section id="product-information" class="relative bg-zinc-900">
+            {{-- Hero banner (placeholder global) --}}
+            @if ($heroBackground)
+                <div class="absolute inset-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
+                    <img src="{{ $heroBackground->url() }}" alt=""
+                        class="h-full w-full object-cover object-center">
+                    <div class="heropage-product-overlay absolute inset-0"></div>
+                </div>
+            @else
+                <div class="absolute inset-0 overflow-hidden bg-linear-to-b from-zinc-900 via-zinc-800 to-zinc-900"
+                    aria-hidden="true">
+                </div>
+            @endif
 
-                <article class="container absolute inset-0 z-10 flex items-stretch md:items-end lg:items-end">
-                    <div class="flex flex-col lg:flex-row gap-15 md:gap-6 lg:gap-10 w-full">
+            <div class="container relative z-10">
+                <div
+                    class="flex min-h-120 flex-col items-stretch py-30 md:min-h-145 md:py-30 lg:min-h-160 lg:flex-row lg:items-center lg:gap-10 lg:py-20">
+                    {{-- Konten --}}
+                    <div class="flex w-full flex-col justify-center gap-8 lg:max-w-[55%] lg:gap-10">
+                        <div class="flex flex-col gap-3">
+                            @if ($page->product_categories && $page->product_categories->isNotEmpty())
+                                <p class="text-left font-medium uppercase text-(--color-primary)">
+                                    @foreach ($page->product_categories as $category)
+                                        {{ $category->title }}
+                                        @unless ($loop->last)
+                                            ,
+                                        @endunless
+                                    @endforeach
+                                </p>
+                            @endif
 
-                        {{-- Konten --}}
-                        <div class="flex flex-col gap-8 lg:gap-10 w-full mt-35 md:mt-0 lg:mt-0">
-                            <div class="flex flex-col gap-3">
-                                @if ($page->product_categories && $page->product_categories->isNotEmpty())
-                                    <p class="font-medium uppercase text-(--color-primary) text-left">
-                                        @foreach ($page->product_categories as $category)
-                                            {{ $category->title }}
-                                            @unless ($loop->last)
-                                                ,
-                                            @endunless
-                                        @endforeach
-                                    </p>
-                                @endif
-
-                                <h1 class="notranslate heading-single text-left text-white">{{ $page->title }}</h1>
-                                <div class="text-left richtext w-full text-cust">
+                            <h1 class="notranslate heading-single text-left text-white">{{ $page->title }}</h1>
+                            @if ($page->description)
+                                <div class="richtext text-cust w-full text-left text-white/90">
                                     {!! $page->description !!}
                                 </div>
-                            </div>
-
-                            <div class="flex flex-wrap gap-3">
-
-                                {{-- Button Kontak --}}
-                                @if ($ctaUrl)
-                                    <a href="{{ $ctaUrl }}" class="button button--primary">
-                                        {{ $page->cta_label ?: '' }}
-                                    </a>
-                                @endif
-
-                                {{-- Button Download Brosur --}}
-                                @if ($catalogueShow)
-                                    <a href="{{ $catalogueUrl }}" class="button button--secondary">
-                                        {{ $catalogueLabel }}
-                                    </a>
-                                @endif
-                            </div>
+                            @endif
                         </div>
 
-                        {{-- Featured Image --}}
-                        @if ($page->featured_image)
-                            <div class="flex justify-center md:justify-end w-full pointer-events-none">
-                                <img src="{{ $page->featured_image->url() }}"
-                                    alt="{{ $page->featured_image->alt ?? $page->title }}"
-                                    class="w-full md:w-[50%] lg:w-[90%] object-contain md:-mb-16 lg:-mb-20" />
-                            </div>
-                        @endif
+                        <div class="flex flex-wrap gap-3">
+                            @if ($ctaUrl)
+                                <a href="{{ $ctaUrl }}" class="button button--primary">
+                                    {{ $page->cta_label ?: '' }}
+                                </a>
+                            @endif
 
+                            @if ($catalogueShow)
+                                <a href="{{ $catalogueUrl }}" class="button button--secondary">
+                                    {{ $catalogueLabel }}
+                                </a>
+                            @endif
+                        </div>
                     </div>
 
-                </article>
+                    {{-- Featured Image --}}
+                    @if ($page->featured_image)
+                        <div
+                            class="relative z-20 mt-8 flex w-full self-end justify-center lg:mt-0 lg:w-auto lg:flex-1 lg:justify-end">
+                            <img src="{{ $page->featured_image->url() }}"
+                                alt="{{ $page->featured_image->alt ?? $page->title }}"
+                                class="w-full h-100 md:h-120 lg:h-150 object-contain object-bottom -mb-50 md:-mb-40 lg:-mb-50" />
+                        </div>
+                    @endif
+                </div>
             </div>
         </section>
 
@@ -319,7 +315,7 @@
         @if ($gallery->isNotEmpty())
             <section id="product-gallery">
                 <div class="container overflow-hidden md:overflow-visible lg:overflow-visible">
-                    <div class="mb-18 md:mb-18 lg:mb-30">
+                    <div class="mb-18 mt-30 md:mb-18 md:mt-30 lg:my-30">
                         <div class="gallery-wrapper flex flex-col gap-4">
 
                             {{-- Gambar besar --}}
@@ -327,7 +323,7 @@
                                 @foreach ($gallery as $image)
                                     <div class="gallery-slide {{ $loop->first ? '' : 'hidden' }}">
                                         <img src="{{ $image->url() }}" alt="{{ $image->alt ?? $page->title }}"
-                                            class="w-full h-90 object-contain" />
+                                            class="w-full h-auto md:h-90 lg:h-90 object-contain" />
                                     </div>
                                 @endforeach
                             </div>

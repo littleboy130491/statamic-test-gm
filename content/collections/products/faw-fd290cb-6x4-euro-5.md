@@ -1,0 +1,63 @@
+---
+id: d17e88fb-1fdf-4703-b3c6-7363093aa93b
+blueprint: product
+title: 'FAW FD290CB 6x4 (Euro 5)'
+sku: 'FD290CB (6x4)'
+description:
+  -
+    type: paragraph
+    content:
+      -
+        type: text
+        text: 'Serupa tapi tak sama, ada perbedaan mencolok dari Mobil Truk unit FB240CB & FD290CB yakni terletak pada Mesin, Sistem Penggerak, & Gross Vehicle Weight (GVW) dengan persamaannya sudah berstandar emisi Euro 5 yang artinya kedua unit tersebut memiliki emisi gas buang ramah lingkungan, efisiensi bahan bakar yang baik, dan menghasilkan suara mesin halus dan minim getaran.'
+cta_label: 'Kontak Kami'
+cta_link: 'entry::02bd16ee-6482-47b6-bdd1-28440329ffad'
+catalogue_link:
+  label: 'Download Brosur'
+  url: /
+  displayed: false
+specifications:
+  -
+    id: hJc5czVF
+    label: Power
+    value: 290HP
+  -
+    id: RvVYsgwO
+    label: Torque
+    value: 1.150Nm
+  -
+    id: rPZgHS3b
+    label: Engine
+    value: CA6DL1.29E5
+  -
+    id: iC2Vob5B
+    label: Transmission
+    value: 'Euro 5'
+  -
+    id: 6Vsd0rNS
+    label: Transmission
+    value: '9 Speed Forward + 1 Speed Reverse'
+  -
+    id: I9wlkqDk
+    label: 'Overall Dimension'
+    value: 'L 9, 470 x W 2.490 x H 3.500'
+  -
+    id: RV9CA4UM
+    label: GVW
+    value: 26.500Kg
+  -
+    id: iA4uy0wC
+    label: 'Fuel Tank Capacity'
+    value: 300L
+featured_image: image-138.png
+power: 290HP
+torque: 1.150Nm
+transmission: 'Euro 5'
+gvw: 26.500Kg
+fuel_tank_capacity: 300L
+wp_slug: mobil-truk-faw-unit-cargo-truck-fd290cb-euro5
+product_categories:
+  - chasis-cargo
+updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
+updated_at: 1785383552
+---

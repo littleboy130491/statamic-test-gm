@@ -1,0 +1,64 @@
+---
+id: f577f834-a392-4036-93f1-ed3cac86119e
+blueprint: product
+title: 'FAW FB240CG 6x2 Wingbox (Euro 5)'
+sku: 'FB240CG (Wingbox)'
+product_categories:
+  - chasis-cargo
+description:
+  -
+    type: paragraph
+    content:
+      -
+        type: text
+        text: 'Dilengkapi dengan wingbox hydraulic system, Mobilisasi lebih mudah, proses antar barang jadi lebih cepat!'
+cta_label: 'Kontak Kami'
+cta_link: 'entry::02bd16ee-6482-47b6-bdd1-28440329ffad'
+catalogue_link:
+  label: 'Download Brosur'
+  url: /
+  displayed: false
+specifications:
+  -
+    id: jzguyqPs
+    label: Power
+    value: 240HP
+  -
+    id: FUvT0IJd
+    label: Torque
+    value: 940Nm
+  -
+    id: axYMazc5
+    label: Engine
+    value: CA6DLD.24E5
+  -
+    id: GXaMlTA5
+    label: 'Standard Emission'
+    value: 'Euro 5'
+  -
+    id: XvKKRdzu
+    label: Transmission
+    value: '9 Speed Forward, 1 Speed Reverse'
+  -
+    id: Cv8kG3bZ
+    label: 'Wingbox Dimensions'
+    value: '9.700 mm x 2.500 mm x 2.750 mm'
+  -
+    id: NVWhSLkl
+    label: GVW
+    value: 25.000kg
+  -
+    id: 0Pmg4EZ9
+    label: 'Fuel Tank Capacity'
+    value: 300L
+featured_image: image-137.png
+power: 240HP
+torque: 940Nm
+standard_emission: 'Euro 5'
+transmission: '9 Speed Forward, 1 Speed Reverse'
+gvw: 25.000kg
+fuel_tank_capacity: 300L
+wp_slug: fb240cg-5
+updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
+updated_at: 1785383397
+---
