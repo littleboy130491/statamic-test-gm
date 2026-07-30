@@ -126,15 +126,19 @@
     // List: 3 post
     $blogList = $blogLatest->slice(1, 3)->values();
 
-    // Dealer kategeori
-    $dealerCategories = \Statamic\Facades\Term::query()
-        ->where('taxonomy', 'dealer_categories')
-        ->get()
-        ->mapWithKeys(fn($term) => [$term->slug() => $term->title]);
-
+    // Jumlah dealer per kategori
     $dealerCounts = collect($dealers ?? [])
         ->groupBy('dealer-category')
         ->map(fn($group) => $group->count());
+
+    // Dealer kategori
+    $dealerCategories = \Statamic\Facades\Term::query()
+        ->where('taxonomy', 'dealer_categories')
+        ->get()
+        ->mapWithKeys(fn($term) => [$term->slug() => $term->title])
+        ->filter(fn($label, $slug) => ($dealerCounts[$slug] ?? 0) > 0);
+
+    $dealerCategoryCount = $dealerCategories->count();
 
     // Label informasi dealer
     $dealerLabels =
@@ -478,19 +482,23 @@
                             </div>
 
                             {{-- Counter --}}
-                            <div class="w-full lg:w-[45%] grid grid-cols-3 gap-2 md:gap-4 lg:gap-4">
-                                @foreach ($dealerCategories as $slug => $label)
-                                    <div
-                                        class="flex flex-col items-start lg:items-center gap-2 lg:gap-4 bg-(--color-surface) p-4 lg:px-4 lg:py-8 rounded-xl">
-                                        <p
-                                            class="text-3xl lg:text-4xl text-(--color-primary) font-(family-name:--font-display) font-semibold">
-                                            {{ $dealerCounts[$slug] ?? 0 }}
-                                        </p>
-                                        <p class="text-(--color-primary) text-xs lg:leading-[1.2rem]">
-                                            {{ $label }}</p>
-                                    </div>
-                                @endforeach
-                            </div>
+                            @if ($dealerCategoryCount > 0)
+                                <div class="w-full lg:w-[45%] grid gap-2 md:gap-4 lg:gap-4"
+                                    style="grid-template-columns: repeat({{ $dealerCategoryCount }}, minmax(0, 1fr));">
+                                    @foreach ($dealerCategories as $slug => $label)
+                                        <div
+                                            class="flex flex-col items-start lg:items-center gap-2 lg:gap-4 bg-(--color-surface) p-4 lg:px-4 lg:py-8 rounded-xl">
+                                            <p
+                                                class="text-3xl lg:text-4xl text-(--color-primary) font-(family-name:--font-display) font-semibold">
+                                                {{ $dealerCounts[$slug] ?? 0 }}
+                                            </p>
+                                            <p
+                                                class="text-(--color-primary) text-xs md:text-xs lg:text-sm lg:leading-[1.2rem]">
+                                                {{ $label }}</p>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
                         </div>
 
                         {{-- Konten --}}

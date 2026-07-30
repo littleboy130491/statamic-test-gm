@@ -12,6 +12,58 @@ tabs:
               required: true
               display: Title
               localizable: true
+          -
+            handle: office_type
+            field:
+              type: select
+              display: 'Office Type'
+              options:
+                dealer: Dealer
+                branch: Branch
+                parts_service: 'Parts & Service'
+                head_office: 'Head Office'
+              validate:
+                - required
+          -
+            handle: dealer_category
+            field:
+              type: terms
+              display: 'Map Legend Category'
+              instructions: 'Legend category on the GM Mobil dealer map.'
+              taxonomies:
+                - dealer_categories
+              mode: select
+              max_items: 1
+              validate:
+                - required
+          -
+            handle: location
+            field:
+              type: group
+              display: 'Map Coordinates'
+              fields:
+                -
+                  handle: latitude
+                  field:
+                    type: float
+                    display: Latitude
+                    width: 50
+                    validate:
+                      - required
+                -
+                  handle: longitude
+                  field:
+                    type: float
+                    display: Longitude
+                    width: 50
+                    validate:
+                      - required
+                -
+                  handle: place_id
+                  field:
+                    type: text
+                    display: 'Google Place ID'
+                    instructions: 'Optional. Google Maps Place ID for geocoding reference.'
   sidebar:
     display: Sidebar
     sections:

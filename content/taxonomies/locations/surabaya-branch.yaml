@@ -1,10 +1,10 @@
-title: 'Jakarta (Head Office)'
-office_type: head_office
+title: 'Surabaya (Branch)'
+office_type: branch
 dealer_category:
   - cabang-dealer
 location:
-  latitude: -6.208763
-  longitude: 106.845599
+  latitude: -7.257472
+  longitude: 112.75209
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785386400
 blueprint: location

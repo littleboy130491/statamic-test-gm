@@ -8,6 +8,13 @@
     $petaLabel = $labels['peta_label'] ?? 'Peta';
     $satelitLabel = $labels['satelit_label'] ?? 'Satelit';
     $placeholderSearch = $labels['placeholder_search'] ?? 'Ketik Kota';
+    $allLabel = $labels['all_label'] ?? 'Semua';
+
+    $dealerCounts = collect($dealers)->groupBy('dealer-category')->map(fn($group) => $group->count());
+
+    $categories = collect($categories)->filter(fn($label, $slug) => ($dealerCounts[$slug] ?? 0) > 0);
+
+    $hasCategories = $categories->isNotEmpty();
 
     // Icon marker maps
     $iconMaps = $labels['icon_maps_dealer'] ?? null;
@@ -47,30 +54,33 @@
         </div>
 
         {{-- Kategori Dealer --}}
+        @if ($hasCategories)
 
-        {{-- Desktop: Button --}}
-        <div id="dealer-category-filter" class="hidden flex-col gap-2 lg:flex lg:flex-row">
-            @foreach ($categories as $slug => $label)
-                <a href="javascript:void(0)"
-                    class="dealer-cat-btn flex items-center gap-2 text-sm text-(--color-primary) hover:text-white bg-(--color-surface) hover:bg-(--color-primary) uppercase py-3 px-8 rounded-full"
-                    data-category="{{ $slug }}">
-                    <span class="font-medium">{{ $label }}</span>
-                    <svg viewBox="0 0 12 12" fill="none" aria-hidden="true" class="h-4 w-4">
-                        <path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </a>
-            @endforeach
-        </div>
+            {{-- Desktop: Button --}}
+            <div id="dealer-category-filter" class="hidden flex-col gap-2 lg:flex lg:flex-row">
+                @foreach ($categories as $slug => $label)
+                    <a href="javascript:void(0)"
+                        class="dealer-cat-btn flex items-center gap-2 text-sm text-(--color-primary) hover:text-white bg-(--color-surface) hover:bg-(--color-primary) uppercase py-3 px-8 rounded-full"
+                        data-category="{{ $slug }}">
+                        <span class="font-medium">{{ $label }}</span>
+                        <svg viewBox="0 0 12 12" fill="none" aria-hidden="true" class="h-4 w-4">
+                            <path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                @endforeach
+            </div>
 
-        {{-- Mobile: Dropdown --}}
-        <select id="dealer-category-select"
-            class="contact-form-input lg:hidden w-full rounded-xl px-5 py-4 text-sm border border-(--color-line)">
-            <option value="all">Semua</option>
-            @foreach ($categories as $slug => $label)
-                <option value="{{ $slug }}">{{ $label }}</option>
-            @endforeach
-        </select>
+            {{-- Mobile: Dropdown --}}
+            <select id="dealer-category-select"
+                class="contact-form-input lg:hidden w-full rounded-xl px-5 py-4 text-sm border border-(--color-line)">
+                <option value="all">{{ $allLabel }}</option>
+                @foreach ($categories as $slug => $label)
+                    <option value="{{ $slug }}">{{ $label }}</option>
+                @endforeach
+            </select>
+
+        @endif
 
     </div>
 
