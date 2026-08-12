@@ -4,14 +4,14 @@ label_submit_button: 'kirim lamaran'
 icon_employment_status: employment-icon.svg
 icon_location: location-icon.svg
 identifier: cta-career-single
-image_call_to_action: cta-img-career.png
+image_call_to_action: dsc2864-e-c-1.png
 heading: 'Butuh Informasi Lebih Lanjut?'
 short_description: 'Temukan jawaban atas pertanyaan umum seputar proses seleksi kami atau sampaikan pertanyaan Anda langsung kepada tim HRD kami melalui kontak di bawah ini..'
 call_to_action:
   -
     id: hByL0wfZ1leua032-AMvk
-    label: 'Call & WA Center'
-    kontak: '62 000 0000 0000'
+    label: 'Contact HRD'
+    kontak: '+62 831-2633-2730'
 show: true
 background_call_to_action: cta-background-career-single-(1).jpg
 section_images: whatsapp-white.svg

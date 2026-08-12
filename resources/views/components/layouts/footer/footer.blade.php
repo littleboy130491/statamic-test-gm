@@ -36,8 +36,9 @@
 
             {{-- Background Footer --}}
             <div id="footer-background" class="overlay-footer">
-                <img src="{{ $footer->augmentedValue('backgound_image')->value()?->url() }}" alt="{{ $footer->augmentedValue('backgound_image')->value()?->alt ?? 'Footer Background' }}"
-                    class="w-full h-200 md:h-110 lg:h-150 object-cover pointer-events-none">
+                <img src="{{ $footer->augmentedValue('backgound_image')->value()?->url() }}"
+                    alt="{{ $footer->augmentedValue('backgound_image')->value()?->alt ?? 'Footer Background' }}"
+                    class="block w-full h-200 md:h-110 lg:h-150 object-cover pointer-events-none">
             </div>
 
             {{-- Content Footer --}}
@@ -47,14 +48,15 @@
                     <div class="flex flex-col-reverse md:flex-row lg:flex-row gap-8 md:gap-10 lg:gap-10">
 
                         {{-- Image Footer --}}
-                        <div id="image-footer" class="flex mb-0 md:-mb-40 md:w-[70%] lg:w-[50%]">
+                        <div id="image-footer" class="flex justify-center items-end mb-0 md:w-[40%] lg:w-[45%]">
                             <img src="{{ $footer->augmentedValue('image')->value()?->url() }}"
-                                alt="{{ $footer->augmentedValue('image')->value()?->alt ?? $footer->get('heading') }}" class="w-ful object-contain">
+                                alt="{{ $footer->augmentedValue('image')->value()?->alt ?? $footer->get('heading') }}"
+                                class="w-auto max-w-full h-auto max-h-104 md:max-h-88 lg:max-h-136 object-contain object-bottom">
                         </div>
 
                         {{-- CTA Footer --}}
-                        <div id="cta-footer" class="flex flex-col justify-between lg:justify-center lg:w-[50%]">
-                            <div class="flow">
+                        <div id="cta-footer" class="flex flex-col justify-between lg:w-[50%]">
+                            <div class="flow lg:mt-24">
                                 <h2 class="text-white lg:w-110">{{ $footer->get('heading') }}</h2>
                                 <p class="text-white lg:w-120">{{ $footer->get('short_description') }}</p>
 
@@ -90,14 +92,19 @@
                                     @endif
                                 </div>
                             </div>
+
+                            {{-- Copyright Footer (tablet & desktop) --}}
+                            <div id="copyrigth-footer" class="hidden md:block pb-8 lg:pb-10">
+                                <p class="text-white">© {{ date('Y') }} {{ $company_name }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        {{-- Copyright Footer --}}
-        <div id="copyrigth-footer" class="-mt-12 md:-mt-10 lg:-mt-12 relative z-10">
+        {{-- Copyright Footer (mobile) --}}
+        <div id="copyrigth-footer-mobile" class="md:hidden relative z-10 bg-(--color-primary) py-4">
             <p class="text-white text-center">© {{ date('Y') }} {{ $company_name }}</p>
         </div>
     </footer>

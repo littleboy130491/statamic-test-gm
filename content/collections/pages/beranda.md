@@ -148,14 +148,17 @@ sections:
         id: GxHm7BEWH9yMDStrIF-pf
         images: pm-makmur-logo-lw.png
         label: 'Panca Mega Makmur'
+        url_button: 'https://pmmakmur.co.id/'
       -
         id: MhmaoZri48h-DjSaTiMFO
         images: gmt_page-0001.jpg
         label: 'PT Gaya Makmur Tractors'
+        url_button: 'https://gmtractors.net/'
       -
         id: 4CfILg2LXm30Udht2JGAt
         images: whatsapp-image-2022-12-06-at-10.23.15.png
         label: 'Gaya Makmur Putra'
+        url_button: 'https://www.gmtractors.net/index.php/aboutus/detail/1'
       -
         id: u-fE1bM0wA1L8MFcUR3Hr
         images: gaya-makmur-tech-logo-horizontal.png
@@ -175,5 +178,5 @@ sections:
     type: text_button
     enabled: true
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1786518532
+updated_at: 1786523798
 ---

@@ -35,7 +35,7 @@
                         <div class="flex items-end lg:justify-center md:w-[40%] lg:w-[45%]">
                             <img src="{{ $cta['image_call_to_action'] }}"
                                 alt="{{ $cta['image_call_to_action']?->alt ?? ($cta['heading'] ?? '') }}"
-                                class="w-full lg:w-[83%] object-contain">
+                                class="w-full lg:w-auto lg:max-w-full lg:h-136 object-contain object-bottom">
                         </div>
                     @endif
 
