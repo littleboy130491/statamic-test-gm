@@ -145,21 +145,21 @@ sections:
     identifier: section-group-gm
     gallery_images:
       -
-        id: MhmaoZri48h-DjSaTiMFO
-        images: logo-dummy-2.png
-        label: 'PT Gaya Makmur Tractors (GMT)'
-      -
         id: GxHm7BEWH9yMDStrIF-pf
-        images: logo-dummy-2.png
+        images: pm-makmur-logo-lw.png
         label: 'Panca Mega Makmur'
+      -
+        id: MhmaoZri48h-DjSaTiMFO
+        images: gmt_page-0001.jpg
+        label: 'PT Gaya Makmur Tractors'
       -
         id: 4CfILg2LXm30Udht2JGAt
-        images: logo-dummy-2.png
-        label: 'PT Gaya Makmur Tractors (GMT)'
+        images: whatsapp-image-2022-12-06-at-10.23.15.png
+        label: 'Gaya Makmur Putra'
       -
         id: u-fE1bM0wA1L8MFcUR3Hr
-        images: logo-dummy-2.png
-        label: 'Panca Mega Makmur'
+        images: gaya-makmur-tech-logo-horizontal.png
+        label: 'Gaya Makmur Tech'
     show: true
     type: image_label
     enabled: true
@@ -175,5 +175,5 @@ sections:
     type: text_button
     enabled: true
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1785316212
+updated_at: 1786518532
 ---

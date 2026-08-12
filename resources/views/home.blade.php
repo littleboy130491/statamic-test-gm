@@ -540,29 +540,29 @@
 
                                     @if ($itemUrl)
                                         <a href="{{ $itemUrl }}" target="_blank" rel="noopener noreferrer"
-                                            class="flex flex-col gap-4 items-center lg:justify-center p-3.5 lg:py-5 lg:px-15 border border-(--color-line) rounded-xl">
+                                            class="flex flex-col gap-4 items-center lg:justify-center p-3.5 lg:py-5 lg:px-8 border border-(--color-line) rounded-xl">
                                             @if (!empty($item['images']))
                                                 <img src="{{ $item['images']?->url() }}"
                                                     alt="{{ $item['label'] ?? '' }}"
-                                                    class="w-full h-5 md:h-8 lg:h-8 object-contain">
+                                                    class="w-full h-12 md:h-10 lg:h-14 object-contain">
                                             @endif
                                             @if (!empty($item['label']))
                                                 <p
-                                                    class="text-center text-(--color-heading) lg:text-xl font-(family-name:--font-display) font-semibold tracking-tight">
+                                                    class="text-center text-(--color-heading) md:text-xs lg:text-xl font-(family-name:--font-display) font-semibold tracking-tight">
                                                     {{ $item['label'] }}</p>
                                             @endif
                                         </a>
                                     @else
                                         <div
-                                            class="flex flex-col gap-4 items-center lg:justify-center p-3.5 lg:py-5 lg:px-15 border border-(--color-line) rounded-xl">
+                                            class="flex flex-col gap-4 items-center lg:justify-center p-3.5 lg:py-5 lg:px-8 border border-(--color-line) rounded-xl">
                                             @if (!empty($item['images']))
                                                 <img src="{{ $item['images']?->url() }}"
                                                     alt="{{ $item['label'] ?? '' }}"
-                                                    class="w-full h-5 md:h-8 lg:h-8 object-contain">
+                                                    class="w-full h-12 md:h-10 lg:h-14 object-contain">
                                             @endif
                                             @if (!empty($item['label']))
                                                 <p
-                                                    class="text-center text-(--color-heading) lg:text-xl font-(family-name:--font-display) font-semibold tracking-tight">
+                                                    class="text-center text-(--color-heading) md:text-xs lg:text-xl font-(family-name:--font-display) font-semibold tracking-tight">
                                                     {{ $item['label'] }}</p>
                                             @endif
                                         </div>
