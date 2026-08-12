@@ -13,10 +13,9 @@
         ?->in(\Statamic\Facades\Site::current()->handle())
         ?->toAugmentedArray();
 
-    // Query karier
     $careers = \Statamic\Facades\Entry::query()
         ->where('collection', 'careers')
-        ->where('published', true)
+        ->whereStatus('published')
         ->orderBy('date', 'desc')
         ->paginate(9);
 

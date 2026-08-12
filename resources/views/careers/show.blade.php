@@ -22,6 +22,20 @@
         ->limit(2)
         ->get();
 
+    $resolve = function ($field) {
+        if ($field instanceof \Statamic\Fields\Value) {
+            $field = $field->value();
+        }
+        return $field instanceof \Statamic\Contracts\Query\Builder ? $field->get() : $field;
+    };
+
+    $employmentStatus = $resolve($page->employment_status);
+    $employmentLabel = $employmentStatus?->label();
+    $hasEmploymentStatus = filled($employmentLabel);
+
+    $locations = collect($resolve($page->locations) ?? [])->filter(fn($location) => filled($location->title));
+    $hasLocations = $locations->isNotEmpty();
+
     // Cek Component
     $hasHeader = view()->exists('components.layouts.header.single-header');
     $hasCareerSkin = view()->exists('components.layouts.skin.career-skin');
@@ -45,130 +59,130 @@
 
                         {{-- Head --}}
                         <header class="flex flex-col gap-4">
-                            <div id="navigation" class="flex gap-6 md:gap-8 lg:gap-8">
+                            @if ($hasEmploymentStatus || $hasLocations)
+                                <div id="navigation" class="flex gap-6 md:gap-8 lg:gap-8">
 
-                                {{-- Employment --}}
-                                @if ($page->employment_status)
-                                    <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium">
-                                        @if (!empty($career['icon_employment_status']))
-                                            <img src="{{ $career['icon_employment_status'] }}"
-                                                alt="{{ $career['icon_employment_status']?->alt }}"
-                                                class="w-5 h-5 shrink-0" />
-                                        @endif
-                                        {{ $page->employment_status->label() }}
-                                    </p>
-                                @endif
+                                    {{-- Employment --}}
+                                    @if ($hasEmploymentStatus)
+                                        <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium">
+                                            @if (!empty($career['icon_employment_status']))
+                                                <img src="{{ $career['icon_employment_status'] }}"
+                                                    alt="{{ $career['icon_employment_status']?->alt }}"
+                                                    class="w-5 h-5 shrink-0" />
+                                            @endif
+                                            {{ $employmentLabel }}
+                                        </p>
+                                    @endif
 
-                                {{-- Location --}}
-                                @if ($page->locations)
-                                    <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium">
-                                        @if (!empty($career['icon_location']))
-                                            <img src="{{ $career['icon_location'] }}"
-                                                alt="{{ $career['icon_location']?->alt }}" class="w-5 h-5 shrink-0" />
-                                        @endif
-                                        @foreach ($page->locations as $location)
-                                            {{ $location->title }}@unless ($loop->last)
-                                            ,
-                                        @endunless
+                                    {{-- Location --}}
+                                    @if ($hasLocations)
+                                        <p class="flex items-center gap-2 uppercase text-(--color-primary) font-medium">
+                                            @if (!empty($career['icon_location']))
+                                                <img src="{{ $career['icon_location'] }}"
+                                                    alt="{{ $career['icon_location']?->alt }}"
+                                                    class="w-5 h-5 shrink-0" />
+                                            @endif
+                                            {{ $locations->map(fn($location) => $location->title)->implode(', ') }}
+                                        </p>
+                                    @endif
+
+                                </div>
+                            @endif
+
+                            {{-- Heading Page --}}
+                            <h1 class="heading-single">{{ $page->title }}</h1>
+                        </header>
+
+                        {{-- Body --}}
+                        <section class="flex flex-col gap-8 lg:gap-10">
+
+                            {{-- Deskripsi --}}
+                            @if ($page->description)
+                                <div id="description" class="richtext mt-4 md:mt-4 lg:mt-5">{!! $page->description !!}
+                                </div>
+                            @endif
+
+                            {{-- Persyaratan --}}
+                            @if ($page->qualifications)
+                                <div id="qualifications" class="richtext custom-heading-blog">
+                                    <h2 class="mb-2">
+                                        {{ $career['requirements_label'] ?? 'Persyaratan' }}</h2>
+                                    {!! $page->qualifications !!}
+                                </div>
+                            @endif
+
+                            {{-- Jobdesc --}}
+                            @if ($page->jobdesc)
+                                <div id="jobdesc" class="richtext custom-heading-blog">
+                                    <h2 class=" mb-2">{{ $career['label_jobdesc'] ?? 'Jobdesc' }}
+                                    </h2>
+                                    {!! $page->jobdesc !!}
+                                </div>
+                            @endif
+
+                            {{-- Tag Career --}}
+                            <div id="tag-career"
+                                class="flex flex-wrap gap-x-4 gap-y-2 md:gap-x-4 md:gap-y-2 lg:gap-x-8 lg:gap-y-8">
+                                @if ($page->tags)
+                                    @foreach ($page->tags as $tag)
+                                        <p>{{ $tag->title }}</p>
                                     @endforeach
-                                </p>
-                            @endif
-                        </div>
-
-                        {{-- Heading Page --}}
-                        <h1 class="heading-single">{{ $page->title }}</h1>
-                    </header>
-
-                    {{-- Body --}}
-                    <section class="flex flex-col gap-8 lg:gap-10">
-
-                        {{-- Deskripsi --}}
-                        @if ($page->description)
-                            <div id="description" class="richtext mt-4 md:mt-4 lg:mt-5">{!! $page->description !!}
+                                @endif
                             </div>
-                        @endif
 
-                        {{-- Persyaratan --}}
-                        @if ($page->qualifications)
-                            <div id="qualifications" class="richtext custom-heading-blog">
-                                <h2 class="mb-2">
-                                    {{ $career['requirements_label'] ?? 'Persyaratan' }}</h2>
-                                {!! $page->qualifications !!}
+                            {{-- Button Kirim Lamaran --}}
+                            <div id="button-submit">
+                                @if ($page->apply_email)
+                                    <a href="mailto:{{ $page->apply_email }}" class="button button--primary">
+                                        {{ $career['label_submit_button'] ?? 'Kirim Lamaran' }}
+                                    </a>
+                                @elseif ($page->apply_link)
+                                    <a href="{{ $page->apply_link }}" target="_blank" rel="noopener"
+                                        class="button button--primary">
+                                        {{ $career['label_submit_button'] ?? 'Lamar Eksternal' }}
+                                    </a>
+                                @else
+                                    <button type="button" class="button button--primary"
+                                        onclick="document.getElementById('career-popup').showModal()">
+                                        {{ $career['label_submit_button'] ?? 'Kirim Lamaran' }}
+                                    </button>
+                                @endif
                             </div>
-                        @endif
 
-                        {{-- Jobdesc --}}
-                        @if ($page->jobdesc)
-                            <div id="jobdesc" class="richtext custom-heading-blog">
-                                <h2 class=" mb-2">{{ $career['label_jobdesc'] ?? 'Jobdesc' }}
-                                </h2>
-                                {!! $page->jobdesc !!}
-                            </div>
-                        @endif
+                        </section>
+                    </article>
 
-                        {{-- Tag Career --}}
-                        <div id="tag-career"
-                            class="flex flex-wrap gap-x-4 gap-y-2 md:gap-x-4 md:gap-y-2 lg:gap-x-8 lg:gap-y-8">
-                            @if ($page->tags)
-                                @foreach ($page->tags as $tag)
-                                    <p>{{ $tag->title }}</p>
+                    {{-- Career Lainnya --}}
+                    @if ($relatedCareers->isNotEmpty() && $hasCareerSkin)
+                        <aside class="w-full md:w-[40%] lg:w-[35%]">
+                            <div class="flex flex-col gap-6">
+                                @foreach ($relatedCareers as $entry)
+                                    @includeIf('components.layouts.skin.career-skin', [
+                                        'entry' => $entry,
+                                        'career' => $career,
+                                    ])
                                 @endforeach
-                            @endif
-                        </div>
-
-                        {{-- Button Kirim Lamaran --}}
-                        <div id="button-submit">
-                            @if ($page->apply_email)
-                                <a href="mailto:{{ $page->apply_email }}" class="button button--primary">
-                                    {{ $career['label_submit_button'] ?? 'Kirim Lamaran' }}
-                                </a>
-                            @elseif ($page->apply_link)
-                                <a href="{{ $page->apply_link }}" target="_blank" rel="noopener"
-                                    class="button button--primary">
-                                    {{ $career['label_submit_button'] ?? 'Lamar Eksternal' }}
-                                </a>
-                            @else
-                                <button type="button" class="button button--primary"
-                                    onclick="document.getElementById('career-popup').showModal()">
-                                    {{ $career['label_submit_button'] ?? 'Kirim Lamaran' }}
-                                </button>
-                            @endif
-                        </div>
-
-                    </section>
-                </article>
-
-                {{-- Career Lainnya --}}
-                @if ($relatedCareers->isNotEmpty() && $hasCareerSkin)
-                    <aside class="w-full md:w-[40%] lg:w-[35%]">
-                        <div class="flex flex-col gap-6">
-                            @foreach ($relatedCareers as $entry)
-                                @includeIf('components.layouts.skin.career-skin', [
-                                    'entry' => $entry,
-                                    'career' => $career,
-                                ])
-                            @endforeach
-                        </div>
-                    </aside>
-                @endif
+                            </div>
+                        </aside>
+                    @endif
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
 
-    {{-- Call to Action --}}
-    @if ($hasCtaSingle)
-        <x-layouts.cta-single-career />
+        {{-- Call to Action --}}
+        @if ($hasCtaSingle)
+            <x-layouts.cta-single-career />
+        @endif
+
+        {{-- Popup Form --}}
+        @if ($hasPopupForm)
+            <x-layouts.form.popup-form-career />
+        @endif
+    </main>
+
+    @if ($hasFooter)
+        <x-layouts.footer.secondary-footer />
     @endif
-
-    {{-- Popup Form --}}
-    @if ($hasPopupForm)
-        <x-layouts.form.popup-form-career />
-    @endif
-</main>
-
-@if ($hasFooter)
-    <x-layouts.footer.secondary-footer />
-@endif
 
 </x-layouts.main>

@@ -46,6 +46,7 @@ preferences:
         - date
       calendar:
         view: month
+      after_save: continue_editing
     achievements:
       view: list
       columns:
