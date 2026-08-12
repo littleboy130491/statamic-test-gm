@@ -1,6 +1,7 @@
 ---
 id: 9dfbd5c5-7c4a-486b-b593-01a614e83676
 blueprint: product
+date: '2026-07-30 10:48:58'
 title: 'FAW FB240CB 6x2 16kl Pertamina (Euro 5)'
 sku: 'FB240CB 16kl'
 description:

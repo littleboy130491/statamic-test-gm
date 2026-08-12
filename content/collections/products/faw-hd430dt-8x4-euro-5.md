@@ -1,6 +1,7 @@
 ---
 id: 73055012-efb7-4788-9fd7-84e0021b2305
 blueprint: product
+date: '2026-07-30 11:00:33'
 title: 'FAW HD430DT 8x4 (Euro 5)'
 sku: 'DUMP TRUCK HD430DT (8x4)'
 product_categories:

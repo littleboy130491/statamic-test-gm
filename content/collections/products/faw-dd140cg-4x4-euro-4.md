@@ -1,6 +1,7 @@
 ---
 id: af3cf451-2a1f-499e-8fb9-119de0d632e1
 blueprint: product
+date: '2026-07-30 10:19:39'
 title: FAW DD140CG 4x4 (Euro 4)
 sku: DD140CG 4x4 Euro 4
 description:

@@ -1,6 +1,7 @@
 ---
 id: f3ab695e-f41c-4921-a115-9aad95204626
 blueprint: product
+date: '2026-07-30 10:19:39'
 title: FAW HD375CG 8x4 (Euro 5)
 sku: HD375CG 8x4
 description:

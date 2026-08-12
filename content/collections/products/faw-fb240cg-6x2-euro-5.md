@@ -1,6 +1,7 @@
 ---
 id: 68a532e4-3b34-493c-98e9-4e91208618c9
 blueprint: product
+date: '2026-07-30 10:19:39'
 title: FAW FB240CG 6x2 (Euro 5)
 sku: FB240CG Euro 5
 description:

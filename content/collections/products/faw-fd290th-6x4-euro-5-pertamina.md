@@ -1,6 +1,7 @@
 ---
 id: 04fb1940-3a28-4037-b197-7bfbf35de532
 blueprint: product
+date: '2026-07-30 10:19:39'
 title: FAW FD290TH 6x4 (Euro 5) Pertamina
 sku: Tractor Head FD290TH (6x4) Pertamina
 product_categories:

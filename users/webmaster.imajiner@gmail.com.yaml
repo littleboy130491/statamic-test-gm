@@ -23,6 +23,7 @@ preferences:
         - product_categories
         - industries
         - status
+        - date
       after_save: continue_editing
     pages:
       view: list

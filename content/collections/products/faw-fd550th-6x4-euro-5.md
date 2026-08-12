@@ -1,6 +1,7 @@
 ---
 id: 2deec872-2d8e-438e-94bc-a0309d6cd897
 blueprint: product
+date: '2026-07-30 11:02:32'
 title: 'FAW FD550TH 6x4 (Euro 5)'
 sku: 'Tractor Head FD550TH (6x4)'
 product_categories:

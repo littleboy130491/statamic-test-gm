@@ -1,11 +1,19 @@
 title: Products
-blueprints:
-  - product
-route: '/products/{slug}'
-sort_by: title
-sort_dir: asc
+icon: collections
 template: products/show
+layout: layout
 taxonomies:
   - product_categories
   - industries
 revisions: true
+route: '/products/{slug}'
+date: true
+time_enabled: true
+sort_by: date
+sort_dir: desc
+default_status: draft
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true

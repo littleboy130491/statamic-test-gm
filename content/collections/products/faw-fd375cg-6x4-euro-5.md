@@ -1,6 +1,7 @@
 ---
 id: 5746099c-bca1-4d48-a823-27e0eff380d2
 blueprint: product
+date: '2026-07-30 10:19:39'
 title: FAW FD375CG 6x4 (Euro 5)
 sku: FD375CG 6x4
 description:

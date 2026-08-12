@@ -1,6 +1,7 @@
 ---
 id: d26ae58a-9987-40e7-b8e9-81b024a2afa6
 blueprint: product
+date: '2026-07-30 10:19:39'
 title: FAW FD290MT 6x4 (Euro 5)
 sku: TRUK MOLEN FD290MT (6x4)
 product_categories:

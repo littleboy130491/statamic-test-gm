@@ -1,6 +1,7 @@
 ---
 id: 92b209e2-da32-4142-a07e-9cb6584ecb0b
 blueprint: product
+date: '2026-07-30 10:46:42'
 title: 'FAW DB290TH 4x2 (Euro 5)'
 sku: 'TRACTOR HEAD DB290TH (4x2)'
 product_categories:

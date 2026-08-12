@@ -1,6 +1,7 @@
 ---
 id: f69b8e9e-2b09-4a52-bf83-60498594d44f
 blueprint: product
+date: '2026-07-30 11:05:47'
 title: 'FAW FD375DT 6x4 (Euro 5)'
 sku: 'FD375DT (6x4)'
 description:

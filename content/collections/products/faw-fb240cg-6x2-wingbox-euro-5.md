@@ -1,6 +1,7 @@
 ---
 id: f577f834-a392-4036-93f1-ed3cac86119e
 blueprint: product
+date: '2026-07-30 10:49:57'
 title: 'FAW FB240CG 6x2 Wingbox (Euro 5)'
 sku: 'FB240CG (Wingbox)'
 product_categories:

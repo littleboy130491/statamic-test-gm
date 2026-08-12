@@ -1,6 +1,7 @@
 ---
 id: 1450dd7c-573c-4b04-b259-dd10a63727f1
 blueprint: product
+date: '2026-07-30 10:19:39'
 title: FAW Light Duty Truck DD140MH (Euro 4)
 sku: DD140CG 4x4 (Euro 4)
 description:

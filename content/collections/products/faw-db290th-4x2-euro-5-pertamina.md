@@ -1,6 +1,7 @@
 ---
 id: ba499c88-2b50-462b-9ca1-ade95bc8f395
 blueprint: product
+date: '2026-07-30 10:19:39'
 title: FAW DB290TH 4x2 (Euro 5) Pertamina
 sku: TRACTOR HEAD DB290TH (4x2) Pertamina
 product_categories:

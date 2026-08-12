@@ -1,6 +1,7 @@
 ---
 id: fb586fce-e482-49eb-990f-669e6d49c14e
 blueprint: product
+date: '2026-07-30 11:03:38'
 title: 'FAW FD380TH 6x4 CNG (Euro 5)'
 sku: 'TRACTOR HEAD FD380TH CNG (6x4)'
 product_categories:

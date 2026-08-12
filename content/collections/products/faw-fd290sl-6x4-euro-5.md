@@ -1,6 +1,7 @@
 ---
 id: fb20e818-faef-4883-b7c0-a4f084ed4c80
 blueprint: product
+date: '2026-07-30 10:19:39'
 title: FAW FD290SL 6x4 (Euro 5)
 sku: Self Loader FD290SL (6x4)
 product_categories:

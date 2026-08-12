@@ -1,6 +1,7 @@
 ---
 id: d17e88fb-1fdf-4703-b3c6-7363093aa93b
 blueprint: product
+date: '2026-07-30 10:52:32'
 title: 'FAW FD290CB 6x4 (Euro 5)'
 sku: 'FD290CB (6x4)'
 description:

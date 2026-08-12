@@ -1,6 +1,7 @@
 ---
 id: 066412da-d43c-4713-8e8b-cd3cb86ec83a
 blueprint: product
+date: '2026-07-30 10:19:39'
 title: FAW FB240CT 6x2 (Euro 5)
 sku: FB240CT (6x2)
 description:

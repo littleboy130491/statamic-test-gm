@@ -1,6 +1,7 @@
 ---
 id: 26d8fa20-2c14-4e75-b926-3d3c2df718f6
 blueprint: product
+date: '2026-07-30 10:19:39'
 title: FAW FD460TH 6x4 (Euro 5)
 sku: Tractor Head FAW FD460TH (6x4)
 product_categories:

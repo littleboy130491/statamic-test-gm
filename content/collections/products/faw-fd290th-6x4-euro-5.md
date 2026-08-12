@@ -1,6 +1,7 @@
 ---
 id: b04871d9-e2dd-42ad-9443-20ac9b98c551
 blueprint: product
+date: '2026-07-30 10:58:59'
 title: 'FAW FD290TH 6x4 (Euro 5)'
 sku: 'Tractor Head FD290TH (6x4)'
 product_categories:

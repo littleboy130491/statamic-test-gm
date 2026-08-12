@@ -38,6 +38,7 @@
                 ->where('collection', 'products')
                 ->whereStatus('published')
                 ->whereTaxonomyIn(['industries::' . $industry->slug()])
+                ->orderBy('date', 'desc')
                 ->limit(6)
                 ->get()
             : collect();

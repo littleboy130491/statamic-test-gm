@@ -38,7 +38,8 @@
         $productsQuery->whereTaxonomy($taxonomyHandle . '::' . $page->slug());
     }
 
-    $products = $productsQuery->paginate(18);
+    // Produk terbaru tampil paling depan
+    $products = $productsQuery->orderBy('date', 'desc')->paginate(18);
 
     // Sidebar kategori
     $product_categories = \Statamic\Facades\Term::query()

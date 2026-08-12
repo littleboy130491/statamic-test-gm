@@ -1,6 +1,7 @@
 ---
 id: 612e53f9-8dea-4e35-badc-fc2db4931ba5
 blueprint: product
+date: '2026-07-30 10:19:39'
 title: FAW FD375TH 6x4 (Euro 5)
 sku: TRACTOR HEAD FD375TH (6x4)
 product_categories:

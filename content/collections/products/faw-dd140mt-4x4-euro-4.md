@@ -1,6 +1,7 @@
 ---
 id: 4e51b6e4-70da-4c62-bec6-b7ac4bd90d2a
 blueprint: product
+date: '2026-07-30 11:10:40'
 title: 'FAW DD140MT 4x4 (Euro 4)'
 sku: 'DD140MT (4x4)'
 product_categories:
