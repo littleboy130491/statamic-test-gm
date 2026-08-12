@@ -23,7 +23,7 @@
                 {{-- Background --}}
                 @if (!empty($cta['background_call_to_action']))
                     <img src="{{ $cta['background_call_to_action'] }}" alt="" aria-hidden="true"
-                        class="inset-0 w-full h-185 md:h-90 lg:h-112 object-cover pointer-events-none rounded-3xl">
+                        class="inset-0 w-full h-200 md:h-90 lg:h-140 object-cover pointer-events-none rounded-3xl">
                 @endif
 
                 {{-- Konten --}}
@@ -35,7 +35,7 @@
                         <div class="flex items-end lg:justify-center md:w-[40%] lg:w-[45%]">
                             <img src="{{ $cta['image_call_to_action'] }}"
                                 alt="{{ $cta['image_call_to_action']?->alt ?? ($cta['heading'] ?? '') }}"
-                                class="w-full lg:w-auto lg:max-w-full lg:h-136 object-contain object-bottom">
+                                class="w-full lg:w-[83%] object-contain">
                         </div>
                     @endif
 
