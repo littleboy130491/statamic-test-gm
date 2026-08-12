@@ -70,6 +70,14 @@ preferences:
         - name
         - email
         - datestamp
+    career_apply:
+      columns:
+        - datestamp
+        - name
+        - position
+        - email
+        - phone
+        - cv_resume
   locale: en
   theme: null
   taxonomies:

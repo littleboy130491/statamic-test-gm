@@ -1,6 +1,5 @@
 ---
 id: e326227e-7841-487a-af38-2bd38850278f
-published: false
 blueprint: page
 title: Manajemen
 template: manajemen
