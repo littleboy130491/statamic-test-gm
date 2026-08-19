@@ -179,7 +179,7 @@
                     <div id="background-about"
                         class="overlay-section-about rounded-t-3xl lg:rounded-t-[60px] overflow-hidden">
                         <img src="{{ $about['section_images'] ?? '' }}" alt="{{ $about['section_images']?->alt }}"
-                            class="w-full h-280 md:h-250 lg:h-224 object-cover pointer-events-none">
+                            class="w-full h-265 md:h-250 lg:h-224 object-cover pointer-events-none">
                     </div>
 
                     {{-- Konten --}}
@@ -351,7 +351,7 @@
                         class="overlay-section-services rounded-t-3xl lg:rounded-t-[60px] overflow-hidden">
                         <img src="{{ $services['background_image'] ?? '' }}"
                             alt="{{ $services['background_image']?->alt }}"
-                            class="w-full h-300 md:h-220 lg:h-190 object-cover pointer-events-none">
+                            class="w-full h-325 md:h-220 lg:h-190 object-cover pointer-events-none">
                     </div>
 
                     {{-- Konten --}}
