@@ -193,7 +193,7 @@
                                                 </h3>
 
                                                 @if ($item['address'])
-                                                    <p>{{ $item['address'] }}</p>
+                                                    <p>{!! nl2br(e($item['address'])) !!}</p>
                                                 @endif
                                             </div>
 

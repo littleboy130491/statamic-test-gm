@@ -10,6 +10,9 @@ dealer_categories:
 location:
   latitude: -3.786944
   longitude: 103.542778
+address: |-
+  PART & SERVICE CENTER
+  GAYA MAKMUR MOBIL
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1787131099
+updated_at: 1787131525
 ---
