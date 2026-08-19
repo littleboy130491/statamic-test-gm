@@ -57,3 +57,14 @@ tabs:
             field:
               type: toggle
               display: Show
+      -
+        display: 'Other Information'
+        fields:
+          -
+            handle: label_social_media
+            field:
+              default: 'Media Sosial'
+              type: text
+              display: 'Label Social Media (Mobile)'
+              validate:
+                - required
