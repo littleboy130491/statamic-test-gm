@@ -21,3 +21,5 @@ inject:
     title: '@seo:title'
     description: '@seo:description'
     image: '@seo:featured_image'
+structure:
+  root: false

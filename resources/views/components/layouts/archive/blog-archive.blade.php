@@ -30,11 +30,21 @@
         fn($section) => (string) ($section['identifier'] ?? '') === 'opening-blog',
     );
 
+    // Urutan mengikuti pilihan di Global > Blog Label Information
+    $sortOrderBy = (string) ($blog['sort_order_by'] ?? 'tanggal_upload');
+
+    [$sortField, $sortDir] = match ($sortOrderBy) {
+        'urutan_tree' => ['order', 'asc'],
+        'judul_az' => ['title', 'asc'],
+        'judul_za' => ['title', 'desc'],
+        default => ['date', 'desc'],
+    };
+
     // Grid post
     $postsQuery = \Statamic\Facades\Entry::query()
         ->where('collection', 'posts')
         ->whereStatus('published')
-        ->orderBy('date', 'desc');
+        ->orderBy($sortField, $sortDir);
 
     if ($isCategory) {
         $postsQuery->whereTaxonomy('categories::' . $page->slug());

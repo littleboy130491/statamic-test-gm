@@ -3,6 +3,7 @@ latest_blog_label: Terbaru
 label_share: Bagikan
 related_news_labels: 'Berita Terkait'
 label_button: Selengkapnya
+sort_order_by: tanggal_upload
 image_placeholders: placeholder.jpg
 social_share:
   -

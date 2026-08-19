@@ -139,3 +139,26 @@ tabs:
                 - removeformat
                 - quote
                 - anchor
+      -
+        display: Archive
+        fields:
+          -
+            handle: sort_order_by
+            field:
+              options:
+                -
+                  key: tanggal_upload
+                  value: 'Tanggal Upload'
+                -
+                  key: urutan_tree
+                  value: 'Urutan Tree (Statamic)'
+                -
+                  key: judul_az
+                  value: 'Judul A-Z'
+                -
+                  key: judul_za
+                  value: 'Judul Z-A'
+              type: select
+              display: 'Sort Order By'
+              validate:
+                - required

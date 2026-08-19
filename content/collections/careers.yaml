@@ -22,3 +22,5 @@ inject:
   seo:
     title: '@seo:title'
     description: '@seo:description'
+structure:
+  root: false

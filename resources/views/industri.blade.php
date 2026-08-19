@@ -12,6 +12,20 @@
         ?->in(\Statamic\Facades\Site::current()->handle())
         ?->toAugmentedArray();
 
+    // Global label product (untuk pilihan urutan produk)
+    $productGlobal = \Statamic\Facades\GlobalSet::findByHandle('product_label_information')
+        ?->in(\Statamic\Facades\Site::current()->handle())
+        ?->toAugmentedArray();
+
+    $sortOrderBy = (string) ($productGlobal['product_sort_order_by'] ?? 'tanggal_upload');
+
+    [$sortField, $sortDir] = match ($sortOrderBy) {
+        'urutan_tree' => ['order', 'asc'],
+        'judul_az' => ['title', 'asc'],
+        'judul_za' => ['title', 'desc'],
+        default => ['date', 'desc'],
+    };
+
     $industries = \Statamic\Facades\Term::query()->where('taxonomy', 'industries')->get();
 
     // Cek component
@@ -32,13 +46,13 @@
     $industryCollection = collect($industries)->values();
     $lastIndex = $industryCollection->count() - 1;
 
-    $industryItems = $industryCollection->map(function ($industry, $index) use ($hasProductSkin, $lastIndex) {
+    $industryItems = $industryCollection->map(function ($industry, $index) use ($hasProductSkin, $lastIndex, $sortField, $sortDir) {
         $relatedProducts = $hasProductSkin
             ? \Statamic\Facades\Entry::query()
                 ->where('collection', 'products')
                 ->whereStatus('published')
                 ->whereTaxonomyIn(['industries::' . $industry->slug()])
-                ->orderBy('date', 'desc')
+                ->orderBy($sortField, $sortDir)
                 ->limit(6)
                 ->get()
             : collect();

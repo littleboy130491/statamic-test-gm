@@ -38,8 +38,17 @@
         $productsQuery->whereTaxonomy($taxonomyHandle . '::' . $page->slug());
     }
 
-    // Produk terbaru tampil paling depan
-    $products = $productsQuery->orderBy('date', 'desc')->paginate(18);
+    // Urutan produk mengikuti pilihan di Global > Product Label Information
+    $sortOrderBy = (string) ($product['product_sort_order_by'] ?? 'tanggal_upload');
+
+    [$sortField, $sortDir] = match ($sortOrderBy) {
+        'urutan_tree' => ['order', 'asc'],
+        'judul_az' => ['title', 'asc'],
+        'judul_za' => ['title', 'desc'],
+        default => ['date', 'desc'],
+    };
+
+    $products = $productsQuery->orderBy($sortField, $sortDir)->paginate(18);
 
     // Sidebar kategori
     $product_categories = \Statamic\Facades\Term::query()

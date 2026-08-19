@@ -13,10 +13,20 @@
         ?->in(\Statamic\Facades\Site::current()->handle())
         ?->toAugmentedArray();
 
+    // Urutan mengikuti pilihan di Global > Career Label Information
+    $sortOrderBy = (string) ($career['sort_order_by'] ?? 'tanggal_upload');
+
+    [$sortField, $sortDir] = match ($sortOrderBy) {
+        'urutan_tree' => ['order', 'asc'],
+        'judul_az' => ['title', 'asc'],
+        'judul_za' => ['title', 'desc'],
+        default => ['date', 'desc'],
+    };
+
     $careers = \Statamic\Facades\Entry::query()
         ->where('collection', 'careers')
         ->whereStatus('published')
-        ->orderBy('date', 'desc')
+        ->orderBy($sortField, $sortDir)
         ->paginate(9);
 
     // Cek component
