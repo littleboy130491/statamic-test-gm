@@ -1,23 +1,23 @@
 slider_banner:
   -
     id: wdDititmjENvW30fcWIsN
-    heading: 'Kepastian Operasional untuk Bisnis Anda'
-    short_description: 'Investasi aman dengan jaminan layanan purna jual yang andal.'
+    heading: 'Pilhan terbaik untuk bisnis anda'
+    short_description: 'Investasi aman dengan jaminan layanan purna jual yang handal.'
     label_button: 'Mulai Konsultasi'
     url_button: 'entry::02bd16ee-6482-47b6-bdd1-28440329ffad'
-    backgound_image: hero-slide1.jpg
+    backgound_image: chassisbbm-1440x700px.jpg
   -
     id: UwsR4PrGIT2jxEh7KvFhP
     heading: 'Armada Andal untuk Berbagai Industri'
     short_description: 'Dirancang untuk menunjang produktivitas berbagai industri.'
     label_button: 'Mulai Konsultasi'
     url_button: 'entry::02bd16ee-6482-47b6-bdd1-28440329ffad'
-    backgound_image: hero-slider-2.jpg
+    backgound_image: wingbox-1440x700px.jpg
   -
     id: oa5FvQrDxbnzCHAUVg6C0
     heading: 'Layanan yang berkelanjutan'
     short_description: 'Komitmen layanan untuk mendukung operasional bisnis jangka panjang.'
     label_button: 'Mulai Konsultasi'
     url_button: 'entry::02bd16ee-6482-47b6-bdd1-28440329ffad'
-    backgound_image: hero-slider-3.jpg
+    backgound_image: mekanik-1440x700px.jpg
 show: true

@@ -179,16 +179,16 @@
                     <div id="background-about"
                         class="overlay-section-about rounded-t-3xl lg:rounded-t-[60px] overflow-hidden">
                         <img src="{{ $about['section_images'] ?? '' }}" alt="{{ $about['section_images']?->alt }}"
-                            class="w-full h-310 md:h-290 lg:h-240 object-cover pointer-events-none">
+                            class="w-full h-290 md:h-290 lg:h-260 object-cover pointer-events-none">
                     </div>
 
                     {{-- Konten --}}
                     <div class="absolute inset-0 z-10 flex items-start py-18 lg:py-0 lg:items-center lg:-mt-30">
                         <div id="content-about"
-                            class="container flex flex-col md:flex-col lg:flex-row gap-15 md:gap-0 lg:gap-0">
+                            class="container flex flex-col md:flex-col lg:flex-row gap-15 md:gap-0 lg:gap-0 lg:pt-20">
 
                             {{-- Kolom kiri: konten --}}
-                            <div class="w-full md:w-full lg:w-[50%] flex flex-col gap-4">
+                            <div class="w-full md:w-full lg:w-[50%] flex flex-col gap-4 z-10">
 
                                 {{-- Heading --}}
                                 @if (!empty($about['heading']))
@@ -203,16 +203,16 @@
                                 {{-- Counter grid --}}
                                 @if (!empty($about['counter_grid']))
                                     <div
-                                        class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-3 lg:gap-5 my-8 w-full lg:w-[70%]">
+                                        class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-3 lg:gap-5 my-8 w-full lg:w-[80%]">
                                         @foreach ($about['counter_grid'] as $counter)
                                             <div
-                                                class="flex flex-col gap-1 items-start lg:items-center p-4 rounded-xl blur-cus bg-(--color-surface)/50 lg:bg-(--color-surface)/0">
+                                                class="flex flex-col gap-2 items-start p-4 rounded-xl blur-cus bg-(--color-surface)/50 lg:bg-(--color-surface)/30">
                                                 <p class="text-3xl lg:text-4xl font-medium text-(--color-primary)">
                                                     <span>{{ $counter['prefix'] ?? '' }}</span><span
                                                         class="counter-number"
                                                         data-target="{{ $counter['number'] ?? 0 }}">0</span><span>{{ $counter['suffix'] ?? '' }}</span>
                                                 </p>
-                                                <p class="text-(--color-body) text-[11px] md:text-xs lg:text-base">
+                                                <p class="text-(--color-body) text-[11px] md:text-xs lg:text-sm">
                                                     {{ $counter['caption'] ?? '' }}</p>
                                             </div>
                                         @endforeach
@@ -234,20 +234,20 @@
 
                             {{-- Kolom Kanan: image --}}
                             <div
-                                class="w-full md:w-full lg:w-[50%] flex flex-col md:items-end lg:items-stretch justify-between gap-10">
+                                class="w-full md:w-full lg:w-[50%] flex flex-col md:items-end lg:items-stretch justify-between gap-8 md:gap-4 lg:gap-4">
 
                                 {{-- Sertifikat --}}
                                 @if (!empty($about['images']))
                                     <div
-                                        class="flex justify-end lg:items-center gap-2 lg:gap-6 md:-mt-18 lg:mt-0 w-full flex-row">
+                                        class="grid grid-cols-2 justify-items-start md:flex md:flex-row md:flex-wrap md:justify-end lg:items-center gap-2 lg:gap-6 md:-mt-18 lg:mt-0 w-full md:w-[60%] lg:w-full md:ml-auto lg:ml-auto">
                                         @foreach ($about['images'] as $img)
                                             <div
-                                                class="bg-white rounded-lg lg:rounded-2xl p-4 md:p-4 lg:p-6 flex flex-col gap-2">
+                                                class="bg-white rounded-lg lg:rounded-2xl p-4 md:p-4 lg:p-4 flex flex-col gap-2 w-full md:w-[40%] lg:w-[30%]">
                                                 @if ($img->caption)
                                                     <p>{{ $img->caption }}</p>
                                                 @endif
                                                 <img src="{{ $img->url() }}" alt="{{ $img->alt }}"
-                                                    class="w-full md:w-40 lg:w-50 object-contain">
+                                                    class="w-full object-contain">
                                             </div>
                                         @endforeach
                                     </div>
@@ -258,7 +258,7 @@
                                     <div class="md:w-full lg:w-[145%]">
                                         <img src="{{ $about['image']->url() }}"
                                             alt="{{ $about['image']->alt ?? ($about['heading'] ?? '') }}"
-                                            class="w-full object-cover lg:-ml-60 lg:-mr-40 lg:-mb-50" />
+                                            class="w-full object-cover lg:-ml-60 lg:-mr-40 lg:-mb-30" />
                                     </div>
                                 @endif
                             </div>

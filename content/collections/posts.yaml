@@ -9,9 +9,7 @@ revisions: true
 route: '/berita-dan-artikel/{slug}'
 date: true
 sort_dir: desc
-date_behavior:
-  past: public
-  future: public
+default_status: draft
 preview_targets:
   -
     label: Entry

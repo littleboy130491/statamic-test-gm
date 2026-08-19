@@ -7,16 +7,12 @@ taxonomies:
   - industries
 revisions: false
 route: '/products/{slug}'
+date: true
 sort_by: date
 sort_dir: desc
 default_status: draft
-date_behavior:
-  past: null
-  future: null
 preview_targets:
   -
     label: Entry
     url: '{permalink}'
     refresh: true
-structure:
-  root: false

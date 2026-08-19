@@ -8,41 +8,35 @@ sections:
     id: ZLGXZE_k6w_GoDXYnWc7H
     identifier: section-about
     image: truck-about.png
-    heading: 'Distributor Resmi dengan Jaringan Layanan Nasional'
+    heading: 'Mitra Truk Andal untuk Berbagai Kebutuhan Industri'
     text:
       -
         type: paragraph
         content:
           -
             type: text
-            text: 'PT Gaya Makmur Mobil (GM Mobil) merupakan Agen Pemegang Merek (APM) dari First Automobile Works (FAW) yang mulai memasarkan unit FAW Truck sejak 2005. GM Mobil adalah salah satu Perusahaan dari Gaya Makmur Group yang berfokus pada penjualan truk seperti pada sektor logistik, konstruksi, pertambangan, kehutanan, dan perkebunan.'
+            text: 'Hadir sejak 2005, GM Mobil menghadirkan solusi kendaraan niaga melalui produk FAW Trucks, didukung jaringan layanan dan purna jual untuk berbagai sektor industri.'
     button:
       label: 'Tentang GM Mobil'
       link: 'entry::df438d73-5602-40d0-806d-cb9c62bbe581'
     images:
-      - cer-1.jpg
-      - cer-2.jpg
+      - logo-21-new-01-rev.png
     columns: 2
     counter_grid:
-      -
-        id: dJV06CuM9iMAIcko5S_hI
-        number: 20
-        suffix: +
-        caption: 'Tahun Pengalaman'
       -
         id: NH8X2YMjK7LJjdmGCbWPn
         number: 15000
         suffix: +
-        caption: 'Unit Beroperasi'
+        caption: 'Populasi Unit'
       -
         id: _DiiHIxuSjew2mHf4HDmL
         number: 57
-        caption: 'Service Center'
+        caption: 'Parts & Service Center'
       -
         id: WR3mPXC6Io4WQzMcorxjb
         number: 24
-        suffix: /7
-        caption: 'Dukungan After Sales'
+        suffix: /Jam
+        caption: 'Dukungan After Sales Service'
     show: true
     type: text_counter_image
     enabled: true
@@ -51,7 +45,7 @@ sections:
   -
     id: vy_ndF3JTqUvIww-0ySee
     identifier: section-product-category
-    heading: 'Rangkaian Produk untuk Berbagai Kebutuhan Operasional'
+    heading: 'Pilihan produk terbaik untuk berbagai kebutuhan anda'
     label: 'Semua Produk'
     link: 'entry::products'
     style: primary
@@ -62,32 +56,32 @@ sections:
   -
     id: azRLeaS-IpvKhHIzGJCDi
     identifier: section-services
-    heading: 'Layanan Kami'
+    heading: 'Dukungan Menyeluruh untuk Operasional Anda'
     description:
       -
         type: paragraph
         content:
           -
             type: text
-            text: 'Dari konsultasi sebelum pembelian hingga maintenance rutin, dari emergency repair hingga program REMAN, kami hadir sebagai partner jangka panjang Anda.'
+            text: 'Mulai dari konsultasi dan pemilihan unit, perawatan berkala, layanan perbaikan, hingga program REMAN (Remanufacturing), kami menghadirkan solusi purna jual yang andal untuk menjaga performa dan keberlangsungan operasional bisnis Anda.'
     flip_content:
       -
         id: I3hDu6UqNcP9N_piB-XVU
-        image: thum-purna-jual.jpg
+        image: dscf2795-1-1.jpg
         heading_flip: 'Layanan Purna Jual'
         short_description: 'Ekosistem dukungan menyeluruh yang dirancang untuk meminimalkan downtime dan menjamin kepastian operasional armada Anda.'
         label_button: Selengkapnya
         url_button: 'entry::24ae8af8-2863-4b05-9f50-033227224acb'
       -
         id: wkdALKGF5_SojIy8cgy1m
-        image: thum-reman-center.jpg
+        image: reman-1.jpg
         heading_flip: 'Reman Center'
         short_description: 'Parts berkualitas OEM dengan harga lebih terjangkau. Perpanjang lifecycle armada hingga 2x lipat dengan biaya maintenance yang terkontrol.'
         label_button: Selengkapnya
         url_button: 'entry::72127caa-9498-41f7-8735-316ab3a72ebb'
       -
         id: e0dw9LEMbNKAFUffRDvnE
-        image: thum-teletech.jpg
+        image: teletech-1.jpg
         heading_flip: 'GM Teletech'
         short_description: 'Pantau konsumsi BBM, lacak lokasi, dan jadwalkan perawatan secara real-time. GM Teletech mengubah truk Anda menjadi aset pintar untuk efisiensi bisnis yang maksimal.'
         label_button: Selengkapnya
@@ -178,5 +172,5 @@ sections:
     type: text_button
     enabled: true
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1786523798
+updated_at: 1787111171
 ---
