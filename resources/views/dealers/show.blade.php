@@ -40,7 +40,7 @@
             <div>
                 <dt class="text-sm font-semibold uppercase tracking-wide text-zinc-500">Phone</dt>
                 <dd class="mt-1">
-                    <a href="tel:{{ $page->phone_number }}" class="notranslate text-emerald-600 hover:underline">
+                    <a href="tel:{{ preg_replace('/[^0-9]/', '', $page->phone_number) }}" class="notranslate text-emerald-600 hover:underline">
                         {{ $page->phone_number }}
                     </a>
                 </dd>

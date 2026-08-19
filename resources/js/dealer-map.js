@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
             contacts += `<a href="${waHref}" target="_blank" rel="noopener">${iconWa} ${loc.whatsapp || ''}</a>`;
         }
         if (loc.phone) {
-            const telHref = String(loc.phone).replace(/[^\d+]/g, '').replace(/(?!^)\+/g, '');
+            const telHref = String(loc.phone).replace(/\D/g, '');
             contacts += `<a href="tel:${telHref}">${iconPhone} ${loc.phone}</a>`;
         }
 

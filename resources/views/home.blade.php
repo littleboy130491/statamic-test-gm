@@ -344,7 +344,7 @@
         {{-- Layanan --}}
         @if ($services && ($services['show'] ?? false))
             <section id="{{ $services['anchor'] ?? 'layanan' }}">
-                <div class="relative overflow-hidden -mt-14">
+                <div class="relative z-20 overflow-hidden -mt-14">
 
                     {{-- Background --}}
                     <div id="background-services"

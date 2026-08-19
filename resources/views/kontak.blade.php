@@ -150,7 +150,7 @@
                                                     @if (!empty($phone['label']))
                                                         <p class="block text-(--color-body)">{{ $phone['label'] }}</p>
                                                     @endif
-                                                    <a href="tel:{{ preg_replace('/\s+/', '', $phone['number']) }}"
+                                                    <a href="tel:{{ preg_replace('/[^0-9]/', '', $phone['number']) }}"
                                                         class="notranslate text-(--color-body) hover:text-(--color-secondary)">
                                                         {{ $phone['number'] }}
                                                     </a>

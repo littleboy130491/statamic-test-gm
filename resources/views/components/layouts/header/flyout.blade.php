@@ -121,7 +121,7 @@
                                                 <p class="block text-(--color-text)">{{ $phone['label'] }}
                                                 </p>
                                             @endif
-                                            <a href="tel:{{ preg_replace('/\s+/', '', $phone['number']) }}"
+                                            <a href="tel:{{ preg_replace('/[^0-9]/', '', $phone['number']) }}"
                                                 class="text-black hover:text-(--color-primary) text-sm">
                                                 {{ $phone['number'] }}
                                             </a>

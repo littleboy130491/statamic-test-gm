@@ -212,8 +212,7 @@
                                                             $href = $isWhatsapp
                                                                 ? ($phone['link'] ?:
                                                                 'https://wa.me/' . $waNumber)
-                                                                : 'tel:' .
-                                                                    preg_replace('/[^0-9+]/', '', $phone['number']);
+                                                                : 'tel:' . $digits;
                                                             $iconUrl = $contactIcons[$phone['type']] ?? null;
                                                         @endphp
 

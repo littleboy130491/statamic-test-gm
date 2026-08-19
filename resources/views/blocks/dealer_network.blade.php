@@ -65,7 +65,7 @@
                                 <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{{ $dealer->address }}</p>
                             @endif
                             @if ($dealer->phone_number)
-                                <p class="mt-2 text-sm"><a href="tel:{{ $dealer->phone_number }}" class="notranslate text-emerald-600 hover:underline">{{ $dealer->phone_number }}</a></p>
+                                <p class="mt-2 text-sm"><a href="tel:{{ preg_replace('/[^0-9]/', '', $dealer->phone_number) }}" class="notranslate text-emerald-600 hover:underline">{{ $dealer->phone_number }}</a></p>
                             @endif
                             @if ($dealer->google_maps_url)
                                 <a href="{{ $dealer->google_maps_url }}" class="mt-2 inline-block text-sm font-semibold text-emerald-600 hover:underline" target="_blank" rel="noopener">

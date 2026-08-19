@@ -711,7 +711,7 @@ body:has(dialog[open].site-popup) {
    inset: 0;
    z-index: 1;
    pointer-events: none;
-   background: radial-gradient(50% 24.8% at 50% 25.2%, rgba(255, 255, 255, 0.92) 25.4%, rgba(255, 255, 255, 0.00) 100%), linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 90.87%);
+   background: radial-gradient(65.2% 32.34% at 50% 25.2%, rgba(255, 255, 255, 0.92) 21.28%, rgba(255, 255, 255, 0.00) 100%), linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 95.84%);
 }
 
 
