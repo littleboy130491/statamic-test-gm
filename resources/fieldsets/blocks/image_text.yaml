@@ -7,7 +7,6 @@ fields:
       display: Image
       container: assets
       max_files: 1
-      validate: required
   -
     handle: heading
     field:

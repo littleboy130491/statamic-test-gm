@@ -219,7 +219,7 @@
 
                                                         <a href="{{ $href }}"
                                                             @if ($isWhatsapp) target="_blank" rel="noopener noreferrer" @endif
-                                                            class="group inline-flex items-center gap-2 px-6 py-2 border border-(--color-primary) rounded-full text-(--color-primary) hover:text-black hover:bg-(--color-secondary) hover:border-(--color-secondary) transition-colors">
+                                                            class="group inline-flex items-center gap-2 px-6 py-2 border border-(--color-primary) rounded-full text-sm text-(--color-primary) hover:text-black hover:bg-(--color-secondary) hover:border-(--color-secondary) transition-colors">
                                                             @if ($iconUrl)
                                                                 <span aria-hidden="true"
                                                                     class="w-4 h-4 shrink-0 bg-current"

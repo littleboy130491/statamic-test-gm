@@ -7,7 +7,6 @@ sections:
   -
     id: ZLGXZE_k6w_GoDXYnWc7H
     identifier: section-about
-    image: truck-about.png
     heading: 'Mitra Truk Andal untuk Berbagai Kebutuhan Industri'
     text:
       -
@@ -40,7 +39,7 @@ sections:
     show: true
     type: text_counter_image
     enabled: true
-    section_images: bg-about-section.jpg
+    section_images: bg-ppt-faw-web.jpg
     anchor: tentang-kami
   -
     id: vy_ndF3JTqUvIww-0ySee
@@ -172,5 +171,5 @@ sections:
     type: text_button
     enabled: true
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1787111171
+updated_at: 1787122198
 ---
