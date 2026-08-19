@@ -16,7 +16,7 @@
         fn($section) => (string) ($section['identifier'] ?? '') === 'section-product-category',
     );
 
-    // Kategori produk — hanya yang punya produk (jumlah 0 tidak ditampilkan di slider)
+    // Kategori produk
     $productCategories = \Statamic\Facades\Term::query()
         ->where('taxonomy', 'product_categories')
         ->get()
@@ -179,13 +179,13 @@
                     <div id="background-about"
                         class="overlay-section-about rounded-t-3xl lg:rounded-t-[60px] overflow-hidden">
                         <img src="{{ $about['section_images'] ?? '' }}" alt="{{ $about['section_images']?->alt }}"
-                            class="w-full h-290 md:h-290 lg:h-260 object-cover pointer-events-none">
+                            class="w-full h-280 md:h-250 lg:h-224 object-cover pointer-events-none">
                     </div>
 
                     {{-- Konten --}}
-                    <div class="absolute inset-0 z-10 flex items-start py-18 lg:py-0 lg:items-center lg:-mt-30">
+                    <div class="absolute inset-x-0 top-0 z-10 flex items-end bottom-0">
                         <div id="content-about"
-                            class="container flex flex-col md:flex-col lg:flex-row gap-15 md:gap-0 lg:gap-0 lg:pt-20">
+                            class="container flex flex-col md:flex-col lg:flex-row gap-15 md:gap-0 lg:gap-0">
 
                             {{-- Kolom kiri: konten --}}
                             <div class="w-full md:w-full lg:w-[50%] flex flex-col gap-4 z-10">
@@ -203,10 +203,10 @@
                                 {{-- Counter grid --}}
                                 @if (!empty($about['counter_grid']))
                                     <div
-                                        class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-3 lg:gap-5 my-8 w-full lg:w-[80%]">
+                                        class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-3 lg:gap-5 my-4 md:my-4 lg:my-8 w-full lg:w-[80%]">
                                         @foreach ($about['counter_grid'] as $counter)
                                             <div
-                                                class="flex flex-col gap-2 items-start p-4 rounded-xl blur-cus bg-(--color-surface)/50 lg:bg-(--color-surface)/30">
+                                                class="flex flex-col gap-2 items-start p-4 rounded-xl blur-cus bg-white/30">
                                                 <p class="text-3xl lg:text-4xl font-medium text-(--color-primary)">
                                                     <span>{{ $counter['prefix'] ?? '' }}</span><span
                                                         class="counter-number"
@@ -242,7 +242,7 @@
                                         class="grid grid-cols-2 justify-items-start md:flex md:flex-row md:flex-wrap md:justify-end lg:items-center gap-2 lg:gap-6 md:-mt-18 lg:mt-0 w-full md:w-[60%] lg:w-full md:ml-auto lg:ml-auto">
                                         @foreach ($about['images'] as $img)
                                             <div
-                                                class="bg-white rounded-lg lg:rounded-2xl p-4 md:p-4 lg:p-4 flex flex-col gap-2 w-full md:w-[40%] lg:w-[30%]">
+                                                class="bg-white/50 rounded-lg lg:rounded-2xl p-4 md:p-4 lg:p-4 flex flex-col gap-2 w-full md:w-[40%] lg:w-[30%]">
                                                 @if ($img->caption)
                                                     <p>{{ $img->caption }}</p>
                                                 @endif
@@ -258,7 +258,7 @@
                                     <div class="md:w-full lg:w-[145%]">
                                         <img src="{{ $about['image']->url() }}"
                                             alt="{{ $about['image']->alt ?? ($about['heading'] ?? '') }}"
-                                            class="w-full object-cover lg:-ml-60 lg:-mr-40 lg:-mb-30" />
+                                            class="w-full object-cover lg:-ml-50" />
                                     </div>
                                 @endif
                             </div>
@@ -273,7 +273,7 @@
         {{-- Produk Kategori --}}
         @if ($productCategory && ($productCategory['show'] ?? false))
             <section id="{{ $productCategory['anchor'] ?? 'category-product' }}">
-                <div class="bg-white relative rounded-t-3xl lg:rounded-t-[60px] -mt-10 lg:-mt-12">
+                <div class="bg-white relative z-20 rounded-t-3xl lg:rounded-t-[60px] -mt-10 lg:-mt-10">
                     <div class="container pt-18 pb-32 md:pt-18 md:pb-32 lg:pt-30 lg:pb-45">
                         <div
                             class="flex flex-col md:flex-row lg:flex-row justify-between items-start md:items-end lg:items-end flex-wrap gap-8 md:gap-8 lg:gap-10">

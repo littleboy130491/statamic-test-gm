@@ -39,8 +39,9 @@ sections:
     show: true
     type: text_counter_image
     enabled: true
-    section_images: bg-ppt-faw-web.jpg
+    section_images: background-1.jpg
     anchor: tentang-kami
+    image: object-1.png
   -
     id: vy_ndF3JTqUvIww-0ySee
     identifier: section-product-category
@@ -171,5 +172,5 @@ sections:
     type: text_button
     enabled: true
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1787122198
+updated_at: 1787122556
 ---
