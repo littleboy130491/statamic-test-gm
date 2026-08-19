@@ -61,6 +61,9 @@
         ->filter(fn($s) => !empty($s['value']))
         ->values();
 
+    // Other Descriptions
+    $otherDescriptions = $page->other_descriptions;
+
     // Features & Benefits
     $features = collect($page->features_and_benefits ?? [])
         ->filter(fn($f) => !empty($f['heading']) || !empty($f['image']))
@@ -203,11 +206,22 @@
             </div>
         </section>
 
+        {{-- Other Descriptions --}}
+        @if (filled((string) $otherDescriptions))
+            <section id="other-descriptions">
+                <div class="container">
+                    <div class="mb-18 mt-20 lg:my-30 richtext">
+                        {!! $otherDescriptions !!}
+                    </div>
+                </div>
+            </section>
+        @endif
+
         {{-- Features & Benefit --}}
         @if ($features->isNotEmpty())
             <section id="features-benefit">
                 <div class="container">
-                    <div class="mb-18 mt-30 md:mb-18 lg:my-30 flex flex-col gap-8 lg:gap-10">
+                    <div class="mb-18 mt-20 md:mb-18 lg:my-30 flex flex-col gap-8 lg:gap-10">
                         <div class="flex items-center justify-between gap-4">
                             <h2>{{ $product['benefit_label'] ?? '' }}</h2>
 

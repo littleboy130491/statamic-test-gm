@@ -4,14 +4,12 @@ blueprint: page
 title: Produk
 template: products
 parent: home
-updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1782198186
 featured_image: hero-archice-produk.jpg
 sections:
   -
     id: lpdjRgF7CwtIPihOD2j18
     identifier: opening-product
-    heading: 'Pilihan Kendaraan Sesuai Kebutuhan Operasional'
+    heading: 'Pilihan Unit Terbaik untuk Kebutuhan Bisnis Anda'
     description:
       -
         type: paragraph
@@ -22,6 +20,8 @@ sections:
     show: true
     type: heading_description
     enabled: true
+updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
+updated_at: 1787115063
 content:
   -
     type: paragraph

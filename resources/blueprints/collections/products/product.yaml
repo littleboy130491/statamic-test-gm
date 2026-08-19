@@ -64,6 +64,34 @@ tabs:
               type: assets
               display: 'Background image'
       -
+        display: 'Other Information'
+        fields:
+          -
+            handle: other_descriptions
+            field:
+              buttons:
+                - h2
+                - h3
+                - bold
+                - italic
+                - unorderedlist
+                - orderedlist
+                - removeformat
+                - quote
+                - anchor
+                - image
+                - table
+                - h4
+                - h5
+                - h6
+                - underline
+                - superscript
+                - subscript
+              container: assets
+              remove_empty_nodes: false
+              type: bard
+              display: 'Other Descriptions'
+      -
         display: Spesification
         fields:
           -
@@ -251,6 +279,14 @@ tabs:
                 - industries
               display: Industries
               mode: select
+          -
+            handle: date
+            field:
+              type: date
+              required: true
+              default: now
+              validate:
+                - required
   'SEO Meta':
     display: 'SEO Meta'
     sections:

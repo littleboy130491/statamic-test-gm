@@ -72,8 +72,7 @@
             <x-layouts.hero.heropage :title="$page->title" :image="$heroImage" />
         @endif
 
-        {{-- Text opening — disembunyikan kalau tidak ada produk yang tampil,
-             karena teksnya mengantar ke daftar produk yang tidak ada isinya. --}}
+        {{-- Text opening --}}
         @if ($opening && ($opening['show'] ?? false) && $products->isNotEmpty())
             <section id="{{ $opening['anchor'] ?? 'opening-product' }}">
                 <div class="container">
