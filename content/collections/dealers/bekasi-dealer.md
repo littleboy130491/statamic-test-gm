@@ -1,8 +1,13 @@
 ---
 id: 85d0fe8a-168e-49e7-9153-8791e8e81a28
 blueprint: dealer
-title: 'Bekasi (Dealer)'
-city: 'Bekasi'
+title: Bekasi (Dealer)
+city: Bekasi
+address: |-
+  PT MITRA INTI TRADA
+  Taman Gardenia Timur Ruko Rose Garden 6 No.19, Grand Galaxy City, Bekasi Selatan, Jawa Barat 17147
+whatsapp_number: 0813 3078 3711
+whatsapp_link: 'https://wa.me/6281330783711'
 is_active: true
 dealer_categories:
   - cabang-dealer
@@ -10,5 +15,5 @@ location:
   latitude: -6.23827
   longitude: 106.975571
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1785386400
+updated_at: 1787117739
 ---
