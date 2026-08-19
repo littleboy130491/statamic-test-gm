@@ -183,9 +183,7 @@ resources/views/                     # frontend (prefer .blade.php)
 - CP: `/cp`
 - After editing content YAML or blueprints, run `php please stache:clear`.
 - Git-tracked content is typical; avoid committing `.env`, licenses, or secrets.
-- CP is white-labeled for GM Mobil (logo, CMS name, hidden login description). Before changing
-  branding or the login screen, read [login-settings.md](login-settings.md) — it documents the
-  setup, the rationale, and how to roll back.
+- CP is white-labeled for GM Mobil (logo + CMS name) via `config/statamic/cp.php`.
 
 ## Code style
 

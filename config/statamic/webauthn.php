@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'allow_password_login_with_passkey' => true,
+    'allow_password_login_with_passkey' => false,
 
     /*
     |--------------------------------------------------------------------------
