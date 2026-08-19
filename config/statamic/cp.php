@@ -103,9 +103,9 @@ return [
     |
     */
 
-    'custom_cms_name' => env('STATAMIC_CUSTOM_CMS_NAME', 'Statamic'),
+    'custom_cms_name' => env('STATAMIC_CUSTOM_CMS_NAME', 'GM Mobil'),
 
-    'custom_logo_url' => env('STATAMIC_CUSTOM_LOGO_URL', null),
+    'custom_logo_url' => env('STATAMIC_CUSTOM_LOGO_URL', '/assets/gm-logo.png'),
 
     'custom_dark_logo_url' => env('STATAMIC_CUSTOM_DARK_LOGO_URL', null),
 
@@ -113,7 +113,7 @@ return [
 
     'custom_favicon_url' => env('STATAMIC_CUSTOM_FAVICON_URL', null),
 
-    'custom_css_url' => env('STATAMIC_CUSTOM_CSS_URL', null),
+    'custom_css_url' => env('STATAMIC_CUSTOM_CSS_URL', '/css/cp.css'),
 
     /*
     |--------------------------------------------------------------------------

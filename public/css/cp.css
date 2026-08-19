@@ -1,0 +1,14 @@
+/* Custom Control Panel styling for GM Mobil */
+
+/* Hide the "Sign into your Statamic Control Panel" description
+   on the login / forgot-password screens. */
+body.outside [data-ui-description] {
+    display: none;
+}
+
+/* Give the GM Mobil logo a sensible size on the login screen. */
+body.outside .white-label-logo {
+    max-height: 64px;
+    width: auto;
+    margin-inline: auto;
+}

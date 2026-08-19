@@ -31,3 +31,6 @@ Thumbs.db
 # Migrasi WordPress -> Statamic
 /migrasi-posts/
 /migrasi-products/
+
+# Dokumentasi lokal
+/login-settings.md
