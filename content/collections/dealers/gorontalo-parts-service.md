@@ -1,9 +1,10 @@
 ---
 id: 3761d9b8-5c89-4fb4-8356-07ebaf099760
 blueprint: dealer
-title: 'Gorontalo (Parts & Service)'
+title: Gorontalo
 city: 'Gorontalo'
-is_active: true
+is_active: false
+display_grid_view: false
 dealer_categories:
   - service-center
 location:

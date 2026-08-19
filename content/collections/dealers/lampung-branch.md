@@ -1,7 +1,7 @@
 ---
 id: 1c9102b2-aafd-4831-aacb-4611204a4fff
 blueprint: dealer
-title: Lampung (Branch)
+title: Lampung
 city: Lampung
 address: |-
   PT GAYA MAKMUR MOBIL
@@ -10,6 +10,7 @@ whatsapp_number: 081181112177
 whatsapp_link: 'https://wa.me/6281181112177'
 google_maps_url: 'https://maps.app.goo.gl/Kd8MjEBKXUP9SSiY6'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - cabang-dealer
 location:

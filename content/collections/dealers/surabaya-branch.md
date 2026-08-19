@@ -1,7 +1,7 @@
 ---
 id: 5fdfda1d-4507-4b04-baf0-1c325936a9c5
 blueprint: dealer
-title: Surabaya (Branch)
+title: Surabaya
 city: Surabaya
 address: |-
   PT GAYA MAKMUR MOBIL
@@ -10,6 +10,7 @@ whatsapp_number: 0811 1212 0579
 whatsapp_link: 'https://wa.me/6281112120579'
 google_maps_url: 'https://maps.app.goo.gl/3ErZNTsw9MzBxoYy6'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - cabang-dealer
 location:

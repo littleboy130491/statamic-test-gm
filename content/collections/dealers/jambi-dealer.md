@@ -1,7 +1,7 @@
 ---
 id: bd70ec10-43b6-48c5-9c60-898622d41cac
 blueprint: dealer
-title: Jambi (Dealer)
+title: Jambi
 city: Jambi
 address: |-
   PT MITRA PERDANA MOBIL
@@ -10,6 +10,7 @@ whatsapp_number: 0811 1051 7007
 whatsapp_link: 'https://wa.me/6281110517007'
 google_maps_url: 'https://maps.app.goo.gl/LyyDX8poWozX24T69'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - cabang-dealer
 location:

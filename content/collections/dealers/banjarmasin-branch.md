@@ -1,7 +1,7 @@
 ---
 id: 61623a90-52de-49fb-845d-a7c43996220f
 blueprint: dealer
-title: Banjarmasin (Branch)
+title: Banjarmasin
 city: Banjarmasin
 address: |-
   PT GAYA MAKMUR MOBIL
@@ -11,6 +11,7 @@ whatsapp_number: 0811 151 8203
 whatsapp_link: 'https://wa.me/628111518203'
 google_maps_url: 'https://maps.app.goo.gl/3wcSBbxArN2TLrNVA'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - cabang-dealer
 location:

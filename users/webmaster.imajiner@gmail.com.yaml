@@ -36,7 +36,10 @@ preferences:
         - city
         - dealer_categories
         - status
+        - display_grid_view
+        - is_active
       after_save: continue_editing
+      per_page: 100
     careers:
       view: list
       columns:
@@ -83,3 +86,8 @@ preferences:
   taxonomies:
     categories:
       after_save: continue_editing
+    dealer_categories:
+      columns:
+        - title
+        - slug
+        - order

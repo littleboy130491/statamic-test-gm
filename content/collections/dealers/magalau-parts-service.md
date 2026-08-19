@@ -1,9 +1,10 @@
 ---
 id: a3719ea5-8956-4822-bd3d-34dd86abf019
 blueprint: dealer
-title: 'Magalau (Parts & Service)'
+title: Magalau
 city: 'Magalau'
-is_active: true
+is_active: false
+display_grid_view: false
 dealer_categories:
   - service-center
 location:

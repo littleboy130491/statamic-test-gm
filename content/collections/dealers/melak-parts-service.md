@@ -1,7 +1,7 @@
 ---
 id: b4950927-02a2-4e82-bdc3-4e3ad6ed41fc
 blueprint: dealer
-title: Melak (Service Center)
+title: Melak
 city: Melak
 address: |-
   SERVICE CENTER GAYA MAKMUR MOBIL
@@ -11,6 +11,7 @@ whatsapp_number: 0859 3024 9647
 whatsapp_link: 'https://wa.me/6285930249647'
 google_maps_url: 'https://maps.app.goo.gl/P1jQT8cLnWPVdmJV7'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - service-center
 location:

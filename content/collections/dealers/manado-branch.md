@@ -1,7 +1,7 @@
 ---
 id: e6b05fde-111b-4df7-938b-cfaa4a7aa398
 blueprint: dealer
-title: Manado (Branch)
+title: Manado
 city: Manado
 address: |-
   PT GAYA MAKMUR MOBIL
@@ -10,6 +10,7 @@ whatsapp_number: 081112200868
 whatsapp_link: 'https://wa.me/6281112200868'
 google_maps_url: 'https://maps.app.goo.gl/sT43wPuGpuYdqzXq6'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - cabang-dealer
 location:

@@ -1,7 +1,7 @@
 ---
 id: ac34eef3-ca9b-4351-88af-cd5455d513bd
 blueprint: dealer
-title: Sebamban (Service Center)
+title: Sebamban
 city: Sebamban
 address: |-
   SERVICE CENTER GAYA MAKMUR MOBIL
@@ -10,6 +10,7 @@ whatsapp_number: 0813 4895 9357
 whatsapp_link: 'https://wa.me/6281348959357'
 google_maps_url: 'https://maps.app.goo.gl/FccQBRYK8926LjVX6'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - service-center
 location:

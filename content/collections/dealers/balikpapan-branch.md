@@ -1,7 +1,7 @@
 ---
 id: def2b94e-cd42-4efa-9eee-25dfc4058eb0
 blueprint: dealer
-title: Balikpapan (Branch)
+title: Balikpapan
 city: Balikpapan
 address: |-
   PT GAYA MAKMUR MOBIL
@@ -12,6 +12,7 @@ whatsapp_number: 0811 1212 0578
 whatsapp_link: 'https://wa.me/6281112120578'
 google_maps_url: 'https://maps.app.goo.gl/mcdY9VWn9Tk38MSK6'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - cabang-dealer
 location:

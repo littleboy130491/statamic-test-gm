@@ -1,9 +1,10 @@
 ---
 id: e420cbff-fe31-4a63-b076-acf406bc096c
 blueprint: dealer
-title: 'Marunda (Parts & Service)'
+title: Marunda
 city: 'Marunda'
-is_active: true
+is_active: false
+display_grid_view: false
 dealer_categories:
   - service-center
 location:

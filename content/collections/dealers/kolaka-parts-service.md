@@ -1,7 +1,7 @@
 ---
 id: 7490f2f2-bce2-4134-9d62-45ee1edb93c2
 blueprint: dealer
-title: 'Kolaka (Parts & Service)'
+title: Kolaka
 city: Kolaka
 address: |-
   PART & SERVICE CENTER GAYA MAKMUR MOBIL
@@ -9,6 +9,7 @@ address: |-
 whatsapp_number: 0811 1220 0873
 whatsapp_link: 'https://wa.me/6281112200873'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - service-center
 location:

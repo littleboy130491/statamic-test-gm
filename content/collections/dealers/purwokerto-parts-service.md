@@ -1,9 +1,10 @@
 ---
 id: 9d2968f8-9b9e-4b14-bb56-07c641ff246d
 blueprint: dealer
-title: 'Purwokerto (Parts & Service)'
+title: Purwokerto
 city: 'Purwokerto'
-is_active: true
+is_active: false
+display_grid_view: false
 dealer_categories:
   - service-center
 location:

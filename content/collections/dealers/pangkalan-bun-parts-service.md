@@ -1,7 +1,7 @@
 ---
 id: 01c00f49-307e-472e-868a-00f60637a4e7
 blueprint: dealer
-title: 'Pangkalan Bun (Parts & Service)'
+title: 'Pangkalan Bun'
 city: Pangkalan Bun
 address: |-
   PART & SERVICE CENTER GAYA MAKMUR MOBIL
@@ -10,6 +10,7 @@ address: |-
 whatsapp_number: 0811 1997 0654
 whatsapp_link: 'https://wa.me/6281119970654'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - service-center
 location:

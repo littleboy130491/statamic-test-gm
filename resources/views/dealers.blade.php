@@ -54,6 +54,48 @@
         ->filter(fn($d) => $d['lat'] && $d['lng'])
         ->values();
 
+    // Section grid dealer
+    $gridDealerSection = collect($page->sections)->first(
+        fn($section) => (string) ($section['type'] ?? '') === 'grid_dealers_show',
+    );
+
+    // Daftar dealer untuk grid (tanpa filter koordinat)
+    $dealerList = \Statamic\Facades\Entry::query()
+        ->where('collection', 'dealers')
+        ->where('is_active', true)
+        ->orderBy('title', 'asc')
+        ->get()
+        ->filter(fn($dealer) => $dealer->display_grid_view)
+        ->map(
+            fn($dealer) => [
+                'title' => $dealer->title,
+                'category' => $dealer->dealer_categories?->first()?->slug(),
+                'address' => $dealer->address,
+                'maps_url' => $dealer->google_maps_url,
+                'phones' => collect([
+                    ['type' => 'phone', 'number' => $dealer->phone_number],
+                    ['type' => 'whatsapp', 'number' => $dealer->whatsapp_number, 'link' => $dealer->whatsapp_link],
+                ])
+                    ->filter(fn($phone) => filled($phone['number']))
+                    ->values(),
+            ],
+        )
+        ->values();
+
+    // Kelompokkan dealer per kategori
+    $dealerGroups = \Statamic\Facades\Term::query()
+        ->where('taxonomy', 'dealer_categories')
+        ->get()
+        ->sortBy(fn($term) => $term->order ?? PHP_INT_MAX)
+        ->map(
+            fn($term) => [
+                'title' => $term->title,
+                'dealers' => $dealerList->where('category', $term->slug())->values(),
+            ],
+        )
+        ->filter(fn($group) => $group['dealers']->isNotEmpty())
+        ->values();
+
     // Label kategori
     $dealerCategories = \Statamic\Facades\Term::query()
         ->where('taxonomy', 'dealer_categories')
@@ -63,6 +105,24 @@
     // Label informasi dealer
     $dealerLabels =
         \Statamic\Facades\GlobalSet::findByHandle('dealer_label_information')?->inCurrentSite()?->data() ?? collect();
+
+    // Icon kontak dealer
+    $resolveIconUrl = function ($icon) {
+        if (!$icon) {
+            return null;
+        }
+
+        $asset = is_object($icon)
+            ? $icon
+            : \Statamic\Facades\Asset::find('assets::' . $icon) ?? \Statamic\Facades\Asset::find($icon);
+
+        return $asset?->url();
+    };
+
+    $contactIcons = [
+        'phone' => $resolveIconUrl($dealerLabels['icon_phone_dealer'] ?? null),
+        'whatsapp' => $resolveIconUrl($dealerLabels['icon_whatsapp_dealer'] ?? null),
+    ];
 
     // Cek component
     $hasHeader = view()->exists('components.layouts.header.header');
@@ -106,6 +166,79 @@
             </section>
         @endif
 
+        {{-- Grid dealer --}}
+        @if ($gridDealerSection && ($gridDealerSection['show_grid_dealer'] ?? false) && $dealerGroups->isNotEmpty())
+            <section id="grid-dealer">
+                <div class="container">
+                    <div class="my-18 md:my-18 lg:my-30 flex flex-col gap-18 md:gap-18 lg:gap-30">
+                        @foreach ($dealerGroups as $group)
+                            <div>
+                                <h2 class="mb-6">{{ $group['title'] }}</h2>
+
+                                <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
+                                    @foreach ($group['dealers'] as $item)
+                                        <div
+                                            class="flex flex-col gap-6 p-5 rounded-xl bg-(--color-surface) h-full justify-between">
+                                            <div class="flow">
+                                                <h3 class="text-lg font-semibold font-(family-name:--font-display)">
+                                                    @if ($item['maps_url'])
+                                                        <a href="{{ $item['maps_url'] }}" target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            class="font-(family-name:--font-display) text-black hover:text-(--color-primary) transition-colors">
+                                                            {{ $item['title'] }}
+                                                        </a>
+                                                    @else
+                                                        {{ $item['title'] }}
+                                                    @endif
+                                                </h3>
+
+                                                @if ($item['address'])
+                                                    <p>{{ $item['address'] }}</p>
+                                                @endif
+                                            </div>
+
+                                            @if ($item['phones']->isNotEmpty())
+                                                <div class="flex flex-wrap gap-2">
+                                                    @foreach ($item['phones'] as $phone)
+                                                        @php
+                                                            $isWhatsapp = $phone['type'] === 'whatsapp';
+                                                            $digits = preg_replace('/[^0-9]/', '', $phone['number']);
+                                                            $waNumber = \Illuminate\Support\Str::startsWith(
+                                                                $digits,
+                                                                '0',
+                                                            )
+                                                                ? '62' . substr($digits, 1)
+                                                                : $digits;
+                                                            $href = $isWhatsapp
+                                                                ? ($phone['link'] ?:
+                                                                'https://wa.me/' . $waNumber)
+                                                                : 'tel:' .
+                                                                    preg_replace('/[^0-9+]/', '', $phone['number']);
+                                                            $iconUrl = $contactIcons[$phone['type']] ?? null;
+                                                        @endphp
+
+                                                        <a href="{{ $href }}"
+                                                            @if ($isWhatsapp) target="_blank" rel="noopener noreferrer" @endif
+                                                            class="group inline-flex items-center gap-2 px-6 py-2 border border-(--color-primary) rounded-full text-(--color-primary) hover:text-black hover:bg-(--color-secondary) hover:border-(--color-secondary) transition-colors">
+                                                            @if ($iconUrl)
+                                                                <span aria-hidden="true"
+                                                                    class="w-4 h-4 shrink-0 bg-current"
+                                                                    style="mask: url('{{ $iconUrl }}') center / contain no-repeat; -webkit-mask: url('{{ $iconUrl }}') center / contain no-repeat;"></span>
+                                                            @endif
+                                                            {{ $phone['number'] }}
+                                                        </a>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+        @endif
     </main>
 
     @if ($hasFooter)

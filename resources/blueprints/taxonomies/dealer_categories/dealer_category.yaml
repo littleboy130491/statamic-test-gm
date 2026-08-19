@@ -1,4 +1,4 @@
-title: Dealer Category
+title: 'Dealer Category'
 tabs:
   main:
     display: Main
@@ -12,12 +12,15 @@ tabs:
               required: true
               display: Title
               localizable: true
+              width: 50
+              validate:
+                - required
           -
-            handle: content
+            handle: order
             field:
-              type: textarea
-              display: Description
-              localizable: true
+              type: integer
+              display: Order
+              width: 50
   sidebar:
     display: Sidebar
     sections:
@@ -27,5 +30,34 @@ tabs:
             handle: slug
             field:
               type: slug
+              required: true
+              validate:
+                - required
+                - 'max:200'
               localizable: true
-              validate: 'max:200'
+  'SEO Meta':
+    display: 'SEO Meta'
+    sections:
+      -
+        fields:
+          -
+            handle: seo
+            field:
+              type: seo_pro
+              listable: false
+              display: SEO
+  'SEO Previews':
+    display: 'SEO Previews'
+    sections:
+      -
+        fields:
+          -
+            handle: seo_previews
+            field:
+              type: seo_pro_previews
+              listable: false
+              display: 'SEO Previews'
+              localizable: false
+              hide_display: true
+              unless:
+                seo.enabled: 'equals false'

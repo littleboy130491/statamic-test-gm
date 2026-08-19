@@ -8,6 +8,7 @@ taxonomies:
 revisions: true
 sort_by: title
 sort_dir: asc
+default_status: draft
 date_behavior:
   past: null
   future: null
@@ -16,3 +17,5 @@ preview_targets:
     label: Entry
     url: '{permalink}'
     refresh: true
+structure:
+  root: false

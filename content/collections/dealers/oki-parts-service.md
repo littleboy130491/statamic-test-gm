@@ -1,9 +1,10 @@
 ---
 id: 69ffad7e-99bc-493f-a3ec-42d7993d2225
 blueprint: dealer
-title: 'OKI (Parts & Service)'
+title: OKI
 city: 'OKI'
-is_active: true
+is_active: false
+display_grid_view: false
 dealer_categories:
   - service-center
 location:

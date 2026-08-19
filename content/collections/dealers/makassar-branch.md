@@ -1,7 +1,7 @@
 ---
 id: f73c371d-3160-4535-893c-92225612a7ce
 blueprint: dealer
-title: Makassar (Branch)
+title: Makassar
 city: Makassar
 address: |-
   PT GAYA MAKMUR MOBIL
@@ -12,6 +12,7 @@ whatsapp_number: 0811 9001 0880
 whatsapp_link: 'https://wa.me/6281190010880?text=Halo%2C%20saya%20dapat%20informasi%20FAW%20dari%20gmmobil.com%20dan%20ingin%20menanyakan%20informasi%20selengkapnya%20perihal%20produk%20FAW%20Trucks'
 google_maps_url: 'https://maps.app.goo.gl/BNMo9MGrumroue1m8'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - cabang-dealer
 location:

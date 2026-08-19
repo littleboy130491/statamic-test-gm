@@ -1,7 +1,7 @@
 ---
 id: 88e22965-072e-481a-bc06-ccceb1ed0647
 blueprint: dealer
-title: 'Mataram (Parts & Service)'
+title: Mataram
 city: Mataram
 address: |-
   PART & SERVICE CENTER GAYA MAKMUR MOBIL
@@ -10,6 +10,7 @@ address: |-
 whatsapp_number: 0812 3766 511
 whatsapp_link: 'https://wa.me/628123766511'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - service-center
 location:

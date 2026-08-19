@@ -39,3 +39,17 @@ tabs:
               display: 'Icon Maps Dealer'
               validate:
                 - required
+          -
+            handle: icon_phone_dealer
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Icon Phone Dealer'
+          -
+            handle: icon_whatsapp_dealer
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: 'Icon WhatsApp Dealer'

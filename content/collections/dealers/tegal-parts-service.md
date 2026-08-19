@@ -1,9 +1,10 @@
 ---
 id: 7287f25b-6df5-4d69-be7e-fcab91b2c456
 blueprint: dealer
-title: 'Tegal (Parts & Service)'
+title: Tegal
 city: 'Tegal'
-is_active: true
+is_active: false
+display_grid_view: false
 dealer_categories:
   - service-center
 location:

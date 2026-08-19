@@ -1,13 +1,14 @@
 ---
 id: 60753868-bb77-466b-84ed-68b74e2a5872
 blueprint: dealer
-title: Cirebon (Dealer)
+title: Cirebon
 city: Cirebon
 address: |-
   PT SELECTA GRAGE JAYA
   Jl. Kalijaga No.108, Pegambiran, Kec. Lemahwungkuk, Kota Cirebon, Jawa Barat 45113
 phone_number: (0231) 203 313
 is_active: true
+display_grid_view: true
 dealer_categories:
   - cabang-dealer
 location:

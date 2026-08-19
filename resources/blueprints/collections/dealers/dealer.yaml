@@ -99,13 +99,6 @@ tabs:
               localizable: true
               validate: 'max:200'
           -
-            handle: is_active
-            field:
-              type: toggle
-              display: Active
-              default: true
-              instructions: 'Inactive dealers are hidden from the dealer locator map and listing.'
-          -
             handle: dealer_categories
             field:
               type: terms
@@ -113,6 +106,20 @@ tabs:
                 - dealer_categories
               display: 'Dealer Categories'
               mode: select
+          -
+            handle: is_active
+            field:
+              type: toggle
+              display: Active
+              default: true
+              instructions: 'Inactive dealers locator map.'
+          -
+            handle: display_grid_view
+            field:
+              default: true
+              type: toggle
+              display: 'Display Grid View'
+              instructions: 'Show grid dealer information.'
   'SEO Meta':
     display: 'SEO Meta'
     sections:

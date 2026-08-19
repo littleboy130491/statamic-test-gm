@@ -1,9 +1,10 @@
 ---
 id: d1716faf-7d09-4673-b05a-47624b01c4d9
 blueprint: dealer
-title: 'Morowali (Parts & Service)'
+title: Morowali
 city: 'Morowali'
-is_active: true
+is_active: false
+display_grid_view: false
 dealer_categories:
   - service-center
 location:

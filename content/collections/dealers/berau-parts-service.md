@@ -1,7 +1,7 @@
 ---
 id: c811ce5b-8c23-4308-a324-483eaff92160
 blueprint: dealer
-title: 'Berau (Parts & Service)'
+title: Berau
 city: Berau
 address: |-
   PART CENTER & SERVICE CENTER GAYA MAKMUR MOBIL
@@ -10,6 +10,7 @@ address: |-
 whatsapp_number: 0811 1997 0654
 whatsapp_link: 'https://wa.me/6281119970654'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - service-center
 location:

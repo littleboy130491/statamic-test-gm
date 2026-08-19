@@ -1,7 +1,7 @@
 ---
 id: 85d0fe8a-168e-49e7-9153-8791e8e81a28
 blueprint: dealer
-title: Bekasi (Dealer)
+title: Bekasi
 city: Bekasi
 address: |-
   PT MITRA INTI TRADA
@@ -9,6 +9,7 @@ address: |-
 whatsapp_number: 0813 3078 3711
 whatsapp_link: 'https://wa.me/6281330783711'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - cabang-dealer
 location:

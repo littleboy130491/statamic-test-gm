@@ -4,8 +4,6 @@ blueprint: page
 title: Dealer
 template: dealers
 parent: home
-updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1781336777
 featured_image: hero-dealer.jpg
 sections:
   -
@@ -22,4 +20,11 @@ sections:
     enabled: true
     identifier: opening-dealer
     show: true
+  -
+    id: y967P7aJVkGshoEEYdw2l
+    show_grid_dealer: true
+    type: grid_dealers_show
+    enabled: true
+updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
+updated_at: 1787118422
 ---

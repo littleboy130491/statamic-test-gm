@@ -1,7 +1,7 @@
 ---
 id: c852aabc-3b45-41b4-b6a9-6c393eaccea4
 blueprint: dealer
-title: Kendari (Branch)
+title: Kendari
 city: Kendari
 address: |-
   PT GAYA MAKMUR MOBIL
@@ -11,6 +11,7 @@ whatsapp_number: 0822 9088 6158
 whatsapp_link: 'https://wa.me/6282290886158'
 google_maps_url: 'https://maps.app.goo.gl/hNCdjQq4MuNVmNNi6'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - cabang-dealer
 location:

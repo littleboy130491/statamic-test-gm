@@ -322,6 +322,15 @@ tabs:
                           import: blocks.image_label
                         -
                           import: common.section_settings
+                    grid_dealers_show:
+                      display: 'Grid Dealers Show'
+                      fields:
+                        -
+                          handle: show_grid_dealer
+                          field:
+                            default: true
+                            type: toggle
+                            display: 'Show Grid Dealer'
       -
         display: 'Simple content'
         instructions: 'Optional content.'

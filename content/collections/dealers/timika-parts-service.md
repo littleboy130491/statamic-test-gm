@@ -1,7 +1,7 @@
 ---
 id: abb17068-8485-4142-b64a-c53e4c1f4789
 blueprint: dealer
-title: Timika (Dealer)
+title: Timika
 city: Timika
 address: |-
   PT PUTRA BINTANG MIMIKA
@@ -10,6 +10,7 @@ whatsapp_number: 08124088835
 whatsapp_link: 'https://wa.me/628124088835'
 google_maps_url: 'https://maps.app.goo.gl/KTPtt8mXNRRUZLXy7'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - cabang-dealer
 location:

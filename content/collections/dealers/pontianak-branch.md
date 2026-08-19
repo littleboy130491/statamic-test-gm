@@ -1,7 +1,7 @@
 ---
 id: c8c97335-9ea4-4846-b7cd-a9b520e4761f
 blueprint: dealer
-title: Pontianak (Branch)
+title: Pontianak
 city: Pontianak
 address: |-
   PT GAYA MAKMUR MOBIL
@@ -10,6 +10,7 @@ whatsapp_number: 0811 1212 0557
 whatsapp_link: 'https://wa.me/6281112120557'
 google_maps_url: 'https://g.co/kgs/xjwktKs'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - cabang-dealer
 location:

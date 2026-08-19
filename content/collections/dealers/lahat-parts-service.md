@@ -1,9 +1,10 @@
 ---
 id: 1fa96e0f-9710-4057-95e0-24910fbb9f4e
 blueprint: dealer
-title: 'Lahat (Parts & Service)'
+title: Lahat
 city: 'Lahat'
-is_active: true
+is_active: false
+display_grid_view: false
 dealer_categories:
   - service-center
 location:

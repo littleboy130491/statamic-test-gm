@@ -1,7 +1,7 @@
 ---
 id: 6ca09e55-77af-4763-a00e-7483c3f236ef
 blueprint: dealer
-title: 'Bayung Lencir (Parts & Service)'
+title: 'Bayung Lencir'
 city: Bayung Lencir
 address: |-
   PART CENTER & SERVICE CENTER GAYA MAKMUR MOBIL
@@ -9,6 +9,7 @@ address: |-
 whatsapp_number: 0811 1929 2703
 whatsapp_link: 'https://wa.me/6281119292703'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - service-center
 location:

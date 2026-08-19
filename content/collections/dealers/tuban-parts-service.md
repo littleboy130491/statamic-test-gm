@@ -1,7 +1,7 @@
 ---
 id: 2114b81c-8098-4c5f-89a1-19ec22da26ba
 blueprint: dealer
-title: Tuban (Dealer)
+title: Tuban
 city: Tuban
 address: |-
   RUDAL MOTOR
@@ -9,6 +9,7 @@ address: |-
 whatsapp_number: 0813 3078 3711
 whatsapp_link: 'https://wa.me/6281330783711'
 is_active: true
+display_grid_view: true
 dealer_categories:
   - cabang-dealer
 location:
