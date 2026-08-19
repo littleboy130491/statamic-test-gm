@@ -85,14 +85,14 @@
                             class="absolute bottom-0 inset-0 z-2 flex flex-col-reverse gap-10 md:gap-10 px-4 md:px-6 md:flex-col-reverse lg:flex-row lg:pr-16 lg:py-10 items-center">
 
                             {{-- Image truk --}}
-                            <div class="w-full -mb-10 lg:w-[70%] lg:-mr-90">
+                            <div class="w-full -mb-10 lg:-mb-30 lg:w-[70%] lg:-mr-70">
                                 <img src="{{ $visionMission['photo'] ?? '' }}"
                                     alt="{{ $visionMission['photo']?->alt ?? 'Visi Misi' }}" class="lg:-ml-25">
                             </div>
 
                             {{-- Teks visi misi --}}
                             <div
-                                class="flex flex-col md:flex-row inset-0 lg:flex-col gap-4 md:gap-4 lg:gap-8 md:w-full lg:w-[60%]">
+                                class="flex flex-col md:flex-row inset-0 lg:flex-col gap-4 md:gap-4 lg:gap-8 md:w-full lg:w-[55%]">
                                 @if ($vision)
                                     <div id="vision"
                                         class="glass rounded-xl p-4 w-full md:w-[40%] lg:w-full md:p-5 lg:p-8 flex flex-col gap-4 lg:gap-6">
