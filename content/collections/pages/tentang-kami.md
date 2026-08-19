@@ -3,8 +3,6 @@ id: df438d73-5602-40d0-806d-cb9c62bbe581
 blueprint: page
 title: 'Tentang Kami'
 template: tentang-kami
-updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1781933024
 sections:
   -
     id: 9Zt_Gqul-qZQxosrpNLS1
@@ -93,14 +91,6 @@ sections:
     show: true
     type: text_gallery
     enabled: true
-    gallery_grid:
-      -
-        id: zq4YGXtwSIk5_FHQJ3zAX
-        assets_field: cer-1.jpg
-      -
-        id: tzfWaqBPC4cVoG7XzRByQ
-        assets_field: cer-2.jpg
-        label: 'Sole Distributor of'
   -
     id: pvbUw-o3wVmq_tAzb0kwY
     identifier: section-faw-trucks
@@ -150,4 +140,6 @@ sections:
     enabled: true
 parent: home
 featured_image: hero-tentang.jpg
+updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
+updated_at: 1787114932
 ---
