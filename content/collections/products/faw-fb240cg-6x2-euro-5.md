@@ -63,4 +63,8 @@ updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785381579
 product_categories:
   - chasis-cargo
+seo:
+  title: '@seo:title'
+  description: 'Dengan unit model chassis cargo, mobil truk FAW Cargo Truck FB240CG Euro 5 menjadi andalan di setiap lini bisnis Anda!'
+  image: '@seo:featured_image'
 ---

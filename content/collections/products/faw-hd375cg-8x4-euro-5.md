@@ -62,4 +62,8 @@ updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785381579
 product_categories:
   - chasis-cargo
+seo:
+  title: '@seo:title'
+  description: 'Dengan daya angkut yang besar, Unit FAW HD375CG 8�4 Euro 5 adalah pilihan tepat untuk kamu sebagai mobil truk, cargo truck, truk tronton.'
+  image: '@seo:featured_image'
 ---

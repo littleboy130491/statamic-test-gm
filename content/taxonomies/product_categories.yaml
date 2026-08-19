@@ -2,3 +2,8 @@ title: Product Categories
 route: '/product-categories/{slug}'
 blueprints:
   - product_category
+inject:
+  seo:
+    title: '@seo:title'
+    description: '@seo:title'
+    image: '@seo:images'

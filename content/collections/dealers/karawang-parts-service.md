@@ -10,10 +10,10 @@ google_maps_url: 'https://maps.app.goo.gl/2ACjGLsd6t4sVnjm6'
 is_active: true
 display_grid_view: true
 dealer_categories:
-  - cabang-dealer
+  - service-center
 location:
   latitude: -6.304167
   longitude: 107.305556
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1787117739
+updated_at: 1787130543
 ---

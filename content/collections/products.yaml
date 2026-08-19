@@ -16,3 +16,8 @@ preview_targets:
     label: Entry
     url: '{permalink}'
     refresh: true
+inject:
+  seo:
+    title: '@seo:title'
+    description: '@seo:description'
+    image: '@seo:featured_image'

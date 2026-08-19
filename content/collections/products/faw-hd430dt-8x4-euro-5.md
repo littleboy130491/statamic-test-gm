@@ -66,4 +66,8 @@ brake_system: 'Full Air Brake & Double Circuit Air Brake'
 wp_slug: mobil-truk-faw-dump-truck-hd430dt-euro-5
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785384033
+seo:
+  title: 'FAW HD430DT 8x4 (Euro 5) - Dump Truck FAW'
+  description: 'Mobil Truk FAW Dump Truck HD430DT Euro 5 yang cocok untuk kebutuhan bisnis pertambangan dan perkebunan #SobatGaya semua.'
+  image: '@seo:featured_image'
 ---

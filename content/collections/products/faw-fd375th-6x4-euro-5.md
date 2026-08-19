@@ -64,4 +64,8 @@ fuel_tank_capacity: 400 L
 wp_slug: mobil-truk-faw-tractor-head-fd375th-euro-5
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785381579
+seo:
+  title: 'FAW FD375TH 6x4 (Euro 5) - Tractor Head FAW'
+  description: 'Mobil Truk FAW Tractor Head FD375TH Euro 5 yang cocok untuk kebutuhan bisnis logistik #SobatGaya semua'
+  image: '@seo:featured_image'
 ---

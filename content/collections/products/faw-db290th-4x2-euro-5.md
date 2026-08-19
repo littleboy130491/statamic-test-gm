@@ -65,4 +65,8 @@ brake_system: 'Full air brake, Double circuit air brake, Auto slack adjuster (AB
 wp_slug: mobil-truk-faw-tipen-unit-tractor-head-db290th-euro5
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785383202
+seo:
+  title: 'FAW DB290TH 4x2 (Euro 5) - Jual Truk FAW'
+  description: 'Mobil Truk FAW Tractor Head DB290TH 4x2 Euro 5 cocok untuk kebutuhan distribusi atau logistik seperti truk trailer dan truk gandeng'
+  image: '@seo:featured_image'
 ---

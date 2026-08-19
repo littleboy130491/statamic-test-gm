@@ -62,4 +62,8 @@ fuel_tank_capacity: 300L
 wp_slug: mobil-truk-faw-self-loader-fd290sl-6x4
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785381579
+seo:
+  title: 'FAW FD290SL 6x4 (Euro 5) - Jual Truk FAW'
+  description: 'Mobil Truk FAW Self Loader FD290SL 6x4 memiliki Hdyraulic ladder yang memudahkan pengoprasian menaikkan dan menurunkan tangga (ladder).'
+  image: '@seo:featured_image'
 ---

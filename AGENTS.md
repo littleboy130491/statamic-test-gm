@@ -86,6 +86,52 @@ When adding collections/taxonomies, configure SEO Pro section defaults to map:
 
 Docs: [SEO Pro documentation](https://github.com/statamic/seo-pro/blob/7.x/DOCUMENTATION.md).
 
+### Yoast → SEO Pro (WordPress migration)
+
+Source files (project root, Excel `.xls`):
+
+| File | Used for |
+|------|----------|
+| `SEO-Posts-Export.xls` | Collection `posts` |
+| `SEO-Pages-Export.xls` | Collection `products`, page `produk`, taxonomy `product_categories` |
+
+Required columns: `id`, `_yoast_wpseo_title`, `_yoast_wpseo_metadesc` (pages export also has `Title`). Ignore `_yoast_wpseo_focuskw` and `_yoast_wpseo_primary_category` — SEO Pro has no equivalent fields.
+
+**Field mapping**
+
+| Yoast | Statamic (`seo` on entry/term) |
+|-------|--------------------------------|
+| Empty title, `%%title%%`, or `%%title%% … %%sep%% %%sitename%%` / site name | `title: '@seo:title'` |
+| `%%title%% %%page%% %%sep%% {suffix}` (e.g. Dump Truck FAW) | `title: '{Statamic title} - {suffix}'` |
+| `_yoast_wpseo_metadesc` present | `description: '{metadesc}'` |
+| Empty metadesc | posts: `'@seo:excerpt'`; products/pages: `'@seo:description'` |
+| — | `image: '@seo:featured_image'` (terms: `'@seo:images'`) |
+
+Do not invent meta when Yoast is empty; inherit via `@seo:…` and collection `inject.seo`.
+
+**Matching**
+
+1. Convert `.xls` to CSV only as a throwaway (Excel COM `SaveAs` CSV). Do not commit the CSV.
+2. **Posts:** match WordPress post `id` (and slug/title from the posts content export if the SEO sheet has no title) to Statamic entries. Applied to all posts that exist in the catalog.
+3. **Products:** match WordPress **page** `id` to the product that was imported from that page (`wp_slug` / model in the WP title). `SEO-Pages-Export.xls` is a full WP **pages** dump, not products-only — skip Sample Page, Privacy, shop/cart, Elementor stubs, Career, and discontinued units that are not in `content/collections/products/`.
+4. Also apply the matching rows to `content/collections/pages/produk.md` (WP Products) and terms `dump-truck`, `mixer-truck-truk-molen`, `tractor-head`, `chasis-cargo`.
+5. After writing YAML, `php please stache:clear`.
+
+**Section `inject.seo` already set**
+
+- `content/collections/posts.yaml` — title, excerpt, featured_image
+- `content/collections/products.yaml` — title, description, featured_image
+- `content/taxonomies/product_categories.yaml` — title, images
+
+**Known gaps / source quirks**
+
+- No WP SEO row for `faw-dd140mt-4x4-euro-4.md` and `2026-08-12-0000.faw-fd460th-6x4.md`.
+- WP page `11637` (FD380TH CNG) metadesc still says FD290TH; imported as in Yoast.
+- WP page `14515` is titled FD380TH but metadesc is FD375TH; mapped to `faw-fd375th-6x4-euro-5.md`.
+- Other WP pages in `SEO-Pages-Export.xls` (home, after-sales, dealer, reman, teletech, news, contact, old Euro 2 units) are **not** applied unless a later pass maps them to `pages` / leftover products.
+
+**Cleanup:** delete converter CSV and one-off Python under `storage/` after a run. Keep the `.xls` sources and all `content/` entries.
+
 ## Content model
 
 ### Collections
@@ -93,7 +139,7 @@ Docs: [SEO Pro documentation](https://github.com/statamic/seo-pro/blob/7.x/DOCUM
 | Handle | Route | Taxonomies | Notes |
 |--------|-------|------------|-------|
 | `pages` | `{parent_uri}/{slug}` | — | Structured tree; root `home` |
-| `posts` | `/blog/{year}/{month}/{day}/{slug}` | `categories` | Dated blog |
+| `posts` | `/berita-dan-artikel/{slug}` | `categories`, `social_media` | Dated blog; listing page `berita-dan-artikel` |
 | `products` | `/products/{slug}` | `product_categories`, `industries` | Catalog |
 | `dealers` | `/dealers/{slug}` | `dealer_categories` | Dealer locator |
 

@@ -63,4 +63,8 @@ updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785381579
 product_categories:
   - chasis-cargo
+seo:
+  title: 'FAW DD140CG 4x4 (Euro 4) - Jual Truk FAW'
+  description: 'GMM jual mobil truk FAW tipe unit Cargo Truck DD140CG 4x4, cocok untuk kebutuhan bisnis #SobatGaya semua'
+  image: '@seo:featured_image'
 ---

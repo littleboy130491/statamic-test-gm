@@ -63,4 +63,8 @@ fuel_tank_capacity: 600L
 wp_slug: fd550th-euro-5
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785384152
+seo:
+  title: 'FAW FD550TH 6x4 (Euro 5) - Tractor Head FAW'
+  description: 'Mobil Truk FAW Unit Tractor Head FD550TH Euro 5 yang cocok untuk kebutuhan bisnis logistik #SobatGaya semua'
+  image: '@seo:featured_image'
 ---

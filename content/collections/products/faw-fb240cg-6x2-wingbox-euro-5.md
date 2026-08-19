@@ -62,4 +62,8 @@ fuel_tank_capacity: 300L
 wp_slug: fb240cg-5
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785383397
+seo:
+  title: 'FAW FB240CG 6x2 Wingbox (Euro 5) - Jual Truk FAW'
+  description: 'Mobil Truk FAW Tipe Unit Cargo Truck FB240CG WingBox cocok sebagai truk tronton untuk kebutuhan bisnis #SobatGaya semua'
+  image: '@seo:featured_image'
 ---

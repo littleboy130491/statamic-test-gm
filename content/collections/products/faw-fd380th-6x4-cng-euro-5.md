@@ -64,4 +64,8 @@ fuel_tank_capacity: '( 212 L x 8 ) + ( 140 L x 4 )'
 wp_slug: mobil-truk-faw-tractor-head-fd380th-cng-euro-5
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785384218
+seo:
+  title: 'FAW FD380TH 6x4 CNG (Euro 5) - Tractor Head FAW'
+  description: 'Mobil Truk FAW Tractor Head FD290TH Euro 5 yang cocok untuk kebutuhan bisnis logistik #SobatGaya semua'
+  image: '@seo:featured_image'
 ---

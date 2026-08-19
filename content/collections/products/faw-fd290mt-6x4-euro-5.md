@@ -63,4 +63,8 @@ gvw: 24.500Kg
 wp_slug: truk-molen-faw-unit-fd290mt-euro-5
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785381579
+seo:
+  title: 'FAW FD290MT 6x4 (Euro 5) - Truk Molen FAW'
+  description: 'Mobil Truk Molen FAW Unit FD290MT Euro 5 yang cocok untuk kebutuhan bisnis kontruksi #SobatGaya semua'
+  image: '@seo:featured_image'
 ---

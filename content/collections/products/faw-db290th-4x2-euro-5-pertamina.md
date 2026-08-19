@@ -62,4 +62,8 @@ fuel_tank_capacity: 300L
 wp_slug: mobil-truk-faw-unit-tractor-head-db290th-pertamina-euro5
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785381579
+seo:
+  title: '@seo:title'
+  description: 'FAW DB290TH 4x2 merupakan mobil truk tipe tractor head yang dirancang untuk kebutuhan distribusi dan transportasi di logistik.'
+  image: '@seo:featured_image'
 ---

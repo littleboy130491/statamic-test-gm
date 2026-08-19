@@ -3,3 +3,7 @@ images: mixer-truck.png
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1782112918
 blueprint: product_category
+seo:
+  title: '@seo:title'
+  description: 'Jelajahi�truk molen,�Mobil Truk,�Truk Besar�dari FAW sebagai solusi kebutuhan bisnis kalian semua!'
+  image: '@seo:images'

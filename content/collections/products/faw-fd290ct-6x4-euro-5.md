@@ -61,4 +61,8 @@ product_categories:
   - chasis-cargo
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785383822
+seo:
+  title: '@seo:title'
+  description: '@seo:description'
+  image: '@seo:featured_image'
 ---

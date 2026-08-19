@@ -65,4 +65,8 @@ updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785381579
 product_categories:
   - chasis-cargo
+seo:
+  title: '@seo:title'
+  description: 'FAW FB240CT (6x2) mobil truk tangki dengan brosure yang dapat diunduh. Mesin 240HP 940Nm CA6DLD.24E5 dengan 9 kecepatan maju, 1 kecepatan mundur.'
+  image: '@seo:featured_image'
 ---

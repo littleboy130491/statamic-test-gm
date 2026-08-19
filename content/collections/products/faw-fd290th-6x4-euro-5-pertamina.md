@@ -63,4 +63,8 @@ brake_system: 'Anti Lock Braking System (ABS) + Auto slack adjuster, Full air br
 wp_slug: mobil-truk-faw-unit-tractor-head-fd290th-pertamina-euro-5
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785381579
+seo:
+  title: '@seo:title'
+  description: 'Mobil Truk FAW Tractor Head FD290TH 6x4 Pertamina Euro 5 cocok untuk kebutuhan distribusi atau logistik seperti truk trailer dan truk gandeng'
+  image: '@seo:featured_image'
 ---

@@ -6,14 +6,14 @@ city: Cirebon
 address: |-
   PT SELECTA GRAGE JAYA
   Jl. Kalijaga No.108, Pegambiran, Kec. Lemahwungkuk, Kota Cirebon, Jawa Barat 45113
-phone_number: (0231) 203 313
+phone_number: '(0231) 203 313'
 is_active: true
 display_grid_view: true
 dealer_categories:
-  - cabang-dealer
+  - service-center
 location:
   latitude: -6.732
   longitude: 108.5523
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1787117739
+updated_at: 1787130512
 ---

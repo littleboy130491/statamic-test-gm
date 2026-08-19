@@ -66,4 +66,8 @@ product_categories:
   - dump-truck
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785383875
+seo:
+  title: 'FAW FD290DT 6x4 (Euro 5) - Dump Truck FAW'
+  description: 'Mobil Truk FAW Unit Dump Truck FD290DT Euro 5 cocok untuk kebutuhan bisnis pertambangan & perkebunan #SobatGaya semua.'
+  image: '@seo:featured_image'
 ---
