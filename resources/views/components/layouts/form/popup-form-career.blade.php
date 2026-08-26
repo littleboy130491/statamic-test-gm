@@ -1,12 +1,21 @@
-@props(['jobLocation' => null])
+@props(['jobLocation' => null, 'jobTitle' => null])
 
 @php
     $set = \Statamic\Facades\GlobalSet::findByHandle('career_label_information')?->inCurrentSite();
     $form = $set?->data();
 
     $str = fn($val, $default = '') => is_array($val) || is_null($val) ? $default : (string) $val;
-    $oldVal = fn($handle) => is_array($old[$handle] ?? null) ? '' : $old[$handle] ?? '';
+    $oldVal = fn($handle) => is_array($old[$handle] ?? null) ? '' : (string) ($old[$handle] ?? '');
     $locationValue = $str($old['location'] ?? null, $str($jobLocation));
+    $positionValue = $oldVal('position') !== '' ? $oldVal('position') : $str($jobTitle);
+
+    $fieldValue = function (string $handle) use ($oldVal, $positionValue) {
+        if ($handle === 'position') {
+            return $positionValue;
+        }
+
+        return $oldVal($handle);
+    };
 
     // Bard fields -> augmented value biar jadi HTML
     $successHtml = (string) ($set?->augmentedValue('success_message')?->value() ?? '');
@@ -75,10 +84,10 @@
                             </label>
                         @elseif (($field['type'] ?? 'text') === 'textarea')
                             <textarea name="{{ $field['handle'] }}" rows="4" placeholder="{{ $str($field['display'] ?? '') }}"
-                                class="career-form-input rounded-xl bg-white px-5 py-4 w-full border border-[#CECECE]">{{ $oldVal($field['handle']) }}</textarea>
+                                class="career-form-input rounded-xl bg-white px-5 py-4 w-full border border-[#CECECE]">{{ $fieldValue($field['handle']) }}</textarea>
                         @else
                             <input type="{{ $field['input_type'] ?? 'text' }}" name="{{ $field['handle'] }}"
-                                value="{{ $oldVal($field['handle']) }}"
+                                value="{{ $fieldValue($field['handle']) }}"
                                 placeholder="{{ $str($form['placeholder_' . $field['handle']] ?? ($field['display'] ?? '')) }}"
                                 class="career-form-input rounded-xl bg-white px-5 py-4 w-full border border-[#CECECE] font-(family-name:--font-body)" />
                         @endif

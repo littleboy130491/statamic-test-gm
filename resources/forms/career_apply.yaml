@@ -4,4 +4,4 @@ email:
   -
     id: bD3lzrRZlRfP1T-ne_vAv
     to: webmaster.imajiner@gmail.com
-    subject: 'Form Karier'
+    subject: '{{ location }} - {{ position }} - Form Karier'

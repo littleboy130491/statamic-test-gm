@@ -191,7 +191,7 @@
 
         {{-- Popup Form --}}
         @if ($hasPopupForm)
-            <x-layouts.form.popup-form-career :job-location="$locationTitle" />
+            <x-layouts.form.popup-form-career :job-location="$locationTitle" :job-title="$page->title" />
         @endif
     </main>
 
