@@ -173,14 +173,14 @@
                     <div class="my-18 md:my-18 lg:my-30 flex flex-col gap-18 md:gap-18 lg:gap-30">
                         @foreach ($dealerGroups as $group)
                             <div>
-                                <h2 class="mb-6">{{ $group['title'] }}</h2>
+                                <h2 class="mb-6 text-2xl md:text-3xl lg:text-[2rem]">{{ $group['title'] }}</h2>
 
-                                <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
+                                <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-4 lg:gap-5">
                                     @foreach ($group['dealers'] as $item)
                                         <div
-                                            class="flex flex-col gap-6 p-5 rounded-xl bg-(--color-surface) h-full justify-between">
-                                            <div class="flow">
-                                                <h3 class="text-lg font-semibold font-(family-name:--font-display)">
+                                            class="flex flex-col gap-4 p-4 lg:p-5 rounded-xl bg-(--color-surface) h-full justify-between">
+                                            <div class="flex flex-col gap-2">
+                                                <h3 class="text-base lg:text-[1.05rem] leading-snug font-semibold font-(family-name:--font-display)">
                                                     @if ($item['maps_url'])
                                                         <a href="{{ $item['maps_url'] }}" target="_blank"
                                                             rel="noopener noreferrer"
@@ -193,7 +193,7 @@
                                                 </h3>
 
                                                 @if ($item['address'])
-                                                    <p>{!! nl2br(e($item['address'])) !!}</p>
+                                                    <p class="text-sm leading-relaxed text-(--color-text)">{!! nl2br(e($item['address'])) !!}</p>
                                                 @endif
                                             </div>
 
@@ -218,10 +218,10 @@
 
                                                         <a href="{{ $href }}"
                                                             @if ($isWhatsapp) target="_blank" rel="noopener noreferrer" @endif
-                                                            class="group inline-flex items-center gap-2 px-6 py-2 border border-(--color-primary) rounded-full text-sm text-(--color-primary) hover:text-black hover:bg-(--color-secondary) hover:border-(--color-secondary) transition-colors">
+                                                            class="group inline-flex items-center gap-1.5 px-3.5 py-1.5 border border-(--color-primary) rounded-full text-xs lg:text-[0.8rem] text-(--color-primary) hover:text-black hover:bg-(--color-secondary) hover:border-(--color-secondary) transition-colors">
                                                             @if ($iconUrl)
                                                                 <span aria-hidden="true"
-                                                                    class="w-4 h-4 shrink-0 bg-current"
+                                                                    class="w-3.5 h-3.5 shrink-0 bg-current"
                                                                     style="mask: url('{{ $iconUrl }}') center / contain no-repeat; -webkit-mask: url('{{ $iconUrl }}') center / contain no-repeat;"></span>
                                                             @endif
                                                             {{ $phone['number'] }}
