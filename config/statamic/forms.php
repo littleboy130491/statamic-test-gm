@@ -47,7 +47,7 @@ return [
 
     'exporters' => [
         'csv' => [
-            'class' => Statamic\Forms\Exporters\CsvExporter::class,
+            'class' => App\Forms\Exporters\CsvExporter::class,
         ],
         'json' => [
             'class' => Statamic\Forms\Exporters\JsonExporter::class,

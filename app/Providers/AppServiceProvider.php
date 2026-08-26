@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Bard\CaptionedImageNode;
+use App\Http\Controllers\CP\Forms\FormExportController;
 use Illuminate\Support\ServiceProvider;
 use Statamic\Fieldtypes\Bard\Augmentor;
+use Statamic\Http\Controllers\CP\Forms\FormExportController as StatamicFormExportController;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Stream form exports (avoids LiteSpeed ERR_INVALID_RESPONSE on CSV download).
+        $this->app->bind(StatamicFormExportController::class, FormExportController::class);
     }
 
     /**
