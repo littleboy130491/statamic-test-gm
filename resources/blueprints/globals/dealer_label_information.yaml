@@ -31,6 +31,13 @@ tabs:
               display: 'Placeholder Search'
               width: 33
           -
+            handle: empty_search_label
+            field:
+              default: 'Dealer tidak ditemukan. Coba kata kunci atau filter lain.'
+              type: text
+              display: 'Empty Search Feedback'
+              width: 66
+          -
             handle: icon_maps_dealer
             field:
               container: assets

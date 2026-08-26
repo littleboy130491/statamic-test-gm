@@ -257,6 +257,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const categorySelect = document.getElementById('dealer-category-select');
     const searchInput = document.getElementById('dealer-search');
     const searchBtn = document.getElementById('dealer-search-btn');
+    const emptyFeedback = document.getElementById('dealer-search-empty');
+    const emptySearchLabel =
+        mapLabels.emptySearch || 'Dealer tidak ditemukan. Coba kata kunci atau filter lain.';
+
+    if (emptyFeedback && !emptyFeedback.textContent.trim()) {
+        emptyFeedback.textContent = emptySearchLabel;
+    }
+
+    function setEmptyFeedback(visible) {
+        if (!emptyFeedback) return;
+        emptyFeedback.classList.toggle('hidden', !visible);
+    }
 
     document.querySelectorAll('.dealer-cat-btn').forEach(function (btn) {
         btn.addEventListener('click', function (e) {
@@ -324,12 +336,14 @@ document.addEventListener('DOMContentLoaded', function () {
               categorySelect?.value ||
               'all';
         const searchQuery = (searchInput?.value || '').toLowerCase().trim();
+        let visibleCount = 0;
 
         markers.forEach(function ({ marker, loc }) {
             const matchCategory = activeCategory === 'all' || loc['dealer-category'] === activeCategory;
             const matchSearch = !searchQuery || haystack(loc).includes(searchQuery);
 
             if (matchCategory && matchSearch) {
+                visibleCount += 1;
                 if (!map.hasLayer(marker)) marker.addTo(map);
             } else {
                 marker.closePopup();
@@ -337,7 +351,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        if (shouldFit) {
+        const hasActiveFilter = Boolean(searchQuery) || activeCategory !== 'all';
+        setEmptyFeedback(hasActiveFilter && visibleCount === 0);
+
+        if (shouldFit && visibleCount > 0) {
             fitVisibleMarkers(true);
         }
     }

@@ -137,6 +137,23 @@ body.background-grey {
     background: var(--color-primary) !important;
 }
 
+/* Empty search feedback - DEALER MAPS */
+.dealer-search-empty {
+    margin: 0;
+    padding: 0.875rem 1.25rem;
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.dealer-search-empty.hidden {
+    display: none;
+}
+
+
 
 
 /* leaflet Watermark - DEALER MAPS */

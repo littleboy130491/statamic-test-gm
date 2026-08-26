@@ -9,6 +9,8 @@
     $satelitLabel = $labels['satelit_label'] ?? 'Satelit';
     $placeholderSearch = $labels['placeholder_search'] ?? 'Ketik Kota';
     $allLabel = $labels['all_label'] ?? 'Semua';
+    $emptySearchLabel =
+        $labels['empty_search_label'] ?? 'Dealer tidak ditemukan. Coba kata kunci atau filter lain.';
 
     $dealerCounts = collect($dealers)->groupBy('dealer-category')->map(fn($group) => $group->count());
 
@@ -85,6 +87,10 @@
 
     </div>
 
+    <p id="dealer-search-empty" class="dealer-search-empty mb-4 hidden" role="status" aria-live="polite">
+        {{ $emptySearchLabel }}
+    </p>
+
     {{-- Map --}}
     <div id="dealer-map" style="height: 350px; width: 100%; border-radius: 24px;" class="md:h-120!"></div>
 </div>
@@ -96,6 +102,7 @@
     window.dealerMapLabels = {
         peta: @json($petaLabel),
         satelit: @json($satelitLabel),
+        emptySearch: @json($emptySearchLabel),
     };
     window.dealerMapIcon = @json($iconMapsUrl);
 </script>

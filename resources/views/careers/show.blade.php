@@ -29,12 +29,28 @@
         return $field instanceof \Statamic\Contracts\Query\Builder ? $field->get() : $field;
     };
 
+    $normalizeTerms = function ($field) use ($resolve) {
+        $field = $resolve($field);
+
+        if ($field instanceof \Illuminate\Support\Collection || is_array($field)) {
+            return collect($field)->filter(fn ($term) => is_object($term) && filled($term->title ?? null));
+        }
+
+        if (is_object($field) && filled($field->title ?? null)) {
+            return collect([$field]);
+        }
+
+        return collect();
+    };
+
     $employmentStatus = $resolve($page->employment_status);
-    $employmentLabel = $employmentStatus?->label();
+    $employmentLabel = is_object($employmentStatus) ? $employmentStatus?->label() : null;
     $hasEmploymentStatus = filled($employmentLabel);
 
-    $locations = collect($resolve($page->locations) ?? [])->filter(fn($location) => filled($location->title));
+    $locations = $normalizeTerms($page->locations);
     $hasLocations = $locations->isNotEmpty();
+    $locationTitle = $locations->first()?->title;
+    $tags = $normalizeTerms($page->tags);
 
     // Cek Component
     $hasHeader = view()->exists('components.layouts.header.single-header');
@@ -82,7 +98,7 @@
                                                     alt="{{ $career['icon_location']?->alt }}"
                                                     class="w-5 h-5 shrink-0" />
                                             @endif
-                                            {{ $locations->first()?->title }}
+                                            {{ $locationTitle }}
                                         </p>
                                     @endif
 
@@ -123,11 +139,9 @@
                             {{-- Tag Career --}}
                             <div id="tag-career"
                                 class="flex flex-wrap gap-x-4 gap-y-2 md:gap-x-4 md:gap-y-2 lg:gap-x-8 lg:gap-y-8">
-                                @if ($page->tags)
-                                    @foreach ($page->tags as $tag)
-                                        <p>{{ $tag->title }}</p>
-                                    @endforeach
-                                @endif
+                                @foreach ($tags as $tag)
+                                    <p>{{ $tag->title }}</p>
+                                @endforeach
                             </div>
 
                             {{-- Button Kirim Lamaran --}}
@@ -177,7 +191,7 @@
 
         {{-- Popup Form --}}
         @if ($hasPopupForm)
-            <x-layouts.form.popup-form-career :job-location="$locations->first()?->title" />
+            <x-layouts.form.popup-form-career :job-location="$locationTitle" />
         @endif
     </main>
 

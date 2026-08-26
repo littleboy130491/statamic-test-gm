@@ -15,12 +15,19 @@
             $field = $field->get();
         }
 
-        return collect(\Statamic\Support\Arr::wrap($field))->filter(
-            fn($location) => is_object($location) ? filled($location->title ?? null) : filled($location),
-        );
+        if ($field instanceof \Illuminate\Support\Collection || is_array($field)) {
+            return collect($field)->filter(fn ($location) => is_object($location) && filled($location->title ?? null));
+        }
+
+        if (is_object($field) && filled($field->title ?? null)) {
+            return collect([$field]);
+        }
+
+        return collect();
     };
 
     $entryLocations = $resolveLocations($entry->locations);
+    $entryLocationTitle = $entryLocations->first()?->title;
 @endphp
 
 <a href="{{ $entry->url() }}"
@@ -43,14 +50,14 @@
                     </p>
                 @endif
 
-                @if ($entryLocations->isNotEmpty())
+                @if (filled($entryLocationTitle))
                     <p
                         class="flex items-center gap-2 uppercase text-(--color-primary) font-medium group-hover:text-black">
                         @if (!empty($career['icon_location']))
                             <img src="{{ $career['icon_location'] }}" alt="{{ $career['icon_location']?->alt }}"
                                 class="w-4 h-4 shrink-0 -mt-1 group-hover:brightness-0" />
                         @endif
-                        {{ $entryLocations->first()->title }}
+                        {{ $entryLocationTitle }}
                     </p>
                 @endif
             </div>
