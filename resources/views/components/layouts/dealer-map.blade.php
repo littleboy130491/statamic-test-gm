@@ -41,8 +41,9 @@
         <div id="city-search" class="w-full md:w-[50%] lg:w-[25%] flex justify-end">
             <div class="flex w-full rounded-lg overflow-hidden border border-(--color-line)">
                 <input type="text" id="dealer-search" placeholder="{{ $placeholderSearch }}"
-                    class="py-3 px-4 w-full outline-none text-sm font-(family-name:--font-body)" />
-                <button type="button"
+                    class="py-3 px-4 w-full outline-none text-sm font-(family-name:--font-body)"
+                    autocomplete="off" />
+                <button type="button" id="dealer-search-btn" aria-label="Cari"
                     class="group flex items-center justify-center px-3.5 bg-(--color-primary) hover:bg-black shrink-0">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                         class="h-5 w-5 text-white">
@@ -59,15 +60,15 @@
             {{-- Desktop: Button --}}
             <div id="dealer-category-filter" class="hidden flex-col gap-2 lg:flex lg:flex-row">
                 @foreach ($categories as $slug => $label)
-                    <a href="javascript:void(0)"
-                        class="dealer-cat-btn flex items-center gap-2 text-sm text-(--color-primary) hover:text-white bg-(--color-surface) hover:bg-(--color-primary) uppercase py-3 px-8 rounded-full"
+                    <button type="button"
+                        class="dealer-cat-btn flex items-center gap-2 text-sm text-(--color-primary) hover:text-white bg-(--color-surface) hover:bg-(--color-primary) uppercase py-3 px-8 rounded-full cursor-pointer"
                         data-category="{{ $slug }}">
                         <span class="font-medium">{{ $label }}</span>
                         <svg viewBox="0 0 12 12" fill="none" aria-hidden="true" class="h-4 w-4">
                             <path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"
                                 stroke-linejoin="round" />
                         </svg>
-                    </a>
+                    </button>
                 @endforeach
             </div>
 

@@ -6,6 +6,21 @@
         \Statamic\Facades\GlobalSet::findByHandle('career_label_information')
             ?->in(\Statamic\Facades\Site::current()->handle())
             ?->toAugmentedArray();
+
+    $resolveLocations = function ($field) {
+        if ($field instanceof \Statamic\Fields\Value) {
+            $field = $field->value();
+        }
+        if ($field instanceof \Statamic\Contracts\Query\Builder) {
+            $field = $field->get();
+        }
+
+        return collect(\Statamic\Support\Arr::wrap($field))->filter(
+            fn($location) => is_object($location) ? filled($location->title ?? null) : filled($location),
+        );
+    };
+
+    $entryLocations = $resolveLocations($entry->locations);
 @endphp
 
 <a href="{{ $entry->url() }}"
@@ -28,19 +43,14 @@
                     </p>
                 @endif
 
-                @if ($entry->locations && $entry->locations->isNotEmpty())
+                @if ($entryLocations->isNotEmpty())
                     <p
                         class="flex items-center gap-2 uppercase text-(--color-primary) font-medium group-hover:text-black">
                         @if (!empty($career['icon_location']))
                             <img src="{{ $career['icon_location'] }}" alt="{{ $career['icon_location']?->alt }}"
                                 class="w-4 h-4 shrink-0 -mt-1 group-hover:brightness-0" />
                         @endif
-                        @foreach ($entry->locations as $location)
-                            {{ $location->title }}
-                            @unless ($loop->last)
-                                ,
-                            @endunless
-                        @endforeach
+                        {{ $entryLocations->first()->title }}
                     </p>
                 @endif
             </div>

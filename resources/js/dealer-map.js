@@ -1,4 +1,4 @@
-// Maps dealer
+// Maps dealer — search, filter, hotspot (hover desktop / click mobile)
 
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
@@ -22,46 +22,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const customIcon = window.dealerMapIcon
         ? L.icon({
-            iconUrl: window.dealerMapIcon,
-            iconSize: [40, 40],
-            iconAnchor: [20, 40],
-            popupAnchor: [0, -38],
-            className: 'dealer-map-marker',
-        })
+              iconUrl: window.dealerMapIcon,
+              iconSize: [40, 40],
+              iconAnchor: [20, 40],
+              popupAnchor: [0, -38],
+              className: 'dealer-map-marker',
+          })
         : null;
 
-    // Inisialisasi peta (default: Indonesia
-    const map = L.map('dealer-map', { zoomControl: false }).setView([-6.2088, 106.8456], 6);
+    const isTabletDown = () => window.matchMedia('(max-width: 1023px)').matches;
+    const canHover = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches && !isTabletDown();
+
+    const map = L.map('dealer-map', { zoomControl: false }).setView([-2.5, 118], 5);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-    // Layer peta: jalan dan satelit
     const layerStreet = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
         subdomains: 'abcd',
         maxZoom: 20,
     });
 
-    const layerSatellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        attribution: '&copy; Esri',
-    });
+    const layerSatellite = L.tileLayer(
+        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        { attribution: '&copy; Esri' },
+    );
 
     layerStreet.addTo(map);
 
-    const isTabletDown = () => window.matchMedia('(max-width: 1023px)').matches;
-
-    // Button layer Peta/Satelit
     const LayerToggle = L.Control.extend({
         options: { position: isTabletDown() ? 'bottomleft' : 'topleft' },
         onAdd: function () {
             const container = L.DomUtil.create('div', 'leaflet-layer-toggle');
             container.innerHTML = `
-                <button class="layer-btn active" data-layer="street">${petaLabel}</button>
-                <button class="layer-btn" data-layer="satellite">${satelitLabel}</button>
+                <button type="button" class="layer-btn active" data-layer="street">${petaLabel}</button>
+                <button type="button" class="layer-btn" data-layer="satellite">${satelitLabel}</button>
             `;
             L.DomEvent.disableClickPropagation(container);
-            container.querySelectorAll('.layer-btn').forEach(btn => {
+            container.querySelectorAll('.layer-btn').forEach((btn) => {
                 btn.addEventListener('click', function () {
-                    container.querySelectorAll('.layer-btn').forEach(b => b.classList.remove('active'));
+                    container.querySelectorAll('.layer-btn').forEach((b) => b.classList.remove('active'));
                     this.classList.add('active');
                     if (this.dataset.layer === 'street') {
                         map.removeLayer(layerSatellite);
@@ -75,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return container;
         },
     });
+
     const layerToggle = new LayerToggle();
     layerToggle.addTo(map);
 
@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (now !== lastTabletDown) {
             lastTabletDown = now;
             layerToggle.setPosition(now ? 'bottomleft' : 'topleft');
+            bindMarkerInteractions();
         }
     });
 
@@ -91,14 +92,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const iconPhone = `<img src="/assets/telepon-icon.svg" class="dealer-contact-icon" alt="" aria-hidden="true">`;
 
     const markers = [];
+    const closeTimers = new WeakMap();
 
-    // Marker + popup
-    locations.forEach(function (loc) {
-        if (!loc.lat || !loc.lng) return;
-
+    function buildPopup(loc) {
         const label = categoryLabel[loc['dealer-category']] || loc['dealer-category'] || '';
 
-        // WhatsApp
         let waHref = '';
         if (loc.whatsapp_link) {
             waHref = loc.whatsapp_link;
@@ -120,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ? `<a href="${loc.maps_url}" target="_blank" rel="noopener" class="dealer-popup-gmaps">Temukan Lokasi di Peta</a>`
             : '';
 
-        const popupContent = `
+        return `
             <div class="dealer-popup">
                 <div class="popup-header">
                     <div class="dealer-popup-city">${loc.city || ''}</div>
@@ -134,63 +132,213 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             </div>
         `;
+    }
 
-        const marker = L.marker([loc.lat, loc.lng], customIcon ? { icon: customIcon } : {})
-            .addTo(map)
-            .bindPopup(popupContent, { maxWidth: 280 });
+    function clearHoverBindings(marker) {
+        marker.off('mouseover');
+        marker.off('mouseout');
+        marker.off('popupopen');
+        marker.off('click');
+    }
 
+    function bindHoverPopup(marker) {
+        clearHoverBindings(marker);
+
+        marker.on('mouseover', function () {
+            const pending = closeTimers.get(this);
+            if (pending) {
+                clearTimeout(pending);
+                closeTimers.delete(this);
+            }
+            this.openPopup();
+        });
+
+        marker.on('mouseout', function () {
+            const self = this;
+            const timer = setTimeout(function () {
+                const popupEl = self.getPopup()?.getElement();
+                if (popupEl && popupEl.matches(':hover')) return;
+                self.closePopup();
+            }, 180);
+            closeTimers.set(self, timer);
+        });
+
+        marker.on('popupopen', function () {
+            const self = this;
+            const el = this.getPopup()?.getElement();
+            if (!el) return;
+
+            const onEnter = function () {
+                const pending = closeTimers.get(self);
+                if (pending) {
+                    clearTimeout(pending);
+                    closeTimers.delete(self);
+                }
+            };
+            const onLeave = function () {
+                self.closePopup();
+            };
+
+            el.addEventListener('mouseenter', onEnter);
+            el.addEventListener('mouseleave', onLeave);
+
+            self.once('popupclose', function () {
+                el.removeEventListener('mouseenter', onEnter);
+                el.removeEventListener('mouseleave', onLeave);
+            });
+        });
+
+        // Desktop: klik marker tidak toggle aneh; biarkan hover yang buka.
+        marker.on('click', function (e) {
+            L.DomEvent.stopPropagation(e);
+            this.openPopup();
+        });
+    }
+
+    function bindClickPopup(marker) {
+        clearHoverBindings(marker);
+        marker.on('click', function () {
+            this.openPopup();
+        });
+    }
+
+    function bindMarkerInteractions() {
+        const hover = canHover();
+        markers.forEach(function ({ marker }) {
+            if (hover) {
+                bindHoverPopup(marker);
+            } else {
+                bindClickPopup(marker);
+            }
+        });
+    }
+
+    locations.forEach(function (loc) {
+        if (!loc.lat || !loc.lng) return;
+
+        const marker = L.marker([loc.lat, loc.lng], customIcon ? { icon: customIcon } : {}).bindPopup(
+            buildPopup(loc),
+            {
+                maxWidth: 280,
+                autoPan: true,
+                closeButton: true,
+                closeOnClick: true,
+            },
+        );
+
+        marker.addTo(map);
         markers.push({ marker, loc });
     });
 
-    // Filter kategori (desktop)
-    document.querySelectorAll('.dealer-cat-btn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            const wasActive = btn.classList.contains('active');
-            document.querySelectorAll('.dealer-cat-btn').forEach(b => b.classList.remove('active'));
-            if (!wasActive) btn.classList.add('active');
-            applyFilters();
-        });
-    });
+    bindMarkerInteractions();
 
-    // Filter kategori (mobile)
-    const categorySelect = document.getElementById('dealer-category-select');
-    if (categorySelect) {
-        categorySelect.addEventListener('change', applyFilters);
+    function fitVisibleMarkers(animate) {
+        const visible = markers.filter(function ({ marker }) {
+            return map.hasLayer(marker);
+        });
+
+        if (!visible.length) return;
+
+        const bounds = L.latLngBounds(visible.map(function ({ marker }) {
+            return marker.getLatLng();
+        }));
+
+        map.fitBounds(bounds, {
+            padding: [48, 48],
+            maxZoom: visible.length === 1 ? 12 : 8,
+            animate: animate !== false,
+        });
     }
 
-    // Search kota
+    if (markers.length) {
+        fitVisibleMarkers(false);
+    }
+
+    const categorySelect = document.getElementById('dealer-category-select');
     const searchInput = document.getElementById('dealer-search');
     const searchBtn = document.getElementById('dealer-search-btn');
 
-    if (searchBtn) {
-        searchBtn.addEventListener('click', applyFilters);
+    document.querySelectorAll('.dealer-cat-btn').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const wasActive = btn.classList.contains('active');
+            document.querySelectorAll('.dealer-cat-btn').forEach(function (b) {
+                b.classList.remove('active');
+            });
+            if (!wasActive) btn.classList.add('active');
+
+            if (categorySelect) {
+                categorySelect.value = wasActive ? 'all' : btn.dataset.category || 'all';
+            }
+
+            applyFilters(true);
+        });
+    });
+
+    if (categorySelect) {
+        categorySelect.addEventListener('change', function () {
+            document.querySelectorAll('.dealer-cat-btn').forEach(function (b) {
+                b.classList.toggle('active', b.dataset.category === categorySelect.value);
+            });
+            applyFilters(true);
+        });
     }
+
+    function runSearch() {
+        applyFilters(true);
+    }
+
+    if (searchBtn) {
+        searchBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            runSearch();
+        });
+    }
+
     if (searchInput) {
         searchInput.addEventListener('keydown', function (e) {
             if (e.key === 'Enter') {
                 e.preventDefault();
-                applyFilters();
+                runSearch();
             }
+        });
+
+        let searchTimer;
+        searchInput.addEventListener('input', function () {
+            clearTimeout(searchTimer);
+            searchTimer = setTimeout(runSearch, 250);
         });
     }
 
-    // Hide/unhide marker > kategori aktif & search
-    function applyFilters() {
-        const isMobile = window.matchMedia('(max-width: 1023px)').matches;
-        const activeCategory = isMobile
-            ? (categorySelect?.value || 'all')
-            : (document.querySelector('.dealer-cat-btn.active')?.dataset.category || 'all');
+    function haystack(loc) {
+        return [loc.city, loc.company, loc.region, loc.address]
+            .filter(Boolean)
+            .join(' ')
+            .toLowerCase();
+    }
+
+    function applyFilters(shouldFit) {
+        const activeCategory = isTabletDown()
+            ? categorySelect?.value || 'all'
+            : document.querySelector('.dealer-cat-btn.active')?.dataset.category ||
+              categorySelect?.value ||
+              'all';
         const searchQuery = (searchInput?.value || '').toLowerCase().trim();
 
         markers.forEach(function ({ marker, loc }) {
             const matchCategory = activeCategory === 'all' || loc['dealer-category'] === activeCategory;
-            const matchSearch = !searchQuery || (loc.city || '').toLowerCase().includes(searchQuery);
+            const matchSearch = !searchQuery || haystack(loc).includes(searchQuery);
 
             if (matchCategory && matchSearch) {
-                marker.addTo(map);
+                if (!map.hasLayer(marker)) marker.addTo(map);
             } else {
-                marker.remove();
+                marker.closePopup();
+                if (map.hasLayer(marker)) marker.remove();
             }
         });
+
+        if (shouldFit) {
+            fitVisibleMarkers(true);
+        }
     }
 });

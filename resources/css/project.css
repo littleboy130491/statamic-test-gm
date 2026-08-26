@@ -191,7 +191,20 @@ body.background-grey {
 
 /* Popup maps - DEALER MAPS */
 .leaflet-popup-close-button {
-   display: none;
+   display: none !important;
+}
+
+@media (max-width: 1023px), (hover: none) {
+   .leaflet-popup-close-button {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      width: 28px !important;
+      height: 28px !important;
+      color: #fff !important;
+      font-size: 20px !important;
+      padding: 4px 0 0 !important;
+   }
 }
 
 .leaflet-popup-content-wrapper,

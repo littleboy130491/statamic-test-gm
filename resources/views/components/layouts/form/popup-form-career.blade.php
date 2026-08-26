@@ -1,9 +1,12 @@
+@props(['jobLocation' => null])
+
 @php
     $set = \Statamic\Facades\GlobalSet::findByHandle('career_label_information')?->inCurrentSite();
     $form = $set?->data();
 
     $str = fn($val, $default = '') => is_array($val) || is_null($val) ? $default : (string) $val;
     $oldVal = fn($handle) => is_array($old[$handle] ?? null) ? '' : $old[$handle] ?? '';
+    $locationValue = $str($old['location'] ?? null, $str($jobLocation));
 
     // Bard fields -> augmented value biar jadi HTML
     $successHtml = (string) ($set?->augmentedValue('success_message')?->value() ?? '');
@@ -36,9 +39,13 @@
                 </div>
             @endif
 
+            <input type="hidden" name="location" value="{{ $locationValue }}" />
+
             {{-- Fields --}}
             <div class="flex flex-wrap gap-4">
                 @foreach ($fields as $field)
+                    @continue(($field['type'] ?? null) === 'hidden' || ($field['handle'] ?? null) === 'location')
+
                     <div
                         class="career-form-field flex flex-col gap-1 {{ ($field['width'] ?? 100) <= 50 ? 'w-full md:w-[calc(50%-0.5rem)]' : 'w-full' }}">
 

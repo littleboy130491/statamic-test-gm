@@ -1,5 +1,8 @@
 @php
-    $skipHandles = isset($position) ? ['position'] : [];
+    $skipHandles = array_values(array_filter([
+        isset($position) ? 'position' : null,
+        isset($location) ? 'location' : null,
+    ]));
 @endphp
 
 <section class="rounded-xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
@@ -25,6 +28,10 @@
 
             @isset($position)
                 <input type="hidden" name="position" value="{{ $position }}">
+            @endisset
+
+            @isset($location)
+                <input type="hidden" name="location" value="{{ $location }}">
             @endisset
 
             @include('partials.forms.fields', ['fields' => $fields, 'skipHandles' => $skipHandles])

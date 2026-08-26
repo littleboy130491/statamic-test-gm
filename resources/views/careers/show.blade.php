@@ -82,7 +82,7 @@
                                                     alt="{{ $career['icon_location']?->alt }}"
                                                     class="w-5 h-5 shrink-0" />
                                             @endif
-                                            {{ $locations->map(fn($location) => $location->title)->implode(', ') }}
+                                            {{ $locations->first()?->title }}
                                         </p>
                                     @endif
 
@@ -177,7 +177,7 @@
 
         {{-- Popup Form --}}
         @if ($hasPopupForm)
-            <x-layouts.form.popup-form-career />
+            <x-layouts.form.popup-form-career :job-location="$locations->first()?->title" />
         @endif
     </main>
 

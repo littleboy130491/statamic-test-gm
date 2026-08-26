@@ -36,6 +36,11 @@ tabs:
               validate: 'required|max:50'
               width: 50
           -
+            handle: location
+            field:
+              display: Location
+              type: hidden
+          -
             handle: cv_resume
             field:
               container: assets
