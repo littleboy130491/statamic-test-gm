@@ -125,8 +125,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     ${label ? `<div class="dealer-popup-category">${label}</div>` : ''}
                 </div>
                 <div class="wrap-popup-dealer">
-                    <div class="dealer-popup-company">${loc.company || ''}</div>
-                    <div class="dealer-popup-address">${(loc.address || '').replace(/\n/g, '<br>')}</div>
+                    <div class="dealer-popup-company notranslate" translate="no">${loc.company || ''}</div>
+                    <div class="dealer-popup-address notranslate" translate="no">${(loc.address || '').replace(/\n/g, '<br>')}</div>
                     ${contacts ? `<div class="dealer-popup-contacts">${contacts}</div>` : ''}
                     ${mapsLink}
                 </div>

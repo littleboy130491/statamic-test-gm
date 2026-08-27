@@ -1,6 +1,6 @@
 // Menandai nama perusahaan agar tidak diterjemahkan widget GTranslate (Google Translate)
 
-// Urutan penting: varian terpanjang harus dicoba lebih dulu.
+// Urutan: varian terpanjang harus dicoba lebih dulu.
 const BRAND_TERMS = [
     'PT\\.?\\s+Gaya\\s?Makmur\\s+FAW\\s+Motors',
     'PT\\.?\\s+Gaya\\s?Makmur\\s+Mobil',
@@ -14,7 +14,6 @@ const BRAND_TERMS = [
 
 const BRAND_SOURCE = `(${BRAND_TERMS.join('|')})`;
 const BRAND_PATTERN = new RegExp(BRAND_SOURCE, 'gi');
-// Regex terpisah tanpa flag global agar lastIndex tidak bergeser saat pengujian.
 const BRAND_TEST = new RegExp(BRAND_SOURCE, 'i');
 
 const SKIP_TAGS = new Set([
@@ -39,21 +38,38 @@ const wrapMatches = (textNode) => {
     const fragment = document.createDocumentFragment();
     let lastIndex = 0;
 
-    text.replace(BRAND_PATTERN, (match, _group, offset) => {
-        if (offset > lastIndex) {
-            fragment.appendChild(document.createTextNode(text.slice(lastIndex, offset)));
+    for (const found of text.matchAll(BRAND_PATTERN)) {
+        const match = found[0];
+        const start = found.index;
+        let end = start + match.length;
+
+        // Google Translate memangkas spasi di batas teks yang diterjemahkan,
+        // sehingga spasi sebelum/sesudah nama perusahaan ikut dimasukkan ke dalam span.
+        let before = text.slice(lastIndex, start);
+        const leadingSpace = /[ \t]$/.test(before);
+
+        if (leadingSpace) {
+            before = before.replace(/[ \t]+$/, '');
+        }
+
+        const trailingSpace = /[ \t]/.test(text.charAt(end));
+
+        if (trailingSpace) {
+            end += 1;
+        }
+
+        if (before) {
+            fragment.appendChild(document.createTextNode(before));
         }
 
         const span = document.createElement('span');
         span.className = 'notranslate';
         span.setAttribute('translate', 'no');
-        span.textContent = match;
+        span.textContent = (leadingSpace ? ' ' : '') + match + (trailingSpace ? ' ' : '');
         fragment.appendChild(span);
 
-        lastIndex = offset + match.length;
-
-        return match;
-    });
+        lastIndex = end;
+    }
 
     if (lastIndex < text.length) {
         fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
