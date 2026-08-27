@@ -76,7 +76,7 @@
         ->filter()
         ->values();
 
-    // Hero banner: placeholder global saja (foto hero per-produk ada di gallery)
+    // Hero banner > placeholder global (foto produk di gallery)
     $heroBackground = null;
     $placeholder = $product['background_image_placeholder'] ?? null;
     if ($placeholder) {

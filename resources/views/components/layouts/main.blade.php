@@ -121,7 +121,7 @@
             @endif
 
             @if ($scrollTopSharesSideWithWhatsapp)
-                /* Keep clear of the floating WhatsApp button on the same side */
+                /* Geser naik > tidak tumpuk floating WhatsApp */
                 #scroll-to-top {
                     bottom: 96px;
                 }

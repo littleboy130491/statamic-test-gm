@@ -24,6 +24,7 @@
                 return null;
             }
 
+            // Nomor lokal > kode 62
             $digits = str_starts_with($digits, '62') ? $digits : '62' . ltrim($digits, '0');
 
             $message = $contact['message'] ?? null;

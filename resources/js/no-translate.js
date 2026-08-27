@@ -1,6 +1,6 @@
-// Menandai nama perusahaan agar tidak diterjemahkan widget GTranslate (Google Translate)
+// Nama perusahaan tidak diterjemahkan GTranslate
 
-// Urutan: varian terpanjang harus dicoba lebih dulu.
+// Varian terpanjang lebih dulu
 const BRAND_TERMS = [
     'PT\\.?\\s+Gaya\\s?Makmur\\s+FAW\\s+Motors',
     'PT\\.?\\s+Gaya\\s?Makmur\\s+Mobil',
@@ -43,8 +43,7 @@ const wrapMatches = (textNode) => {
         const start = found.index;
         let end = start + match.length;
 
-        // Google Translate memangkas spasi di batas teks yang diterjemahkan,
-        // sehingga spasi sebelum/sesudah nama perusahaan ikut dimasukkan ke dalam span.
+        // Spasi ikut masuk span > tidak dipangkas Google Translate
         let before = text.slice(lastIndex, start);
         const leadingSpace = /[ \t]$/.test(before);
 

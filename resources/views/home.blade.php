@@ -93,7 +93,7 @@
         ->map(function ($dealer) use ($parseMapsCoords) {
             $cat = $dealer->dealer_categories?->first();
 
-            // Prioritaskan koordinat dari Google Maps URL, fallback ke field manual lat/lng
+            // Koordinat dari URL maps > fallback lat/lng manual
             [$urlLat, $urlLng] = $parseMapsCoords($dealer->google_maps_url);
             $lat = $urlLat ?? ($dealer->location['latitude'] ?? null);
             $lng = $urlLng ?? ($dealer->location['longitude'] ?? null);

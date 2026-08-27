@@ -1,14 +1,10 @@
 @php
-    // Jendela halaman yang ringkas: selalu tampilkan halaman pertama, terakhir,
-    // dan beberapa halaman di sekitar halaman aktif. Sisanya diringkas jadi "...".
-    // Laravel bawaan memaksa minimal ~7 angka (UrlWindow: $window = $onEachSide + 4),
-    // jadi jendelanya disusun sendiri di sini.
+    // Jendela halaman sendiri (bawaan Laravel minimal ~7 angka)
     $current = $paginator->currentPage();
     $last = $paginator->lastPage();
     $side = $onEachSide ?? 1;
 
-    // Geser jendela di ujung supaya jumlah angka tetap konsisten,
-    // mis. di halaman 1 tampil "1 2 3 ... 36", bukan "1 2 ... 36".
+    // Geser jendela di ujung > jumlah angka tetap sama
     $span = $side * 2 + 1;
     $start = min(max(1, $current - $side), max(1, $last - $span + 1));
     $end = max(min($last, $current + $side), min($last, $span));
@@ -19,7 +15,7 @@
         ->sort()
         ->values();
 
-    // Sisipkan penanda "..." di setiap lompatan nomor halaman.
+    // Penanda "..." di setiap lompatan halaman
     $items = [];
     $prev = 0;
     foreach ($pages as $page) {

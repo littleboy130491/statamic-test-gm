@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // Desktop: klik marker tidak toggle aneh; biarkan hover yang buka.
+        // Desktop > popup dibuka lewat hover
         marker.on('click', function (e) {
             L.DomEvent.stopPropagation(e);
             this.openPopup();

@@ -1325,7 +1325,7 @@ body:has(dialog[open].site-popup) {
     display: block;
 }
 
-/* Uploaded icons are dark by default; force white on the green circle */
+/* Icon upload dipaksa putih */
 .floating-whatsapp-icon img {
     filter: brightness(0) invert(1);
 }
