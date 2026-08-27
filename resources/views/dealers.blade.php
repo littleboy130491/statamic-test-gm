@@ -180,7 +180,8 @@
                                         <div
                                             class="flex flex-col gap-4 p-4 lg:p-5 rounded-xl bg-(--color-surface) h-full justify-between">
                                             <div class="flex flex-col gap-2">
-                                                <h3 class="text-base lg:text-[1.05rem] leading-snug font-semibold font-(family-name:--font-display)">
+                                                <h3
+                                                    class="text-sm lg:text-[0.95rem] leading-snug font-semibold font-(family-name:--font-display)">
                                                     @if ($item['maps_url'])
                                                         <a href="{{ $item['maps_url'] }}" target="_blank"
                                                             rel="noopener noreferrer"
@@ -193,7 +194,9 @@
                                                 </h3>
 
                                                 @if ($item['address'])
-                                                    <p class="text-sm leading-relaxed text-(--color-text)">{!! nl2br(e($item['address'])) !!}</p>
+                                                    <p
+                                                        class="text-xs lg:text-[0.7rem] leading-relaxed text-(--color-text)">
+                                                        {!! nl2br(e($item['address'])) !!}</p>
                                                 @endif
                                             </div>
 
@@ -218,7 +221,7 @@
 
                                                         <a href="{{ $href }}"
                                                             @if ($isWhatsapp) target="_blank" rel="noopener noreferrer" @endif
-                                                            class="group inline-flex items-center gap-1.5 px-3.5 py-1.5 border border-(--color-primary) rounded-full text-xs lg:text-[0.8rem] text-(--color-primary) hover:text-black hover:bg-(--color-secondary) hover:border-(--color-secondary) transition-colors">
+                                                            class="group inline-flex items-center gap-1.5 px-3.5 py-1.5 border border-(--color-primary) rounded-full text-[0.7rem] lg:text-[0.72rem] text-(--color-primary) hover:text-black hover:bg-(--color-secondary) hover:border-(--color-secondary) transition-colors">
                                                             @if ($iconUrl)
                                                                 <span aria-hidden="true"
                                                                     class="w-3.5 h-3.5 shrink-0 bg-current"

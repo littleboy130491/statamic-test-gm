@@ -18,3 +18,4 @@ import './scroll-to-top.js';
 import './floating-whatsapp.js';
 import './comparison.js';
 import './select-dropdown.js';
+import './no-translate.js';
