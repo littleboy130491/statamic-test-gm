@@ -19,6 +19,8 @@ const setupCountdown = () => {
         if (diff <= 0) {
             units.forEach((u) => set(u, 0));
             clearInterval(timer);
+            // Muat ulang > mode sudah nonaktif
+            window.location.reload();
             return;
         }
         set('days', Math.floor(diff / 86400000));
