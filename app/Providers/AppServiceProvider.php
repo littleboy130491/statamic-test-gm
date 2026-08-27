@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
         Augmentor::replaceExtension('image', new CaptionedImageNode);
 
         // CSS tambahan control panel
-        Statamic::externalStyle(url('/cp/custom.css'));
+        // Jangan taruh di /cp > bentrok dengan rute control panel
+        Statamic::externalStyle(url('/cp-custom.css'));
     }
 }
