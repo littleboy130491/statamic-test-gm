@@ -245,6 +245,13 @@ tabs:
               mode: stacked
               fields:
                 -
+                  handle: avatar
+                  field:
+                    container: assets
+                    max_files: 1
+                    type: assets
+                    display: Avatar
+                -
                   handle: title
                   field:
                     type: text

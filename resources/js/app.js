@@ -15,5 +15,6 @@ import './counter.js';
 import './category-slider.js';
 import './features-slider.js';
 import './scroll-to-top.js';
+import './floating-whatsapp.js';
 import './comparison.js';
 import './select-dropdown.js';

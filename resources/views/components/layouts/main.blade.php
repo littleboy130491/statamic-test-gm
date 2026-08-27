@@ -18,6 +18,10 @@
 
     $showScrollTop = $settings?->get('show_scroll_top') ?? true;
     $scrollTopPosition = $settings?->get('scroll_top_position') === 'left' ? 'left' : 'right';
+
+    $whatsappVisible = $settings?->get('show_button') ?? true;
+    $whatsappPosition = $settings?->get('position') === 'right' ? 'right' : 'left';
+    $scrollTopSharesSideWithWhatsapp = $whatsappVisible && $whatsappPosition === $scrollTopPosition;
 @endphp
 
 @if ($settings?->custom_code_head)
@@ -101,8 +105,8 @@
             </svg>
         </button>
 
-        @if ($scrollTopPosition === 'left')
-            <style>
+        <style>
+            @if ($scrollTopPosition === 'left')
                 #scroll-to-top[data-position="left"] {
                     right: auto;
                     left: 24px;
@@ -114,9 +118,24 @@
                         left: 16px;
                     }
                 }
-            </style>
-        @endif
+            @endif
+
+            @if ($scrollTopSharesSideWithWhatsapp)
+                /* Keep clear of the floating WhatsApp button on the same side */
+                #scroll-to-top {
+                    bottom: 96px;
+                }
+
+                @media (max-width: 640px) {
+                    #scroll-to-top {
+                        bottom: 84px;
+                    }
+                }
+            @endif
+        </style>
     @endif
+
+    <x-layouts.floating-whatsapp />
 
     @stack('scripts')
     @stack('body_end')

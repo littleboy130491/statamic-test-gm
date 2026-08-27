@@ -47,7 +47,7 @@ icon: share-wa.svg
 label_floating: 'Need Help? Chat with us'
 heading: 'Start a Conversation'
 short_description: 'Hi! Click one of our member below to chat on WhatsApp'
-position: left
+position: right
 show_button: true
 contact_whatsapp:
   -
@@ -56,18 +56,22 @@ contact_whatsapp:
     label: 'Pertanyaan Umum'
     message: 'Halo, Saya dapat informasi FAW dari Website gmmobil.com dan ingin menanyakan perihal produk FAW Trucks'
     nomor_whatsapp: 82299999329.0
+    avatar: avatar.jpg
   -
     id: _YJgM4AwCFbQM7oH4jTWU
     nomor_whatsapp: 81112120563.0
     title: 'GMM Services Support'
     label: 'Pertanyaan Seputar Services FAW Trucks'
+    avatar: avatar.jpg
   -
     id: ZaH7rQL5W7T0M3nSwMLD5
     title: 'GMM Parts Support'
     label: 'Pertanyaan Seputar Spare Parts FAW Trucks'
     nomor_whatsapp: 82298036789.0
+    avatar: avatar.jpg
   -
     id: IjsovbTCd_jRU9Trf9Aya
     title: 'GMM Teletech Call & WA Center'
     label: 'Pertanyaan Seputar GMM Teletech Sistem'
     nomor_whatsapp: 81387777329.0
+    avatar: avatar.jpg
