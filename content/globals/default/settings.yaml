@@ -31,6 +31,8 @@ custom_code_body: '<meta name="test-body" content="ok">'
 google_analytics_measurement_id: G-YW01EDIMJ
 header_desktop: true
 header_mobile: true
+show_scroll_top: true
+scroll_top_position: left
 translate_label: 'Pilih Bahasa'
 embed_translate: |-
   <script>
@@ -41,3 +43,31 @@ embed_translate: |-
   }
   </script>
   <script src="https://cdn.gtranslate.net/widgets/latest/lc.js" defer></script>
+icon: share-wa.svg
+label_floating: 'Need Help? Chat with us'
+heading: 'Start a Conversation'
+short_description: 'Hi! Click one of our member below to chat on WhatsApp'
+position: left
+show_button: true
+contact_whatsapp:
+  -
+    id: s451yKtL3eheMz2i5akU5
+    title: 'GMM Customer WA Care'
+    label: 'Pertanyaan Umum'
+    message: 'Halo, Saya dapat informasi FAW dari Website gmmobil.com dan ingin menanyakan perihal produk FAW Trucks'
+    nomor_whatsapp: 82299999329.0
+  -
+    id: _YJgM4AwCFbQM7oH4jTWU
+    nomor_whatsapp: 81112120563.0
+    title: 'GMM Services Support'
+    label: 'Pertanyaan Seputar Services FAW Trucks'
+  -
+    id: ZaH7rQL5W7T0M3nSwMLD5
+    title: 'GMM Parts Support'
+    label: 'Pertanyaan Seputar Spare Parts FAW Trucks'
+    nomor_whatsapp: 82298036789.0
+  -
+    id: IjsovbTCd_jRU9Trf9Aya
+    title: 'GMM Teletech Call & WA Center'
+    label: 'Pertanyaan Seputar GMM Teletech Sistem'
+    nomor_whatsapp: 81387777329.0

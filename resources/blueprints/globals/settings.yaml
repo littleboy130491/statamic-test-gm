@@ -147,11 +147,31 @@ tabs:
             field:
               type: toggle
               display: 'Header Desktop'
+              width: 50
           -
             handle: header_mobile
             field:
               type: toggle
               display: 'Header Mobile'
+              width: 50
+          -
+            handle: show_scroll_top
+            field:
+              default: true
+              type: toggle
+              display: 'Show Scroll Top'
+          -
+            handle: scroll_top_position
+            field:
+              options:
+                -
+                  key: left
+                  value: Left
+                -
+                  key: right
+                  value: Right
+              type: select
+              display: 'Scroll Top Position'
       -
         display: Translate
         fields:
@@ -168,3 +188,81 @@ tabs:
               show_mode_label: false
               type: code
               display: 'Embed Translate'
+  floating_whatsapp:
+    display: 'Floating WhatsApp'
+    sections:
+      -
+        display: 'Floating WhatsApp'
+        fields:
+          -
+            handle: icon
+            field:
+              container: assets
+              max_files: 1
+              type: assets
+              display: Icon
+          -
+            handle: label_floating
+            field:
+              type: text
+              display: 'Label Floating'
+          -
+            handle: heading
+            field:
+              type: text
+              display: Heading
+          -
+            handle: short_description
+            field:
+              type: textarea
+              display: 'Short Description'
+          -
+            handle: position
+            field:
+              options:
+                -
+                  key: left
+                  value: Left
+                -
+                  key: right
+                  value: Right
+              type: select
+              display: Position
+          -
+            handle: show_button
+            field:
+              default: true
+              type: toggle
+              display: 'Show Button'
+      -
+        display: 'Contact WhatsApp'
+        fields:
+          -
+            handle: contact_whatsapp
+            field:
+              type: grid
+              display: 'Contact WhatsApp'
+              mode: stacked
+              fields:
+                -
+                  handle: title
+                  field:
+                    type: text
+                    display: Title
+                    width: 50
+                -
+                  handle: label
+                  field:
+                    type: text
+                    display: Label
+                    width: 50
+                -
+                  handle: nomor_whatsapp
+                  field:
+                    type: float
+                    display: 'Nomor WhatsApp'
+                -
+                  handle: message
+                  field:
+                    type: textarea
+                    display: Message

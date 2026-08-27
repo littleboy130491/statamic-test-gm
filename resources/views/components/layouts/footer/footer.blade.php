@@ -31,7 +31,7 @@
 @endphp
 
 @if ($footer?->get('show'))
-    <footer id="footer">
+    <footer id="footer" class="lg:mt-50">
         <div class="relative overflow-hidden md:overflow-visible lg:overflow-visible">
 
             {{-- Background Footer --}}
@@ -51,7 +51,7 @@
                         <div id="image-footer" class="flex items-end justify-center mb-0 md:w-[60%] lg:w-[50%]">
                             <img src="{{ $footer->augmentedValue('image')->value()?->url() }}"
                                 alt="{{ $footer->augmentedValue('image')->value()?->alt ?? $footer->get('heading') }}"
-                                class="w-auto max-w-full h-auto max-h-104 md:max-h-110 lg:max-h-136 object-contain object-bottom md:-mt-16 lg:-mt-16">
+                                class="w-auto max-w-full h-auto max-h-104 md:max-h-110 lg:max-h-148 object-contain object-bottom md:-mt-16 lg:-mt-28">
                         </div>
 
                         {{-- CTA Footer --}}
