@@ -7,6 +7,7 @@ use App\Http\Controllers\CP\Forms\FormExportController;
 use Illuminate\Support\ServiceProvider;
 use Statamic\Fieldtypes\Bard\Augmentor;
 use Statamic\Http\Controllers\CP\Forms\FormExportController as StatamicFormExportController;
+use Statamic\Statamic;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,5 +28,8 @@ class AppServiceProvider extends ServiceProvider
         // Gambar di dalam Bard dirender jadi <figure>+<figcaption> kalau
         // asset-nya punya caption di .meta.
         Augmentor::replaceExtension('image', new CaptionedImageNode);
+
+        // CSS tambahan control panel
+        Statamic::externalStyle(url('/cp/custom.css'));
     }
 }

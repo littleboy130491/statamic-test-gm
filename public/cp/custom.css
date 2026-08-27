@@ -1,0 +1,10 @@
+/* Logo halaman login CP */
+body.outside .logo {
+    max-width: 200px;
+}
+
+body.outside .logo .white-label-logo {
+    max-height: 56px;
+    width: auto;
+    margin-inline: auto;
+}
