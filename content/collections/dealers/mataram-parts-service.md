@@ -7,12 +7,12 @@ address: |-
   PART & SERVICE CENTER GAYA MAKMUR MOBIL
   Jalan TGH. Faesal No.31, Turida
   Kec. Sandubaya, Kota Mataram, Nusa Tenggara Barat
-whatsapp_number: 0812 3766 511
+whatsapp_number: '0812 3766 511'
 whatsapp_link: 'https://wa.me/628123766511'
 is_active: true
 display_grid_view: true
 dealer_categories:
-  - service-center
+  - parts-service-center
 location:
   latitude: -8.583333
   longitude: 116.116667

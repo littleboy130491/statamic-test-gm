@@ -6,7 +6,7 @@ city: OKI
 is_active: true
 display_grid_view: true
 dealer_categories:
-  - service-center
+  - parts-service-center
 location:
   latitude: -3.3947
   longitude: 104.8408

@@ -6,7 +6,7 @@ city: Purwokerto
 is_active: true
 display_grid_view: true
 dealer_categories:
-  - service-center
+  - parts-service-center
 location:
   latitude: -7.421944
   longitude: 109.234444

@@ -6,7 +6,7 @@ city: Gorontalo
 is_active: true
 display_grid_view: true
 dealer_categories:
-  - service-center
+  - parts-service-center
 location:
   latitude: 0.5435
   longitude: 123.059

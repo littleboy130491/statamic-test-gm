@@ -6,7 +6,7 @@ city: Morowali
 is_active: true
 display_grid_view: true
 dealer_categories:
-  - service-center
+  - parts-service-center
 location:
   latitude: -2.5333
   longitude: 121.9667

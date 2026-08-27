@@ -47,9 +47,10 @@ tabs:
               max_files: 1
               type: assets
               display: 'CV / Resume'
-              hide_display: true
               validate:
                 - required
                 - 'max: 5120'
               always_save: false
               folder: form-career
+              instructions: 'Maks. 5MB'
+              instructions_position: below

@@ -6,12 +6,12 @@ city: Kolaka
 address: |-
   PART & SERVICE CENTER GAYA MAKMUR MOBIL
   Desa Tolowe Ponre waru Dusun V, kec. Wolo . Kab. Kolaka, Provinsi Sulawesi Tenggara
-whatsapp_number: 0811 1220 0873
+whatsapp_number: '0811 1220 0873'
 whatsapp_link: 'https://wa.me/6281112200873'
 is_active: true
 display_grid_view: true
 dealer_categories:
-  - service-center
+  - parts-service-center
 location:
   latitude: -4.056389
   longitude: 121.593611

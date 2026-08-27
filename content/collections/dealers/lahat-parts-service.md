@@ -6,7 +6,7 @@ city: Lahat
 is_active: true
 display_grid_view: true
 dealer_categories:
-  - service-center
+  - parts-service-center
 location:
   latitude: -3.786944
   longitude: 103.542778

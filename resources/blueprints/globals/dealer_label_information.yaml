@@ -36,7 +36,6 @@ tabs:
               default: 'Dealer tidak ditemukan. Coba kata kunci atau filter lain.'
               type: text
               display: 'Empty Search Feedback'
-              width: 66
           -
             handle: icon_maps_dealer
             field:

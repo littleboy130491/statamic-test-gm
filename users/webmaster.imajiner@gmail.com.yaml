@@ -75,12 +75,12 @@ preferences:
         - datestamp
     career_apply:
       columns:
-        - datestamp
         - name
-        - position
         - email
+        - location
+        - datestamp
+        - position
         - phone
-        - cv_resume
   locale: en
   theme: null
   taxonomies:

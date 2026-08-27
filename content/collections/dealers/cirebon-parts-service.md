@@ -10,7 +10,7 @@ phone_number: '(0231) 203 313'
 is_active: true
 display_grid_view: true
 dealer_categories:
-  - service-center
+  - parts-service-center
 location:
   latitude: -6.732
   longitude: 108.5523

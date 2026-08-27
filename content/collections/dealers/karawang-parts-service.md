@@ -10,7 +10,7 @@ google_maps_url: 'https://maps.app.goo.gl/2ACjGLsd6t4sVnjm6'
 is_active: true
 display_grid_view: true
 dealer_categories:
-  - service-center
+  - parts-service-center
 location:
   latitude: -6.304167
   longitude: 107.305556

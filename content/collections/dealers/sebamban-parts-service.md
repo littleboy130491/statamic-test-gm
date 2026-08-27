@@ -6,13 +6,13 @@ city: Sebamban
 address: |-
   SERVICE CENTER GAYA MAKMUR MOBIL
   Jalan Ahmad Yani desa Mekar Jaya RT.04 RW.02 Kecamatan Angsana, Kabupaten Tanah Bumbu, Kalimantan Selatan.
-whatsapp_number: 0813 4895 9357
+whatsapp_number: '0813 4895 9357'
 whatsapp_link: 'https://wa.me/6281348959357'
 google_maps_url: 'https://maps.app.goo.gl/FccQBRYK8926LjVX6'
 is_active: true
 display_grid_view: true
 dealer_categories:
-  - service-center
+  - parts-service-center
 location:
   latitude: -3.4667
   longitude: 115.7333

@@ -7,12 +7,12 @@ address: |-
   PART CENTER & SERVICE CENTER GAYA MAKMUR MOBIL
   Jln. Pembangunan Tj. Redeb, Kec. Tj. Redeb, Kabupaten Berau
   Kalimantan Timur 77315
-whatsapp_number: 0811 1997 0654
+whatsapp_number: '0811 1997 0654'
 whatsapp_link: 'https://wa.me/6281119970654'
 is_active: true
 display_grid_view: true
 dealer_categories:
-  - service-center
+  - parts-service-center
 location:
   latitude: 2.155556
   longitude: 117.494444

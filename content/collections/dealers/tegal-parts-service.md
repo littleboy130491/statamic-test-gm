@@ -6,7 +6,7 @@ city: Tegal
 is_active: true
 display_grid_view: true
 dealer_categories:
-  - service-center
+  - parts-service-center
 location:
   latitude: -6.869444
   longitude: 109.140556

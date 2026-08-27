@@ -11,7 +11,7 @@ whatsapp_link: 'https://wa.me/6281330783711'
 is_active: true
 display_grid_view: true
 dealer_categories:
-  - service-center
+  - parts-service-center
 location:
   latitude: -6.8976
   longitude: 112.0648

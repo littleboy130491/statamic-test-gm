@@ -6,7 +6,7 @@ city: Marunda
 is_active: true
 display_grid_view: true
 dealer_categories:
-  - service-center
+  - parts-service-center
 location:
   latitude: -6.105
   longitude: 106.945
