@@ -36,14 +36,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const map = L.map('dealer-map', { zoomControl: false }).setView([-2.5, 118], 5);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-    const layerStreet = L.tileLayer(
-        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
-        {
-            attribution: '&copy; Esri, HERE, Garmin, (c) OpenStreetMap contributors, and the GIS user community',
-            maxZoom: 20,
-            className: 'dealer-street-tiles',
-        },
-    );
+    const layerStreet = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 20,
+        className: 'dealer-street-tiles',
+    });
 
     const layerSatellite = L.tileLayer(
         'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',

@@ -158,7 +158,8 @@ body.background-grey {
 
 /* Marker icon - DEALER MAPS */
 .leaflet-tile.dealer-street-tiles {
-   filter: saturate(0.45) brightness(1.12) contrast(0.9);
+   filter: saturate(0.2) brightness(1.14) contrast(0.84);
+   opacity: 0.9;
 }
 
 .dealer-map-marker {
