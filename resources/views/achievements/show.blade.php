@@ -1,10 +1,11 @@
 <x-layouts.app>
     <article class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:py-16">
         <header class="text-center">
-            @if ($page->years)
+            @php($years = collect($page->years ?? [])->filter())
+            @if ($years->isNotEmpty())
                 <p class="text-sm font-semibold uppercase tracking-widest text-emerald-600">
-                    @foreach (collect($page->years) as $year)
-                        {{ $year->title }}@unless($loop->last), @endunless
+                    @foreach ($years as $year)
+                        {{ data_get($year, 'title', is_scalar($year) ? $year : '') }}@unless($loop->last), @endunless
                     @endforeach
                 </p>
             @endif

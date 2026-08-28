@@ -77,8 +77,8 @@
                                     {{ $certificate->title }}</p>
                                 <p
                                     class="uppercase text-(--color-primary) font-medium group-hover/card:text-(--color-secondary) text-xs lg:text-base lg:mt-1">
-                                    @foreach (collect($certificate->years ?? []) as $year)
-                                        {{ $year->title }}
+                                    @foreach (collect($certificate->years ?? [])->filter() as $year)
+                                        {{ data_get($year, 'title', is_scalar($year) ? $year : '') }}
                                         @unless ($loop->last)
                                             ,
                                         @endunless
