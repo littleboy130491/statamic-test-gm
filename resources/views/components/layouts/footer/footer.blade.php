@@ -1,3 +1,7 @@
+@props([
+    'compact' => false,
+])
+
 @php
     $footer = \Statamic\Facades\GlobalSet::findByHandle('primary_footer')?->inCurrentSite();
 
@@ -31,7 +35,7 @@
 @endphp
 
 @if ($footer?->get('show'))
-    <footer id="footer" class="lg:mt-50">
+    <footer id="footer" class="{{ $compact ? 'lg:mt-30' : 'lg:mt-50' }}">
         <div class="relative overflow-hidden md:overflow-visible lg:overflow-visible">
 
             {{-- Background Footer --}}

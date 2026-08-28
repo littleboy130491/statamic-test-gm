@@ -115,7 +115,7 @@
             ),
         );
 
-    $productFieldHandles = $page->blueprint()?->fields()->all()->keys() ?? collect();
+    $productFieldHandles = $page->entry()?->blueprint()?->fields()->all()->keys() ?? collect();
 
     $compareRows = collect([['handle' => 'model', 'label' => $productGlobal?->value('model_labels') ?: 'Model']])
         ->concat(
@@ -419,7 +419,7 @@
             @endif
 
             <div class="container relative z-10">
-                <div class="py-18 md:py-18 lg:py-30 flex flex-col gap-8 lg:gap-10">
+                <div class="pt-18 pb-18 lg:pt-30 flex flex-col gap-8 lg:gap-10">
                     <h2>{{ $product['comparison_labels'] ?? '' }}</h2>
 
                     {{-- Compare Grid --}}
@@ -503,6 +503,6 @@
     </main>
 
     @if ($hasFooter)
-        <x-layouts.footer.footer />
+        <x-layouts.footer.footer :compact="true" />
     @endif
 </x-layouts.main>
