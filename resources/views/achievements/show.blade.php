@@ -3,7 +3,7 @@
         <header class="text-center">
             @if ($page->years)
                 <p class="text-sm font-semibold uppercase tracking-widest text-emerald-600">
-                    @foreach ($page->years as $year)
+                    @foreach (collect($page->years) as $year)
                         {{ $year->title }}@unless($loop->last), @endunless
                     @endforeach
                 </p>

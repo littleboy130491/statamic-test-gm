@@ -77,7 +77,7 @@
                                     {{ $certificate->title }}</p>
                                 <p
                                     class="uppercase text-(--color-primary) font-medium group-hover/card:text-(--color-secondary) text-xs lg:text-base lg:mt-1">
-                                    @foreach ($certificate->years ?? [] as $year)
+                                    @foreach (collect($certificate->years ?? []) as $year)
                                         {{ $year->title }}
                                         @unless ($loop->last)
                                             ,
