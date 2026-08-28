@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             attribution: '&copy; Esri, HERE, Garmin, (c) OpenStreetMap contributors, and the GIS user community',
             maxZoom: 20,
+            className: 'dealer-street-tiles',
         },
     );
 
