@@ -7,7 +7,7 @@ taxonomies:
   - tags
 revisions: true
 route: '/karier/{slug}'
-date: true
+date: false
 sort_by: title
 sort_dir: desc
 date_behavior:

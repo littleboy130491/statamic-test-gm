@@ -41,6 +41,7 @@ tabs:
                 - years
               display: Years
               mode: select
+              max_items: 1
   'SEO Meta':
     display: 'SEO Meta'
     sections:
