@@ -75,9 +75,17 @@
                                 </a>
                                 <p class="text-(--color-heading) title-display text-base tracking-tight lg:text-2xl">
                                     {{ $certificate->title }}</p>
+                                @php
+                                    $certificateYears = $certificate->years ?? [];
+                                    $certificateYears =
+                                        $certificateYears instanceof \Illuminate\Support\Collection ||
+                                        is_array($certificateYears)
+                                            ? collect($certificateYears)
+                                            : collect([$certificateYears]);
+                                @endphp
                                 <p
                                     class="uppercase text-(--color-primary) font-medium group-hover/card:text-(--color-secondary) text-xs lg:text-base lg:mt-1">
-                                    @foreach (collect($certificate->years ?? [])->filter() as $year)
+                                    @foreach ($certificateYears->filter() as $year)
                                         {{ data_get($year, 'title', is_scalar($year) ? $year : '') }}
                                         @unless ($loop->last)
                                             ,

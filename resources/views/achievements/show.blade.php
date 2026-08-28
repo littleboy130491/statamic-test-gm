@@ -1,7 +1,14 @@
 <x-layouts.app>
     <article class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:py-16">
         <header class="text-center">
-            @php($years = collect($page->years ?? [])->filter())
+            @php
+                $yearValue = $page->years ?? [];
+                $years =
+                    $yearValue instanceof \Illuminate\Support\Collection || is_array($yearValue)
+                        ? collect($yearValue)
+                        : collect([$yearValue]);
+                $years = $years->filter();
+            @endphp
             @if ($years->isNotEmpty())
                 <p class="text-sm font-semibold uppercase tracking-widest text-emerald-600">
                     @foreach ($years as $year)
