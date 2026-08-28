@@ -28,12 +28,30 @@
             <div data-hero-track class="flex transition-transform duration-500 ease-out">
 
                 @foreach ($slider_banner as $slide)
+                    @php
+                        $videoUrl = $slide['backgound_video'] ?? null;
+                        $videoUrl = is_string($videoUrl) ? $videoUrl : null;
+                        $youtubeId = null;
+
+                        if ($videoUrl && preg_match('~(?:youtube(?:-nocookie)?\.com/(?:watch\?v=|embed/|shorts/)|youtu\.be/)([A-Za-z0-9_-]{11})~', $videoUrl, $matches)) {
+                            $youtubeId = $matches[1];
+                        }
+                    @endphp
+
                     {{-- Slide --}}
                     <div data-hero-slide class="min-w-full">
                         <div class="relative overflow-hidden bg-slate-900 {{ $sliderHeight }}">
 
+                            {{-- Background video --}}
+                            @if ($youtubeId)
+                                <iframe
+                                    src="https://www.youtube-nocookie.com/embed/{{ $youtubeId }}?autoplay=1&mute=1&loop=1&playlist={{ $youtubeId }}&controls=0&rel=0&playsinline=1"
+                                    title="{{ $slide['heading'] ?? 'Hero video' }}"
+                                    class="pointer-events-none absolute inset-0 h-full w-full"
+                                    allow="autoplay; encrypted-media; picture-in-picture"
+                                    allowfullscreen></iframe>
                             {{-- Background image --}}
-                            @if (!empty($slide['backgound_image']))
+                            @elseif (!empty($slide['backgound_image']))
                                 <img src="{{ $slide['backgound_image']?->url() ?? $slide['backgound_image'] }}"
                                     alt="{{ $slide['backgound_image']?->alt ?? $slide['heading'] ?? '' }}"
                                     class="pointer-events-none absolute inset-0 h-full w-full object-cover" />
