@@ -20,4 +20,10 @@ slider_banner:
     label_button: 'Mulai Konsultasi'
     url_button: 'entry::02bd16ee-6482-47b6-bdd1-28440329ffad'
     backgound_image: mekanik-1440x700px.jpg
+  -
+    id: zpWsNMFcZvWWTEBkMNDq0
+    heading: tes
+    label_button: tes
+    url_button: 'https://gm.demo-ku.com/'
+    backgound_video: 'https://www.youtube.com/watch?v=MLpWrANjFbI'
 show: true
