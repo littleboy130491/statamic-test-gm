@@ -114,20 +114,6 @@ sections:
     type: marketplace
     enabled: true
   -
-    id: uDmMzRHB2h61k4VezBqfw
-    identifier: section-blog-sosmed
-    heading: 'Tetap Terhubung dengan Komunitas GMM'
-    description:
-      -
-        type: paragraph
-        content:
-          -
-            type: text
-            text: 'Ikuti perkembangan terbaru, dokumentasi serah terima unit, dan edukasi interaktif kami di seluruh kanal media sosial resmi PT Gaya Makmur Mobil.'
-    show: true
-    type: heading_description
-    enabled: true
-  -
     id: Ii6nqLfa4CrDPYWfx2-Ao
     identifier: section-dealer
     heading: 'Rekan Jaringan<br>PT Gaya Makmur Mobil'
@@ -171,6 +157,20 @@ sections:
     show: true
     type: text_button
     enabled: true
+  -
+    id: uDmMzRHB2h61k4VezBqfw
+    identifier: section-blog-sosmed
+    heading: 'Tetap Terhubung dengan Komunitas GMM'
+    description:
+      -
+        type: paragraph
+        content:
+          -
+            type: text
+            text: 'Ikuti perkembangan terbaru, dokumentasi serah terima unit, dan edukasi interaktif kami di seluruh kanal media sosial resmi PT Gaya Makmur Mobil.'
+    show: false
+    type: heading_description
+    enabled: true
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
-updated_at: 1787802079
+updated_at: 1787907227
 ---
