@@ -156,13 +156,6 @@ body.background-grey {
 
 
 
-/* leaflet Watermark - DEALER MAPS */
-.leaflet-control-attribution {
-   display: none !important;
-}
-
-
-
 /* Marker icon - DEALER MAPS */
 .dealer-map-marker {
     object-fit: contain;
