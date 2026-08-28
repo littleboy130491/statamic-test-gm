@@ -156,12 +156,18 @@ body.background-grey {
 
 
 
-/* Marker icon - DEALER MAPS */
-.leaflet-tile.dealer-street-tiles {
-   filter: grayscale(0.72) saturate(0.18) brightness(1.16) contrast(0.82);
-   opacity: 0.88;
+/* Sea colour behind the flat vector land layer - DEALER MAPS */
+/* !important because leaflet.css is imported unlayered and its
+   `.leaflet-container { background: #ddd }` otherwise beats this layered rule. */
+#dealer-map.leaflet-container {
+   background: #D5E8EB !important;
 }
 
+#dealer-map.leaflet-container.is-satellite {
+   background: none !important;
+}
+
+/* Marker icon - DEALER MAPS */
 .dealer-map-marker {
     object-fit: contain;
 }

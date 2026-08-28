@@ -1,5 +1,6 @@
 // Maps dealer — search, filter, hotspot (hover desktop / click mobile)
 
+import landGeoJson from './data/land.json';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
@@ -36,11 +37,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const map = L.map('dealer-map', { zoomControl: false }).setView([-2.5, 118], 5);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-    const layerStreet = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        subdomains: 'abc',
-        maxZoom: 20,
-        className: 'dealer-street-tiles',
+    // Flat vector basemap: land drawn from local GeoJSON over a solid sea
+    // colour. No raster tiles, so there is no terrain texture and no labels.
+    const layerStreet = L.geoJSON(landGeoJson, {
+        style: {
+            fillColor: '#FBF8F3',
+            fillOpacity: 1,
+            color: '#E2E8EB',
+            weight: 1,
+        },
+        interactive: false,
     });
 
     const layerSatellite = L.tileLayer(
@@ -66,9 +72,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (this.dataset.layer === 'street') {
                         map.removeLayer(layerSatellite);
                         map.addLayer(layerStreet);
+                        mapEl.classList.remove('is-satellite');
                     } else {
                         map.removeLayer(layerStreet);
                         map.addLayer(layerSatellite);
+                        mapEl.classList.add('is-satellite');
                     }
                 });
             });
