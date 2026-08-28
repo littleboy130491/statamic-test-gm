@@ -41,7 +41,7 @@ preferences:
       after_save: continue_editing
       per_page: 100
     careers:
-      view: tree
+      view: list
       columns:
         - title
         - slug
