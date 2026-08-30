@@ -12,6 +12,7 @@ tabs:
             field:
               type: text
               display: 'Requirements Label'
+              instructions: 'Label bagian persyaratan.'
               validate:
                 - required
           -
@@ -19,6 +20,7 @@ tabs:
             field:
               type: text
               display: 'Label Jobdesc'
+              instructions: 'Label bagian deskripsi pekerjaan.'
               validate:
                 - required
           -
@@ -26,6 +28,7 @@ tabs:
             field:
               type: text
               display: 'Label Submit Button'
+              instructions: 'Teks tombol lamar.'
               validate:
                 - required
           -
@@ -35,6 +38,7 @@ tabs:
               max_files: 1
               type: assets
               display: 'Icon Employment Status'
+              instructions: 'Ikon status pekerjaan.'
               validate:
                 - required
           -
@@ -44,6 +48,7 @@ tabs:
               max_files: 1
               type: assets
               display: 'Icon Location'
+              instructions: 'Ikon lokasi.'
               validate:
                 - required
       -
@@ -58,6 +63,7 @@ tabs:
               max_files: 1
               type: assets
               display: 'Background Images'
+              instructions: 'Gambar latar bagian ajakan bertindak.'
               validate:
                 - required
           -

@@ -11,6 +11,7 @@ tabs:
               default: Peta
               type: text
               display: 'Peta Label'
+              instructions: 'Label mode tampilan peta.'
               width: 33
               validate:
                 - required
@@ -20,6 +21,7 @@ tabs:
               default: Satelit
               type: text
               display: 'Satelit Label'
+              instructions: 'Label mode tampilan satelit.'
               width: 33
               validate:
                 - required
@@ -29,6 +31,7 @@ tabs:
               default: 'Ketik Kota'
               type: text
               display: 'Placeholder Search'
+              instructions: 'Teks bantuan pada kolom pencarian.'
               width: 33
           -
             handle: empty_search_label
@@ -36,6 +39,7 @@ tabs:
               default: 'Dealer tidak ditemukan. Coba kata kunci atau filter lain.'
               type: text
               display: 'Empty Search Feedback'
+              instructions: 'Pesan saat dealer tidak ditemukan.'
           -
             handle: icon_maps_dealer
             field:
@@ -43,6 +47,7 @@ tabs:
               max_files: 1
               type: assets
               display: 'Icon Maps Dealer'
+              instructions: 'Ikon penanda dealer di peta.'
               validate:
                 - required
           -
@@ -52,6 +57,7 @@ tabs:
               max_files: 1
               type: assets
               display: 'Icon Phone Dealer'
+              instructions: 'Ikon telepon dealer.'
           -
             handle: icon_whatsapp_dealer
             field:
@@ -59,3 +65,4 @@ tabs:
               max_files: 1
               type: assets
               display: 'Icon WhatsApp Dealer'
+              instructions: 'Ikon WhatsApp dealer.'

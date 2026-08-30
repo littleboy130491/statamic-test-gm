@@ -11,6 +11,7 @@ tabs:
             field:
               type: text
               display: 'Category Labels'
+              instructions: 'Label kategori produk.'
               validate:
                 - required
           -
@@ -18,11 +19,13 @@ tabs:
             field:
               type: text
               display: 'Industry Labels'
+              instructions: 'Label industri.'
           -
             handle: spesification_labels
             field:
               type: text
               display: 'Spesification Labels'
+              instructions: 'Label spesifikasi.'
               validate:
                 - required
           -
@@ -30,6 +33,7 @@ tabs:
             field:
               type: text
               display: 'Comparison Labels'
+              instructions: 'Label perbandingan.'
               validate:
                 - required
       -
@@ -40,6 +44,7 @@ tabs:
             field:
               type: text
               display: 'Type Labels'
+              instructions: 'Label tipe.'
               validate:
                 - required
           -
@@ -47,6 +52,7 @@ tabs:
             field:
               type: text
               display: 'Model Labels'
+              instructions: 'Label model.'
               validate:
                 - required
           -
@@ -54,6 +60,7 @@ tabs:
             field:
               type: text
               display: 'Dimention Labels'
+              instructions: 'Label dimensi.'
               validate:
                 - required
           -
@@ -61,6 +68,7 @@ tabs:
             field:
               type: text
               display: 'Engine Labels'
+              instructions: 'Label mesin.'
               validate:
                 - required
           -
@@ -68,6 +76,7 @@ tabs:
             field:
               type: text
               display: 'Chassis Labels'
+              instructions: 'Label sasis.'
               validate:
                 - required
           -
@@ -75,5 +84,6 @@ tabs:
             field:
               type: text
               display: 'Safety & Security Labels'
+              instructions: 'Label keselamatan dan keamanan.'
               validate:
                 - required

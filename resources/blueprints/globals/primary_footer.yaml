@@ -13,6 +13,7 @@ tabs:
               min_files: 1
               type: assets
               display: Image
+              instructions: 'Gambar utama footer.'
               validate:
                 - required
           -
@@ -20,6 +21,7 @@ tabs:
             field:
               type: text
               display: Heading
+              instructions: 'Judul footer.'
               validate:
                 - required
           -
@@ -27,6 +29,7 @@ tabs:
             field:
               type: textarea
               display: 'Short Description'
+              instructions: 'Deskripsi singkat footer.'
           -
             handle: backgound_image
             field:
@@ -57,6 +60,7 @@ tabs:
             field:
               type: toggle
               display: Show
+              instructions: 'Tampilkan footer.'
       -
         display: 'Other Information'
         fields:
@@ -66,5 +70,6 @@ tabs:
               default: 'Media Sosial'
               type: text
               display: 'Label Social Media (Mobile)'
+              instructions: 'Label media sosial di tampilan mobile.'
               validate:
                 - required

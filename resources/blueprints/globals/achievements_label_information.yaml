@@ -12,5 +12,6 @@ tabs:
               max_files: 1
               type: assets
               display: 'Placeholder Image'
+              instructions: 'Gambar cadangan bila penghargaan tanpa gambar.'
               validate:
                 - required

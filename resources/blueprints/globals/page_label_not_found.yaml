@@ -10,6 +10,7 @@ tabs:
             field:
               type: text
               display: 'Not Found'
+              instructions: 'Teks kode kesalahan, misal 404.'
               validate:
                 - required
           -
@@ -17,6 +18,7 @@ tabs:
             field:
               type: text
               display: Heading
+              instructions: 'Judul halaman tidak ditemukan.'
               validate:
                 - required
           -
@@ -24,6 +26,7 @@ tabs:
             field:
               type: textarea
               display: Description
+              instructions: 'Penjelasan singkat.'
               validate:
                 - required
           -
@@ -31,6 +34,7 @@ tabs:
             field:
               type: text
               display: 'Button Label'
+              instructions: 'Teks tombol kembali.'
               width: 50
               validate:
                 - required
@@ -39,6 +43,7 @@ tabs:
             field:
               type: link
               display: Link
+              instructions: 'Tujuan tombol kembali.'
               width: 50
               validate:
                 - required

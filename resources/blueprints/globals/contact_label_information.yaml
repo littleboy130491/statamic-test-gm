@@ -10,6 +10,7 @@ tabs:
             field:
               type: text
               display: 'Phone Number Heading'
+              instructions: 'Judul bagian telepon.'
               validate:
                 - required
           -
@@ -17,6 +18,7 @@ tabs:
             field:
               type: text
               display: 'Email Heading'
+              instructions: 'Judul bagian email.'
               validate:
                 - required
           -
@@ -24,6 +26,7 @@ tabs:
             field:
               type: text
               display: 'Address Heading'
+              instructions: 'Judul bagian alamat.'
               validate:
                 - required
           -
@@ -31,6 +34,7 @@ tabs:
             field:
               type: text
               display: 'Social Media Labels'
+              instructions: 'Label bagian media sosial.'
               validate:
                 - required
           -
@@ -38,6 +42,7 @@ tabs:
             field:
               type: text
               display: 'Submit Button Label'
+              instructions: 'Teks tombol kirim.'
               validate:
                 - required
           -
@@ -53,6 +58,7 @@ tabs:
               remove_empty_nodes: false
               type: bard
               display: 'Success message'
+              instructions: 'Pesan saat pesan berhasil dikirim.'
               validate:
                 - required
           -
@@ -68,5 +74,6 @@ tabs:
               remove_empty_nodes: false
               type: bard
               display: 'Message failed'
+              instructions: 'Pesan saat pesan gagal dikirim.'
               validate:
                 - required

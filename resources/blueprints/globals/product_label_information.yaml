@@ -11,6 +11,7 @@ tabs:
             field:
               type: text
               display: 'Category Labels'
+              instructions: 'Label kategori produk.'
               validate:
                 - required
           -
@@ -18,6 +19,7 @@ tabs:
             field:
               type: text
               display: 'Industry Labels'
+              instructions: 'Label industri.'
               validate:
                 - required
           -
@@ -25,6 +27,7 @@ tabs:
             field:
               type: text
               display: 'Spesification Labels'
+              instructions: 'Label spesifikasi.'
               validate:
                 - required
           -
@@ -32,6 +35,7 @@ tabs:
             field:
               type: text
               display: 'Comparison Labels'
+              instructions: 'Label perbandingan.'
               validate:
                 - required
           -
@@ -51,6 +55,7 @@ tabs:
               remove_empty_nodes: false
               type: bard
               display: 'Product Not Found'
+              instructions: 'Pesan saat produk tidak ditemukan.'
               validate:
                 - required
           -
@@ -58,6 +63,7 @@ tabs:
             field:
               type: text
               display: 'Benefit Label'
+              instructions: 'Label bagian keunggulan.'
               validate:
                 - required
           -
@@ -79,6 +85,7 @@ tabs:
               default: tanggal_upload
               type: select
               display: 'Product Sort Order By'
+              instructions: 'Urutan tampil produk.'
               validate:
                 - required
       -
@@ -89,6 +96,7 @@ tabs:
             field:
               type: text
               display: 'Type Labels'
+              instructions: 'Label tipe.'
               validate:
                 - required
               width: 33
@@ -97,6 +105,7 @@ tabs:
             field:
               type: text
               display: 'Model Labels'
+              instructions: 'Label model.'
               width: 33
               validate:
                 - required
@@ -105,6 +114,7 @@ tabs:
             field:
               type: text
               display: 'Empty Placeholder Data'
+              instructions: 'Teks pengganti bila data kosong.'
               validate:
                 - required
               width: 33
@@ -113,6 +123,7 @@ tabs:
             field:
               type: checkboxes
               display: 'Spesification Info'
+              instructions: 'Spesifikasi yang tampil di kartu produk.'
               options:
                 -
                   key: power
@@ -158,6 +169,7 @@ tabs:
               max_files: 1
               type: assets
               display: 'Image Placeholders'
+              instructions: 'Gambar cadangan bila produk tanpa gambar.'
               validate:
                 - required
           -
@@ -166,6 +178,7 @@ tabs:
               container: assets
               type: assets
               display: 'Image Features & Benefit Placeholder'
+              instructions: 'Gambar cadangan bagian fitur dan keunggulan.'
               validate:
                 - required
           -
@@ -175,6 +188,7 @@ tabs:
               max_files: 1
               type: assets
               display: 'Background image Placeholder'
+              instructions: 'Gambar latar cadangan.'
               validate:
                 - required
           -
@@ -184,3 +198,4 @@ tabs:
               max_files: 1
               type: assets
               display: 'Background Pattern Image'
+              instructions: 'Gambar pola latar.'

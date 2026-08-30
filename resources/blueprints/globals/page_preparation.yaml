@@ -11,6 +11,7 @@ tabs:
             field:
               type: toggle
               display: 'Activate Mode'
+              instructions: 'Aktifkan mode halaman dalam persiapan.'
           -
             handle: background_image
             field:
@@ -18,6 +19,7 @@ tabs:
               max_files: 1
               type: assets
               display: 'Background Image'
+              instructions: 'Gambar latar.'
               validate:
                 - required
           -
@@ -25,6 +27,7 @@ tabs:
             field:
               type: text
               display: Heading
+              instructions: 'Judul halaman.'
               validate:
                 - required
           -
@@ -42,6 +45,7 @@ tabs:
               remove_empty_nodes: false
               type: bard
               display: Description
+              instructions: 'Penjelasan singkat.'
               validate:
                 - required
           -
@@ -49,3 +53,4 @@ tabs:
             field:
               type: date
               display: Duration
+              instructions: 'Perkiraan tanggal selesai.'
