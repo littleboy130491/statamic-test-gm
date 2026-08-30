@@ -1,10 +1,4 @@
-title: 'Jayapura'
-office_type: branch
-dealer_category:
-  - cabang-dealer
-location:
-  latitude: -2.533333
-  longitude: 140.716667
+title: Jayapura
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785386400
 blueprint: location

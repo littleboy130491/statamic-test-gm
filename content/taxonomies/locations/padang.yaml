@@ -1,10 +1,4 @@
-title: 'Padang'
-office_type: dealer
-dealer_category:
-  - cabang-dealer
-location:
-  latitude: -0.947083
-  longitude: 100.417181
+title: Padang
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785386400
 blueprint: location

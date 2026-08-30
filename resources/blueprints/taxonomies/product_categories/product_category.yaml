@@ -12,6 +12,7 @@ tabs:
               required: true
               display: Title
               localizable: true
+              instructions: 'Judul konten.'
               validate:
                 - required
           -
@@ -21,6 +22,7 @@ tabs:
               max_files: 1
               type: assets
               display: Images
+              instructions: 'Gambar kategori.'
               validate:
                 - required
   sidebar:
@@ -33,6 +35,7 @@ tabs:
             field:
               type: slug
               required: true
+              instructions: 'URL otomatis dari judul.'
               validate:
                 - required
                 - 'max:200'
@@ -46,6 +49,7 @@ tabs:
               max_items: 1
               display: 'Parent Category'
               localizable: true
+              instructions: 'Kategori induk (opsional).'
   'SEO Meta':
     display: 'SEO Meta'
     sections:

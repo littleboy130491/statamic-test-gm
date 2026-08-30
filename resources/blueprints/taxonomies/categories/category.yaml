@@ -12,6 +12,7 @@ tabs:
               required: true
               display: Title
               localizable: true
+              instructions: 'Judul konten.'
               validate:
                 - required
           -
@@ -21,7 +22,7 @@ tabs:
               max_files: 1
               type: assets
               display: 'Hero banner image'
-              instructions: optional
+              instructions: 'Gambar banner (opsional).'
   sidebar:
     display: Sidebar
     sections:
@@ -32,6 +33,7 @@ tabs:
             field:
               type: slug
               required: true
+              instructions: 'URL otomatis dari judul.'
               validate:
                 - required
                 - 'max:200'
@@ -45,6 +47,7 @@ tabs:
               max_items: 1
               display: 'Parent Category'
               localizable: true
+              instructions: 'Kategori induk (opsional).'
   'SEO Meta':
     display: 'SEO Meta'
     sections:

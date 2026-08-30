@@ -1,10 +1,4 @@
-title: 'Makassar'
-office_type: branch
-dealer_category:
-  - cabang-dealer
-location:
-  latitude: -5.147665
-  longitude: 119.432732
+title: Makassar
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785386400
 blueprint: location

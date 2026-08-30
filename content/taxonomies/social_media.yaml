@@ -1,4 +1,6 @@
 title: 'Social Media'
+blueprints:
+  - social_media
 preview_targets:
   -
     label: Term

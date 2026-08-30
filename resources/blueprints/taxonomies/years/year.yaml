@@ -12,6 +12,7 @@ tabs:
               required: true
               display: Title
               localizable: true
+              instructions: 'Tahun.'
   sidebar:
     display: Sidebar
     sections:
@@ -22,4 +23,5 @@ tabs:
             field:
               type: slug
               localizable: true
+              instructions: 'URL otomatis dari judul.'
               validate: 'max:200'

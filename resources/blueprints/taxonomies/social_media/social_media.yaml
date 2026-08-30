@@ -1,4 +1,4 @@
-title: Location
+title: 'Social Media'
 tabs:
   main:
     display: Main
@@ -12,7 +12,9 @@ tabs:
               required: true
               display: Title
               localizable: true
-              instructions: 'Nama lokasi (dipakai di lowongan karier).'
+              instructions: 'Nama platform (dipakai di post kategori Sosial Media).'
+              validate:
+                - required
   sidebar:
     display: Sidebar
     sections:

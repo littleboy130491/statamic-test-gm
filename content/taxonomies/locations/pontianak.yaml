@@ -1,10 +1,4 @@
-title: 'Pontianak'
-office_type: branch
-dealer_category:
-  - cabang-dealer
-location:
-  latitude: -0.02633
-  longitude: 109.342503
+title: Pontianak
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785386400
 blueprint: location

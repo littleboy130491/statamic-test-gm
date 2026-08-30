@@ -13,6 +13,7 @@ tabs:
               display: Title
               localizable: true
               width: 50
+              instructions: 'Judul konten.'
               validate:
                 - required
           -
@@ -21,6 +22,7 @@ tabs:
               type: integer
               display: Order
               width: 50
+              instructions: 'Urutan tampilan.'
   sidebar:
     display: Sidebar
     sections:
@@ -31,6 +33,7 @@ tabs:
             field:
               type: slug
               required: true
+              instructions: 'URL otomatis dari judul.'
               validate:
                 - required
                 - 'max:200'

@@ -12,6 +12,7 @@ tabs:
               required: true
               display: Title
               localizable: true
+              instructions: 'Judul konten.'
               validate:
                 - required
           -
@@ -22,12 +23,14 @@ tabs:
               container: assets
               max_files: 1
               localizable: true
+              instructions: 'Gambar utama.'
           -
             handle: content
             field:
               type: bard
               display: Description
               localizable: true
+              instructions: 'Deskripsi.'
               buttons:
                 - bold
                 - italic
@@ -47,6 +50,7 @@ tabs:
             field:
               type: slug
               required: true
+              instructions: 'URL otomatis dari judul.'
               validate:
                 - required
                 - 'max:200'

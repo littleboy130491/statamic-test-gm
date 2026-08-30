@@ -1,10 +1,4 @@
-title: 'Jakarta'
-office_type: head_office
-dealer_category:
-  - cabang-dealer
-location:
-  latitude: -6.208763
-  longitude: 106.845599
+title: Jakarta
 updated_by: 28d34247-1c17-42bf-8548-5b36f18adcbd
 updated_at: 1785386400
 blueprint: location
