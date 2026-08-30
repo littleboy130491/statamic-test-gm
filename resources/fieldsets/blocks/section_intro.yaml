@@ -1,13 +1,13 @@
 title: Section intro
 fields:
-  -
-    handle: heading
-    field:
-      type: text
-      display: Heading
-      validate: required
-  -
-    handle: text
-    field:
-      type: textarea
-      display: Text
+- handle: heading
+  field:
+    type: text
+    display: Heading
+    validate: required
+    instructions: Judul bagian.
+- handle: text
+  field:
+    type: textarea
+    display: Text
+    instructions: Teks konten.

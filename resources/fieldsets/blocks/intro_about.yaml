@@ -1,63 +1,62 @@
 title: Intro / about
 fields:
-  -
-    handle: heading
-    field:
-      type: text
-      display: Heading
-      validate: required
-  -
-    handle: body
-    field:
-      type: textarea
-      display: Body
-  -
-    handle: partner_logos
-    field:
-      type: assets
-      display: Partner / certification logos
-      container: assets
-  -
-    handle: stats
-    field:
-      type: grid
-      display: Statistics
-      mode: stacked
-      add_row: Add statistic
-      fields:
-        -
-          handle: value
-          field:
-            type: text
-            display: Value
-            validate: required
-        -
-          handle: label
-          field:
-            type: text
-            display: Label
-            validate: required
-  -
-    handle: button
-    field:
-      type: group
-      display: Button
-      fields:
-        -
-          import: common.button
-  -
-    handle: image
-    field:
-      type: assets
-      display: Image
-      container: assets
-      max_files: 1
-  -
-    handle: image_position
-    field:
-      type: select
-      display: Image position
-      default: right
-      options:
-        left: Left
-        right: Right
+- handle: heading
+  field:
+    type: text
+    display: Heading
+    validate: required
+    instructions: Judul bagian.
+- handle: body
+  field:
+    type: textarea
+    display: Body
+    instructions: Isi teks.
+- handle: partner_logos
+  field:
+    type: assets
+    display: Partner / certification logos
+    container: assets
+    instructions: Logo mitra.
+- handle: stats
+  field:
+    type: grid
+    display: Statistics
+    mode: stacked
+    add_row: Add statistic
+    fields:
+    - handle: value
+      field:
+        type: text
+        display: Value
+        validate: required
+        instructions: Nilai angka.
+    - handle: label
+      field:
+        type: text
+        display: Label
+        validate: required
+        instructions: Teks label.
+    instructions: Statistik.
+- handle: button
+  field:
+    type: group
+    display: Button
+    fields:
+    - import: common.button
+    instructions: Tombol aksi.
+- handle: image
+  field:
+    type: assets
+    display: Image
+    container: assets
+    max_files: 1
+    instructions: Gambar.
+- handle: image_position
+  field:
+    type: select
+    display: Image position
+    default: right
+    options:
+      left: Left
+      right: Right
+    instructions: Posisi gambar.

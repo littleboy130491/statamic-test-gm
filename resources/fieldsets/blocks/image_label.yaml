@@ -1,32 +1,32 @@
-title: 'Image & Label'
+title: Image & Label
 fields:
-  -
-    handle: gallery_images
-    field:
-      type: grid
-      display: 'Gallery Images'
-      mode: stacked
-      fields:
-        -
-          handle: images
-          field:
-            container: assets
-            max_files: 1
-            type: assets
-            display: Images
-            validate:
-              - required
-        -
-          handle: label
-          field:
-            type: text
-            display: Label
-            width: 50
-            validate:
-              - required
-        -
-          handle: url_button
-          field:
-            type: link
-            display: 'URL Button'
-            width: 50
+- handle: gallery_images
+  field:
+    type: grid
+    display: Gallery Images
+    mode: stacked
+    fields:
+    - handle: images
+      field:
+        container: assets
+        max_files: 1
+        type: assets
+        display: Images
+        validate:
+        - required
+        instructions: Kumpulan gambar.
+    - handle: label
+      field:
+        type: text
+        display: Label
+        width: 50
+        validate:
+        - required
+        instructions: Teks label.
+    - handle: url_button
+      field:
+        type: link
+        display: URL Button
+        width: 50
+        instructions: Tautan tombol.
+    instructions: Galeri gambar.

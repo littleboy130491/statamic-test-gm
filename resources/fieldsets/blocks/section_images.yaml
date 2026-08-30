@@ -1,15 +1,13 @@
-title: 'Section Images'
+title: Section Images
 fields:
-  -
-    import: common.identifier
-  -
-    handle: section_images
-    field:
-      container: assets
-      type: assets
-      display: 'Section Images'
-      max_files: 1
-      validate:
-        - required
-  -
-    import: common.section_settings
+- import: common.identifier
+- handle: section_images
+  field:
+    container: assets
+    type: assets
+    display: Section Images
+    max_files: 1
+    validate:
+    - required
+    instructions: Gambar bagian.
+- import: common.section_settings

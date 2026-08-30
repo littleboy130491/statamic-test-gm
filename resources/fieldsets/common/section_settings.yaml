@@ -1,15 +1,13 @@
-title: 'Section settings'
+title: Section settings
 fields:
-  -
-    handle: anchor
-    field:
-      type: text
-      display: 'Anchor ID'
-      instructions: 'Optional HTML id for in-page links (lowercase, no spaces).'
-  -
-    handle: show
-    field:
-      default: true
-      type: toggle
-      display: Show
-      instructions: 'activate to reveal elements.'
+- handle: anchor
+  field:
+    type: text
+    display: Anchor ID
+    instructions: ID anchor (opsional).
+- handle: show
+  field:
+    default: true
+    type: toggle
+    display: Show
+    instructions: Tampilkan atau sembunyikan.

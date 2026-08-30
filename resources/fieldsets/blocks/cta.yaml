@@ -1,32 +1,31 @@
 title: Call to action
 fields:
-  -
-    handle: heading
-    field:
-      type: text
-      display: Heading
-      validate: required
-  -
-    handle: text
-    field:
-      type: textarea
-      display: Text
-  -
-    handle: buttons
-    field:
-      type: grid
-      display: Buttons
-      mode: stacked
-      add_row: Add button
-      fields:
-        -
-          import: common.button
-  -
-    handle: style
-    field:
-      type: select
-      display: Style
-      default: banner
-      options:
-        banner: Banner
-        inline: Inline
+- handle: heading
+  field:
+    type: text
+    display: Heading
+    validate: required
+    instructions: Judul bagian.
+- handle: text
+  field:
+    type: textarea
+    display: Text
+    instructions: Teks konten.
+- handle: buttons
+  field:
+    type: grid
+    display: Buttons
+    mode: stacked
+    add_row: Add button
+    fields:
+    - import: common.button
+    instructions: Tombol aksi.
+- handle: style
+  field:
+    type: select
+    display: Style
+    default: banner
+    options:
+      banner: Banner
+      inline: Inline
+    instructions: Gaya tampilan.

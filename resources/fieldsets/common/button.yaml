@@ -1,14 +1,14 @@
 title: Button
 fields:
-  -
-    handle: label
-    field:
-      type: text
-      display: Label
-      validate: required
-  -
-    handle: link
-    field:
-      type: link
-      display: Link
-      validate: required
+- handle: label
+  field:
+    type: text
+    display: Label
+    validate: required
+    instructions: Teks label.
+- handle: link
+  field:
+    type: link
+    display: Link
+    validate: required
+    instructions: Tautan tujuan.

@@ -1,18 +1,18 @@
-title: 'Title & Short Desc'
+title: Title & Short Desc
 fields:
-  -
-    handle: heading
-    field:
-      type: text
-      display: Heading
-      width: 50
-      validate:
-        - required
-  -
-    handle: information
-    field:
-      type: text
-      display: Information
-      width: 50
-      validate:
-        - required
+- handle: heading
+  field:
+    type: text
+    display: Heading
+    width: 50
+    validate:
+    - required
+    instructions: Judul bagian.
+- handle: information
+  field:
+    type: text
+    display: Information
+    width: 50
+    validate:
+    - required
+    instructions: Informasi.

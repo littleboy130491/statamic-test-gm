@@ -1,29 +1,29 @@
 title: Marketplace
 fields:
-  -
-    handle: heading
-    field:
-      type: text
-      display: Heading
-  -
-    handle: marketplace
-    field:
-      type: grid
-      display: Marketplace
-      fields:
-        -
-          handle: marketplace_logo
-          field:
-            container: assets
-            max_files: 1
-            type: assets
-            display: 'Marketplace Logo'
-            width: 50
-            validate:
-              - required
-        -
-          handle: marketplace_url
-          field:
-            type: link
-            display: 'Marketplace URL'
-            width: 50
+- handle: heading
+  field:
+    type: text
+    display: Heading
+    instructions: Judul bagian.
+- handle: marketplace
+  field:
+    type: grid
+    display: Marketplace
+    fields:
+    - handle: marketplace_logo
+      field:
+        container: assets
+        max_files: 1
+        type: assets
+        display: Marketplace Logo
+        width: 50
+        validate:
+        - required
+        instructions: Logo marketplace.
+    - handle: marketplace_url
+      field:
+        type: link
+        display: Marketplace URL
+        width: 50
+        instructions: Tautan marketplace.
+    instructions: Daftar marketplace.

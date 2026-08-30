@@ -1,15 +1,14 @@
 title: Contact email
 fields:
-  -
-    handle: label
-    field:
-      type: text
-      display: Label
-      instructions: Optional label, e.g. General or Support.
-  -
-    handle: email
-    field:
-      type: text
-      display: Email
-      input_type: email
-      validate: required|email
+- handle: label
+  field:
+    type: text
+    display: Label
+    instructions: Teks label.
+- handle: email
+  field:
+    type: text
+    display: Email
+    input_type: email
+    validate: required|email
+    instructions: Alamat email.

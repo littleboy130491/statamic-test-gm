@@ -1,29 +1,27 @@
-title: 'Certificate Gallery'
+title: Certificate Gallery
 fields:
-  -
-    import: common.identifier
-  -
-    handle: grid_field
-    field:
-      type: grid
-      display: 'Grid Field'
-      fields:
-        -
-          handle: certificate_image
-          field:
-            container: assets
-            max_files: 1
-            type: assets
-            display: 'Certificate Image'
-        -
-          handle: certificate_name
-          field:
-            type: text
-            display: 'Certificate Name'
-        -
-          handle: certificate_year
-          field:
-            type: text
-            display: 'Certificate Year'
-  -
-    import: common.section_settings
+- import: common.identifier
+- handle: grid_field
+  field:
+    type: grid
+    display: Grid Field
+    fields:
+    - handle: certificate_image
+      field:
+        container: assets
+        max_files: 1
+        type: assets
+        display: Certificate Image
+        instructions: Gambar sertifikat.
+    - handle: certificate_name
+      field:
+        type: text
+        display: Certificate Name
+        instructions: Nama sertifikat.
+    - handle: certificate_year
+      field:
+        type: text
+        display: Certificate Year
+        instructions: Tahun sertifikat.
+    instructions: Daftar sertifikat.
+- import: common.section_settings

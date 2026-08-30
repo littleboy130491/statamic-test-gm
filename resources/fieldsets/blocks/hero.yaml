@@ -1,53 +1,50 @@
 title: Hero
 fields:
-  -
-    handle: headline
-    field:
-      type: text
-      display: Headline
-      validate: required
-  -
-    handle: subheadline
-    field:
-      type: text
-      display: Subheadline
-  -
-    handle: text
-    field:
-      type: textarea
-      display: Supporting text
-  -
-    handle: background_image
-    field:
-      type: assets
-      display: Background image
-      container: assets
-      max_files: 1
-      instructions: Full-width hero background (e.g. truck photo).
-  -
-    handle: image
-    field:
-      type: assets
-      display: Foreground image
-      container: assets
-      max_files: 1
-      instructions: Optional image shown below or beside copy (not the background).
-  -
-    handle: alignment
-    field:
-      type: select
-      display: Alignment
-      default: center
-      options:
-        left: Left
-        center: Center
-  -
-    handle: buttons
-    field:
-      type: grid
-      display: Buttons
-      mode: stacked
-      add_row: Add button
-      fields:
-        -
-          import: common.button
+- handle: headline
+  field:
+    type: text
+    display: Headline
+    validate: required
+    instructions: Judul utama.
+- handle: subheadline
+  field:
+    type: text
+    display: Subheadline
+    instructions: Subjudul.
+- handle: text
+  field:
+    type: textarea
+    display: Supporting text
+    instructions: Teks konten.
+- handle: background_image
+  field:
+    type: assets
+    display: Background image
+    container: assets
+    max_files: 1
+    instructions: Gambar latar.
+- handle: image
+  field:
+    type: assets
+    display: Foreground image
+    container: assets
+    max_files: 1
+    instructions: Gambar.
+- handle: alignment
+  field:
+    type: select
+    display: Alignment
+    default: center
+    options:
+      left: Left
+      center: Center
+    instructions: Perataan teks.
+- handle: buttons
+  field:
+    type: grid
+    display: Buttons
+    mode: stacked
+    add_row: Add button
+    fields:
+    - import: common.button
+    instructions: Tombol aksi.

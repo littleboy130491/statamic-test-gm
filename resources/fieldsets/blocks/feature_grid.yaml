@@ -1,67 +1,60 @@
-title: 'Feature grid'
+title: Feature grid
 fields:
-  -
-    import: common.identifier
-  -
-    handle: heading
-    field:
-      type: text
-      display: Heading
-  -
-    handle: subheading
-    field:
-      type: textarea
-      display: Subheading
-  -
-    handle: columns
-    field:
-      type: select
-      display: Columns
-      default: '3'
-      options:
-        -
-          key: 1
-          value: '1 columns'
-        -
-          key: 2
-          value: '2 columns'
-        -
-          key: 3
-          value: '3 columns'
-        -
-          key: 4
-          value: '4 columns'
-  -
-    handle: features
-    field:
-      type: grid
-      display: Features
-      mode: stacked
-      add_row: 'Add feature'
-      validate: required
-      fields:
-        -
-          handle: icon
-          field:
-            type: assets
-            display: 'Icon / image'
-            container: assets
-            max_files: 1
-        -
-          handle: title
-          field:
-            type: text
-            display: Title
-            validate: required
-        -
-          handle: text
-          field:
-            type: textarea
-            display: Description
-        -
-          handle: link
-          field:
-            type: link
-            display: Link
-  -
-    import: common.section_settings
+- import: common.identifier
+- handle: heading
+  field:
+    type: text
+    display: Heading
+    instructions: Judul bagian.
+- handle: subheading
+  field:
+    type: textarea
+    display: Subheading
+- handle: columns
+  field:
+    type: select
+    display: Columns
+    default: '3'
+    options:
+    - key: 1
+      value: 1 columns
+    - key: 2
+      value: 2 columns
+    - key: 3
+      value: 3 columns
+    - key: 4
+      value: 4 columns
+    instructions: Jumlah kolom.
+- handle: features
+  field:
+    type: grid
+    display: Features
+    mode: stacked
+    add_row: Add feature
+    validate: required
+    fields:
+    - handle: icon
+      field:
+        type: assets
+        display: Icon / image
+        container: assets
+        max_files: 1
+        instructions: Ikon.
+    - handle: title
+      field:
+        type: text
+        display: Title
+        validate: required
+        instructions: Judul konten.
+    - handle: text
+      field:
+        type: textarea
+        display: Description
+        instructions: Teks konten.
+    - handle: link
+      field:
+        type: link
+        display: Link
+        instructions: Tautan tujuan.
+    instructions: Daftar fitur.
+- import: common.section_settings

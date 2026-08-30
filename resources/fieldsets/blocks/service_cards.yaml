@@ -1,51 +1,51 @@
 title: Service cards
 fields:
-  -
-    handle: heading
-    field:
-      type: text
-      display: Heading
-      validate: required
-  -
-    handle: text
-    field:
-      type: textarea
-      display: Description
-  -
-    handle: cards
-    field:
-      type: grid
-      display: Cards
-      mode: stacked
-      add_row: Add card
-      validate: required
-      fields:
-        -
-          handle: image
-          field:
-            type: assets
-            display: Image
-            container: assets
-            max_files: 1
-        -
-          handle: title
-          field:
-            type: text
-            display: Title
-            validate: required
-        -
-          handle: text
-          field:
-            type: textarea
-            display: Description
-        -
-          handle: link_label
-          field:
-            type: text
-            display: Link label
-            default: Selengkapnya
-        -
-          handle: link
-          field:
-            type: link
-            display: Link
+- handle: heading
+  field:
+    type: text
+    display: Heading
+    validate: required
+    instructions: Judul bagian.
+- handle: text
+  field:
+    type: textarea
+    display: Description
+    instructions: Teks konten.
+- handle: cards
+  field:
+    type: grid
+    display: Cards
+    mode: stacked
+    add_row: Add card
+    validate: required
+    fields:
+    - handle: image
+      field:
+        type: assets
+        display: Image
+        container: assets
+        max_files: 1
+        instructions: Gambar.
+    - handle: title
+      field:
+        type: text
+        display: Title
+        validate: required
+        instructions: Judul konten.
+    - handle: text
+      field:
+        type: textarea
+        display: Description
+        instructions: Teks konten.
+    - handle: link_label
+      field:
+        type: text
+        display: Link label
+        default: Selengkapnya
+        instructions: Teks tautan.
+    - handle: link
+      field:
+        type: link
+        display: Link
+        instructions: Tautan tujuan.
+    instructions: Daftar kartu.

@@ -1,18 +1,16 @@
-title: 'Text & Button'
+title: Text & Button
 fields:
-  -
-    import: common.identifier
-  -
-    handle: heading
-    field:
-      type: text
-      display: Heading
-      validate:
-        - required
-  -
-    handle: description
-    field:
-      type: textarea
-      display: Description
-  -
-    import: common.button
+- import: common.identifier
+- handle: heading
+  field:
+    type: text
+    display: Heading
+    validate:
+    - required
+    instructions: Judul bagian.
+- handle: description
+  field:
+    type: textarea
+    display: Description
+    instructions: Deskripsi.
+- import: common.button

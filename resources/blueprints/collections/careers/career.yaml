@@ -3,146 +3,139 @@ tabs:
   main:
     display: Main
     sections:
-      -
-        display: Job
-        fields:
-          -
-            handle: title
-            field:
-              type: text
-              required: true
-              display: Title
-              localizable: true
-              validate:
-                - required
-          -
-            handle: excerpt
-            field:
-              type: textarea
-              display: Excerpt
-          -
-            handle: description
-            field:
-              type: bard
-              display: Description
-              localizable: true
-              buttons:
-                - bold
-                - italic
-                - anchor
-                - unorderedlist
-                - orderedlist
-                - removeformat
-          -
-            handle: qualifications
-            field:
-              type: bard
-              display: Qualifications
-              localizable: true
-              buttons:
-                - bold
-                - italic
-                - anchor
-                - unorderedlist
-                - orderedlist
-                - removeformat
-                - h2
-              container: assets
-              remove_empty_nodes: false
-          -
-            handle: jobdesc
-            field:
-              type: bard
-              display: 'Job Description'
-              localizable: true
-              buttons:
-                - bold
-                - italic
-                - anchor
-                - unorderedlist
-                - orderedlist
-                - removeformat
-          -
-            handle: employment_status
-            field:
-              type: select
-              display: 'Employment Status'
-              localizable: true
-              options:
-                full_time: 'Full Time'
-                part_time: 'Part Time'
-                contract: Contract
-                internship: Internship
-                temporary: Temporary
-              placeholder: 'Select employment type'
-          -
-            handle: apply_email
-            field:
-              type: text
-              display: 'Apply Email'
-              localizable: true
-              input_type: email
-              validate: nullable|email
-          -
-            handle: apply_link
-            field:
-              type: text
-              display: 'Apply Link'
-              localizable: true
-              input_type: url
-              validate: nullable|url
-              instructions: 'Optional application URL only.'
+    - display: Job
+      fields:
+      - handle: title
+        field:
+          type: text
+          required: true
+          display: Title
+          localizable: true
+          validate:
+          - required
+          instructions: Judul konten.
+      - handle: excerpt
+        field:
+          type: textarea
+          display: Excerpt
+          instructions: Ringkasan singkat.
+      - handle: description
+        field:
+          type: bard
+          display: Description
+          localizable: true
+          buttons:
+          - bold
+          - italic
+          - anchor
+          - unorderedlist
+          - orderedlist
+          - removeformat
+          instructions: Deskripsi.
+      - handle: qualifications
+        field:
+          type: bard
+          display: Qualifications
+          localizable: true
+          buttons:
+          - bold
+          - italic
+          - anchor
+          - unorderedlist
+          - orderedlist
+          - removeformat
+          - h2
+          container: assets
+          remove_empty_nodes: false
+          instructions: Kualifikasi.
+      - handle: jobdesc
+        field:
+          type: bard
+          display: Job Description
+          localizable: true
+          buttons:
+          - bold
+          - italic
+          - anchor
+          - unorderedlist
+          - orderedlist
+          - removeformat
+          instructions: Tugas pekerjaan.
+      - handle: employment_status
+        field:
+          type: select
+          display: Employment Status
+          localizable: true
+          options:
+            full_time: Full Time
+            part_time: Part Time
+            contract: Contract
+            internship: Internship
+            temporary: Temporary
+          placeholder: Select employment type
+          instructions: Jenis pekerjaan.
+      - handle: apply_email
+        field:
+          type: text
+          display: Apply Email
+          localizable: true
+          input_type: email
+          validate: nullable|email
+          instructions: Email lamaran.
+      - handle: apply_link
+        field:
+          type: text
+          display: Apply Link
+          localizable: true
+          input_type: url
+          validate: nullable|url
+          instructions: Link lamaran.
   sidebar:
     display: Sidebar
     sections:
-      -
-        fields:
-          -
-            handle: slug
-            field:
-              type: slug
-              localizable: true
-              validate: 'max:200'
-          -
-            handle: tags
-            field:
-              type: terms
-              taxonomies:
-                - tags
-              display: Tags
-              mode: select
-          -
-            handle: locations
-            field:
-              type: terms
-              taxonomies:
-                - locations
-              display: Location
-              mode: select
-              max_items: 1
-  'SEO Meta':
-    display: 'SEO Meta'
+    - fields:
+      - handle: slug
+        field:
+          type: slug
+          localizable: true
+          validate: max:200
+          instructions: URL otomatis dari judul.
+      - handle: tags
+        field:
+          type: terms
+          taxonomies:
+          - tags
+          display: Tags
+          mode: select
+          instructions: Tag.
+      - handle: locations
+        field:
+          type: terms
+          taxonomies:
+          - locations
+          display: Location
+          mode: select
+          max_items: 1
+          instructions: Lokasi.
+  SEO Meta:
+    display: SEO Meta
     sections:
-      -
-        fields:
-          -
-            handle: seo
-            field:
-              type: seo_pro
-              listable: false
-              display: SEO
-  'SEO Previews':
-    display: 'SEO Previews'
+    - fields:
+      - handle: seo
+        field:
+          type: seo_pro
+          listable: false
+          display: SEO
+  SEO Previews:
+    display: SEO Previews
     sections:
-      -
-        fields:
-          -
-            handle: seo_previews
-            field:
-              type: seo_pro_previews
-              listable: false
-              display: 'SEO Previews'
-              localizable: false
-              hide_display: true
-              unless:
-                seo.enabled: 'equals false'
+    - fields:
+      - handle: seo_previews
+        field:
+          type: seo_pro_previews
+          listable: false
+          display: SEO Previews
+          localizable: false
+          hide_display: true
+          unless:
+            seo.enabled: 'equals false'

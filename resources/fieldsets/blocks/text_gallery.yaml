@@ -1,36 +1,34 @@
-title: 'Text & Gallery'
+title: Text & Gallery
 fields:
-  -
-    import: common.identifier
-  -
-    handle: gallery_grid
-    field:
-      type: grid
-      display: 'Gallery Grid'
-      fields:
-        -
-          handle: label
-          field:
-            type: text
-            display: Label
-        -
-          handle: assets_field
-          field:
-            container: assets
-            max_files: 1
-            type: assets
-            display: 'Assets Field'
-  -
-    handle: heading
-    field:
-      type: text
-      display: Heading
-  -
-    handle: description
-    field:
-      container: assets
-      remove_empty_nodes: false
-      type: bard
-      display: Description
-  -
-    import: common.section_settings
+- import: common.identifier
+- handle: gallery_grid
+  field:
+    type: grid
+    display: Gallery Grid
+    fields:
+    - handle: label
+      field:
+        type: text
+        display: Label
+        instructions: Teks label.
+    - handle: assets_field
+      field:
+        container: assets
+        max_files: 1
+        type: assets
+        display: Assets Field
+        instructions: File gambar.
+    instructions: Grid galeri.
+- handle: heading
+  field:
+    type: text
+    display: Heading
+    instructions: Judul bagian.
+- handle: description
+  field:
+    container: assets
+    remove_empty_nodes: false
+    type: bard
+    display: Description
+    instructions: Deskripsi.
+- import: common.section_settings

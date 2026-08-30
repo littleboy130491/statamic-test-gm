@@ -1,35 +1,34 @@
-title: 'Image & text'
+title: Image & text
 fields:
-  -
-    handle: image
-    field:
-      type: assets
-      display: Image
-      container: assets
-      max_files: 1
-  -
-    handle: heading
-    field:
-      type: text
-      display: Heading
-  -
-    handle: text
-    field:
-      type: bard
-      display: Text
-      container: assets
-      buttons:
-        - bold
-        - italic
-        - anchor
-        - unorderedlist
-        - orderedlist
-        - removeformat
-  -
-    handle: button
-    field:
-      type: group
-      display: Button
-      fields:
-        -
-          import: common.button
+- handle: image
+  field:
+    type: assets
+    display: Image
+    container: assets
+    max_files: 1
+    instructions: Gambar.
+- handle: heading
+  field:
+    type: text
+    display: Heading
+    instructions: Judul bagian.
+- handle: text
+  field:
+    type: bard
+    display: Text
+    container: assets
+    buttons:
+    - bold
+    - italic
+    - anchor
+    - unorderedlist
+    - orderedlist
+    - removeformat
+    instructions: Teks konten.
+- handle: button
+  field:
+    type: group
+    display: Button
+    fields:
+    - import: common.button
+    instructions: Tombol aksi.

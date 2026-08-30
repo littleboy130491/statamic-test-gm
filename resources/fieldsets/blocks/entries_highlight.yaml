@@ -1,27 +1,26 @@
 title: Entries highlight
 fields:
-  -
-    handle: heading
-    field:
-      type: text
-      display: Heading
-      validate: required
-  -
-    handle: text
-    field:
-      type: textarea
-      display: Description
-  -
-    handle: entries
-    field:
-      type: entries
-      display: Entries
-      validate: required
-  -
-    handle: button
-    field:
-      type: group
-      display: Section button
-      fields:
-        -
-          import: common.button
+- handle: heading
+  field:
+    type: text
+    display: Heading
+    validate: required
+    instructions: Judul bagian.
+- handle: text
+  field:
+    type: textarea
+    display: Description
+    instructions: Teks konten.
+- handle: entries
+  field:
+    type: entries
+    display: Entries
+    validate: required
+    instructions: Pilih entri.
+- handle: button
+  field:
+    type: group
+    display: Section button
+    fields:
+    - import: common.button
+    instructions: Tombol aksi.

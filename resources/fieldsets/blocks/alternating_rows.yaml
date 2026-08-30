@@ -1,52 +1,50 @@
-title: 'Alternating rows'
+title: Alternating rows
 fields:
-  -
-    import: common.identifier
-  -
-    handle: heading
-    field:
-      type: text
-      display: 'Section heading'
-  -
-    handle: intro
-    field:
-      type: textarea
-      display: 'Intro text'
-  -
-    handle: rows
-    field:
-      type: grid
-      display: Rows
-      mode: stacked
-      add_row: 'Add row'
-      validate: required
-      fields:
-        -
-          handle: icon
-          field:
-            type: assets
-            display: Icon
-            container: assets
-            max_files: 1
-        -
-          handle: title
-          field:
-            type: text
-            display: Title
-            validate: required
-        -
-          handle: text
-          field:
-            type: textarea
-            display: Description
-            validate: required
-        -
-          handle: image
-          field:
-            type: assets
-            display: Image
-            container: assets
-            max_files: 1
-            validate: required
-  -
-    import: common.section_settings
+- import: common.identifier
+- handle: heading
+  field:
+    type: text
+    display: Section heading
+    instructions: Judul bagian.
+- handle: intro
+  field:
+    type: textarea
+    display: Intro text
+    instructions: Teks pengantar.
+- handle: rows
+  field:
+    type: grid
+    display: Rows
+    mode: stacked
+    add_row: Add row
+    validate: required
+    fields:
+    - handle: icon
+      field:
+        type: assets
+        display: Icon
+        container: assets
+        max_files: 1
+        instructions: Ikon.
+    - handle: title
+      field:
+        type: text
+        display: Title
+        validate: required
+        instructions: Judul konten.
+    - handle: text
+      field:
+        type: textarea
+        display: Description
+        validate: required
+        instructions: Teks konten.
+    - handle: image
+      field:
+        type: assets
+        display: Image
+        container: assets
+        max_files: 1
+        validate: required
+        instructions: Gambar.
+    instructions: Daftar baris.
+- import: common.section_settings

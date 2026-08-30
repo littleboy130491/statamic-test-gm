@@ -1,38 +1,36 @@
-title: 'Vision Mission'
+title: Vision Mission
 fields:
-  -
-    import: common.identifier
-  -
-    handle: photo
-    field:
-      container: assets
-      max_files: 1
-      type: assets
-      display: Photo
-  -
-    handle: content
-    field:
-      type: grid
-      display: Content
-      fields:
-        -
-          handle: title
-          field:
-            type: text
-            display: Title
-        -
-          handle: description
-          field:
-            container: assets
-            remove_empty_nodes: false
-            type: bard
-            display: Description
-  -
-    handle: photo_background
-    field:
-      container: assets
-      max_files: 1
-      type: assets
-      display: 'Photo Background'
-  -
-    import: common.section_settings
+- import: common.identifier
+- handle: photo
+  field:
+    container: assets
+    max_files: 1
+    type: assets
+    display: Photo
+    instructions: Foto.
+- handle: content
+  field:
+    type: grid
+    display: Content
+    fields:
+    - handle: title
+      field:
+        type: text
+        display: Title
+        instructions: Judul konten.
+    - handle: description
+      field:
+        container: assets
+        remove_empty_nodes: false
+        type: bard
+        display: Description
+        instructions: Deskripsi.
+    instructions: Isi konten.
+- handle: photo_background
+  field:
+    container: assets
+    max_files: 1
+    type: assets
+    display: Photo Background
+    instructions: Latar foto.
+- import: common.section_settings

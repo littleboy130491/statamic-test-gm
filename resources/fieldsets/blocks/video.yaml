@@ -1,19 +1,18 @@
 title: Video
 fields:
-  -
-    handle: heading
-    field:
-      type: text
-      display: Heading
-  -
-    handle: video_url
-    field:
-      type: text
-      display: Video URL
-      validate: required
-      instructions: YouTube or Vimeo embed URL.
-  -
-    handle: caption
-    field:
-      type: text
-      display: Caption
+- handle: heading
+  field:
+    type: text
+    display: Heading
+    instructions: Judul bagian.
+- handle: video_url
+  field:
+    type: text
+    display: Video URL
+    validate: required
+    instructions: URL video.
+- handle: caption
+  field:
+    type: text
+    display: Caption
+    instructions: Keterangan gambar.

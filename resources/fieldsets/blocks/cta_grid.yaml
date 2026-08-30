@@ -1,57 +1,52 @@
-title: 'CTA Grid'
+title: CTA Grid
 fields:
-  -
-    import: common.identifier
-  -
-    handle: image_call_to_action
-    field:
-      container: assets
-      max_files: 1
-      type: assets
-      display: 'Image Call to Action'
-      validate:
-        - required
-  -
-    handle: heading
-    field:
-      type: text
-      display: Heading
-      validate:
-        - required
-  -
-    handle: short_description
-    field:
-      type: textarea
-      display: 'Short Description'
-  -
-    handle: call_to_action
-    field:
-      mode: stacked
-      add_row: 'Add Row'
-      type: grid
-      display: 'Call to Action'
-      validate:
-        - required
-      fields:
-        -
-          handle: icon
-          field:
-            container: assets
-            max_files: 1
-            type: assets
-            display: Icon
-            instructions: 'Jika dikosongkan akan otomatis menampilkan icon WhatsApp'
-        -
-          handle: label
-          field:
-            type: text
-            display: Label
-            instructions: 'Informasi label seperti: Call & WA Center, Email Perusahaan, Hubungi Kami'
-        -
-          handle: kontak
-          field:
-            type: text
-            display: Kontak
-            instructions: 'Nomor WhatsApp, Email.'
-  -
-    import: common.section_settings
+- import: common.identifier
+- handle: image_call_to_action
+  field:
+    container: assets
+    max_files: 1
+    type: assets
+    display: Image Call to Action
+    validate:
+    - required
+    instructions: Gambar CTA.
+- handle: heading
+  field:
+    type: text
+    display: Heading
+    validate:
+    - required
+    instructions: Judul bagian.
+- handle: short_description
+  field:
+    type: textarea
+    display: Short Description
+    instructions: Deskripsi singkat.
+- handle: call_to_action
+  field:
+    mode: stacked
+    add_row: Add Row
+    type: grid
+    display: Call to Action
+    validate:
+    - required
+    fields:
+    - handle: icon
+      field:
+        container: assets
+        max_files: 1
+        type: assets
+        display: Icon
+        instructions: Ikon.
+    - handle: label
+      field:
+        type: text
+        display: Label
+        instructions: Teks label.
+    - handle: kontak
+      field:
+        type: text
+        display: Kontak
+        instructions: Kontak.
+    instructions: Daftar aksi.
+- import: common.section_settings
