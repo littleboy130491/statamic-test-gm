@@ -215,19 +215,6 @@ body.background-grey {
    display: none !important;
 }
 
-@media (max-width: 1023px), (hover: none) {
-   .leaflet-popup-close-button {
-      display: flex !important;
-      align-items: center;
-      justify-content: center;
-      width: 28px !important;
-      height: 28px !important;
-      color: #fff !important;
-      font-size: 20px !important;
-      padding: 4px 0 0 !important;
-   }
-}
-
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
    background: var(--color-primary) !important;
@@ -237,19 +224,22 @@ body.background-grey {
 .leaflet-popup-content {
    margin: 11px !important;
    border-radius: 16px !important;
-   width: 250px;
+   width: auto;
 }
 
 .dealer-popup {
    display: flex;
    flex-direction: column;
    gap: 12px;
+   min-width: 250px;
+   max-width: 360px;
 }
 
 .popup-header {
    display: flex;
    justify-content: space-between;
-   align-items: center;
+   align-items: flex-start;
+   gap: 24px;
    color: white;
 }
 
@@ -257,11 +247,25 @@ body.background-grey {
    font-family: var(--font-display);
    font-size: 1.3em;
    font-weight: 600;
+   white-space: nowrap;
 }
 
 .dealer-popup-category {
    font-family: var(--font-body);
    text-transform: uppercase;
+   line-height: 1.25;
+   text-align: right;
+   white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+   .dealer-popup {
+      min-width: 220px;
+   }
+
+   .popup-header {
+      gap: 16px;
+   }
 }
 
 .wrap-popup-dealer {
