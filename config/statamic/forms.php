@@ -33,7 +33,7 @@ return [
     |
     */
 
-    'send_email_job' => \Statamic\Forms\SendEmail::class,
+    'send_email_job' => \App\Forms\SendEmail::class,
 
     /*
     |--------------------------------------------------------------------------
