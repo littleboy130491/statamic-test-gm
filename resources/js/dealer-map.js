@@ -282,14 +282,17 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    if (markers.length) {
-        fitVisibleMarkers(false);
-    }
-
     const categorySelect = document.getElementById('dealer-category-select');
     const searchInput = document.getElementById('dealer-search');
     const searchBtn = document.getElementById('dealer-search-btn');
     const emptyFeedback = document.getElementById('dealer-search-empty');
+    const categoryButtons = Array.from(document.querySelectorAll('.dealer-cat-btn'));
+    const categoryQueryParam = 'dealer_category';
+    const availableCategories = new Set(
+        categoryButtons.map(function (button) {
+            return button.dataset.category;
+        }),
+    );
     const emptySearchLabel =
         mapLabels.emptySearch || 'Dealer tidak ditemukan. Coba kata kunci atau filter lain.';
 
@@ -302,28 +305,52 @@ document.addEventListener('DOMContentLoaded', function () {
         emptyFeedback.classList.toggle('hidden', !visible);
     }
 
-    document.querySelectorAll('.dealer-cat-btn').forEach(function (btn) {
+    function setCategoryControls(category) {
+        const selectedCategory = availableCategories.has(category) ? category : 'all';
+
+        categoryButtons.forEach(function (button) {
+            button.classList.toggle('active', button.dataset.category === selectedCategory);
+        });
+
+        if (categorySelect) {
+            categorySelect.value = selectedCategory;
+        }
+    }
+
+    function categoryFromUrl() {
+        const category = new URL(window.location.href).searchParams.get(categoryQueryParam);
+
+        return category && availableCategories.has(category) ? category : 'all';
+    }
+
+    function updateCategoryUrl(category) {
+        const url = new URL(window.location.href);
+
+        if (category === 'all') {
+            url.searchParams.delete(categoryQueryParam);
+        } else {
+            url.searchParams.set(categoryQueryParam, category);
+        }
+
+        window.history.pushState(window.history.state, '', url);
+    }
+
+    categoryButtons.forEach(function (btn) {
         btn.addEventListener('click', function (e) {
             e.preventDefault();
             const wasActive = btn.classList.contains('active');
-            document.querySelectorAll('.dealer-cat-btn').forEach(function (b) {
-                b.classList.remove('active');
-            });
-            if (!wasActive) btn.classList.add('active');
+            const category = wasActive ? 'all' : btn.dataset.category || 'all';
 
-            if (categorySelect) {
-                categorySelect.value = wasActive ? 'all' : btn.dataset.category || 'all';
-            }
-
+            setCategoryControls(category);
+            updateCategoryUrl(category);
             applyFilters(true);
         });
     });
 
     if (categorySelect) {
         categorySelect.addEventListener('change', function () {
-            document.querySelectorAll('.dealer-cat-btn').forEach(function (b) {
-                b.classList.toggle('active', b.dataset.category === categorySelect.value);
-            });
+            setCategoryControls(categorySelect.value);
+            updateCategoryUrl(categorySelect.value);
             applyFilters(true);
         });
     }
@@ -361,7 +388,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .toLowerCase();
     }
 
-    function applyFilters(shouldFit) {
+    function applyFilters(shouldFit, animate) {
         const activeCategory = isTabletDown()
             ? categorySelect?.value || 'all'
             : document.querySelector('.dealer-cat-btn.active')?.dataset.category ||
@@ -387,7 +414,15 @@ document.addEventListener('DOMContentLoaded', function () {
         setEmptyFeedback(hasActiveFilter && visibleCount === 0);
 
         if (shouldFit && visibleCount > 0) {
-            fitVisibleMarkers(true);
+            fitVisibleMarkers(animate !== false);
         }
     }
+
+    setCategoryControls(categoryFromUrl());
+    applyFilters(true, false);
+
+    window.addEventListener('popstate', function () {
+        setCategoryControls(categoryFromUrl());
+        applyFilters(true);
+    });
 });

@@ -145,6 +145,7 @@
         ->filter(fn($label, $slug) => ($dealerCounts[$slug] ?? 0) > 0);
 
     $dealerCategoryCount = $dealerCategories->count();
+    $dealerPageUrl = \Statamic\Facades\Entry::find('dealers')?->url() ?? '/dealer';
 
     // Label informasi dealer
     $dealerLabels =
@@ -459,16 +460,16 @@
                                 <div class="w-full lg:w-[45%] grid gap-2 md:gap-4 lg:gap-4"
                                     style="grid-template-columns: repeat({{ $dealerCategoryCount }}, minmax(0, 1fr));">
                                     @foreach ($dealerCategories as $slug => $label)
-                                        <div
-                                            class="flex flex-col items-start lg:items-center gap-2 lg:gap-4 bg-(--color-surface) p-4 lg:px-4 lg:py-8 rounded-xl">
+                                        <a href="{{ $dealerPageUrl . '?' . http_build_query(['dealer_category' => $slug]) . '#dealer-content' }}"
+                                            class="group flex flex-col items-start lg:items-center gap-2 lg:gap-4 bg-(--color-surface) hover:bg-(--color-primary) p-4 lg:px-4 lg:py-8 rounded-xl transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-primary)">
                                             <p
-                                                class="text-3xl lg:text-4xl text-(--color-primary) font-(family-name:--font-display) font-semibold">
+                                                class="text-3xl lg:text-4xl text-(--color-primary) group-hover:text-white group-focus-visible:text-white font-(family-name:--font-display) font-semibold transition-colors">
                                                 {{ $dealerCounts[$slug] ?? 0 }}
                                             </p>
                                             <p
-                                                class="text-(--color-primary) text-xs md:text-xs lg:text-sm lg:leading-[1.2rem]">
+                                                class="text-(--color-primary) group-hover:text-white group-focus-visible:text-white text-xs md:text-xs lg:text-sm lg:leading-[1.2rem] transition-colors">
                                                 {{ $label }}</p>
-                                        </div>
+                                        </a>
                                     @endforeach
                                 </div>
                             @endif

@@ -35,7 +35,7 @@
 @endphp
 
 {{-- Filter Kategori & Search --}}
-<div id="dealer-content">
+<div id="dealer-content" class="scroll-mt-24 lg:scroll-mt-28">
     <div
         class="relative z-1000 flex flex-col gap-4 md:items-center md:flex-row-reverse md:justify-between lg:items-center lg:flex-row-reverse lg:justify-between mb-6">
 
